@@ -1,8 +1,8 @@
 <template>
   <div>
     <Header />
-    <main class="bg-gray-100 pt-5">
-      <div class="container mx-auto p-4">
+    <main class="bg-gray-100 dark:bg-gray-900 py-5 transition-colors duration-300 ease-linear">
+      <div class="container mx-auto px-4">
         <Nuxt />
       </div>
     </main>
@@ -25,11 +25,6 @@ export default {
 </script>
 
 <style>
-
-body {
-  prefers-color-scheme: 'dark'
-}
-
 html {
   font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI',
     Roboto, 'Helvetica Neue', Arial, sans-serif;

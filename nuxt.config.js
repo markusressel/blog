@@ -17,7 +17,7 @@ export default {
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
-  css: [],
+  css: ['@/assets/css/main.css'],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [],
@@ -29,6 +29,7 @@ export default {
   buildModules: [
     // https://go.nuxtjs.dev/typescript
     '@nuxt/typescript-build',
+    '@nuxtjs/svg',
     '@nuxtjs/color-mode',
     // Doc: https://github.com/nuxt-community/nuxt-tailwindcss
     '@nuxtjs/tailwindcss',
@@ -42,23 +43,23 @@ export default {
     '@nuxtjs/pwa',
     // https://nuxtjs.org/blog/creating-blog-with-nuxt-content
     '@nuxt/content',
-    "@nuxtjs/sitemap",
+    '@nuxtjs/sitemap',
   ],
 
-  purgeCSS: {    
-    whitelist: ['dark-mode'],  
+  purgeCSS: {
+    whitelist: ['dark-mode'],
   },
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {},
 
-  // Content module configuration: 
+  // Content module configuration:
   content: {
     markdown: {
       prism: {
-        theme: 'prism-themes/themes/prism-material-oceanic.css'
-      }
-    }
+        theme: 'prism-themes/themes/prism-material-oceanic.css',
+      },
+    },
   },
 
   // PWA module configuration: https://go.nuxtjs.dev/pwa
@@ -73,7 +74,7 @@ export default {
 
   loading: {
     color: 'blue',
-    height: '5px'
+    height: '5px',
   },
 
   sitemap: {

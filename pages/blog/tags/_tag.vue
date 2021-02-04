@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import ArticleList from '@/components/ArticleList';
+import ArticleList from '@/components/blog/ArticleList';
 
 export default {
   name: 'TagPage',

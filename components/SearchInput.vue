@@ -4,8 +4,9 @@
       v-model="searchQuery"
       type="search"
       autocomplete="off"
-      placeholder="Search Articles"
+      placeholder="Search Blog Posts"
     />
+
     <ul v-if="articles.length">
       <li v-for="article of articles" :key="article.slug">
         <NuxtLink :to="{ name: 'blog-post-slug', params: { slug: article.slug } }">
@@ -13,6 +14,7 @@
         </NuxtLink>
       </li>
     </ul>
+
   </div>
 </template>
 

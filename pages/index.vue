@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="text-2xl">
     <NuxtLink to="/projects">
       <h1>Projects</h1>
     </NuxtLink>
