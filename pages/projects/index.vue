@@ -28,7 +28,7 @@
       </div>
     </div>
     <md-button @click="$fetch" class="md-fab md-primary">
-        <md-icon>refresh</md-icon>
+      <md-icon>refresh</md-icon>
     </md-button>
   </div>
 </template>
