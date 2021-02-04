@@ -29,6 +29,9 @@ export default {
   buildModules: [
     // https://go.nuxtjs.dev/typescript
     '@nuxt/typescript-build',
+    '@nuxtjs/color-mode',
+    // Doc: https://github.com/nuxt-community/nuxt-tailwindcss
+    '@nuxtjs/tailwindcss',
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
@@ -41,6 +44,10 @@ export default {
     '@nuxt/content',
     "@nuxtjs/sitemap",
   ],
+
+  purgeCSS: {    
+    whitelist: ['dark-mode'],  
+  },
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {},
@@ -63,6 +70,11 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {},
+
+  loading: {
+    color: 'blue',
+    height: '5px'
+  },
 
   sitemap: {
     hostname: process.env.BASE_URL, // https://www.yoursite.com

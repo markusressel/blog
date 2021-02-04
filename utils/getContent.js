@@ -1,10 +1,7 @@
 export default async ($content, params, error) => {
   const currentPage = parseInt(params.page)
-
   const perPage = 5
-
   const allArticles = await $content('articles').fetch()
-
   const totalArticles = allArticles.length
 
   // use Math.ceil to round up to the nearest whole number

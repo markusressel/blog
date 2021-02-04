@@ -1,5 +1,9 @@
 <template>
   <div>
+    <NuxtLink to="/projects">
+      <h1>Projects</h1>
+    </NuxtLink>
+
     <NuxtLink to="/blog">
       <h1>Blog</h1>
     </NuxtLink>

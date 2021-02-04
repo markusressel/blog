@@ -7,6 +7,8 @@ author:
   name: Markus Ressel
   bio: Some super nice bio
   image: https://avatars.githubusercontent.com/u/14024504?s=460&u=8636a71fc6412cc8baba6b2042c1608c9dea78e5&v=4
+tags:
+  - helloworld
 ---
 
 Hi all, this is the first post of on my blog created using [Nuxt.js](https://nuxtjs.org).
