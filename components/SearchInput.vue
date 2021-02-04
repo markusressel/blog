@@ -5,7 +5,7 @@
       type="search"
       autocomplete="off"
       placeholder="Search Blog Posts"
-      class="rounded-full p-4 shadow"
+      class="rounded-full p-2 shadow"
     />
 
     <ul v-if="articles.length">

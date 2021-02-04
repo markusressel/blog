@@ -1,6 +1,6 @@
 <template>
   <ul>
-    <li v-for="color of colors" :key="color" class="p-2 text-right">
+    <li v-for="color of colors" :key="color" class="p-2">
       <component
         :is="`icon-${color}`"
         @click="$colorMode.preference = color"

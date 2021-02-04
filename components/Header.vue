@@ -2,14 +2,13 @@
   <header class="flex">
     <div class="flex flex-col">
       <NuxtLink to="/">
-        <Logo class="m-4" />
+        <Logo class="h-12 m-4" />
       </NuxtLink>
       <div class="self-center font-bold">{{ siteName }}</div>
     </div>
     <div class="self-center text-3xl flex-grow">{{ pageTitle }}</div>
-    <div class="flex flex-col">
-      <SearchInput class="ml-8" />
-      <ColorModePicker />
+    <div class="flex flex-row items-center">
+      <ColorModePicker /> <SearchInput class="ml-8" />
     </div>
   </header>
 </template>
