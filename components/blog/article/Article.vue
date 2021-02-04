@@ -43,6 +43,7 @@
 </template>
 <script>
 import IconHashtag from '@/assets/icons/icon-hashtag.svg?inline'
+import formatDate from '@/utils/formatDate';
 
 export default {
   components: {
@@ -63,13 +64,11 @@ export default {
     },
   },
   methods: {
-    formatDate(date) {
-      const options = { year: 'numeric', month: 'long', day: 'numeric' }
-      return new Date(date).toLocaleDateString('en', options)
-    },
+    formatDate
   },
 }
 </script>
+
 <style>
 .nuxt-content p {
   margin-bottom: 20px;

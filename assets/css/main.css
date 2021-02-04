@@ -2,7 +2,6 @@
   --color: #243746;
   --color-primary: #158876;
   --color-secondary: #0e2233;
-  --bg: #f3f5f4;
   --bg-secondary: #fff;
   --border-color: #ddd;
 }
@@ -11,7 +10,6 @@
   --color: #ebf4f1;
   --color-primary: #41b38a;
   --color-secondary: #fdf9f3;
-  --bg: #091a28;
   --bg-secondary: #071521;
   --border-color: #0d2538;
 }
@@ -28,7 +26,6 @@ body {
     Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   background-color: var(--bg);
   color: var(--color);
-  transition: background-color 0.3s;
 }
 a {
   color: var(--color-primary);

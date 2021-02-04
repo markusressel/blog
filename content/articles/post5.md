@@ -1,6 +1,6 @@
 ---
 title: Post5
-description: Description
+description: This is a fancy description of a blog post
 img: first-blog-post.jpg
 alt: my second blog post
 author:

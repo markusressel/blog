@@ -1,9 +1,26 @@
 <template>
   <header class="flex">
-    <NuxtLink to="/">
-      <Logo class="mb-4" />
-    </NuxtLink>
-    <SearchInput class="ml-8" />
-    <ColorModePicker />
+    <div class="flex flex-col">
+      <NuxtLink to="/">
+        <Logo class="m-4" />
+      </NuxtLink>
+      <div class="self-center font-bold">{{ siteName }}</div>
+    </div>
+    <div class="self-center text-3xl flex-grow">{{ page_title }}</div>
+    <div class="flex flex-col">
+      <SearchInput class="ml-8" />
+      <ColorModePicker />
+    </div>
   </header>
 </template>
+<script>
+import global from '@/utils/global'
+
+export default {
+  computed: {
+    siteName() {
+      return global.siteName
+    },
+  },
+}
+</script>

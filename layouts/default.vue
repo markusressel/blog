@@ -1,19 +1,16 @@
 <template>
-  <div>
-    <Header />
-    <main class="bg-gray-100 dark:bg-gray-900 py-5 transition-colors duration-300 ease-linear">
-      <div class="container mx-auto px-4">
-        <Nuxt />
-      </div>
+  <div class="h-screen flex flex-col transition-all duration-200 ease-linear">
+    <Header class="bg-gray-100 dark:bg-gray-900 transition-all duration-200" />
+    <main class="flex-1 overflow-auto px-4 py-5 bg-gray-100 dark:bg-gray-900 transition-all duration-200">
+      <Nuxt />
     </main>
-
     <Footer />
   </div>
 </template>
 
 <script>
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
+import Header from '@/components/Header'
+import Footer from '@/components/Footer'
 
 export default {
   name: 'MainLayout',
@@ -21,10 +18,11 @@ export default {
     Header,
     Footer,
   },
-};
+}
 </script>
 
 <style>
+
 html {
   font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI',
     Roboto, 'Helvetica Neue', Arial, sans-serif;

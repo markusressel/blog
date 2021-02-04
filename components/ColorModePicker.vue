@@ -1,6 +1,6 @@
 <template>
   <ul>
-    <li v-for="color of colors" :key="color">
+    <li v-for="color of colors" :key="color" class="p-2 text-right">
       <component
         :is="`icon-${color}`"
         @click="$colorMode.preference = color"
@@ -31,19 +31,8 @@ export default {
 </script>
 
 <style scoped>
-ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
 ul li {
   display: inline-block;
-  padding: 5px;
-}
-p {
-  margin: 0;
-  padding-top: 5px;
-  padding-bottom: 20px;
 }
 
 .theme-icon {
@@ -51,13 +40,9 @@ p {
   background-color: var(--bg-secondary);
   border: 2px solid var(--border-color);
   border-radius: 5px;
-  transition: all 0.1s ease;
 }
+
 .theme-icon:hover {
-  top: -3px;
-}
-.theme-icon.preferred {
-  border-color: var(--color-primary);
   top: -3px;
 }
 .selected {

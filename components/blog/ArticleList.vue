@@ -17,10 +17,21 @@
             class="mb-4 border rounded"
           />
           <div>
-            <h2 class="font-bold text-gray-900 dark:text-gray-200 text-2xl mb-2">
+            <h2
+              class="font-bold text-gray-900 dark:text-gray-200 text-2xl mb-2"
+            >
               {{ article.title }}
             </h2>
-            <p class="text-lg text-gray-700 dark:text-gray-200">{{ article.description }}</p>
+            <div class="mt-16 -mb-3 flex uppercase text-sm">
+              <p class="mr-3">
+                {{ formatDate(article.updatedAt) }}
+              </p>
+              <span class="mr-3">•</span>
+              <p>{{ article }}</p>
+            </div>
+            <p class="text-lg text-gray-700 dark:text-gray-200">
+              {{ article.description }}
+            </p>
             <p class="font-bold text-blue-600 mt-2">
               Read more<span class="text-blue-600">&hellip;</span>
             </p>
@@ -35,6 +46,8 @@
 </template>
 
 <script>
+import formatDate from '@/utils/formatDate';
+
 export default {
   name: 'ArticleList',
   props: {
@@ -47,5 +60,8 @@ export default {
       default: 0,
     },
   },
+  methods: {
+    formatDate
+  }
 }
 </script>
