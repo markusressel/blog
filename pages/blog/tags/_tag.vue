@@ -15,9 +15,13 @@
 import ArticleList from '@/components/blog/ArticleList';
 
 export default {
-  name: 'TagPage',
   components: {
     ArticleList,
+  },
+  head() {
+    return {
+      title: "Tag Articles"
+    };
   },
   async asyncData({ $content, params }) {
     const articles = await $content('articles')

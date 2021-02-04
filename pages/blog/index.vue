@@ -8,7 +8,11 @@
 import getContent from '@/utils/getContent';
 
 export default {
-  name: 'HomePage',
+  head() {
+    return {
+      title: "Blog"
+    };
+  },
   async asyncData({ $content, app, params, error }) {
     const content = await getContent($content, params, error)
     return {

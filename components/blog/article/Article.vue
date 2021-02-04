@@ -2,9 +2,8 @@
   <article>
     <div class="markdown-body post-right custom-scroll">
       <img
+        v-if="article.img !== null"
         :src="article.img"
-        :alt="article.alt"
-        v-bind:class="{ hidden: article.img === nil }"
         class="object-cover h-48 rounded"
       />
       <div class="mt-16 -mb-3 flex uppercase text-sm">
@@ -54,13 +53,15 @@ export default {
       type: Object,
     },
     tags: {
-        type: Array,
+        type: Object,
     },
     prev: {
-        type: String,
+        type: Object,
+        default: null
     },
     next: {
-        type: String,
+        type: Object,
+        default: null
     },
   },
   methods: {

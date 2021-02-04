@@ -1,13 +1,12 @@
 <template>
-  <header class="flex">
-    <div class="flex flex-col">
+  <header class="flex justify-between">
+    <div class="flex">
       <NuxtLink to="/">
-        <Logo class="h-12 m-4" />
+        <Logo class="w-12 h-12 m-4" />
       </NuxtLink>
-      <div class="self-center font-bold">{{ siteName }}</div>
+      <div class="self-center font-bold pl-4">{{ siteName }}</div>
     </div>
-    <div class="self-center text-3xl flex-grow">{{ pageTitle }}</div>
-    <div class="flex flex-row items-center">
+    <div class="flex self-center items-center">
       <ColorModePicker /> <SearchInput class="ml-8" />
     </div>
   </header>

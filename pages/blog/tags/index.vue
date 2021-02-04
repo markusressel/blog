@@ -21,7 +21,11 @@
 
 <script>
 export default {
-  name: 'TagListPage',
+  head() {
+    return {
+      title: "Tags"
+    };
+  },
   async asyncData({ $content }) {
     function onlyUnique(value, index, self) {
       return self.indexOf(value) === index

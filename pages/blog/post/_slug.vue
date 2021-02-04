@@ -4,6 +4,11 @@
 
 <script>
 export default {
+  head() {
+    return {
+      title: "Post"
+    };
+  },
   async asyncData({ $content, params }) {
     const article = await $content('articles', params.slug).fetch()
     const tagsList = await $content('tags')
