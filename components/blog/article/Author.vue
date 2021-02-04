@@ -1,13 +1,10 @@
 <template>
   <figure
-    class="md:flex bg-gray-100 dark:bg-gray-800 rounded-xl p-8 md:p-0 shadow"
+    class="md:flex h-24 max-w-lg bg-gray-100 dark:bg-gray-800 rounded-xl p-8 md:p-0 shadow"
   >
     <img
-      class="w-32 h-32 md:w-48 md:h-auto md:rounded-none rounded-full mx-auto"
+      class="w-24 h-24 md:w-48 md:h-auto rounded-full md:rounded-none mr-auto"
       :src="author.image"
-      alt=""
-      width="384"
-      height="512"
     />
     <div class="pt-6 md:p-8 text-center md:text-left space-y-4">
       <blockquote>

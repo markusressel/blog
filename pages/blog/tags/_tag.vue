@@ -1,10 +1,10 @@
 <template>
   <div>
-    <div class="flex justify-center">
+    <div class="flex justify-center py-4">
       <h2
-        class="text-center text-3xl mb-4 uppercase bg-black text-white inline-block mx-auto px-2"
+        class="text-center text-3xl mb-4 uppercase px-2"
       >
-        Tag: {{ $route.params.tag }}
+        #{{ $route.params.tag }}
       </h2>
     </div>
     <ArticleList :articles="articlesByTag" />

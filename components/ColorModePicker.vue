@@ -2,6 +2,7 @@
   <ul>
     <li v-for="color of colors" :key="color" class="p-2">
       <component
+        class="hover:shadow-2xl"
         :is="`icon-${color}`"
         @click="$colorMode.preference = color"
         v-bind:class="{ selected: color === $colorMode.value }"
@@ -35,17 +36,11 @@ ul li {
   display: inline-block;
 }
 
-.theme-icon {
+svg {
   cursor: pointer;
-  background-color: var(--bg-secondary);
-  border: 2px solid var(--border-color);
-  border-radius: 5px;
 }
 
-.theme-icon:hover {
-  top: -3px;
-}
-.selected {
+svg.selected {
   color: var(--color-primary);
 }
 </style>

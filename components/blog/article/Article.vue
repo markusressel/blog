@@ -6,18 +6,18 @@
         :src="article.img"
         class="object-cover h-48 rounded"
       />
-      <div class="mt-16 -mb-3 flex uppercase text-sm">
+      <div class="flex uppercase text-sm">
         <p class="mr-3">
           {{ formatDate(article.updatedAt) }}
         </p>
         <span class="mr-3">•</span>
         <p>{{ article.author.name }}</p>
       </div>
-      <h1 class="text-6xl font-bold">{{ article.title }}</h1>
+      <h1 class="text-6xl my-12 font-bold">{{ article.title }}</h1>
       <span v-for="(tag, id) in article.tags" :key="id">
         <NuxtLink :to="`/blog/tags/${tags[tag].slug}`">
           <span
-            class="truncate uppercase tracking-wider font-medium text-ss px-2 py-1 rounded-full mr-2 mb-2 border border-light-border dark:border-dark-border"
+            class="truncate uppercase tracking-wider font-medium text-ss px-2 py-1 rounded-full mr-12 mb-4 border border-gray-800 dark:border-gray-400"
           >
             {{ tags[tag].name }}
           </span>

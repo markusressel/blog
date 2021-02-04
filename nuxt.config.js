@@ -74,7 +74,7 @@ export default {
   build: {},
 
   loading: {
-    color: 'blue',
+    color: '#448aff',
     height: '5px',
   },
 

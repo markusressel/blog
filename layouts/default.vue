@@ -34,6 +34,7 @@ export default {
         },
         rail: {},
         bar: {
+          background: '#448aff',
           keepShow: true,
         },
       },
