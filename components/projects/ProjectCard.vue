@@ -5,7 +5,7 @@
     <div class="md:p-4 text-center md:text-left space-y-4">
       <a :href="project.html_url">{{ project.name }}</a>
       <a :href="project.html_url" class="float-right align-top"
-        ><IconStar class="inline align-top"/> {{ project.stargazers_count }}</a
+        ><IconStar class="inline align-top" /> {{ project.stargazers_count }}</a
       >
       <div class="text-cyan-600">Language</div>
       <div>{{ project.language }}</div>

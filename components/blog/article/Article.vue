@@ -42,7 +42,7 @@
 </template>
 <script>
 import IconHashtag from '@/assets/icons/icon-hashtag.svg?inline'
-import formatDate from '@/utils/formatDate';
+import formatDate from '@/utils/formatDate'
 
 export default {
   components: {
@@ -53,19 +53,19 @@ export default {
       type: Object,
     },
     tags: {
-        type: Object,
+      type: Object,
     },
     prev: {
-        type: Object,
-        default: null
+      type: Object,
+      default: null,
     },
     next: {
-        type: Object,
-        default: null
+      type: Object,
+      default: null,
     },
   },
   methods: {
-    formatDate
+    formatDate,
   },
 }
 </script>

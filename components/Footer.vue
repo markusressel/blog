@@ -7,14 +7,14 @@
 </template>
 
 <script>
-import global from '@/utils/global';
+import global from '@/utils/global'
 
 export default {
   name: 'Footer',
   computed: {
     siteName() {
-      return global.siteName;
+      return global.siteName
     },
   },
-};
+}
 </script>

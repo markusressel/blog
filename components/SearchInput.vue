@@ -9,13 +9,15 @@
     />
 
     <div class="floating z-100">
-    <ul v-if="articles.length">
-      <li v-for="article of articles" :key="article.slug">
-        <NuxtLink :to="{ name: 'blog-post-slug', params: { slug: article.slug } }">
-          {{ article.title }}
-        </NuxtLink>
-      </li>
-    </ul>
+      <ul v-if="articles.length">
+        <li v-for="article of articles" :key="article.slug">
+          <NuxtLink
+            :to="{ name: 'blog-post-slug', params: { slug: article.slug } }"
+          >
+            {{ article.title }}
+          </NuxtLink>
+        </li>
+      </ul>
     </div>
   </div>
 </template>

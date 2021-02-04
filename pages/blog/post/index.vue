@@ -2,11 +2,11 @@
 export default {
   head() {
     return {
-      title: "Post"
-    };
+      title: 'Post',
+    }
   },
   middleware({ redirect }) {
-    return redirect("301", "/blog");
-  }
-};
+    return redirect('301', '/blog')
+  },
+}
 </script>

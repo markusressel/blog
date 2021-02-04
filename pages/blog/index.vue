@@ -5,13 +5,13 @@
 </template>
 
 <script>
-import getContent from '@/utils/getContent';
+import getContent from '@/utils/getContent'
 
 export default {
   head() {
     return {
-      title: "Blog"
-    };
+      title: 'Blog',
+    }
   },
   async asyncData({ $content, app, params, error }) {
     const content = await getContent($content, params, error)

@@ -1,5 +1,7 @@
 <template>
-  <figure class="md:flex bg-gray-100 dark:bg-gray-800 rounded-xl p-8 md:p-0 shadow">
+  <figure
+    class="md:flex bg-gray-100 dark:bg-gray-800 rounded-xl p-8 md:p-0 shadow"
+  >
     <img
       class="w-32 h-32 md:w-48 md:h-auto md:rounded-none rounded-full mx-auto"
       :src="author.image"

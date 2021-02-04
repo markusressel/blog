@@ -3,10 +3,10 @@
     v-if="$fetchState.pending"
     class="grid grid-flow-row grid-cols-3 grid-rows-3 gap-4"
   >
-
     <div v-for="n in 10" :key="n">
       <content-loader
-         width="300" height="200"
+        width="300"
+        height="200"
         primaryColor="#f3f3f3"
         secondaryColor="#cccccc"
         :speed="randomSpeed()"
@@ -38,7 +38,7 @@ import { ContentLoader } from 'vue-content-loader'
 
 export default {
   components: {
-    ContentLoader
+    ContentLoader,
   },
   data() {
     return {
@@ -47,13 +47,13 @@ export default {
   },
   head() {
     return {
-      title: "Projects"
-    };
+      title: 'Projects',
+    }
   },
   methods: {
     randomSpeed() {
-      return Math.random() + 1;
-    }
+      return Math.random() + 1
+    },
   },
   async fetch() {
     this.projects = await fetch(
