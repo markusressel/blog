@@ -2,11 +2,11 @@
   <p v-if="$fetchState.pending">Fetching projects...</p>
   <p v-else-if="$fetchState.error">An error occurred :(</p>
   <div v-else>
-    <ul>
-      <li v-for="project of projects" :key="project">
+    <div class="grid grid-flow-row grid-cols-3 grid-rows-3 gap-4">
+      <div v-for="project of projects" :key="project">
         <ProjectCard :project="project" />
-      </li>
-    </ul>
+      </div>
+    </div>
     <button @click="$fetch">Refresh</button>
   </div>
 </template>
