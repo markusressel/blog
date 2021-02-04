@@ -31,7 +31,7 @@ jobs:
 
   ci:
     runs-on: ${{ matrix.os }}
-
+    needs: prettier
     strategy:
       matrix:
         os: [ubuntu-latest]
