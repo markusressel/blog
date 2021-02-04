@@ -27,7 +27,9 @@
         <ProjectCard :project="project" />
       </div>
     </div>
-    <button @click="$fetch">Refresh</button>
+    <md-button @click="$fetch" class="md-fab md-primary">
+        <md-icon>refresh</md-icon>
+    </md-button>
   </div>
 </template>
 
