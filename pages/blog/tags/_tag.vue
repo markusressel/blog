@@ -1,9 +1,7 @@
 <template>
   <div>
     <div class="flex justify-center py-4">
-      <h2
-        class="text-center text-3xl mb-4 uppercase px-2"
-      >
+      <h2 class="text-center text-3xl mb-4 uppercase px-2">
         #{{ $route.params.tag }}
       </h2>
     </div>
