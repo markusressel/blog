@@ -3,7 +3,7 @@
     <Header
       class="z-10 bg-gray-100 dark:bg-gray-900 transition-all duration-200 p-4 shadow-md"
     />
-    <vue-scroll :ops="ops">
+    <vue-scroll :ops="ops" class="flex-1">
       <main
         class="flex-1 overflow-auto px-4 py-5 bg-gray-100 dark:bg-gray-900 transition-all duration-200"
       >
