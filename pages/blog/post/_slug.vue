@@ -1,13 +1,13 @@
 <template>
-  <Article :article="article" :tags="tags" :prev="prev" :next="next"/>
+  <Article :article="article" :tags="tags" :prev="prev" :next="next" />
 </template>
 
 <script>
 export default {
   head() {
     return {
-      title: "Post"
-    };
+      title: 'Post',
+    }
   },
   async asyncData({ $content, params }) {
     const article = await $content('articles', params.slug).fetch()

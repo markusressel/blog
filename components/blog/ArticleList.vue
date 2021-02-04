@@ -46,7 +46,7 @@
 </template>
 
 <script>
-import formatDate from '@/utils/formatDate';
+import formatDate from '@/utils/formatDate'
 
 export default {
   name: 'ArticleList',
@@ -61,7 +61,7 @@ export default {
     },
   },
   methods: {
-    formatDate
-  }
+    formatDate,
+  },
 }
 </script>

@@ -23,8 +23,8 @@
 export default {
   head() {
     return {
-      title: "Tags"
-    };
+      title: 'Tags',
+    }
   },
   async asyncData({ $content }) {
     function onlyUnique(value, index, self) {

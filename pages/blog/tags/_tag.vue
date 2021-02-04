@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import ArticleList from '@/components/blog/ArticleList';
+import ArticleList from '@/components/blog/ArticleList'
 
 export default {
   components: {
@@ -20,25 +20,25 @@ export default {
   },
   head() {
     return {
-      title: "Tag Articles"
-    };
+      title: 'Tag Articles',
+    }
   },
   async asyncData({ $content, params }) {
     const articles = await $content('articles')
       .only(['title', 'description', 'image', 'slug', 'published', 'tags'])
       .sortBy('published', 'desc')
-      .fetch();
+      .fetch()
     const articlesByTag = articles.filter((article) => {
-      const articleTags = article.tags.map((x) => x.toLowerCase());
-      return articleTags.includes(params.tag);
-    });
+      const articleTags = article.tags.map((x) => x.toLowerCase())
+      return articleTags.includes(params.tag)
+    })
     return {
       articlesByTag,
-    };
+    }
   },
   methods: {
     captialise(text) {
-      return text.charAt(0).toUpperCase() + text.slice(1);
+      return text.charAt(0).toUpperCase() + text.slice(1)
     },
   },
   head() {
@@ -51,7 +51,7 @@ export default {
           href: `${this.$config.baseUrl}/tags/${this.$route.params.tag}`,
         },
       ],
-    };
+    }
   },
-};
+}
 </script>
