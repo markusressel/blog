@@ -6,7 +6,7 @@
       </NuxtLink>
       <div class="self-center font-bold">{{ siteName }}</div>
     </div>
-    <div class="self-center text-3xl flex-grow">{{ page_title }}</div>
+    <div class="self-center text-3xl flex-grow">{{ pageTitle }}</div>
     <div class="flex flex-col">
       <SearchInput class="ml-8" />
       <ColorModePicker />

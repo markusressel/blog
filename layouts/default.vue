@@ -1,10 +1,16 @@
 <template>
   <div class="h-screen flex flex-col transition-all duration-200 ease-linear">
-    <Header class="bg-gray-100 dark:bg-gray-900 transition-all duration-200" />
-    <main class="flex-1 overflow-auto px-4 py-5 bg-gray-100 dark:bg-gray-900 transition-all duration-200">
-      <Nuxt />
-    </main>
-    <Footer />
+    <Header
+      class="z-10 bg-gray-100 dark:bg-gray-900 transition-all duration-200 p-4 shadow-md"
+    />
+    <vue-scroll :ops="ops">
+      <main
+        class="flex-1 overflow-auto px-4 py-5 bg-gray-100 dark:bg-gray-900 transition-all duration-200"
+      >
+        <Nuxt />
+      </main>
+    </vue-scroll>
+    <Footer class="z-10 shadow-md" />
   </div>
 </template>
 
@@ -18,11 +24,25 @@ export default {
     Header,
     Footer,
   },
+  data() {
+    return {
+      ops: {
+        vuescroll: {},
+        scrollPanel: {
+          speed: 800,
+          easing: 'easeOutCubic',
+        },
+        rail: {},
+        bar: {
+          keepShow: true,
+        },
+      },
+    }
+  },
 }
 </script>
 
 <style>
-
 html {
   font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI',
     Roboto, 'Helvetica Neue', Arial, sans-serif;
