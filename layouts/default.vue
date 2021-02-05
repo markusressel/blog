@@ -1,12 +1,12 @@
 <template>
-  <div class="h-screen flex flex-col transition-all duration-200 ease-linear bg-gray-300 dark:bg-gray-900">
+  <div
+    class="h-screen flex flex-col transition-all duration-200 ease-linear bg-gray-300 dark:bg-gray-900"
+  >
     <Header
       class="z-10 bg-gray-200 dark:bg-gray-800 transition-all duration-200 px-2 shadow-md"
     />
     <vue-scroll :ops="ops" class="flex-1">
-      <main
-        class="flex-1 overflow-auto px-4 py-5  transition-all duration-200"
-      >
+      <main class="flex-1 overflow-auto px-4 py-5 transition-all duration-200">
         <Nuxt />
       </main>
     </vue-scroll>
