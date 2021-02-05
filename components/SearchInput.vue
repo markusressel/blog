@@ -13,20 +13,24 @@
       class="absolute right-0 mt-3 w-2/3 mr-1 rounded-xl bg-gray-100 dark:bg-gray-900 border-4 border-solid border-gray-400 dark:border-gray-700 z-100"
     >
       <div v-if="articles.length">
-        <div v-for="article of articles" :key="article.slug" class="px-4 py-2 hover:bg-gray-300 dark-hover:bg-gray-700">
+        <div
+          v-for="article of articles"
+          :key="article.slug"
+          class="px-4 py-2 hover:bg-gray-300 dark-hover:bg-gray-700"
+        >
           <NuxtLink
-          style="text-decoration: none;"
+            style="text-decoration: none"
             v-on:click.native="searchQuery = ''"
             :to="{ name: 'blog-post-slug', params: { slug: article.slug } }"
           >
             <div class="font-bold">{{ article.title }}</div>
-            <div class=" text-gray-800 dark:text-gray-200">{{ article.description }}</div>
+            <div class="text-gray-800 dark:text-gray-200">
+              {{ article.description }}
+            </div>
           </NuxtLink>
         </div>
       </div>
-      <div v-else class="px-4 py-2">
-        Nothing found 😢
-      </div>
+      <div v-else class="px-4 py-2">Nothing found 😢</div>
     </div>
   </div>
 </template>
