@@ -14,9 +14,10 @@
       class="absolute right-0 mt-3 w-2/3 mr-1 rounded-xl bg-gray-100 dark:bg-gray-900 border-4 border-solid border-gray-400 dark:border-gray-700 z-100"
     >
       <div v-if="articles.length">
-        <div v-for="article of articles" 
-        :key="article.slug" 
-        class="px-4 py-2 hover:bg-gray-300 dark-hover:bg-gray-700"
+        <div
+          v-for="article of articles"
+          :key="article.slug"
+          class="px-4 py-2 hover:bg-gray-300 dark-hover:bg-gray-700"
         >
           <NuxtLink
             style="text-decoration: none"
@@ -47,10 +48,10 @@ export default {
     onFocusLost() {
       // delay clearing the query a bit, to
       // make onClick events on the search results work
-      setTimeout(function() {
+      setTimeout(function () {
         searchQuery = ''
-        }, 200);
-    }
+      }, 200)
+    },
   },
   watch: {
     async searchQuery(searchQuery) {
