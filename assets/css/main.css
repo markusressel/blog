@@ -49,3 +49,8 @@ a {
 .page-leave-to {
   opacity: 0;
 }
+
+.__nuxt-error-page {
+  color: var(--color);
+  background-color: var(--bg);
+}
