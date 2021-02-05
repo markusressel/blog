@@ -5,7 +5,7 @@ Information in accordance with Section 5 TMG.
 Markus Ressel  
 c/o autorenglück.de  
 Franz-Mehring-Str. 15  
-01237 Dresden  
+01237 Dresden
 
 ## Disclaimer
 
