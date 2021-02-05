@@ -1,15 +1,16 @@
 <template>
+  <div class="flex justify-center" >
   <figure
-    class="md:flex h-24 max-w-lg bg-gray-100 dark:bg-gray-800 rounded-xl p-8 md:p-0 shadow"
+    class="flex self-center h-24 w-auto bg-gray-100 dark:bg-gray-700 rounded-xl mt-8 mb-4 shadow-xl"
   >
     <img
-      class="w-24 h-24 md:w-48 md:h-auto rounded-full md:rounded-none mr-auto"
+      class="w-24 h-24 rounded-l-lg"
       :src="author.image"
     />
-    <div class="pt-6 md:p-8 text-center md:text-left space-y-4">
+    <div class="p-4 text-center">
       <blockquote>
         <p class="text-lg font-semibold">
-          {{ author.bio }}
+          {{ author.cite }}
         </p>
       </blockquote>
       <figcaption class="font-medium">
@@ -20,6 +21,7 @@
       </figcaption>
     </div>
   </figure>
+  </div>
 </template>
 
 <script>

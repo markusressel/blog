@@ -6,7 +6,7 @@
         :src="article.img"
         class="object-cover h-48 rounded"
       />
-      <h1 class="text-6xl font-bold mb-4">
+      <h1 class="text-6xl font-bold leading-none mt-0 mb-4">
         {{ article.title }}
       </h1>
       <div class="flex items-center uppercase text-sm">
@@ -31,7 +31,7 @@
         </NuxtLink>
       </div>
 
-      <p>
+      <p class="text-xl font-bold">
         {{ article.description }}
       </p>
 
