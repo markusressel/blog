@@ -1,7 +1,5 @@
 <template>
-  <div>
-    <ArticleList :articles="paginatedArticles" :total="allArticles.length" />
-  </div>
+  <ArticleList :articles="paginatedArticles" :total="allArticles.length" />
 </template>
 
 <script>

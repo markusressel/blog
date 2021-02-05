@@ -1,7 +1,7 @@
 <template>
   <div
     v-if="$fetchState.pending"
-    class="grid grid-flow-row grid-cols-3 grid-rows-3 gap-4"
+    class="grid grid-flow-row p-16 md:m-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3"
   >
     <div v-for="n in 10" :key="n">
       <content-loader
@@ -22,7 +22,7 @@
   </div>
   <p v-else-if="$fetchState.error">An error occurred :(</p>
   <div v-else>
-    <div class="grid grid-flow-row grid-cols-3 grid-rows-3 gap-4">
+    <div class="grid grid-flow-row grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
       <div v-for="project of projects" :key="project.html_url">
         <ProjectCard :project="project" />
       </div>

@@ -26,7 +26,7 @@ export default {
       title: 'Tags',
     }
   },
-  async asyncData({ $content }) {
+  async asyncData({ $content, params }) {
     function onlyUnique(value, index, self) {
       return self.indexOf(value) === index
     }

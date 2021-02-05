@@ -11,14 +11,11 @@
 </template>
 
 <script>
-import getContent from '@/utils/getContent'
-
 export default {
   head() {
     return {
       title: 'Home',
     }
   },
-  async asyncData({ $content, app, params, error }) {},
 }
 </script>
