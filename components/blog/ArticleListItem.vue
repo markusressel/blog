@@ -1,8 +1,9 @@
 <template>
-  <div class="mb-12 bg-white dark:bg-gray-800 p-5 rounded-xl shadow-lg">
+  <div class="mb-12 bg-white dark:bg-gray-800 p-5 rounded-xl shadow-lg" >
     <NuxtLink
       :to="{ name: 'blog-post-slug', params: { slug: article.slug } }"
-      class="hover:no-underline md:grid md:gap-4 md:grid-cols-2"
+      class="md:grid md:gap-4 md:grid-cols-2"
+      style="text-decoration: none; color: inherit;"
     >
       <img
         v-if="article.image"
@@ -46,3 +47,5 @@ export default {
   },
 }
 </script>
+<style scoped>
+</style>

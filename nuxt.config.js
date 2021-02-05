@@ -79,6 +79,6 @@ export default {
   },
 
   sitemap: {
-    hostname: process.env.BASE_URL, // https://www.yoursite.com
+    hostname: "https://blog.markusressel.de", // https://www.yoursite.com
   },
 }

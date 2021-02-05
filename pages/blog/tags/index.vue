@@ -11,7 +11,7 @@
       <li v-for="tag in tags" :key="tag" class="text-center mb-2">
         <nuxt-link
           :to="{ name: 'blog-tags-tag', params: { tag: tag.toLowerCase() } }"
-          class="text-4xl hover:underline"
+          class="text-4xl hover:no-underline"
           >{{ tag }}</nuxt-link
         >
       </li>
