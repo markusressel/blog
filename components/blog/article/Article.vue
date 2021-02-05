@@ -26,16 +26,16 @@
         </NuxtLink>
       </div>
       <div class="py-4">
-      <NuxtLink to="/blog" class="mr-8 self-center font-bold hover:underline">
-        All articles
-      </NuxtLink>
+        <NuxtLink to="/blog" class="mr-8 self-center font-bold hover:underline">
+          All articles
+        </NuxtLink>
       </div>
 
       <p>
         {{ article.description }}
       </p>
 
-      <TOC :toc="article.toc" class="py-4"/>
+      <TOC :toc="article.toc" class="py-4" />
 
       <!-- content from markdown -->
       <nuxt-content :document="article" />
