@@ -1,6 +1,8 @@
 <template>
   <div>
-    <div class="flex flex-col text-gray-700 dark:text-gray-100 max-w-5xl mx-auto">
+    <div
+      class="flex flex-col text-gray-700 dark:text-gray-100 max-w-5xl mx-auto"
+    >
       <div
         v-for="article of articles"
         :key="article.slug"
@@ -65,5 +67,4 @@ export default {
   },
 }
 </script>
-<style scoped>
-</style>
+<style scoped></style>
