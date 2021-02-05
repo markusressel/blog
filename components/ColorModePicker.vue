@@ -2,7 +2,7 @@
   <ul>
     <li v-for="color of colors" :key="color" class="p-2">
       <component
-        class="hover:shadow-2xl"
+        class="align-middle hover:shadow-2xl"
         :is="`icon-${color}`"
         @click="$colorMode.preference = color"
         v-bind:class="{ selected: color === $colorMode.value }"

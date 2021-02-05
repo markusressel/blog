@@ -1,7 +1,7 @@
 <template>
   <div class="h-screen flex flex-col transition-all duration-200 ease-linear">
     <Header
-      class="z-10 bg-gray-100 dark:bg-gray-900 transition-all duration-200 px-2 shadow-md"
+      class="z-10 bg-gray-200 dark:bg-gray-900 transition-all duration-200 px-2 shadow-md"
     />
     <vue-scroll :ops="ops" class="flex-1">
       <main
