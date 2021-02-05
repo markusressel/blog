@@ -1,7 +1,7 @@
 <template>
   <article class="flex justify-center">
     <div
-      class="flex-grow bg-white dark:bg-gray-800 bg-opacity-100 rounded-3xl max-w-5xl z-10 shadow-xl p-8 m-2"
+      class="flex-grow bg-white dark:bg-gray-800 bg-opacity-100 rounded-3xl max-w-5xl z-10 shadow-lg p-8 m-2"
     >
       <img
         v-if="article.img !== null"
@@ -92,8 +92,8 @@ export default {
 .icon.icon-link {
   background-image: url('~assets/icons/icon-hashtag.svg');
   display: inline-block;
-  width: 20px;
-  height: 20px;
-  background-size: 20px 20px;
+  width: 24px;
+  height: 24px;
+  background-size: 24px 24px;
 }
 </style>

@@ -1,7 +1,7 @@
 <template>
   <div class="flex justify-center">
     <figure
-      class="flex self-center h-24 w-auto bg-gray-100 dark:bg-gray-700 rounded-xl mt-8 mb-4 shadow-xl"
+      class="flex self-center h-24 w-auto bg-gray-100 dark:bg-gray-700 rounded-xl mt-8 mb-4 shadow-lg"
     >
       <img class="w-24 h-24 rounded-l-lg" :src="author.image" />
       <div class="p-4 text-center">

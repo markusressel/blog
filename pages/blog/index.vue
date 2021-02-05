@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import getContent from '@/utils/getContent'
+import getArticles from '@/utils/getArticles'
 
 export default {
   head() {
@@ -12,7 +12,7 @@ export default {
     }
   },
   async asyncData({ $content, app, params, error }) {
-    const content = await getContent($content, params, error)
+    const content = await getArticles($content, params, error)
     return {
       allArticles: content.allArticles,
       paginatedArticles: content.paginatedArticles,

@@ -7,7 +7,7 @@ export default {
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'blog',
+    title: "Markus' Blog",
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, -scale=1' },
@@ -45,6 +45,7 @@ export default {
     // https://nuxtjs.org/blog/creating-blog-with-nuxt-content
     '@nuxt/content',
     '@nuxtjs/sitemap',
+    '@nuxtjs/feed',
   ],
 
   purgeCSS: {
@@ -62,6 +63,17 @@ export default {
       },
     },
   },
+
+  feed: [
+    // A default feed configuration object
+    {
+      path: '/feed.xml', // The route to your feed.
+      async create(feed) {}, // The create function (see below)
+      cacheTime: 1000 * 60 * 15, // How long should the feed be cached
+      type: 'rss2', // Can be: rss2, atom1, json1
+      data: [] // Will be passed as 2nd argument to `create` function
+    }
+  ],
 
   // PWA module configuration: https://go.nuxtjs.dev/pwa
   pwa: {
