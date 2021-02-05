@@ -1,7 +1,7 @@
 <template>
   <div>
-    <ul class="text-gray-700 dark:text-gray-100 max-w-5xl mx-auto">
-      <li
+    <div class="flex flex-col text-gray-700 dark:text-gray-100 max-w-5xl mx-auto">
+      <div
         v-for="article of articles"
         :key="article.slug"
         class="mb-12 bg-white dark:bg-gray-800 p-5 rounded shadow-lg"
@@ -37,8 +37,8 @@
             </p>
           </div>
         </NuxtLink>
-      </li>
-    </ul>
+      </div>
+    </div>
     <div v-if="total" class="constainer mx-auto my-5 max-w-5xl">
       <Pagination v-if="total > 5" :total="total" />
     </div>
@@ -65,3 +65,5 @@ export default {
   },
 }
 </script>
+<style scoped>
+</style>

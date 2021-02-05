@@ -6,31 +6,36 @@
         :src="article.img"
         class="object-cover h-48 rounded"
       />
-      <div class="flex uppercase text-sm">
+      <h1 class="text-6xl font-bold mb-4">
+        {{ article.title }}
+      </h1>
+      <div class="flex items-center uppercase text-sm">
         <p class="mr-3">
           {{ formatDate(article.updatedAt) }}
         </p>
         <span class="mr-3">•</span>
         <p>{{ article.author.name }}</p>
       </div>
-      <h1 class="text-6xl my-12 font-bold">{{ article.title }}</h1>
-      <span v-for="(tag, id) in article.tags" :key="id">
+      <div v-for="(tag, id) in article.tags" :key="id">
         <NuxtLink :to="`/blog/tags/${tags[tag].slug}`">
           <span
-            class="truncate uppercase tracking-wider font-medium text-ss px-2 py-1 rounded-full mr-12 mb-4 border border-gray-800 dark:border-gray-400"
+            class="truncate uppercase tracking-wider font-medium text-ss px-2 py-1 rounded-full border border-gray-800 dark:border-gray-400"
           >
             {{ tags[tag].name }}
           </span>
         </NuxtLink>
-      </span>
-
+      </div>
+      <div class="py-4">
       <NuxtLink to="/blog" class="mr-8 self-center font-bold hover:underline">
         All articles
       </NuxtLink>
+      </div>
 
-      <p>{{ article.description }}</p>
+      <p>
+        {{ article.description }}
+      </p>
 
-      <TOC :toc="article.toc" />
+      <TOC :toc="article.toc" class="py-4"/>
 
       <!-- content from markdown -->
       <nuxt-content :document="article" />

@@ -1,3 +1,4 @@
-@tailwind base;
+/* This breaks many things in the blog article view so I left it out */
+/* @tailwind base; */
 @tailwind components;
 @tailwind utilities;

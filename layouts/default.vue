@@ -1,7 +1,7 @@
 <template>
   <div class="h-screen flex flex-col transition-all duration-200 ease-linear">
     <Header
-      class="z-10 bg-gray-100 dark:bg-gray-900 transition-all duration-200 p-2 shadow-md"
+      class="z-10 bg-gray-100 dark:bg-gray-900 transition-all duration-200 px-2 shadow-md"
     />
     <vue-scroll :ops="ops" class="flex-1">
       <main
@@ -53,13 +53,6 @@ html {
   -webkit-text-size-adjust: 100%;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
-  box-sizing: border-box;
 }
 
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-  margin: 0;
-}
 </style>

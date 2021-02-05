@@ -15,6 +15,15 @@ module.exports = {
     darkSelector: '.dark-mode',
   },
   variants: {
+    placeholderColor: [
+      'dark',
+      'dark-hover',
+      'dark-group-hover',
+      'dark-even',
+      'dark-odd',
+      'hover',
+      'responsive',
+    ],
     backgroundColor: [
       'dark',
       'dark-hover',

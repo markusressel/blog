@@ -2,7 +2,7 @@
   <!-- table of contents -->
   <div>
     <p class="text-xl">Table of Contents:</p>
-    <nav class="pb-6">
+    <nav class="py-6">
       <ul>
         <li
           v-for="link of toc"
