@@ -6,7 +6,7 @@ export default async ($content, params, error) => {
   const allArticles = []
   for (const item of tmp) {
     const article = await $content('articles', item.slug).fetch()
-    console.log("Article: " + article)
+    console.log('Article: ' + article)
     const tagsList = await $content('tags')
       .only(['name', 'slug'])
       .where({ name: { $containsAny: article.tags } })
@@ -35,7 +35,15 @@ export default async ($content, params, error) => {
   }
 
   const paginatedArticles = await $content('articles')
-    .only(['slug', 'title', 'description', 'image', 'author', 'published', 'updatedAt'])
+    .only([
+      'slug',
+      'title',
+      'description',
+      'image',
+      'author',
+      'published',
+      'updatedAt',
+    ])
     .sortBy('published', 'desc')
     .limit(perPage)
     .skip(skipNumber())
