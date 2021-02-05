@@ -8,16 +8,17 @@
       class="rounded-full p-3 placeholder-gray-800 dark:placeholder-gray-200 text-gray-800 dark:text-gray-200 bg-white dark:bg-gray-800 border-none shadow-md focus:outline-none"
     />
 
-    <div class="floating z-100">
-      <ul v-if="articles.length">
-        <li v-for="article of articles" :key="article.slug">
+    <div class="absolute rounded bg-red-100 floating z-100">
+      <div v-if="articles.length">
+        <div v-for="article of articles" :key="article.slug" class="px-4 py-2">
           <NuxtLink
             :to="{ name: 'blog-post-slug', params: { slug: article.slug } }"
           >
-            {{ article.title }}
+            <div class="font-bold">{{ article.title }}</div>
+            <div>{{ article.description }}</div>
           </NuxtLink>
-        </li>
-      </ul>
+        </div>
+      </div>
     </div>
   </div>
 </template>
