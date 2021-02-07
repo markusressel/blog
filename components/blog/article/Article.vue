@@ -48,12 +48,12 @@
   </article>
 </template>
 <script>
-import IconHashtag from '@/assets/icons/icon-hashtag.svg?inline'
+//import IconHashtag from '@/assets/icons/icon-hashtag.svg?inline'
 import formatDate from '@/utils/formatDate'
 
 export default {
   components: {
-    IconHashtag,
+    //IconHashtag,
   },
   props: {
     article: {

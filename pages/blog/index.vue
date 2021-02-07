@@ -1,4 +1,6 @@
 <template>
+  <!-- TODO: Add RSS feed links https://blog.markusressel.de/feed/articles/rss.xml -->
+  <!-- TODO: Add RSS feed links https://blog.markusressel.de/feed/articles/feed.json -->
   <ArticleList :articles="paginatedArticles" :total="allArticles.length" />
 </template>
 

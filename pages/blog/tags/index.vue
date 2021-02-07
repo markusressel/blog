@@ -21,7 +21,7 @@
 
 <script>
 export default {
-  async asyncData({ $content, params }) {
+  async asyncData({ $content }) {
     function onlyUnique(value, index, self) {
       return self.indexOf(value) === index
     }
