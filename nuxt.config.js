@@ -64,7 +64,7 @@ export default {
     },
   },
 
-  feed () {
+  feed() {
     const baseUrlArticles = 'https://blog.markusressel.de/blog/post'
     const baseLinkFeedArticles = '/feed/articles'
     const feedFormats = {
