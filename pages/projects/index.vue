@@ -7,8 +7,8 @@
       <content-loader
         width="300"
         height="200"
-        primaryColor="#f3f3f3"
-        secondaryColor="#cccccc"
+        primary-color="#f3f3f3"
+        secondary-color="#cccccc"
         :speed="randomSpeed()"
       >
         <rect x="48" y="8" rx="3" ry="3" width="88" height="6" />
@@ -27,7 +27,7 @@
         <ProjectCard :project="project" />
       </div>
     </div>
-    <md-button @click="$fetch" class="md-fab md-primary">
+    <md-button class="md-fab md-primary" @click="$fetch">
       <md-icon>refresh</md-icon>
     </md-button>
   </div>
@@ -47,6 +47,11 @@ export default {
       projects: [],
     }
   },
+  async fetch() {
+    this.projects = await fetch(
+      `https://api.github.com/users/${global.githubUsername}/repos`
+    ).then((res) => res.json())
+  },
   head() {
     return {
       title: 'Projects',
@@ -56,11 +61,6 @@ export default {
     randomSpeed() {
       return Math.random() + 1
     },
-  },
-  async fetch() {
-    this.projects = await fetch(
-      `https://api.github.com/users/${global.githubUsername}/repos`
-    ).then((res) => res.json())
   },
   fetchOnServer: false,
 }

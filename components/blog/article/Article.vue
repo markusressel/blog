@@ -58,9 +58,11 @@ export default {
   props: {
     article: {
       type: Object,
+      default: null,
     },
     tags: {
       type: Object,
+      default: null,
     },
     prev: {
       type: Object,

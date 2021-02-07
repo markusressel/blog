@@ -21,11 +21,6 @@
 
 <script>
 export default {
-  head() {
-    return {
-      title: 'Tags',
-    }
-  },
   async asyncData({ $content, params }) {
     function onlyUnique(value, index, self) {
       return self.indexOf(value) === index
@@ -38,7 +33,7 @@ export default {
   },
   head() {
     return {
-      title: 'Blog Post Tags',
+      title: 'Tags',
       link: [
         {
           hid: 'canonical',

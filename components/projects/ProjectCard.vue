@@ -27,6 +27,7 @@ export default {
   props: {
     project: {
       type: Object,
+      default: null,
     },
   },
 }

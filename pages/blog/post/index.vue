@@ -1,12 +1,12 @@
 <script>
 export default {
+  middleware({ redirect }) {
+    return redirect('301', '/blog')
+  },
   head() {
     return {
       title: 'Post',
     }
-  },
-  middleware({ redirect }) {
-    return redirect('301', '/blog')
   },
 }
 </script>

@@ -11,13 +11,13 @@
 import getContent from '@/utils/getContent'
 
 export default {
+  async asyncData({ $content }) {
+    return await getContent($content, 'impressum')
+  },
   head() {
     return {
       title: 'Impressum',
     }
-  },
-  async asyncData({ $content, params, error }) {
-    return getContent($content, 'impressum')
   },
 }
 </script>

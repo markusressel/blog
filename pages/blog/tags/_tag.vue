@@ -16,14 +16,8 @@ export default {
   components: {
     ArticleList,
   },
-  head() {
-    return {
-      title: 'Tag Articles',
-    }
-  },
   async asyncData({ $content, params }) {
     const articles = await $content('articles')
-      .only(['title', 'description', 'image', 'slug', 'published', 'tags'])
       .sortBy('published', 'desc')
       .fetch()
     const articlesByTag = articles.filter((article) => {
@@ -33,11 +27,6 @@ export default {
     return {
       articlesByTag,
     }
-  },
-  methods: {
-    captialise(text) {
-      return text.charAt(0).toUpperCase() + text.slice(1)
-    },
   },
   head() {
     return {
@@ -50,6 +39,11 @@ export default {
         },
       ],
     }
+  },
+  methods: {
+    captialise(text) {
+      return text.charAt(0).toUpperCase() + text.slice(1)
+    },
   },
 }
 </script>

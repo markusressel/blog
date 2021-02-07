@@ -40,6 +40,7 @@ export default {
   props: {
     article: {
       type: Object,
+      default: null,
     },
   },
   methods: {

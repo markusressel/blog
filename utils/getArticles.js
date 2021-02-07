@@ -6,7 +6,6 @@ export default async ($content, params, error) => {
   const allArticles = []
   for (const item of tmp) {
     const article = await $content('articles', item.slug).fetch()
-    console.log('Article: ' + article)
     const tagsList = await $content('tags')
       .only(['name', 'slug'])
       .where({ name: { $containsAny: article.tags } })

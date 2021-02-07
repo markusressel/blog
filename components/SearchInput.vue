@@ -3,10 +3,10 @@
     <input
       v-model="searchQuery"
       type="search"
-      v-on:blur="onFocusLost"
       autocomplete="off"
       placeholder="Search Blog Posts"
       class="rounded-full p-3 placeholder-gray-800 dark:placeholder-gray-200 text-gray-800 dark:text-gray-200 bg-white dark:bg-gray-700 border-none shadow-md focus:outline-none"
+      @blur="onFocusLost"
     />
 
     <div
@@ -20,9 +20,9 @@
           class="px-4 py-2 hover:bg-gray-300 dark-hover:bg-gray-700"
         >
           <NuxtLink
-            style="text-decoration: none"
-            v-on:click.native="searchQuery = ''"
             :to="{ name: 'blog-post-slug', params: { slug: article.slug } }"
+            style="text-decoration: none"
+            @click.native="searchQuery = ''"
           >
             <div class="font-bold">{{ article.title }}</div>
             <div class="text-gray-800 dark:text-gray-200">
@@ -44,15 +44,6 @@ export default {
       articles: [],
     }
   },
-  methods: {
-    onFocusLost() {
-      // delay clearing the query a bit, to
-      // make onClick events on the search results work
-      setTimeout(function () {
-        searchQuery = ''
-      }, 200)
-    },
-  },
   watch: {
     async searchQuery(searchQuery) {
       if (!searchQuery) {
@@ -63,6 +54,15 @@ export default {
         .limit(6)
         .search(searchQuery)
         .fetch()
+    },
+  },
+  methods: {
+    onFocusLost() {
+      // delay clearing the query a bit, to
+      // make onClick events on the search results work
+      setTimeout(function () {
+        searchQuery = ''
+      }, 200)
     },
   },
 }

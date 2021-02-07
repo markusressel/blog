@@ -19,7 +19,7 @@ export default {
   props: {
     articles: {
       type: Array,
-      default: [],
+      default: () => [],
     },
     total: {
       type: Number,
