@@ -1,14 +1,14 @@
 <template>
-  <ul>
-    <li v-for="color of colors" :key="color" class="p-2">
+  <div class="flex">
+    <div v-for="color of colors" :key="color" class="px-2">
       <component
         :is="`icon-${color}`"
         :class="{ selected: color === $colorMode.value }"
         class="align-middle hover:shadow-2xl"
         @click="$colorMode.preference = color"
       />
-    </li>
-  </ul>
+    </div>
+  </div>
 </template>
 
 <script>

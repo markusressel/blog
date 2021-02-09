@@ -29,8 +29,15 @@ export default {
   data() {
     return {
       ops: {
-        vuescroll: {},
+        vuescroll: {
+          mode: 'native',
+          sizeStrategy: 'percent',
+          detectResize: true,
+          /** Enable locking to the main axis if user moves only slightly on one of them at start */
+          locking: true,
+        },
         scrollPanel: {
+          scrollingX: false,
           speed: 800,
           easing: 'easeOutCubic',
         },
