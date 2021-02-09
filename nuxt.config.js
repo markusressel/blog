@@ -63,48 +63,6 @@ export default {
     },
   },
 
-<<<<<<< HEAD
-=======
-  feed() {
-    const baseUrlArticles = 'https://blog.markusressel.de/blog/post'
-    const baseLinkFeedArticles = '/feed/articles'
-    const feedFormats = {
-      rss: { type: 'rss2', file: 'rss.xml' },
-      json: { type: 'json1', file: 'feed.json' },
-    }
-    const { $content } = require('@nuxt/content')
-
-    const createFeedArticles = async function (feed) {
-      feed.options = {
-        title: "Markus' Blog",
-        description: 'I write about technology',
-        link: baseUrlArticles,
-      }
-      const articles = await $content('articles').fetch()
-
-      articles.forEach((article) => {
-        const url = `${baseUrlArticles}/${article.slug}`
-
-        feed.addItem({
-          title: article.title,
-          id: url,
-          link: url,
-          date: article.published,
-          description: article.description,
-          content: article.description,
-          author: article.authors,
-        })
-      })
-    }
-
-    return Object.values(feedFormats).map(({ file, type }) => ({
-      path: `${baseLinkFeedArticles}/${file}`,
-      type: type,
-      create: createFeedArticles,
-    }))
-  },
-
->>>>>>> 0895bf2b13026a5deefb99137e63ee4a14f9af01
   // PWA module configuration: https://go.nuxtjs.dev/pwa
   pwa: {
     manifest: {
