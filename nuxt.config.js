@@ -45,7 +45,6 @@ export default {
     // https://nuxtjs.org/blog/creating-blog-with-nuxt-content
     '@nuxt/content',
     '@nuxtjs/sitemap',
-    '@nuxtjs/feed',
   ],
 
   purgeCSS: {
@@ -62,45 +61,6 @@ export default {
         theme: 'prism-themes/themes/prism-material-oceanic.css',
       },
     },
-  },
-
-  feed () {
-    const baseUrlArticles = 'https://blog.markusressel.de/blog/post'
-    const baseLinkFeedArticles = '/feed/articles'
-    const feedFormats = {
-      rss: { type: 'rss2', file: 'rss.xml' },
-      json: { type: 'json1', file: 'feed.json' },
-    }
-    const { $content } = require('@nuxt/content')
-
-    const createFeedArticles = async function (feed) {
-      feed.options = {
-        title: "Markus' Blog",
-        description: 'I write about technology',
-        link: baseUrlArticles,
-      }
-      const articles = await $content('articles').fetch()
-
-      articles.forEach((article) => {
-        const url = `${baseUrlArticles}/${article.slug}`
-
-        feed.addItem({
-          title: article.title,
-          id: url,
-          link: url,
-          date: article.published,
-          description: article.description,
-          content: article.description,
-          author: article.authors,
-        })
-      })
-    }
-
-    return Object.values(feedFormats).map(({ file, type }) => ({
-      path: `${baseLinkFeedArticles}/${file}`,
-      type: type,
-      create: createFeedArticles,
-    }))
   },
 
   // PWA module configuration: https://go.nuxtjs.dev/pwa
