@@ -1,12 +1,13 @@
 <template>
   <!-- table of contents -->
   <div>
-    <p class="text-xl">Table of Contents:</p>
-    <nav class="py-6">
-      <ul>
+    <p class="text-xl mb-0">Table of Contents:</p>
+    <nav class="">
+      <ul class="px-4 my-2">
         <li
           v-for="link of toc"
           :key="link.id"
+          class="list-none"
           :class="{
             'font-semibold': link.depth === 2,
           }"
@@ -16,7 +17,7 @@
             class="hover:underline"
             :class="{
               'py-2': link.depth === 2,
-              'ml-2 pb-2': link.depth === 3,
+              'ml-3 pb-2': link.depth === 3,
             }"
             >{{ link.text }}</nuxtLink
           >

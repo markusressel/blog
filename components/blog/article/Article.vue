@@ -1,22 +1,22 @@
 <template>
   <article class="flex justify-center">
     <div
-      class="flex-grow bg-white dark:bg-gray-800 bg-opacity-100 rounded-3xl max-w-5xl z-10 shadow-lg p-8 m-2"
+      class="flex-grow bg-white dark:bg-gray-800 bg-opacity-100 rounded-3xl max-w-5xl z-10 shadow-lg p-8 m-2 z-0"
     >
       <img
-        v-if="article.img !== null"
+        v-if="article.img !== undefined && article.img !== null && article.img != ''"
         :src="article.img"
-        class="object-cover h-48 rounded"
+        class="object-cover w-full h-48 overflow-hidden rounded-lg"
       />
-      <h1 class="text-6xl font-bold leading-none mt-0 mb-4">
+      <h1 class="text-6xl font-bold leading-none my-4 clear-right text-right">
         {{ article.title }}
       </h1>
-      <div class="flex items-center uppercase text-sm">
-        <p class="mr-3">
+      <div class="flex items-centeruppercase text-sm justify-end mr-2">
+        <p class="my-0 mr-2">
           {{ formatDate(article.updatedAt) }}
         </p>
-        <span class="mr-3">•</span>
-        <p>{{ article.author.name }}</p>
+        <span class="mt-0 mr-2">•</span>
+        <p class="my-0">{{ article.author.name }}</p>
       </div>
       <div v-for="(tag, id) in article.tags" :key="id">
         <NuxtLink :to="`/blog/tags/${tags[tag].slug}`">
@@ -37,7 +37,7 @@
         {{ article.description }}
       </p>
 
-      <TOC :toc="article.toc" class="py-4" />
+      <TOC :toc="article.toc" class="" />
 
       <!-- content from markdown -->
       <nuxt-content :document="article" />

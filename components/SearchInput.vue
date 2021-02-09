@@ -5,13 +5,13 @@
       type="search"
       autocomplete="off"
       placeholder="Search Blog Posts"
-      class="rounded-full p-3 placeholder-gray-800 dark:placeholder-gray-200 text-gray-800 dark:text-gray-200 bg-white dark:bg-gray-700 border-none shadow-md focus:outline-none"
+      class="rounded-full p-3 placeholder-gray-800 dark:placeholder-gray-200 text-gray-800 dark:text-gray-200 bg-white dark:bg-gray-700 border-none shadow-md focus:outline-none z-50"
       @blur="onFocusLost"
     />
 
     <div
       v-if="searchQuery"
-      class="absolute right-0 mt-3 w-2/3 mr-1 rounded-xl bg-gray-100 dark:bg-gray-900 border-4 border-solid border-gray-400 dark:border-gray-700 z-100"
+      class="absolute right-0 mt-3 w-2/3 mr-1 rounded-xl bg-gray-100 dark:bg-gray-900 border-4 border-solid border-gray-400 dark:border-gray-700 z-50"
     >
       <div v-if="articles.length">
         <div
