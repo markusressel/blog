@@ -4,7 +4,9 @@
       class="flex-grow bg-white dark:bg-gray-800 bg-opacity-100 rounded-3xl max-w-5xl z-10 shadow-lg p-6 my-2 z-0"
     >
       <img
-        v-if="article.img !== undefined && article.img !== null && article.img != ''"
+        v-if="
+          article.img !== undefined && article.img !== null && article.img != ''
+        "
         :src="article.img"
         class="object-cover w-full h-48 overflow-hidden rounded-lg"
       />

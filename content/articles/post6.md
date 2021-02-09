@@ -1,7 +1,7 @@
 ---
 title: Post6
 description: Description
-img: "https://images.freeimages.com/images/large-previews/2b6/free-banner-background-1639360.jpg"
+img: 'https://images.freeimages.com/images/large-previews/2b6/free-banner-background-1639360.jpg'
 alt: my second blog post
 author:
   name: Markus Ressel
