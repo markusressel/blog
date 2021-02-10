@@ -1,5 +1,5 @@
-export default async ($content, params, error) => {
-  const currentPage = parseInt(params.page)
+export default async ($content, query, error) => {
+  const currentPage = parseInt(query.page)
   const perPage = 5
 
   const tmp = await $content('articles').fetch()

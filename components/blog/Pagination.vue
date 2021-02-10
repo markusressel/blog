@@ -7,7 +7,7 @@
 
     <nuxt-link
       v-else
-      :to="{ name: 'blog', params: { page: 1 } }"
+      :to="{ name: 'blog', query: { page: 1 } }"
       :class="buttonStyles"
     >
       <DoubleBack />
@@ -21,7 +21,7 @@
 
     <nuxt-link
       v-else
-      :to="{ name: 'blog', params: { page: prevPage } }"
+      :to="{ name: 'blog', query: { page: prevPage } }"
       :class="buttonStyles"
     >
       <SingleBack />
@@ -35,7 +35,7 @@
 
     <nuxt-link
       v-else
-      :to="{ name: 'blog', params: { page: nextPage } }"
+      :to="{ name: 'blog', query: { page: nextPage } }"
       :class="buttonStyles"
     >
       <span class="hidden sm:inline">Next</span>
@@ -49,7 +49,7 @@
 
     <nuxt-link
       v-else
-      :to="{ name: 'blog', params: { page: totalPages } }"
+      :to="{ name: 'blog', query: { page: totalPages } }"
       :class="buttonStyles"
     >
       <span class="hidden sm:inline">Last</span>
@@ -93,7 +93,7 @@ export default {
       return Math.ceil(this.total / this.perPage)
     },
     currentPage() {
-      return parseInt(this.$route.params.page) || 1
+      return parseInt(this.$route.query.page) || 1
     },
     prevPage() {
       return this.currentPage > 1 ? this.currentPage - 1 : 1
