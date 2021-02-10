@@ -10,7 +10,7 @@ import getArticles from '@/utils/getArticles'
 export default {
   watchQuery: ['page'],
   async asyncData({ $content, query, error }) {
-    console.log("Params: " + query)
+    console.log('Params: ' + query)
     const content = await getArticles($content, query, error)
     return {
       allArticles: content.allArticles,
