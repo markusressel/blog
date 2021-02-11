@@ -1,11 +1,11 @@
 <template>
   <div class="flex">
-    <div v-for="color of colors" :key="color" class="px-2">
+    <div v-for="theme of themes" :key="theme" class="px-2">
       <component
-        :is="`icon-${color}`"
-        :class="{ selected: color === $colorMode.value }"
+        :is="`icon-${theme}`"
+        :class="{ selected: theme === $colorMode.value }"
         class="align-middle hover:shadow-2xl"
-        @click="$colorMode.preference = color"
+        @click="setTheme(theme)"
       />
     </div>
   </div>
@@ -22,10 +22,20 @@ export default {
     IconLight,
     IconDark,
   },
+  methods: {
+    setTheme(theme) {
+      this.$colorMode.preference = theme
+      this.$cookies.set('settings', {
+        theme: theme,
+      }, {
+        maxAge: 2147483647
+      })
+    },
+  },
   data() {
     return {
       selected: false,
-      colors: ['system', 'light', 'dark'],
+      themes: ['system', 'light', 'dark'],
     }
   },
 }
