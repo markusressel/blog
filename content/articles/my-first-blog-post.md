@@ -10,6 +10,7 @@ tags:
 ---
 
 Hi all, this is the first post of on my blog created using [Nuxt.js](https://nuxtjs.org).
+
 <!--more-->
 
 ## Emphasis
@@ -48,7 +49,8 @@ def function(a: str, b: int) -> None:
 
 > Dorothy followed her through many of the beautiful rooms in her castle.
 >
->> The Witch bade her clean the pots and kettles and sweep the floor and keep the fire fed with wood.
+> > The Witch bade her clean the pots and kettles and sweep the floor and keep the fire fed with wood.
+
 ### HTML
 
 <div class="bg-blue-500 text-white p-4 mb-4 rounded-xl">
