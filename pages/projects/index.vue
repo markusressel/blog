@@ -5,7 +5,7 @@
   >
     <div v-for="n in 10" :key="n">
       <figure
-        class="md:flex bg-gray-100 dark:bg-gray-800 rounded-xl pt-4 mx-0 my-2 md:mx-4 md:my-4 shadow-lg hover:shadow-xl"
+        class="flex bg-gray-100 dark:bg-gray-800 rounded-xl pt-4 mx-0 my-2 md:mx-4 md:my-4 shadow-lg hover:shadow-xl"
       >
         <content-loader
           width="300"
@@ -32,9 +32,12 @@
         <ProjectCard :project="project" />
       </div>
     </div>
-    <md-button class="md-fab md-primary" @click="$fetch">
+    <div
+      class="rounded-full h-14 w-14 text-center bg-gray-200 dark:bg-blue-500 float-right"
+      @click="$fetch"
+    >
       <md-icon>refresh</md-icon>
-    </md-button>
+    </div>
   </div>
 </template>
 
@@ -71,17 +74,40 @@ export default {
   async fetch() {
     // use for debugging content-loader
     //await new Promise((r) => setTimeout(r, 2000000))
+
+    // a.created_at
+    // fork: false
+    // a.forks
+    // a.forks_count
+    // a.full_name (markusressel/repo)
+    // a.license  {
+    //   key: "agpl-3.0"
+    //   name: "GNU Affero General Public License v3.0"
+    //   spdx_id: "AGPL-3.0"
+    // }
+    // open_issues: 11
+    // open_issues_count: 11
+    // pushed_at: "2021-02-11T15:23:48Z"
+    // updated_at: "2021-02-10T19:48:02Z"
+    // a.owner.login == "markusressel"
+    // watchers: 37
+    // watchers_count: 37
     this.projects = await fetch(
       `https://api.github.com/users/${global.githubUsername}/repos`
     ).then((res) => res.json())
-    this.projects = this.projects.sort(function (a, b) {
-      return (
-        a.archived - b.archived ||
-        b.stargazers_count - a.stargazers_count ||
-        a.name.localeCompare(b.name) ||
-        a.language.localeCompare(b.language)
-      )
-    })
+
+    this.projects = this.projects
+      .filter((project) => {
+        return project.fork === false && project.license !== null
+      })
+      .sort(function (a, b) {
+        return (
+          a.archived - b.archived ||
+          b.stargazers_count - a.stargazers_count ||
+          a.name.localeCompare(b.name) ||
+          a.language.localeCompare(b.language)
+        )
+      })
   },
   head() {
     return {
