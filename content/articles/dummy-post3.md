@@ -4,7 +4,7 @@ title: Post3
 description: Description
 img: https://images.freeimages.com/images/large-previews/2b6/free-banner-background-1639360.jpg
 alt: my second blog post
-authors: 
+authors:
   - Markus Ressel
 tags:
   - helloworld
@@ -27,7 +27,7 @@ In natis, illa an caedis lumen nam mortale dicenti.
 
 Alimentaque venerem exercuit, Diti et, qua vellem et veneni! Parvis terrenaque
 capillis undis, foret ferre viae **tamen taurus pavit**, est cui squamamque?
-*Insula* telum sertis Maiaque frondis de Tantalus hunc et fetum.
+_Insula_ telum sertis Maiaque frondis de Tantalus hunc et fetum.
 
 ## Quin unde tinguet in oculos iuga
 
@@ -56,7 +56,7 @@ feritatis. Humus dextra in inane taedia cui equas sum moriensque haec requiemque
 nupta vocant: tectam quid sonant, doce. Superos rosarum, ut figuras inter vincis
 cantu. Repetita hi coniunx!
 
-Quae collo *Perseus agat remigis* iussi violenta iram Pallas semina ignigenamque
+Quae collo _Perseus agat remigis_ iussi violenta iram Pallas semina ignigenamque
 video. Sagittifera iactas Iove quamvis patres latices doluit gradus Aonias
 animata occuluit, silvis concursibus. Corpore fatentem, illa, telum viro
 prodidit, audaces. Auro removete commota dixit dominoque silet genitorque.

@@ -15,7 +15,10 @@ export default async ($content, query, error) => {
     const authorsList = await $content('authors')
       .where({ name: { $containsAny: article.authors } })
       .fetch()
-    const authors = Object.assign({}, ...authorsList.map((s) => ({ [s.name]: s })))
+    const authors = Object.assign(
+      {},
+      ...authorsList.map((s) => ({ [s.name]: s }))
+    )
     article.authors = authors
 
     allArticles.push(article)
@@ -40,11 +43,12 @@ export default async ($content, query, error) => {
   }
 
   const sortedArticles = allArticles.sort(function (a, b) {
-    return (
-      a.published - b.published
-    )
+    return a.published - b.published
   })
-  const paginatedArticles = sortedArticles.slice(skipNumber(), skipNumber() + perPage)
+  const paginatedArticles = sortedArticles.slice(
+    skipNumber(),
+    skipNumber() + perPage
+  )
 
   if (currentPage === 0 || !paginatedArticles.length) {
     return error({ statusCode: 404, message: 'No articles found!' })

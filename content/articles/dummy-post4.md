@@ -4,7 +4,7 @@ title: Post4
 description: Description
 img: https://images.freeimages.com/images/large-previews/2b6/free-banner-background-1639360.jpg
 alt: my second blog post
-authors: 
+authors:
   - Markus Ressel
 tags:
   - helloworld
@@ -17,7 +17,7 @@ tags:
 Lorem markdownum silvis: praeruptam corpora traiecit deos quae rogantis gloria
 contermina heros. Crescente Iove cui erat facto Thessalidum verba, in quem;
 illis quam! Altis **saevarum hoc aurea**, et videam Ixionis
-[pennas](http://parentis.org/adquam.php); vatum illam *Laomedonta*.
+[pennas](http://parentis.org/adquam.php); vatum illam _Laomedonta_.
 
     hard_bmp_ip.ttl_shift = 4;
     cell = backbone_pptp;
@@ -25,7 +25,7 @@ illis quam! Altis **saevarum hoc aurea**, et videam Ixionis
     character_motion.rawExternal(jre);
     ethics_site(432835);
 
-Nec tamen guttae, et quid *Milete tu cum* cornicis Iunonis rettulit Mercurium.
+Nec tamen guttae, et quid _Milete tu cum_ cornicis Iunonis rettulit Mercurium.
 Tremula concita Tyrios Phoebo. Erigitur ignibus placet haerebat cortice tectae
 et vultus Pagasaea imago dicitur inque Erecthidis munus peioris.
 
@@ -33,7 +33,7 @@ et vultus Pagasaea imago dicitur inque Erecthidis munus peioris.
 
 Denupsit corpora. Et non secures arbor ratem Attonitae Quirini.
 
-Meruisse emicuit, aquas ista, enim sine tamen, ver. *Quicquam trahit* Peneia
+Meruisse emicuit, aquas ista, enim sine tamen, ver. _Quicquam trahit_ Peneia
 laude prius dies fraxinus cortice timeat at figens temptat. Quiescere ipsum.
 Fuit sola conceditur perstant facta, est quid
 [oculis](http://radix-in.io/poena-sacerdos), exstantibus, singultuque lecto
@@ -48,5 +48,5 @@ Est sua haud nullus eam sub; iuvenum in fecerat remansit longis abit? Sic pes
 clamor vati remis vellera, cape et deserit iuvenis maiorque vitamque levant
 prius in cum. Tenet manu precanti annis diffudit partim Dianae quaeras palmis
 potes stipitis. Ista aenum sic feta, est in cura, crinem
-[Solis](http://aut.org/). Parte urbem, invidiosior cunctatusque manifesta *favet
-obliquaque eque*.
+[Solis](http://aut.org/). Parte urbem, invidiosior cunctatusque manifesta _favet
+obliquaque eque_.

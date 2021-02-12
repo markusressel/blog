@@ -3,7 +3,7 @@ title: My first Blog Post
 description: A demo post showcasing the capabilities of Markdown and @nuxt/content
 img: https://images.freeimages.com/images/large-previews/2b6/free-banner-background-1639360.jpg
 alt: my first blog post
-authors: 
+authors:
   - Markus Ressel
 tags:
   - helloworld
@@ -14,9 +14,9 @@ Hi all, this is the first post of on my blog created using [Nuxt.js](https://nux
 
 ## Emphasis
 
-Emphasis, aka italics, with *asterisks* or _underscores_.
+Emphasis, aka italics, with _asterisks_ or _underscores_.
 
-Strong emphasis, aka bold, with **asterisks** or __underscores__.
+Strong emphasis, aka bold, with **asterisks** or **underscores**.
 
 Combined emphasis with **asterisks and _underscores_**.
 
@@ -31,18 +31,18 @@ def function(a: str, b: int) -> None:
 
 ## List
 
-* First
-* Second
-* Third
-  * sublist
+- First
+- Second
+- Third
+  - sublist
 
 ## Table
 
-| Tables        | Are           | Cool  |
-| ------------- |:-------------:| -----:|
+| Tables        |      Are      |  Cool |
+| ------------- | :-----------: | ----: |
 | col 3 is      | right-aligned | $1600 |
-| col 2 is      | centered      |   $12 |
-| zebra stripes | are neat      |    $1 |
+| col 2 is      |   centered    |   $12 |
+| zebra stripes |   are neat    |    $1 |
 
 ## Blockquote
 

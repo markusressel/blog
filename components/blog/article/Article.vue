@@ -41,8 +41,11 @@
         </NuxtLink>
       </div>
 
-      <author v-for="(author, id) in article.authors" :key="id"
-      :author="author" />
+      <author
+        v-for="(author, id) in article.authors"
+        :key="id"
+        :author="author"
+      />
     </div>
 
     <prev-next :prev="prev" :next="next" class="mt-8" />
@@ -71,10 +74,12 @@ export default {
     },
   },
   computed: {
-    authorText: function() {
-      var result = Object.keys(this.article.authors).map(x => this.article.authors[x].name).join(", ");
-      return result;
-    }
+    authorText: function () {
+      var result = Object.keys(this.article.authors)
+        .map((x) => this.article.authors[x].name)
+        .join(', ')
+      return result
+    },
   },
   methods: {
     formatDate,

@@ -4,7 +4,7 @@ title: Dummy Post
 description: Description
 img: 'https://images.freeimages.com/images/large-previews/2b6/free-banner-background-1639360.jpg'
 alt: my second blog post
-authors: 
+authors:
   - Markus Ressel
 tags:
   - helloworld
@@ -27,7 +27,7 @@ haec petitur mihi arcuerat. Poenarum et saxoque hiberno est fors postes cornibus
 
 ## Inplevi epulas
 
-Nam haut luminis medios; dolenti si parit *ossibus*, si udaeque per lucis
+Nam haut luminis medios; dolenti si parit _ossibus_, si udaeque per lucis
 vulnere ipsisque! Magis et ecce colorum quo natum aliisque **gratata potentia**
 dependent superabat, cum habebat, Cipe petit.
 
@@ -50,9 +50,9 @@ dependent superabat, cum habebat, Cipe petit.
 
 Patrem Iris induitur, maiorque, et optat inprovisoque amore colorem. Miremur
 quisquis admoto? Palus cor odit, intremuere, ripa quae succidere tu quid
-detectique imago! Quem frater semina sui, spreta *imitataque* reiecit illis
+detectique imago! Quem frater semina sui, spreta _imitataque_ reiecit illis
 pallamque.
 
 Quae transit habentem patrium, corpora Anaphen parte rogum; arma ferox: nec
-*erit*, loca moenia quaeritis. Et medii deo perpetua, iustissimus utraque
+_erit_, loca moenia quaeritis. Et medii deo perpetua, iustissimus utraque
 fluctus, mala cum, clara ad rostro Iovis ita?
