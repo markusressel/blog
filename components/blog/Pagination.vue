@@ -2,7 +2,7 @@
   <div class="grid gap-4 grid-cols-4">
     <div v-if="currentPage === 1" :class="disabledStyle">
       <span class="hidden sm:inline">First</span>
-      <SingleBack />
+      <DoubleBack />
     </div>
 
     <nuxt-link
