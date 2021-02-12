@@ -19,7 +19,9 @@
         <h2 class="font-bold text-gray-900 dark:text-gray-200 text-2xl my-0">
           {{ article.title }}
         </h2>
-        <div class="flex items-center uppercase text-xs text-gray-700 dark:text-gray-400">
+        <div
+          class="flex items-center uppercase text-xs text-gray-700 dark:text-gray-400"
+        >
           <p class="my-0 mr-1">
             {{ formatDate(article.updatedAt) }}
           </p>
