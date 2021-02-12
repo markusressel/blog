@@ -25,9 +25,15 @@ Strikethrough uses two tildes. ~~Scratch this.~~
 
 ## Code
 
-```python
+This sentence contains an `inline` code section.
+
+```python{2,3-5}[example.py]
 def function(a: str, b: int) -> None:
-  return None
+  return a * b
+
+def __main__():
+  result = function("a", 2)
+  print(f"Result: {result}")
 ```
 
 ## List
