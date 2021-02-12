@@ -11,7 +11,7 @@
         >{{ project.stargazers_count }} <IconStar class="inline align-top"
       /></a>
     </div>
-    
+
     <div class="pt-2">{{ project.description }}</div>
 
     <table class="self-center mb-0 mt-4 text-center">
