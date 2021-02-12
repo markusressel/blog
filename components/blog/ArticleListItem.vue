@@ -19,21 +19,23 @@
         <h2 class="font-bold text-gray-900 dark:text-gray-200 text-2xl my-0">
           {{ article.title }}
         </h2>
-        <div class="flex items-center uppercase text-xs">
+        <div class="flex items-center uppercase text-xs text-gray-700 dark:text-gray-400">
           <p class="my-0 mr-1">
             {{ formatDate(article.updatedAt) }}
           </p>
           <span class="mr-1">•</span>
           <p class="my-0">{{ article.author.name }}</p>
         </div>
-        <p class="text-lg text-gray-700 dark:text-gray-200">
+        <p class="text-lg text-gray-800 dark:text-gray-300">
           {{ article.description }}
         </p>
-        <p
-          class="shadow-lg border rounded-full px-4 py-2 mb-0 text-sm text-bold bg-gray-200 dark:bg-gray-900 self-end flex justify-center items-center sm:uppercase hover:bg-blue-500 text-blue-500 hover:text-white transform duration-300 ease-in-out"
-        >
-          Read more<span>&hellip;</span>
-        </p>
+        <div class="flex justify-end">
+          <p
+            class="md:w-max shadow-lg border rounded-full m-0 px-4 py-2 text-sm text-bold bg-gray-200 dark:bg-gray-900 hover:bg-blue-500 text-blue-500 hover:text-white transform duration-300 ease-in-out"
+          >
+            Read more<span>&hellip;</span>
+          </p>
+        </div>
       </div>
     </div>
   </NuxtLink>
