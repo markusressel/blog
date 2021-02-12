@@ -8,6 +8,10 @@
       <NuxtLink :to="{ name: 'impressum' }" style="text-color: inherit">
         Impressum
       </NuxtLink>
+      |
+      <NuxtLink :to="{ name: 'privacy' }" style="text-color: inherit">
+        Privacy Policy
+      </NuxtLink>
     </div>
   </footer>
 </template>
