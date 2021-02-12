@@ -1,6 +1,6 @@
 <template>
   <div class="flex">
-    <div v-for="theme of themes" :key="theme" class="px-2">
+    <div v-for="theme of themes" :key="theme" class="px-1 md:px-2">
       <component
         :is="`icon-${theme}`"
         :class="{ selected: theme === $colorMode.value }"
