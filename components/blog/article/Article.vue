@@ -18,21 +18,7 @@
           {{ formatDate(article.updatedAt) }}
         </p>
         <span class="mt-0 mr-2">•</span>
-        <p class="my-0">{{ article.author.name }}</p>
-      </div>
-      <div v-for="(tag, id) in article.tags" :key="id">
-        <NuxtLink :to="`/blog/tags/${tags[tag].slug}`">
-          <span
-            class="truncate uppercase tracking-wider font-medium text-ss px-2 py-1 rounded-full border border-gray-800 dark:border-gray-400"
-          >
-            {{ tags[tag].name }}
-          </span>
-        </NuxtLink>
-      </div>
-      <div class="py-4">
-        <NuxtLink to="/blog" class="mr-8 self-center font-bold hover:underline">
-          All articles
-        </NuxtLink>
+        <p class="my-0">{{ authorText }}</p>
       </div>
 
       <p class="text-xl font-bold">
@@ -44,7 +30,19 @@
       <!-- content from markdown -->
       <nuxt-content :document="article" />
 
-      <author :author="article.author" />
+      <!-- list of tags -->
+      <div v-for="(tag, id) in article.tags" :key="id" class="flex pt-6">
+        <NuxtLink :to="`/blog/tags/${tag.slug}`">
+          <div
+            class="px-2 py-1 rounded-full shadow-lg bg-gray-900 tracking-wider font-medium text-ss"
+          >
+            #{{ tag.name }}
+          </div>
+        </NuxtLink>
+      </div>
+
+      <author v-for="(author, id) in article.authors" :key="id"
+      :author="author" />
     </div>
 
     <prev-next :prev="prev" :next="next" class="mt-8" />
@@ -63,10 +61,6 @@ export default {
       type: Object,
       default: null,
     },
-    tags: {
-      type: Object,
-      default: null,
-    },
     prev: {
       type: Object,
       default: null,
@@ -75,6 +69,12 @@ export default {
       type: Object,
       default: null,
     },
+  },
+  computed: {
+    authorText: function() {
+      var result = Object.keys(this.article.authors).map(x => this.article.authors[x].name).join(", ");
+      return result;
+    }
   },
   methods: {
     formatDate,

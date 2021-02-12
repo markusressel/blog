@@ -26,7 +26,7 @@
             {{ formatDate(article.updatedAt) }}
           </p>
           <span class="mr-1">•</span>
-          <p class="my-0">{{ article.author.name }}</p>
+          <p class="my-0">{{ authorText }}</p>
         </div>
         <p class="text-lg text-gray-800 dark:text-gray-300">
           {{ article.description }}
@@ -52,6 +52,12 @@ export default {
       type: Object,
       default: null,
     },
+  },
+  computed: {
+    authorText: function() {
+      var result = Object.keys(this.article.authors).map(x => this.article.authors[x].name).join(", ");
+      return result;
+    }
   },
   methods: {
     formatDate,

@@ -7,11 +7,17 @@ export default async ($content, query, error) => {
   for (const item of tmp) {
     const article = await $content('articles', item.slug).fetch()
     const tagsList = await $content('tags')
-      .only(['name', 'slug'])
       .where({ name: { $containsAny: article.tags } })
       .fetch()
     const tags = Object.assign({}, ...tagsList.map((s) => ({ [s.name]: s })))
     article.tags = tags
+
+    const authorsList = await $content('authors')
+      .where({ name: { $containsAny: article.authors } })
+      .fetch()
+    const authors = Object.assign({}, ...authorsList.map((s) => ({ [s.name]: s })))
+    article.authors = authors
+
     allArticles.push(article)
   }
 
@@ -24,7 +30,7 @@ export default async ($content, query, error) => {
   const lastPageCount = totalArticles % perPage
 
   const skipNumber = () => {
-    if (currentPage === 1) {
+    if (currentPage === 1 || isNaN(currentPage)) {
       return 0
     }
     if (currentPage === lastPage) {
@@ -33,20 +39,12 @@ export default async ($content, query, error) => {
     return (currentPage - 1) * perPage
   }
 
-  const paginatedArticles = await $content('articles')
-    .only([
-      'slug',
-      'title',
-      'description',
-      'image',
-      'author',
-      'published',
-      'updatedAt',
-    ])
-    .sortBy('published', 'desc')
-    .limit(perPage)
-    .skip(skipNumber())
-    .fetch()
+  const sortedArticles = allArticles.sort(function (a, b) {
+    return (
+      a.published - b.published
+    )
+  })
+  const paginatedArticles = sortedArticles.slice(skipNumber(), skipNumber() + perPage)
 
   if (currentPage === 0 || !paginatedArticles.length) {
     return error({ statusCode: 404, message: 'No articles found!' })
