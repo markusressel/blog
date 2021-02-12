@@ -9,9 +9,9 @@
       >
         <content-loader
           width="300"
-          height="150"
-          primary-color="#f3f3f3"
-          secondary-color="#cccccc"
+          height="120"
+          :primary-color="contentLoaderPrimary"
+          :secondary-color="contentLoaderSecondary"
           :speed="randomSpeed()"
           class="mx-4"
         >
@@ -50,6 +50,23 @@ export default {
   data() {
     return {
       projects: [],
+    }
+  },
+  computed: {
+    contentLoaderPrimary: function() {
+      if (this.$colorMode.preference == "dark") {
+        return "#9E9E9E" // gray-500
+      } else {
+        return "#E0E0E0" // gray-300
+      }
+    },
+    contentLoaderSecondary: function() {
+      if (this.$colorMode.preference == "dark") {
+        return "#E0E0E0" // gray-300
+      } else {
+        return "#9E9E9E" // gray-500
+      }
+      
     }
   },
   async fetch() {
