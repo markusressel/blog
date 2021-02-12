@@ -7,7 +7,7 @@
     />
     <vue-scroll :ops="ops" class="flex-1">
       <main
-        class="flex-1 overflow-auto px-4 py-5 transition-all duration-200 z-0"
+        class="flex-1 overflow-auto px-2 md:px-4 py-5 transition-all duration-200 z-0"
       >
         <Nuxt />
       </main>
