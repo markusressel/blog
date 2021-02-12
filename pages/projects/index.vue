@@ -53,21 +53,20 @@ export default {
     }
   },
   computed: {
-    contentLoaderPrimary: function() {
-      if (this.$colorMode.preference == "dark") {
-        return "#9E9E9E" // gray-500
+    contentLoaderPrimary: function () {
+      if (this.$colorMode.preference == 'dark') {
+        return '#9E9E9E' // gray-500
       } else {
-        return "#E0E0E0" // gray-300
+        return '#E0E0E0' // gray-300
       }
     },
-    contentLoaderSecondary: function() {
-      if (this.$colorMode.preference == "dark") {
-        return "#E0E0E0" // gray-300
+    contentLoaderSecondary: function () {
+      if (this.$colorMode.preference == 'dark') {
+        return '#E0E0E0' // gray-300
       } else {
-        return "#9E9E9E" // gray-500
+        return '#9E9E9E' // gray-500
       }
-      
-    }
+    },
   },
   async fetch() {
     await new Promise((r) => setTimeout(r, 2000000))
