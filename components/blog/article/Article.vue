@@ -48,7 +48,6 @@
     </div>
 
     <prev-next :prev="prev" :next="next" class="mt-8" />
-
   </article>
 </template>
 <script>
