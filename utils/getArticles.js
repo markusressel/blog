@@ -2,9 +2,13 @@ export default async ($content, query, error) => {
   const currentPage = parseInt(query.page)
   const perPage = 5
 
-  const tmp = await $content('articles').fetch()
+  var tmp = await $content('articles').fetch()
   const allArticles = []
   for (const item of tmp) {
+    if (process.env.NODE_ENV === 'production' && item.dummy !== undefined) {
+      continue;
+    }
+
     const article = await $content('articles', item.slug).fetch()
     const tagsList = await $content('tags')
       .where({ name: { $containsAny: article.tags } })
