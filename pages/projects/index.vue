@@ -69,7 +69,8 @@ export default {
     },
   },
   async fetch() {
-    await new Promise((r) => setTimeout(r, 2000000))
+    // use for debugging content-loader
+    //await new Promise((r) => setTimeout(r, 2000000))
     this.projects = await fetch(
       `https://api.github.com/users/${global.githubUsername}/repos`
     ).then((res) => res.json())
