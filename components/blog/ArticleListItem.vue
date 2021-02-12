@@ -30,7 +30,7 @@
           {{ article.description }}
         </p>
         <p
-          class="border rounded-full px-4 py-2 mb-0 text-sm text-bold bg-gray-200 dark:bg-gray-900 self-end flex justify-center items-center sm:uppercase hover:bg-blue-500 text-blue-500 hover:text-white transform duration-300 ease-in-out"
+          class="shadow-lg border rounded-full px-4 py-2 mb-0 text-sm text-bold bg-gray-200 dark:bg-gray-900 self-end flex justify-center items-center sm:uppercase hover:bg-blue-500 text-blue-500 hover:text-white transform duration-300 ease-in-out"
         >
           Read more<span>&hellip;</span>
         </p>

@@ -1,7 +1,7 @@
 <template>
-  <article class="flex justify-center">
+  <article class="flex flex-col justify-center self-center">
     <div
-      class="w-3/4 flex-grow bg-white dark:bg-gray-800 bg-opacity-100 rounded-3xl max-w-5xl z-10 shadow-lg p-4 md:p-6 md:my-2 z-0"
+      class="w-11/12 flex-grow bg-white dark:bg-gray-800 bg-opacity-100 rounded-3xl max-w-5xl z-10 shadow-lg p-4 md:p-6 md:my-2 mx-auto"
     >
       <img
         v-if="
@@ -45,8 +45,10 @@
       <nuxt-content :document="article" />
 
       <author :author="article.author" />
-      <prev-next :prev="prev" :next="next" class="mt-8" />
     </div>
+
+    <prev-next :prev="prev" :next="next" class="mt-8" />
+
   </article>
 </template>
 <script>
