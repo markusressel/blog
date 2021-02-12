@@ -1,7 +1,7 @@
 <template>
   <header class="flex justify-between py-2 h-12">
     <div class="flex place-items-center">
-      <NuxtLink to="/" >
+      <NuxtLink to="/">
         <Logo class="align-middle" />
       </NuxtLink>
       <div class="font-bold pl-4">{{ siteName }}</div>
