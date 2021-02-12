@@ -54,10 +54,12 @@ export default {
     },
   },
   computed: {
-    authorText: function() {
-      var result = Object.keys(this.article.authors).map(x => this.article.authors[x].name).join(", ");
-      return result;
-    }
+    authorText: function () {
+      var result = Object.keys(this.article.authors)
+        .map((x) => this.article.authors[x].name)
+        .join(', ')
+      return result
+    },
   },
   methods: {
     formatDate,

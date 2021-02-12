@@ -3,7 +3,7 @@ title: My second Blog Post
 description: Description
 img: https://images.freeimages.com/images/large-previews/2b6/free-banner-background-1639360.jpg
 #alt: my second blog post
-authors: 
+authors:
   - Markus Ressel
 tags:
   - helloworld

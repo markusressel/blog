@@ -19,7 +19,10 @@ export default {
     const authorsList = await $content('authors')
       .where({ name: { $containsAny: article.authors } })
       .fetch()
-    const authors = Object.assign({}, ...authorsList.map((s) => ({ [s.name]: s })))
+    const authors = Object.assign(
+      {},
+      ...authorsList.map((s) => ({ [s.name]: s }))
+    )
     article.authors = authors
 
     // fetch the previous and next article

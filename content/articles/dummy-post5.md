@@ -4,7 +4,7 @@ title: Post5
 description: This is a fancy description of a blog post
 #img: first-blog-post.jpg
 alt: my second blog post
-authors: 
+authors:
   - Markus Ressel
 tags:
   - helloworld
@@ -19,7 +19,7 @@ dextera pampinus.
 
 Voracior sed, captat caecum laniger et iam amoribus o iactat formis Parrhasis
 ignara agendum circumstantes iuga nemorosis rerum tamen? Ortus fertur, facta
-caderet agris *tuos ducere*, et nunc silvis in solvit, solacia **probant**.
+caderet agris _tuos ducere_, et nunc silvis in solvit, solacia **probant**.
 
 ## Quoniamque inde quod superi sanguine in sopita
 
