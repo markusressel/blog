@@ -21,11 +21,11 @@
         <p class="my-0">{{ authorText }}</p>
       </div>
 
-      <p class="text-xl font-bold">
+      <p class="text-xl px-4 font-bold">
         {{ article.description }}
       </p>
 
-      <TOC :toc="article.toc" class="" />
+      <TOC :toc="article.toc" class="py-2" />
 
       <!-- content from markdown -->
       <nuxt-content :document="article" />
