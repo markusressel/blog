@@ -1,14 +1,15 @@
 :root {
   --color: #243746;
-  --color-primary: #448aff;
-  --color-secondary: #0e2233;
+  /* Blue 500 */
+  --color-primary: #2196F3;
   --bg-secondary: #fff;
   --border-color: #ddd;
 }
 
 .dark-mode {
   --color: #ebf4f1;
-  --color-primary: #448aff;
+  /* Blue 500 */
+  --color-primary: #2196F3; 
   --color-secondary: #fdf9f3;
   --bg-secondary: #071521;
   --border-color: #0d2538;
@@ -64,6 +65,8 @@ a {
   font-size: 14px
 }
 
+/* MARKDOWN CONTENT */
+
 .nuxt-content-container blockquote {
   background: #f9f9f9;
   border-left: 10px solid #ccc;
@@ -71,8 +74,61 @@ a {
   padding: 1em 10px .1em 10px;
   quotes: "\201C""\201D""\2018""\2019";
 }
-
 .dark-mode .nuxt-content-container blockquote {
   background: #263238;
   border-left: 10px solid rgb(105, 105, 105);
+}
+
+/* Tables */
+
+table {
+  display: inline-block;
+  overflow: auto;
+  max-width: 100%;
+  touch-action: auto;
+
+  border-radius: 0.8rem;
+  -moz-border-radius: 0.8rem;
+  border-collapse: collapse;
+  margin: 25px 0;
+  font-size: 0.9em;
+  font-family: sans-serif;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+thead tr {
+  background-color: var(--color-primary);
+  color: #ffffff;
+  text-align: left;
+}
+
+th, td {
+  padding: 12px 15px;
+}
+
+tbody tr {
+  border-bottom: 1px solid #dddddd;
+}
+.dark-mode tbody tr {
+  border-bottom: 1px solid #dddddd20;
+}
+
+tbody tr:nth-of-type(even) {
+  background-color: #f3f3f3;
+}
+.dark-mode tbody tr:nth-of-type(even) {
+  background-color: #f3f3f310;
+}
+
+tbody tr:last-of-type {
+  border-bottom: 2px 
+}
+
+tbody tr:hover {
+  /* Blue 100 */
+  background-color: #BBDEFB;
+}
+.dark-mode tbody tr:hover {
+  /* Blue 100 A20 */
+  background-color: #BBDEFB20;
 }
