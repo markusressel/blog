@@ -50,7 +50,16 @@ export default {
   async fetch() {
     this.projects = await fetch(
       `https://api.github.com/users/${global.githubUsername}/repos`
-    ).then((res) => res.json())
+    )
+      .then((res) => res.json());
+    this.projects = this.projects.sort(function (a, b) {
+        return (
+          a.archived - b.archived ||
+          b.stargazers_count - a.stargazers_count ||
+          a.name.localeCompare(b.name) ||
+          a.language.localeCompare(b.language)
+        )
+      });
   },
   head() {
     return {
