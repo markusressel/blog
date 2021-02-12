@@ -84,8 +84,10 @@ a {
 
 /* inline code section */
 p > code {
-  @apply shadow-inner p-1 rounded-lg;
-  background-color: #263238;
+  @apply bg-gray-300  text-gray-800 font-mono shadow-inner p-1 rounded-lg;
+}
+.dark-mode p > code {
+  @apply bg-gray-900 text-gray-200
 }
 
 .nuxt-content-highlight > span {
