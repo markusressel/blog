@@ -1,6 +1,6 @@
 <template>
   <figure
-    class="md:flex bg-gray-100 dark:bg-gray-800 rounded-xl p-4 md:p-0 md:m-4 shadow-lg hover:shadow-xl"
+    class="md:flex bg-gray-100 dark:bg-gray-800 rounded-xl p-4 md:p-0 mx-0 my-2 md:mx-4 md:my-4 shadow-lg hover:shadow-xl"
   >
     <div class="md:p-4 md:text-left space-y-4">
       <a :href="project.html_url">{{ project.name }}</a>
