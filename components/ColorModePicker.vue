@@ -25,11 +25,15 @@ export default {
   methods: {
     setTheme(theme) {
       this.$colorMode.preference = theme
-      this.$cookies.set('settings', {
-        theme: theme,
-      }, {
-        maxAge: 2147483647
-      })
+      this.$cookies.set(
+        'settings',
+        {
+          theme: theme,
+        },
+        {
+          maxAge: 2147483647,
+        }
+      )
     },
   },
   data() {
