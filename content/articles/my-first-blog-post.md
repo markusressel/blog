@@ -1,6 +1,5 @@
 ---
 title: My first Blog Post
-description: A demo post showcasing the capabilities of Markdown and @nuxt/content
 img: https://images.freeimages.com/images/large-previews/2b6/free-banner-background-1639360.jpg
 alt: my first blog post
 authors:
@@ -9,7 +8,8 @@ tags:
   - helloworld
 ---
 
-Hi all, this is the first post of on my blog created using [Nuxt.js](https://nuxtjs.org).
+This is the first post of on my blog created using [Nuxt.js](https://nuxtjs.org).
+To test things out, this post showcases different capabilities of Markdown and @nuxt/content.
 
 <!--more-->
 

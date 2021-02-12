@@ -82,6 +82,12 @@ a {
   font-size: 14px;
 }
 
+/* inline code section */
+p > code {
+  @apply shadow-inner p-1 rounded-lg;
+  background-color: #263238;
+}
+
 .nuxt-content-highlight > span {
   @apply font-mono;
   position: absolute;
@@ -94,15 +100,11 @@ a {
 }
 
 .nuxt-content-highlight > pre {
-  border-radius: 1rem; 
+  border-radius: 1rem;
 }
 
-.nuxt-content-highlight pre[class*="language-"] {
+.nuxt-content-highlight pre[class*='language-'] {
   padding-top: 2rem;
-}
-
-code {
-  background-color: #263238;
 }
 
 pre[class*='language-'].line-numbers {
