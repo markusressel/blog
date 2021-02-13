@@ -65,7 +65,7 @@ a {
 
 /* Blockquote */
 
-.nuxt-content-container blockquote {
+blockquote {
   /* Blue 500 A20 */
   background: #2196f320;
   /* Blue 500 A50 */
