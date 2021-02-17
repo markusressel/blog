@@ -8,11 +8,12 @@ module.exports = {
     mode: 'layers',
     preserveHtmlElements: true,
     content: [
-      './components/**/*.{vue,js}',
-      './layouts/**/*.vue',
-      './pages/**/*.vue',
-      './plugins/**/*.{js,ts}',
-      './nuxt.config.{js,ts}',
+      'components/**/*.{vue,js}',
+      'content/**/*.md',
+      'layouts/**/*.vue',
+      'pages/**/*.vue',
+      'plugins/**/*.{js,ts}',
+      'nuxt.config.{js,ts}',
     ],
   },
   theme: {

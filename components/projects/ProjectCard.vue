@@ -1,19 +1,37 @@
 <template>
   <figure
-    class="md:flex bg-gray-100 dark:bg-gray-800 rounded-xl p-4 md:p-0 md:m-4 shadow-lg hover:shadow-xl"
+    class="flex flex-col bg-gray-100 dark:bg-gray-800 rounded-xl p-4 mx-0 my-2 md:mx-4 md:my-4 shadow-lg hover:shadow-xl"
   >
-    <div class="md:p-4 md:text-left space-y-4">
+    <div class="flex justify-between">
       <a :href="project.html_url">{{ project.name }}</a>
+      <div v-if="project.archived === true" class="text-orange-500">
+        Archived
+      </div>
       <a :href="project.html_url" class="float-right align-top"
-        ><IconStar class="inline align-top" /> {{ project.stargazers_count }}</a
-      >
-      <div class="text-cyan-600">Language</div>
-      <div>{{ project.language }}</div>
-
-      Description: {{ project.description }}
-
-      Archived: {{ project.archived }}
+        >{{ project.stargazers_count }} <IconStar class="inline align-top"
+      /></a>
     </div>
+
+    <div class="pt-2">{{ project.description }}</div>
+
+    <table class="self-center mb-0 mt-4 text-center">
+      <thead>
+        <tr>
+          <th>License</th>
+          <th>Language</th>
+          <th>Watchers</th>
+          <th>Forks</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>{{ project.license.spdx_id }}</td>
+          <td>{{ project.language }}</td>
+          <td>{{ project.watchers_count }}</td>
+          <td>{{ project.forks_count }}</td>
+        </tr>
+      </tbody>
+    </table>
   </figure>
 </template>
 

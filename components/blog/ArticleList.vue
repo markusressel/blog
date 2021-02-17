@@ -7,7 +7,7 @@
         <ArticleListItem :article="article" />
       </div>
     </div>
-    <div v-if="total" class="constainer mx-auto my-5 max-w-5xl">
+    <div v-if="total" class="constainer mx-auto mb-4 max-w-5xl">
       <Pagination v-if="total > 5" :total="total" />
     </div>
   </div>

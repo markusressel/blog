@@ -2,12 +2,12 @@
   <div class="grid gap-4 grid-cols-4">
     <div v-if="currentPage === 1" :class="disabledStyle">
       <span class="hidden sm:inline">First</span>
-      <SingleBack />
+      <DoubleBack />
     </div>
 
     <nuxt-link
       v-else
-      :to="{ name: 'blog', params: { page: 1 } }"
+      :to="{ name: 'blog', query: { page: 1 } }"
       :class="buttonStyles"
     >
       <DoubleBack />
@@ -21,7 +21,7 @@
 
     <nuxt-link
       v-else
-      :to="{ name: 'blog', params: { page: prevPage } }"
+      :to="{ name: 'blog', query: { page: prevPage } }"
       :class="buttonStyles"
     >
       <SingleBack />
@@ -35,7 +35,7 @@
 
     <nuxt-link
       v-else
-      :to="{ name: 'blog', params: { page: nextPage } }"
+      :to="{ name: 'blog', query: { page: nextPage } }"
       :class="buttonStyles"
     >
       <span class="hidden sm:inline">Next</span>
@@ -49,7 +49,7 @@
 
     <nuxt-link
       v-else
-      :to="{ name: 'blog', params: { page: totalPages } }"
+      :to="{ name: 'blog', query: { page: totalPages } }"
       :class="buttonStyles"
     >
       <span class="hidden sm:inline">Last</span>
@@ -84,16 +84,16 @@ export default {
   },
   computed: {
     buttonStyles() {
-      return 'border rounded px-4 py-1 text-sm bg-white flex justify-center items-center sm:uppercase hover:bg-blue-500 hover:text-white transform duration-500 ease-in-out'
+      return 'border rounded-full px-4 py-1 text-sm text-bold bg-white dark:bg-gray-800 flex justify-center items-center sm:uppercase hover:bg-blue-500 hover:text-white transform duration-500 ease-in-out'
     },
     disabledStyle() {
-      return 'border rounded px-4 py-1 text-sm bg-white flex justify-center items-center sm:uppercase text-gray-300'
+      return 'border rounded-full px-4 py-1 text-sm bg-white dark:bg-gray-800 flex justify-center items-center sm:uppercase text-gray-300 dark:text-gray-600'
     },
     totalPages() {
       return Math.ceil(this.total / this.perPage)
     },
     currentPage() {
-      return parseInt(this.$route.params.page) || 1
+      return parseInt(this.$route.query.page) || 1
     },
     prevPage() {
       return this.currentPage > 1 ? this.currentPage - 1 : 1

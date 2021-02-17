@@ -5,9 +5,9 @@
     <Header
       class="z-10 m-0 bg-gray-200 dark:bg-gray-800 transition-all duration-200 px-2 shadow-lg"
     />
-    <vue-scroll :ops="ops" class="flex-1">
+    <vue-scroll :ops="ops" class="flex-1 overflow-y-scroll">
       <main
-        class="flex-1 overflow-auto px-4 py-5 transition-all duration-200 z-0"
+        class="flex-1 overflow-auto px-2 md:px-4 py-5 transition-all duration-200 z-0"
       >
         <Nuxt />
       </main>
