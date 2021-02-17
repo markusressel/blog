@@ -75,10 +75,17 @@ export default {
         this.articles = []
         return
       }
+
       this.articles = await this.$content('articles')
         .limit(6)
         .search(searchQuery)
         .fetch()
+
+      if (process.env.NODE_ENV === 'production') {
+        this.articles = this.articles.filter((value) => {
+          return value.dummy === undefined || value.dummy === false
+        })
+      }
     },
   },
   methods: {
