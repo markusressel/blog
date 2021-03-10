@@ -1,8 +1,16 @@
-export default async ($content, query, error) => {
-  const currentPage = parseInt(query.page)
+export default async ($content, searchQuery, limit, page, error) => {
+  let currentPage;
+  if (page !== null) {
+    currentPage = parseInt(page)
+  } else {
+    currentPage = null
+  }
   const perPage = 5
 
-  var tmp = await $content('articles').fetch()
+  var tmp = await $content('articles')
+    .search(searchQuery)
+    .limit(limit)
+    .fetch()
   const allArticles = []
   for (const item of tmp) {
     if (process.env.NODE_ENV === 'production' && item.dummy !== undefined) {

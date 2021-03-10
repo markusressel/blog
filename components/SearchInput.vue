@@ -43,6 +43,8 @@
 </template>
 
 <script>
+import getArticles from '@/utils/getArticles'
+
 export default {
   data() {
     return {
@@ -76,10 +78,8 @@ export default {
         return
       }
 
-      this.articles = await this.$content('articles')
-        .limit(6)
-        .search(searchQuery)
-        .fetch()
+      const content = await getArticles(this.$content, searchQuery, 6)
+      this.articles = content.allArticles
 
       if (process.env.NODE_ENV === 'production') {
         this.articles = this.articles.filter((value) => {
@@ -93,7 +93,7 @@ export default {
       // delay clearing the query a bit, to
       // make onClick events on the search results work
       setTimeout(function () {
-        searchQuery = ''
+        this.searchQuery = ''
       }, 200)
     },
   },

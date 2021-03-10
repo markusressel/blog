@@ -10,7 +10,7 @@ import getArticles from '@/utils/getArticles'
 export default {
   watchQuery: ['page'],
   async asyncData({ $content, query, error }) {
-    const content = await getArticles($content, query, error)
+    const content = await getArticles($content, null, null, query.page, error)
     return {
       allArticles: content.allArticles,
       paginatedArticles: content.paginatedArticles,
