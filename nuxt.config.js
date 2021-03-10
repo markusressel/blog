@@ -5,6 +5,11 @@ export default {
   // Target: https://go.nuxtjs.dev/config-target
   target: 'static',
 
+  // see: https://nuxtjs.org/docs/2.x/deployment/netlify-deployment#for-client-side-rendering-only
+  generate: {
+    fallback: true
+  },
+
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     title: "Markus' Blog",
@@ -34,6 +39,7 @@ export default {
     '@nuxtjs/color-mode',
     // Doc: https://github.com/nuxt-community/nuxt-tailwindcss
     '@nuxtjs/tailwindcss',
+    '@nuxtjs/netlify-files',
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
