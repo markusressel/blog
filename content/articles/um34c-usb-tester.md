@@ -1,8 +1,7 @@
 ---
+dummy: true
 title: Checking out the UM34C USB Tester
-description: Description
 img: https://images.freeimages.com/images/large-previews/2b6/free-banner-background-1639360.jpg
-#alt: my second blog post
 authors:
   - Markus Ressel
 tags:
