@@ -10,7 +10,7 @@ import ArticleList from '@/components/blog/ArticleList'
 
 export default {
   components: {
-    ArticleList
+    ArticleList,
   },
   watchQuery: ['page'],
   async asyncData({ $content, query, error }) {

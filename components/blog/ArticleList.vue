@@ -21,7 +21,7 @@ export default {
   name: 'ArticleList',
   components: {
     ArticleListItem,
-    Pagination
+    Pagination,
   },
   props: {
     articles: {
