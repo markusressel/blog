@@ -49,7 +49,7 @@
     </div>
 
     <PrevNext :prev="prev" :next="next" class="mt-8" />
-  </article>
+  </Article>
 </template>
 <script>
 //import IconHashtag from '@/assets/icons/icon-hashtag.svg?inline'
