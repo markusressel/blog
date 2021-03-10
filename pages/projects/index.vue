@@ -51,7 +51,7 @@ import ProjectCard from '@/components/projects/ProjectCard'
 export default {
   components: {
     ContentLoader,
-    ProjectCard
+    ProjectCard,
   },
   data() {
     return {
