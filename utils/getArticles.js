@@ -1,5 +1,5 @@
 export default async ($content, searchQuery, limit, page, error) => {
-  let currentPage;
+  let currentPage
   if (page !== null) {
     currentPage = parseInt(page)
   } else {
@@ -7,10 +7,7 @@ export default async ($content, searchQuery, limit, page, error) => {
   }
   const perPage = 5
 
-  var tmp = await $content('articles')
-    .search(searchQuery)
-    .limit(limit)
-    .fetch()
+  var tmp = await $content('articles').search(searchQuery).limit(limit).fetch()
   const allArticles = []
   for (const item of tmp) {
     if (process.env.NODE_ENV === 'production' && item.dummy !== undefined) {
