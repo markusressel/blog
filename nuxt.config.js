@@ -7,7 +7,7 @@ export default {
 
   // see: https://nuxtjs.org/docs/2.x/deployment/netlify-deployment#for-client-side-rendering-only
   generate: {
-    fallback: true
+    fallback: true,
   },
 
   // Global page headers: https://go.nuxtjs.dev/config-head
