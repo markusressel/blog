@@ -3,7 +3,11 @@
 </template>
 
 <script>
+import Article from '@/components/blog/article/Article'
 export default {
+  components: {
+    Article
+  },
   async asyncData({ $content, params }) {
     // fetch article data
     const article = await $content('articles', params.slug).fetch()

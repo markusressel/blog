@@ -28,7 +28,7 @@
       <TOC :toc="article.toc" class="py-2" />
 
       <!-- content from markdown -->
-      <nuxt-content :document="article" />
+      <NuxtContent :document="article" />
 
       <!-- list of tags -->
       <div v-for="(tag, id) in article.tags" :key="id" class="flex pt-6">
@@ -41,23 +41,28 @@
         </NuxtLink>
       </div>
 
-      <author
+      <Author
         v-for="(author, id) in article.authors"
         :key="id"
         :author="author"
       />
     </div>
 
-    <prev-next :prev="prev" :next="next" class="mt-8" />
+    <PrevNext :prev="prev" :next="next" class="mt-8" />
   </article>
 </template>
 <script>
 //import IconHashtag from '@/assets/icons/icon-hashtag.svg?inline'
+import Author from '@/components/blog/article/Author'
+import PrevNext from '@/components/blog/article/PrevNext'
+import TOC from '@/components/blog/article/TOC'
 import formatDate from '@/utils/formatDate'
 
 export default {
   components: {
-    //IconHashtag,
+    Author,
+    PrevNext,
+    TOC,
   },
   props: {
     article: {
