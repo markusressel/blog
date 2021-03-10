@@ -25,8 +25,8 @@ Without drifting into an advertisement here, the UM34C (like other variants of i
 
 Using the device on its own is straight forward: plug it into the power source, attach a load and start measuring things. Setting up the bluetooth connection is similarly easy, but the official documentation only supports an Android application. The app has to be downloaded from outside of the Play Store as an `.apk` file, which isn't the most safe thing to do, so I looked on Github to see if someone already developed a different solution. And since the open source community is freakin awesome, I immediately found what I was looking for:
 
-* [rdserialtool](https://github.com/rfinnie/rdserialtool) - A CLI tool for interfacing with RDTech UM/DPS/RD series devices
-* [rd-usb](https://github.com/kolinger/rd-usb) - A Web GUI for RuiDeng/Riden USB testers (UM34C, UM24C, UM25C, TC66C)
+- [rdserialtool](https://github.com/rfinnie/rdserialtool) - A CLI tool for interfacing with RDTech UM/DPS/RD series devices
+- [rd-usb](https://github.com/kolinger/rd-usb) - A Web GUI for RuiDeng/Riden USB testers (UM34C, UM24C, UM25C, TC66C)
 
 # Setting up Bluetooth data logging
 
@@ -84,8 +84,8 @@ To get a first idea of how the setup works, I did some sample measurements for a
 
 To be able to measure the total usable capacity of the powerbank, two measurements were done:
 
-* full charge from 0 - 100 %
-* full discharge from 100 - 0 %
+- full charge from 0 - 100 %
+- full discharge from 100 - 0 %
 
 ## Charging from 0 to 100%
 
@@ -103,7 +103,6 @@ After that I reversed the process, added a constant load to the powerbank and mo
 ![Discharging from 100 to 0%]()
 
 ## Moving Cables while charging
-
 
 # Conclusion
 
