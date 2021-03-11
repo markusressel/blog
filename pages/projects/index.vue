@@ -32,12 +32,6 @@
         <ProjectCard :project="project" />
       </div>
     </div>
-    <div
-      class="rounded-full h-14 w-14 text-center bg-gray-200 dark:bg-blue-500 float-right"
-      @click="$fetch"
-    >
-      <div>refresh</div>
-    </div>
   </div>
 </template>
 
