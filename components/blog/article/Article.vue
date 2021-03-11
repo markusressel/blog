@@ -31,14 +31,16 @@
       <NuxtContent :document="article" />
 
       <!-- list of tags -->
-      <div v-for="(tag, id) in article.tags" :key="id" class="flex pt-6">
-        <NuxtLink :to="`/blog/tags/${tag.slug}`">
-          <div
-            class="px-2 py-1 rounded-full shadow-lg bg-gray-900 tracking-wider font-medium text-ss"
-          >
-            #{{ tag.name }}
-          </div>
-        </NuxtLink>
+      <div class="flex flex-wrap pt-6">
+        <div v-for="(tag, id) in article.tags" :key="id" class="mx-1">
+          <NuxtLink :to="`/blog/tags/${tag.slug}`">
+            <div
+              class="px-2 py-1 rounded-full shadow-lg bg-gray-900 tracking-wider font-medium text-ss"
+            >
+              #{{ tag.name }}
+            </div>
+          </NuxtLink>
+        </div>
       </div>
 
       <Author
