@@ -1,11 +1,9 @@
 <template>
   <header class="flex justify-between py-2 h-12">
-    <div class="flex place-items-center">
-      <NuxtLink to="/">
-        <Logo class="align-middle" />
-      </NuxtLink>
-      <div class="font-bold pl-4">{{ siteName }}</div>
-    </div>
+    <NuxtLink to="/" class="flex place-items-center">
+      <Logo class="align-middle" />
+      <div class="text-gray-800 dark:text-gray-100 font-bold pl-4">{{ siteName }}</div>
+    </NuxtLink>
     <div class="flex self-center items-center">
       <ColorModePicker />
       <SearchInput class="md:ml-8" />
