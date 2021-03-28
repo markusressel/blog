@@ -19,36 +19,38 @@ export default {
     IconLight,
     IconDark,
   },
+  mounted: function() {
+    // initialize theme from cookie
+    let settings = this.$cookies.get('settings');
+    if (settings !== undefined) {
+      this.currentTheme = settings.theme;
+    } else {
+      this.currentTheme = 'system';
+    }
+  },
   methods: {
     cycleTheme() {
-      let settings = this.$cookies.get('settings');
-      if (settings !== undefined) {
-        this.currentTheme = settings.theme;
-      }
-      
       let index = this.themes.indexOf(this.currentTheme);
       let nextIndex = (index + 1) % this.themes.length;
-
       let nextTheme = this.themes[nextIndex];
       this.currentTheme = nextTheme;
-      
-      this.$colorMode.preference = this.currentTheme;
       this.$cookies.set(
         'settings',
         {
-          theme: this.currentTheme,
+          theme: nextTheme,
         },
         {
           maxAge: 2147483647,
         }
       )
+      this.$colorMode.preference = nextTheme;
     },
   },
   data() {
     return {
       selected: false,
       themes: ['system', 'light', 'dark'],
-      currentTheme: 'system',
+      currentTheme: 'system'
     }
   },
 }
