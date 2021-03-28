@@ -31,6 +31,7 @@ export default {
 
       let nextTheme = this.themes[nextIndex];
       this.currentTheme = nextTheme;
+      
       this.$colorMode.preference = this.currentTheme;
       this.$cookies.set(
         'settings',
