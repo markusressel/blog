@@ -2,14 +2,15 @@
   <div class="flex">
     <component
       :is="`icon-` + currentTheme"
-      class="align-middle hover:shadow-2xl px-2"
+      class="fill-current center w-8 h-8 align-middle hover:shadow-2xl px-2"
       @click="cycleTheme()"
     />
   </div>
 </template>
 
 <script>
-import IconSystem from '@/assets/icons/theme-system.svg?inline'
+//import IconSystem from '@/assets/icons/theme-system.svg?inline'
+import IconSystem from '@/assets/icons/icon-eclipse.svg?inline'
 import IconLight from '@/assets/icons/theme-light.svg?inline'
 import IconDark from '@/assets/icons/theme-dark.svg?inline'
 
