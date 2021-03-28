@@ -5,7 +5,7 @@ export default async ($content, query, error) => {
   var tmp = await $content('articles').fetch()
   const allArticles = []
   for (const item of tmp) {
-    if (process.env.NODE_ENV === 'production' && item.dummy !== undefined) {
+    if (process.env.NODE_ENV === 'production' && item.dummy !== undefined && item.dummy === true) {
       continue
     }
 
