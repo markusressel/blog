@@ -21,18 +21,18 @@ export default {
   },
   methods: {
     cycleTheme() {
-      let settings = this.$cookies.get('settings');
+      let settings = this.$cookies.get('settings')
       if (settings !== undefined) {
-        this.currentTheme = settings.theme;
+        this.currentTheme = settings.theme
       }
-      
-      let index = this.themes.indexOf(this.currentTheme);
-      let nextIndex = (index + 1) % this.themes.length;
 
-      let nextTheme = this.themes[nextIndex];
-      this.currentTheme = nextTheme;
-      
-      this.$colorMode.preference = this.currentTheme;
+      let index = this.themes.indexOf(this.currentTheme)
+      let nextIndex = (index + 1) % this.themes.length
+
+      let nextTheme = this.themes[nextIndex]
+      this.currentTheme = nextTheme
+
+      this.$colorMode.preference = this.currentTheme
       this.$cookies.set(
         'settings',
         {
