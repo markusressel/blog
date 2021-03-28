@@ -8,7 +8,7 @@
     </NuxtLink>
     <div class="flex self-center items-center">
       <ColorModePicker />
-      <SearchInput class="md:ml-8" />
+      <SearchInput class="md:ml-2" />
     </div>
   </header>
 </template>

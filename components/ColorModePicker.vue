@@ -1,13 +1,11 @@
 <template>
   <div class="flex">
-    <div v-for="theme of themes" :key="theme" class="px-1 md:px-2">
-      <component
-        :is="`icon-${theme}`"
-        :class="{ selected: theme === $colorMode.value }"
-        class="align-middle hover:shadow-2xl"
-        @click="setTheme(theme)"
-      />
-    </div>
+    <component
+      :is="`icon-` + $colorMode.value"
+      :class="{ selected: theme === $colorMode.value }"
+      class="align-middle hover:shadow-2xl px-1 md:px-2"
+      @click="cycleTheme(theme)"
+    />
   </div>
 </template>
 
@@ -23,12 +21,19 @@ export default {
     IconDark,
   },
   methods: {
-    setTheme(theme) {
-      this.$colorMode.preference = theme
+    cycleTheme(theme) {
+      var theme = this.$cookies.get('settings').theme;
+      
+      let index = this.themes.indexOf(theme);
+      let nextIndex = (index + 1) % this.themes.length;
+
+      let nextTheme = this.themes[nextIndex];
+
+      this.$colorMode.preference = nextTheme;
       this.$cookies.set(
         'settings',
         {
-          theme: theme,
+          theme: nextTheme,
         },
         {
           maxAge: 2147483647,
