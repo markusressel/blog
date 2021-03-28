@@ -10,7 +10,11 @@ export default async ($content, searchQuery, limit, page, error) => {
   var tmp = await $content('articles').search(searchQuery).limit(limit).fetch()
   const allArticles = []
   for (const item of tmp) {
-    if (process.env.NODE_ENV === 'production' && item.dummy !== undefined && item.dummy === true) {
+    if (
+      process.env.NODE_ENV === 'production' &&
+      item.dummy !== undefined &&
+      item.dummy === true
+    ) {
       continue
     }
 
