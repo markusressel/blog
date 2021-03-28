@@ -19,21 +19,21 @@ export default {
     IconLight,
     IconDark,
   },
-  mounted: function() {
+  mounted: function () {
     // initialize theme from cookie
-    let settings = this.$cookies.get('settings');
+    let settings = this.$cookies.get('settings')
     if (settings !== undefined) {
-      this.currentTheme = settings.theme;
+      this.currentTheme = settings.theme
     } else {
-      this.currentTheme = 'system';
+      this.currentTheme = 'system'
     }
   },
   methods: {
     cycleTheme() {
-      let index = this.themes.indexOf(this.currentTheme);
-      let nextIndex = (index + 1) % this.themes.length;
-      let nextTheme = this.themes[nextIndex];
-      this.currentTheme = nextTheme;
+      let index = this.themes.indexOf(this.currentTheme)
+      let nextIndex = (index + 1) % this.themes.length
+      let nextTheme = this.themes[nextIndex]
+      this.currentTheme = nextTheme
       this.$cookies.set(
         'settings',
         {
@@ -43,14 +43,14 @@ export default {
           maxAge: 2147483647,
         }
       )
-      this.$colorMode.preference = nextTheme;
+      this.$colorMode.preference = nextTheme
     },
   },
   data() {
     return {
       selected: false,
       themes: ['system', 'light', 'dark'],
-      currentTheme: 'system'
+      currentTheme: 'system',
     }
   },
 }
