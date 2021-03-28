@@ -14,8 +14,15 @@
 </template>
 
 <script>
+import ArticleListItem from '@/components/blog/ArticleListItem'
+import Pagination from '@/components/blog/Pagination'
+
 export default {
   name: 'ArticleList',
+  components: {
+    ArticleListItem,
+    Pagination,
+  },
   props: {
     articles: {
       type: Array,

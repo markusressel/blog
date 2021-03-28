@@ -32,12 +32,6 @@
         <ProjectCard :project="project" />
       </div>
     </div>
-    <div
-      class="rounded-full h-14 w-14 text-center bg-gray-200 dark:bg-blue-500 float-right"
-      @click="$fetch"
-    >
-      <md-icon>refresh</md-icon>
-    </div>
   </div>
 </template>
 
@@ -46,9 +40,12 @@ import global from '@/utils/global'
 
 import { ContentLoader } from 'vue-content-loader'
 
+import ProjectCard from '@/components/projects/ProjectCard'
+
 export default {
   components: {
     ContentLoader,
+    ProjectCard,
   },
   data() {
     return {

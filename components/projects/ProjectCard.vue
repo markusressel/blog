@@ -3,11 +3,11 @@
     class="flex flex-col bg-gray-100 dark:bg-gray-800 rounded-xl p-4 mx-0 my-2 md:mx-4 md:my-4 shadow-lg hover:shadow-xl"
   >
     <div class="flex justify-between">
-      <a :href="project.html_url">{{ project.name }}</a>
+      <a :href="project.html_url" target="_blank">{{ project.name }}</a>
       <div v-if="project.archived === true" class="text-orange-500">
         Archived
       </div>
-      <a :href="project.html_url" class="float-right align-top"
+      <a :href="project.html_url" target="_blank" class="float-right align-top"
         >{{ project.stargazers_count }} <IconStar class="inline align-top"
       /></a>
     </div>

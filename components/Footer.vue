@@ -5,6 +5,10 @@
     <div class="self-center text-xs">
       &copy; {{ new Date().getFullYear() }} {{ siteOwner }}
       |
+      <NuxtLink :to="{ name: 'attributions' }" style="text-color: inherit">
+        Attributions
+      </NuxtLink>
+      |
       <NuxtLink :to="{ name: 'impressum' }" style="text-color: inherit">
         Impressum
       </NuxtLink>

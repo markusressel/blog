@@ -1,5 +1,5 @@
 <template>
-  <article class="flex flex-col justify-center self-center">
+  <div class="flex flex-col justify-center self-center">
     <div
       class="w-11/12 flex-grow bg-white dark:bg-gray-800 bg-opacity-100 rounded-3xl max-w-5xl z-10 shadow-lg p-4 md:p-6 md:my-2 mx-auto"
     >
@@ -28,36 +28,43 @@
       <TOC :toc="article.toc" class="py-2" />
 
       <!-- content from markdown -->
-      <nuxt-content :document="article" />
+      <NuxtContent :document="article" />
 
       <!-- list of tags -->
-      <div v-for="(tag, id) in article.tags" :key="id" class="flex pt-6">
-        <NuxtLink :to="`/blog/tags/${tag.slug}`">
-          <div
-            class="px-2 py-1 rounded-full shadow-lg bg-gray-900 tracking-wider font-medium text-ss"
-          >
-            #{{ tag.name }}
-          </div>
-        </NuxtLink>
+      <div class="flex flex-wrap pt-6">
+        <div v-for="(tag, id) in article.tags" :key="id" class="mx-1">
+          <NuxtLink :to="`/blog/tags/${tag.slug}`">
+            <div
+              class="px-2 py-1 rounded-full shadow-lg bg-gray-900 tracking-wider font-medium text-ss"
+            >
+              #{{ tag.name }}
+            </div>
+          </NuxtLink>
+        </div>
       </div>
 
-      <author
+      <Author
         v-for="(author, id) in article.authors"
         :key="id"
         :author="author"
       />
     </div>
 
-    <prev-next :prev="prev" :next="next" class="mt-8" />
-  </article>
+    <PrevNext :prev="prev" :next="next" class="mt-8" />
+  </div>
 </template>
 <script>
 //import IconHashtag from '@/assets/icons/icon-hashtag.svg?inline'
+import Author from '@/components/blog/article/Author'
+import PrevNext from '@/components/blog/article/PrevNext'
+import TOC from '@/components/blog/article/TOC'
 import formatDate from '@/utils/formatDate'
 
 export default {
   components: {
-    //IconHashtag,
+    Author,
+    PrevNext,
+    TOC,
   },
   props: {
     article: {
