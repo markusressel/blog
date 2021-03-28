@@ -22,14 +22,14 @@ export default {
   },
   methods: {
     cycleTheme(theme) {
-      var theme = this.$cookies.get('settings').theme;
-      
-      let index = this.themes.indexOf(theme);
-      let nextIndex = (index + 1) % this.themes.length;
+      var theme = this.$cookies.get('settings').theme
 
-      let nextTheme = this.themes[nextIndex];
+      let index = this.themes.indexOf(theme)
+      let nextIndex = (index + 1) % this.themes.length
 
-      this.$colorMode.preference = nextTheme;
+      let nextTheme = this.themes[nextIndex]
+
+      this.$colorMode.preference = nextTheme
       this.$cookies.set(
         'settings',
         {
