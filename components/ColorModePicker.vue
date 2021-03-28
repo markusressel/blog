@@ -1,10 +1,9 @@
 <template>
   <div class="flex">
     <component
-      :is="`icon-` + $colorMode.value"
-      :class="{ selected: theme === $colorMode.value }"
-      class="align-middle hover:shadow-2xl px-1 md:px-2"
-      @click="cycleTheme(theme)"
+      :is="`icon-` + currentTheme"
+      class="align-middle hover:shadow-2xl px-2"
+      @click="cycleTheme()"
     />
   </div>
 </template>
@@ -21,19 +20,22 @@ export default {
     IconDark,
   },
   methods: {
-    cycleTheme(theme) {
-      var theme = this.$cookies.get('settings').theme;
+    cycleTheme() {
+      let settings = this.$cookies.get('settings');
+      if (settings !== undefined) {
+        this.currentTheme = settings.theme;
+      }
       
-      let index = this.themes.indexOf(theme);
+      let index = this.themes.indexOf(this.currentTheme);
       let nextIndex = (index + 1) % this.themes.length;
 
       let nextTheme = this.themes[nextIndex];
-
-      this.$colorMode.preference = nextTheme;
+      this.currentTheme = nextTheme;
+      this.$colorMode.preference = this.currentTheme;
       this.$cookies.set(
         'settings',
         {
-          theme: nextTheme,
+          theme: this.currentTheme,
         },
         {
           maxAge: 2147483647,
@@ -45,6 +47,7 @@ export default {
     return {
       selected: false,
       themes: ['system', 'light', 'dark'],
+      currentTheme: 'system',
     }
   },
 }
