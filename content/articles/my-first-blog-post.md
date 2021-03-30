@@ -1,4 +1,6 @@
 ---
+createdAt: 2021-02-04
+updatedAt: 2021-02-04
 title: My first Blog Post
 img: https://images.freeimages.com/images/large-previews/2b6/free-banner-background-1639360.jpg
 alt: my first blog post
