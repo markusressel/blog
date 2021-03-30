@@ -18,7 +18,7 @@ export default {
   },
   async asyncData({ $content, params }) {
     const articles = await $content('articles')
-      .sortBy('published', 'desc')
+      .sortBy('createdAt', 'desc')
       .fetch()
     const articlesByTag = articles.filter((article) => {
       const articleTags = article.tags.map((x) => x.toLowerCase())
