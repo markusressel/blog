@@ -1,3 +1,11 @@
-# Icons
+## Banner Images
 
-<div>Icons made by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+Banner images are used from sources like:
+
+* [Unsplash](https://unsplash.com)
+
+## Icons
+
+Some Icons are taken from sources like:
+* [Freepik](https://www.freepik.com)
+* [Flaticon](https://www.flaticon.com/)
