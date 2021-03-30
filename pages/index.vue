@@ -1,6 +1,8 @@
 <template>
   <div>
-    <div class="w-11/12 flex-grow bg-white dark:bg-gray-800 bg-opacity-100 rounded-xl max-w-5xl z-10 shadow-md p-4 md:p-6 md:my-2 mx-auto">
+    <div
+      class="w-11/12 flex-grow bg-white dark:bg-gray-800 bg-opacity-100 rounded-xl max-w-5xl z-10 shadow-md p-4 md:p-6 md:my-2 mx-auto"
+    >
       <nuxt-content :document="page" />
     </div>
 
