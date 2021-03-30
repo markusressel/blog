@@ -29,7 +29,7 @@ Due to my interest in everything that had to do with computers, studying compute
 
 In 2015, together with [Max Rosin][12], I started developing my first "big" app: [PowerSwitch][13]. An Android app that I used to remotely control the wireless sockets in my home. What was initially intended as a proof of concept turned into something that was well received by others, leading to the buildup of a small community. [PowerSwitch][13] got more and more features and served me as a platform to try out different technologies in the mobile area. At the same time I was able to gain experience in working with a community, both in terms of issue and feature management as well as personal interactions on the dedicated forum and Google+ Community (RIP 🪦).
 
-Towards the end of my studies I gained my first work experience as a software engineer at [IVU Traffic Technologies AG][15], first as an Android and full-stack web developer. Even though the salary (as a working student) was rather meager, I really enjoyed being able to work on projects just like my colleague full-time developers. Thats where I experienced for the first time what it's like to develop software in a larger team of about 10 developers.
+Towards the end of my studies I gained my first work experience as a software engineer at [IVU Traffic Technologies AG][15], both as an Android and full-stack web developer. Even though the salary (as a working student) was rather meager, I really enjoyed being able to work on projects just like my colleague full-time developers. Thats where I experienced for the first time what it's like to develop software in a larger team of about 10 developers.
 
 ## What I have learned
 
