@@ -2,7 +2,7 @@
 createdAt: 2021-02-04
 updatedAt: 2021-02-04
 title: My first Blog Post
-img: https://images.freeimages.com/images/large-previews/2b6/free-banner-background-1639360.jpg
+img: https://images.unsplash.com/photo-1577605260126-fe10d76fe088?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80
 alt: my first blog post
 authors:
   - Markus Ressel
