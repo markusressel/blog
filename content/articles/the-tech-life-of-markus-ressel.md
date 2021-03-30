@@ -1,5 +1,4 @@
 ---
-dummy: true
 title: The (tech) life of Markus Ressel
 img: https://images.unsplash.com/photo-1556075798-4825dfaaf498?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1055&q=80
 authors:
@@ -32,7 +31,7 @@ Towards the end of my studies I gained my first work experience as a software en
 
 ## What I have learned
 
-Even though I don't maintaine [PowerSwitch][13] anymore, it was a milestone in my life. It showed me how much I love developing for and with the community. This is one of the reasons why I am a big advocate of FOSS and dream of a future where most software is freely available. While working on web projects was fun too, I am much more interested in creating mobile solutions that everyday people on the streets can benefit from. Thats why I am very happy to be working at [Adesso Mobile Solutions][14] for the forseeable future.
+Even though I don't maintain [PowerSwitch][13] anymore, it was a milestone in my life. It showed me how much I love developing for and with the community. This is one of the reasons why I am a big advocate of FOSS and dream of a future where most software is freely available. While working on web projects was fun too, I am much more interested in creating mobile solutions that everyday people on the streets can benefit from. Thats why I am very happy to be working at [Adesso Mobile Solutions][14] for the forseeable future.
 
 If you have made it this far, I hope it was an interesting read and at least some of your questions about me were answered. Maybe some day we will meet IRL and we can have a little chat about other stuff 😊
 
