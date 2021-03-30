@@ -56,8 +56,8 @@ export default async ($content, searchQuery, limit, page, error) => {
   }
 
   const sortedArticles = allArticles.sort(function (a, b) {
-    let atime = new Date(a.createdAt);
-    let btime = new Date(b.createdAt);
+    let atime = new Date(a.createdAt)
+    let btime = new Date(b.createdAt)
     return btime - atime
   })
   const paginatedArticles = sortedArticles.slice(
