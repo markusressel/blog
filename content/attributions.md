@@ -2,10 +2,11 @@
 
 Banner images are used from sources like:
 
-* [Unsplash](https://unsplash.com)
+- [Unsplash](https://unsplash.com)
 
 ## Icons
 
 Some Icons are taken from sources like:
-* [Freepik](https://www.freepik.com)
-* [Flaticon](https://www.flaticon.com/)
+
+- [Freepik](https://www.freepik.com)
+- [Flaticon](https://www.flaticon.com/)
