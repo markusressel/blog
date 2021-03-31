@@ -16,7 +16,7 @@ export default {
 
     // fetch the previous and next article
     let tmp = await $content('articles')
-      .only(['title', 'slug'])
+      .only(['title', 'slug', 'dummy'])
       .sortBy('createdAt', 'asc')
       .fetch()
     tmp = tmp.filter((keyword, index) => {
@@ -29,7 +29,7 @@ export default {
 
     let prev = null,
       next = null
-    for (let i = 0; i <= tmp.length; i++) {
+    for (let i = 0; i < tmp.length; i++) {
       let item = tmp[i]
       if (item.slug == params.slug) {
         if (i > 0) {
