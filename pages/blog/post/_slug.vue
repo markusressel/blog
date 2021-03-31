@@ -14,23 +14,6 @@ export default {
     // fetch article data
     const article = await getArticle($content, error, params.slug)
 
-    // fetch tag data
-    const tagsList = await $content('tags')
-      .where({ name: { $containsAny: article.tags } })
-      .fetch()
-    const tags = Object.assign({}, ...tagsList.map((s) => ({ [s.name]: s })))
-    article.tags = tags
-
-    // fetch author data
-    const authorsList = await $content('authors')
-      .where({ name: { $containsAny: article.authors } })
-      .fetch()
-    const authors = Object.assign(
-      {},
-      ...authorsList.map((s) => ({ [s.name]: s }))
-    )
-    article.authors = authors
-
     // fetch the previous and next article
     const [prev, next] = await $content('articles')
       .only(['title', 'slug'])
