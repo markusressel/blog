@@ -11,17 +11,17 @@
 
 <script>
 import ArticleList from '@/components/blog/ArticleList'
+import getArticles from '@/utils/getArticles'
 
 export default {
   components: {
     ArticleList,
   },
-  async asyncData({ $content, params }) {
-    const articles = await $content('articles')
-      .sortBy('createdAt', 'desc')
-      .fetch()
+  async asyncData({ $content, error, params }) {
+    const content = await getArticles($content, error)
+    const articles = content.allArticles
     const articlesByTag = articles.filter((article) => {
-      const articleTags = article.tags.map((x) => x.toLowerCase())
+      const articleTags = Object.keys(article.tags).map((x) => x.toLowerCase())
       return articleTags.includes(params.tag)
     })
     return {
