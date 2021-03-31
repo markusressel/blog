@@ -1,7 +1,7 @@
 import getContent from '@/utils/getContent'
 
 export default async ($content, error, slug) => {
-  const article = await getContent($content, error, 'articles', slug);
+  const article = await getContent($content, error, 'articles', slug)
 
   // fetch tag data
   const tagsList = await $content('tags')
