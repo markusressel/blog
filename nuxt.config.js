@@ -86,6 +86,6 @@ export default {
   },
 
   sitemap: {
-    hostname: 'https://blog.markusressel.de', // https://www.yoursite.com
+    hostname: 'https://markusressel.de', // https://www.yoursite.com
   },
 }

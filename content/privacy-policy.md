@@ -1,4 +1,4 @@
-# Privacy Policy of blog.markusressel.de
+# Privacy Policy of markusressel.de
 
 This Website collects some Personal Data from its Users.
 
