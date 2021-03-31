@@ -4,13 +4,15 @@
 
 <script>
 import Article from '@/components/blog/article/Article'
+import getArticle from '@/utils/getArticle'
+
 export default {
   components: {
     Article,
   },
-  async asyncData({ $content, params }) {
+  async asyncData({ $content, error, params }) {
     // fetch article data
-    const article = await $content('articles', params.slug).fetch()
+    const article = await getArticle($content, error, params.slug)
 
     // fetch tag data
     const tagsList = await $content('tags')

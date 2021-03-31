@@ -11,8 +11,11 @@
 import getContent from '@/utils/getContent'
 
 export default {
-  async asyncData({ $content }) {
-    return await getContent($content, 'impressum')
+  async asyncData({ $content, error }) {
+    const page = await getContent($content, error, 'impressum')
+    return {
+      page,
+    }
   },
   head() {
     return {

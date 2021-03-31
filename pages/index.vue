@@ -53,8 +53,11 @@ export default {
       title: 'Home',
     }
   },
-  async asyncData({ $content }) {
-    return await getContent($content, 'home')
+  async asyncData({ $content, error }) {
+    const page = await getContent($content, error, 'home')
+    return {
+      page,
+    }
   },
 }
 </script>
