@@ -111,7 +111,7 @@ config:
 errors: No known data errors
 ```
 
-Alright, so everything is fine again... or is it? *vsaucemusic*
+Alright, so everything is fine again... or is it? _vsaucemusic_
 Of course running a resilver doesn't mean that there were no errors during the process. To verify that the errors were gone for real I ran another `zpool scrub vol1`... which resulted in yet another (heartrate increasing) error message from `zed`:
 
 ```
@@ -130,4 +130,3 @@ degraded.
   vguid: 0x0107D2E37F936AEF
    pool: 0x3746073E539CB11B
 ```
-
