@@ -12,7 +12,7 @@ export default async ($content, searchQuery, tags, limit, page) => {
     tmp = tmp.search(searchQuery)
   }
   if (limit !== null) {
-    tmp = tmp.limit(limit)  
+    tmp = tmp.limit(limit)
   }
 
   tmp = await tmp.fetch()
