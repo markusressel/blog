@@ -1,8 +1,8 @@
 <template>
   <div
-      class="px-2 py-1 text-center rounded-full shadow-lg bg-gray-900 tracking-wider font-medium text-ss"
+    class="px-2 py-1 text-center rounded-full shadow-lg bg-gray-900 tracking-wider font-medium text-ss"
   >
-      {{ text }}
+    {{ text }}
   </div>
 </template>
 
@@ -16,11 +16,10 @@ export default {
     link: {
       type: String,
       required: false,
-      default: () => "",
+      default: () => '',
     },
   },
 }
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>
