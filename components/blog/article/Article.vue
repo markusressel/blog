@@ -60,6 +60,8 @@ import PrevNext from '@/components/blog/article/PrevNext'
 import TOC from '@/components/blog/article/TOC'
 import formatDate from '@/utils/formatDate'
 
+import Prism from '~/plugins/prism'
+
 export default {
   components: {
     Author,
@@ -79,6 +81,9 @@ export default {
       type: Object,
       default: null,
     },
+  },
+  mounted () {
+    Prism.highlightAll()
   },
   computed: {
     authorText: function () {
@@ -106,6 +111,11 @@ export default {
   font-weight: bold;
   font-size: 22px;
 }
+
+.nuxt-content p img {
+  @apply w-full;
+}
+
 .icon.icon-link {
   background-image: url('~assets/icons/icon-hashtag.svg');
   display: inline-block;

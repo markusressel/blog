@@ -25,7 +25,7 @@ export default {
   css: ['@/assets/css/main.css'],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: ['~/plugins/vuescroll'],
+  plugins: ['~/plugins/vuescroll', '~/plugins/prism' ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: [{ path: '~/components', pathPrefix: false }],
@@ -65,7 +65,8 @@ export default {
   content: {
     markdown: {
       prism: {
-        theme: 'prism-themes/themes/prism-material-oceanic.css',
+        theme: 'prism-themes/themes/prism-vsc-dark-plus.css',
+        //theme: 'prismjs/themes/prism.css',
       },
     },
   },

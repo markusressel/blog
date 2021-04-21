@@ -84,11 +84,11 @@ config:
 errors: No known data errors
 ```
 
-While some amount of errors in each category is probably nothing to worry about, having millions of checksum blocks corrupted really isn't the outcome I was hoping for. Reconstructing the original cause of this is still not possible. Sure, both disks aren't exactly factory new, but since their age is years apart, they have different capacities, and they weren't even used in the same system for the same amount of time, I found it very unlikely that both disks failed on a hardware level. While researching on the internet about this I found suggestions about replacing the cabling and/or possibly even the drive controller. Since I wasn't able to do either without waiting for a package delivery, I wanted to let ZFS handle issues that it found using the available parity data and investigate wether this was a one-off thing or possibly an ongoing, slow corruption mess.
+While some amount of errors in each category is probably nothing to worry about, having millions of checksum blocks corrupted really isn't the outcome I was hoping for. Reconstructing the original cause of this is still not possible. Sure, both disks aren't exactly factory new, but since their age is years apart, they have different capacities, and they weren't even used in the same system for the same amount of time, I found it very unlikely that both disks failed on a hardware level.
 
 ## Trying to resolve the reported ZFS errors
 
-So I went ahead and did what `zpool status` suggested and cleared the error counts using `zpool clear vol1`. This took a couple seconds and automatically started a resilver of the pool right after it finished, which also took a considerable amount of time (about 12 hours) and greeted me with the following:
+While researching on the internet about this I found suggestions about replacing the cabling and/or possibly even the drive controller. Since I wasn't able to do either without waiting for a package delivery, I wanted to let ZFS handle issues that it found using the available parity data and investigate wether this was a one-off thing or possibly an ongoing, slow corruption mess. So I went ahead and did what `zpool status` suggested and cleared the error counts using `zpool clear vol1`. This took a couple seconds and automatically started a resilver of the pool right after it finished, which also took a considerable amount of time (about 12 hours) and greeted me with the following:
 
 ```
 ZFS has finished a resilver:
@@ -140,7 +140,7 @@ degraded.
    pool: 0x3746073E539CB11B
 ```
 
-Additionally, the scrub seemed to slow down more and more. Even after almost 20 hours, progress was only at 36.89% with the estimated remaining time growing bigger and bigger:
+Additionally, the scrub seemed to slow down more and more. Even after almost 20 hours, progress was only at 36.89% with the estimated time remaining growing bigger and bigger:
 
 ```
   pool: vol1
@@ -170,8 +170,12 @@ config:
 errors: No known data errors
 ```
 
-Although the old WDC_WD20EARX disk from `mirror-2` was seemingly successfully corrected, the (much newer) WDC_WD40EFRX was, again, running into problems.
-Issuing `smartctl -A /dev/sdg` revealed that the disk had an abnormally high `Raw_Read_Error_Rate`:
+Looking at the server monitoring, the disk wasn't moving any meaningful data despite trying to:
+
+![Grafana dashboard showing 24 hours disk activity](/images/blog/investigating-zfs-cksum-errors/zfs_failed_drive_grafana.png "Grafana dashboard showing 24 hours disk activity")
+
+Although the old _WDC_WD20EARX_ disk from `mirror-2` was seemingly successfully corrected (I will have to check that later), the much newer _WDC_WD40EFRX_ was, again, running into problems.
+Issuing `smartctl -A /dev/sdg` revealed that the disk had an abnormally high `Raw_Read_Error_Rate`, strongly indicating a hardware level fault of the disk:
 
 ```
 === START OF READ SMART DATA SECTION ===
@@ -198,7 +202,7 @@ ID# ATTRIBUTE_NAME          FLAG     VALUE WORST THRESH TYPE      UPDATED  WHEN_
 ```
 
 There was no reason to continue with the scrub, since it probably wouldn't have finished in a timely matter, and even if it did there would still be errors on the disk itself. So I aborted the scrub with `zpool scrub -s vol1`.
-As a last effort to reviving the disk without a replacement, I shutdown the server completely, allowing the disks to also fully shutdown and reinitialize on the next boot. This didn't help though, in fact importing the pool took minutes instead of seconds, probably due to the failing disk having problems to read data.
+As a last effort to revive the disk without replacing it, I shutdown the server completely, allowing all disks to also fully shutdown and reinitialize on the next boot. This didn't help though, in fact importing the pool took minutes instead of seconds, probably due to the failing disk having problems to read data.
 
 ## Acceptance
 
