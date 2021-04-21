@@ -150,6 +150,10 @@ pre[class*='language-'].line-numbers > code {
   text-align: right;
 }
 
+.line-highlight {
+  box-shadow: inset 5px 0 0 #2196f3 !important;
+}
+
 /* inline code section */
 p > code {
   @apply bg-gray-300;
