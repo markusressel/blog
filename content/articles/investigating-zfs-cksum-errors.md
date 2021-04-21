@@ -210,3 +210,4 @@ So I went online to buy a new disk. Yeah I know, having a spare handy (or even a
 Since the failing disk was a Western Digital model, I wanted to replace it with a similar disk from the same manufacturer. This was easier said than done though, since WD changed their marketing due to the whole [CMR/SMR scandal][1]. Reviews on Amazon were all over the place, with users receiving hardware with different model numbers than advertised, even on WD RED Plus product pages. This made me reconsider purchasing Western Digital again, as well as using Amazon as a shop. I ended up purchasing the Seagate Ironwolf 4TB (ST4000VN008) from another shop instead.
 
 [1]: https://www.youtube.com/watch?v=aztTf2gI55k
+[2]: https://jrs-s.net/2015/02/03/will-zfs-and-non-ecc-ram-kill-your-data/
