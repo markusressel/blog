@@ -2,7 +2,7 @@
   <div>
     <div class="flex justify-center">
       <h2
-        class="text-center text-3xl mb-4 uppercase  dark:text-white inline-block mx-auto px-2"
+        class="text-center text-3xl mb-4 uppercase dark:text-white inline-block mx-auto px-2"
       >
         All Tags
       </h2>
@@ -13,8 +13,9 @@
         <nuxt-link
           :to="{ name: 'blog-tags-tag', params: { tag: tag.toLowerCase() } }"
           class="text-2xl"
-          > <Chip :text="`#${tag}`" /> </nuxt-link
         >
+          <Chip :text="`#${tag}`" />
+        </nuxt-link>
       </li>
     </ul>
   </div>
