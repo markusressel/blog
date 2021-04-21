@@ -34,11 +34,7 @@
       <div class="flex flex-wrap pt-6">
         <div v-for="(tag, id) in article.tags" :key="id" class="mx-1">
           <NuxtLink :to="`/blog/tags/${tag.slug}`">
-            <div
-              class="px-2 py-1 rounded-full shadow-lg bg-gray-900 tracking-wider font-medium text-ss"
-            >
-              #{{ tag.name }}
-            </div>
+            <Chip :text="`#${tag.name}`" />
           </NuxtLink>
         </div>
       </div>
@@ -56,6 +52,7 @@
 <script>
 //import IconHashtag from '@/assets/icons/icon-hashtag.svg?inline'
 import Author from '@/components/blog/article/Author'
+import Chip from '@/components/Chip'
 import PrevNext from '@/components/blog/article/PrevNext'
 import TOC from '@/components/blog/article/TOC'
 import formatDate from '@/utils/formatDate'
@@ -65,6 +62,7 @@ import Prism from '~/plugins/prism'
 export default {
   components: {
     Author,
+    Chip,
     PrevNext,
     TOC,
   },

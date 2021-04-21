@@ -2,17 +2,18 @@
   <div>
     <div class="flex justify-center">
       <h2
-        class="text-center text-3xl mb-4 uppercase bg-black text-white inline-block mx-auto px-2"
+        class="text-center text-3xl mb-4 uppercase  dark:text-white inline-block mx-auto px-2"
       >
         All Tags
       </h2>
     </div>
-    <ul>
-      <li v-for="tag in tags" :key="tag" class="text-center mb-2">
+
+    <ul class="list-none flex flex-col flex-wrap pt-6">
+      <li v-for="tag in tags" :key="tag" class="mb-2">
         <nuxt-link
           :to="{ name: 'blog-tags-tag', params: { tag: tag.toLowerCase() } }"
-          class="text-4xl hover:no-underline"
-          >{{ tag }}</nuxt-link
+          class="text-2xl"
+          > <Chip :text="`#${tag}`" /> </nuxt-link
         >
       </li>
     </ul>
