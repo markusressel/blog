@@ -8,7 +8,7 @@
           article.img !== undefined && article.img !== null && article.img != ''
         "
         :src="article.img"
-        class="object-cover w-full h-48 overflow-hidden rounded-lg"
+        class="object-cover w-full h-48 overflow-hidden rounded-lg shadow-lg"
       />
       <h1 class="text-6xl font-bold leading-none my-4 clear-right text-right">
         {{ article.title }}
