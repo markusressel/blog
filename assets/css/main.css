@@ -127,7 +127,7 @@ pre[class*='language-'].line-numbers > code {
   width: 3em; /* works for line-numbers below 1000 lines */
   letter-spacing: -1px;
   /* add transparency to divider line */
-  border-right: 1px solid #0b121b90 !important;
+  border-right: 2px solid #ffffff20 !important;
   /* dont use different color for line-lumbers area */
   background: inherit !important;
 
