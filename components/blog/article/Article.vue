@@ -33,7 +33,7 @@
       <!-- list of tags -->
       <div class="flex flex-wrap pt-6">
         <div v-for="(tag, id) in article.tags" :key="id" class="mx-1">
-          <NuxtLink :to="`/blog/tags/${tag.slug}`">
+          <NuxtLink :to="{ name: 'blog-tags-tag', params: { tag: tag.slug } }">
             <Chip :text="`#${tag.name}`" />
           </NuxtLink>
         </div>
