@@ -78,7 +78,7 @@ export default {
         return
       }
 
-      const content = await getArticles(this.$content, searchQuery, 6)
+      const content = await getArticles(this.$content, searchQuery, null, 6)
       this.articles = content.allArticles
 
       if (process.env.NODE_ENV === 'production') {

@@ -17,12 +17,12 @@ export default {
   components: {
     ArticleList,
   },
-  async asyncData({ $content, error, params }) {
-    const content = await getArticles($content, error)
+  async asyncData({ $content, params, error }) {
+    const content = await getArticles($content, null, null, null, null)
     const articles = content.allArticles
     const articlesByTag = articles.filter((article) => {
       const articleTags = Object.keys(article.tags).map((x) => x.toLowerCase())
-      return articleTags.includes(params.tag)
+      return articleTags.includes(params.tag.toLowerCase())
     })
     return {
       articlesByTag,

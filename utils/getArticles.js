@@ -1,4 +1,4 @@
-export default async ($content, searchQuery, limit, page, error) => {
+export default async ($content, searchQuery, tags, limit, page) => {
   let currentPage
   if (page !== null) {
     currentPage = parseInt(page)
@@ -7,7 +7,15 @@ export default async ($content, searchQuery, limit, page, error) => {
   }
   const perPage = 5
 
-  var tmp = await $content('articles').search(searchQuery).limit(limit).fetch()
+  var tmp = $content('articles')
+  if (searchQuery !== null) {
+    tmp = tmp.search(searchQuery)
+  }
+  if (limit !== null) {
+    tmp = tmp.limit(limit)  
+  }
+
+  tmp = await tmp.fetch()
   const allArticles = []
   for (const item of tmp) {
     if (
@@ -64,10 +72,6 @@ export default async ($content, searchQuery, limit, page, error) => {
     skipNumber(),
     skipNumber() + perPage
   )
-
-  if (currentPage === 0 || !paginatedArticles.length) {
-    return error({ statusCode: 404, message: 'No articles found!' })
-  }
 
   return {
     allArticles,

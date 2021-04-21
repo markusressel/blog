@@ -14,7 +14,7 @@ export default {
   },
   watchQuery: ['page'],
   async asyncData({ $content, query, error }) {
-    const content = await getArticles($content, null, null, query.page, error)
+    const content = await getArticles($content, null, null, null, query.page)
     return {
       allArticles: content.allArticles,
       paginatedArticles: content.paginatedArticles,
