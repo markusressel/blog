@@ -82,7 +82,7 @@ export default {
       default: null,
     },
   },
-  mounted () {
+  mounted() {
     Prism.highlightAll()
   },
   computed: {

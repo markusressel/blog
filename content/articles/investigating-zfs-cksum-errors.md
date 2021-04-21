@@ -172,7 +172,7 @@ errors: No known data errors
 
 Looking at the server monitoring, the disk wasn't moving any meaningful data despite trying to:
 
-![Grafana dashboard showing 24 hours disk activity](/images/blog/investigating-zfs-cksum-errors/zfs_failed_drive_grafana.png "Grafana dashboard showing 24 hours disk activity")
+![Grafana dashboard showing 24 hours disk activity](/images/blog/investigating-zfs-cksum-errors/zfs_failed_drive_grafana.png 'Grafana dashboard showing 24 hours disk activity')
 
 Although the old _WDC_WD20EARX_ disk from `mirror-2` was seemingly successfully corrected (I will have to check that later), the much newer _WDC_WD40EFRX_ was, again, running into problems.
 Issuing `smartctl -A /dev/sdg` revealed that the disk had an abnormally high `Raw_Read_Error_Rate`, strongly indicating a hardware level fault of the disk:
