@@ -16,7 +16,7 @@ My home NAS was giving READ and CKSUM errors on two distinct HDDs in different m
 
 <!--more-->
 
-# What happened
+## What happened
 
 After using a FreeNAS managed ZFS pool for many years, in January 2021 I switched to an Arch Linux / OpenZFS based system for my personal NAS solution at home. Moving the 4x 4TB disks between "BSD-ZFS" and OpenZFS and importing the pool _just worked_, so a couple months later I went ahead and added two much older 2TB disks as a third mirror to the pool. While this has been working fine so far, a recent scrub revealed some READ and CKSUM errors on two drives in the pool:
 
@@ -48,7 +48,7 @@ errors: No known data errors
 
 A small amount of errors can happen due to a variety of reasons, like bad cabling, software hickups, etc. [CITATION_NEEDED] These are in no way problematic for ZFS (or other file systems for that matter). While the numbers I saw were not alarming, they were enough for me to investigate further if there was more going on behind the scenes. So I initiated a `zpool scrub vol1` to let ZFS check every single block and verify it.
 
-# Investigating ZFS errors
+## Investigating ZFS errors
 
 Looking at `zpool status -v` after the finished scrub revealed an alarming amount of CKSUM errors:
 
@@ -86,7 +86,7 @@ errors: No known data errors
 
 While some amount of errors in each category is probably nothing to worry about, having millions of checksum blocks corrupted really isn't the outcome I was hoping for. Reconstructing the original cause of this is still not possible. Sure, both disks aren't exactly factory new, but since their age is years apart, they have different capacities, and they weren't even used in the same system for the same amount of time, I found it very unlikely that both disks failed on a hardware level. While researching on the internet about this I found suggestions about replacing the cabling and/or possibly even the drive controller. Since I wasn't able to do either without waiting for a package delivery, I wanted to let ZFS handle issues that it found using the available parity data and investigate wether this was a one-off thing or possibly an ongoing, slow corruption mess.
 
-# Trying to resolve the reported ZFS errors
+## Trying to resolve the reported ZFS errors
 
 So I went ahead and did what `zpool status` suggested and cleared the error counts using `zpool clear vol1`. This took a couple seconds and automatically started a resilver of the pool right after it finished, which also took a considerable amount of time (about 12 hours) and greeted me with the following:
 
@@ -119,7 +119,7 @@ errors: No known data errors
 
 Alright, so everything is fine again... or is it? *vsaucemusic*
 
-# Setback
+## Setback
 
 Of course running a resilver doesn't mean that there were no errors during the process. To verify that the errors were gone for real I ran another `zpool scrub vol1`... which resulted in yet another (heartrate increasing) error message from `zed`:
 
@@ -200,7 +200,7 @@ ID# ATTRIBUTE_NAME          FLAG     VALUE WORST THRESH TYPE      UPDATED  WHEN_
 There was no reason to continue with the scrub, since it probably wouldn't have finished in a timely matter, and even if it did there would still be errors on the disk itself. So I aborted the scrub with `zpool scrub -s vol1`.
 As a last effort to reviving the disk without a replacement, I shutdown the server completely, allowing the disks to also fully shutdown and reinitialize on the next boot. This didn't help though, in fact importing the pool took minutes instead of seconds, probably due to the failing disk having problems to read data.
 
-# Acceptance
+## Acceptance
 
 So I went online to buy a new disk. Yeah I know, having a spare handy (or even a hot-spare) would have been much better, but I didn't have the money to do that.
 Since the failing disk was a Western Digital model, I wanted to replace it with a similar disk from the same manufacturer. This was easier said than done though, since WD changed their marketing due to the whole [CMR/SMR scandal][1]. Reviews on Amazon were all over the place, with users receiving hardware with different model numbers than advertised, even on WD RED Plus product pages. This made me reconsider purchasing Western Digital again, as well as using Amazon as a shop. I ended up purchasing the Seagate Ironwolf 4TB (ST4000VN008) from another shop instead.
