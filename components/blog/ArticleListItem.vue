@@ -13,7 +13,7 @@
         "
         :src="article.img"
         alt=""
-        class="object-cover mb-2 h-32 border rounded"
+        class="object-cover mb-2 h-32 border rounded shadow"
       />
       <div>
         <h2 class="font-bold text-gray-900 dark:text-gray-200 text-2xl my-0">
