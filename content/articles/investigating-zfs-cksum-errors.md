@@ -117,7 +117,7 @@ config:
 errors: No known data errors
 ```
 
-Alright, so everything is fine again... or is it? *vsaucemusic*
+Alright, so everything is fine again... or is it? _vsaucemusic_
 
 # Setback
 
@@ -204,6 +204,5 @@ As a last effort to reviving the disk without a replacement, I shutdown the serv
 
 So I went online to buy a new disk. Yeah I know, having a spare handy (or even a hot-spare) would have been much better, but I didn't have the money to do that.
 Since the failing disk was a Western Digital model, I wanted to replace it with a similar disk from the same manufacturer. This was easier said than done though, since WD changed their marketing due to the whole [CMR/SMR scandal][1]. Reviews on Amazon were all over the place, with users receiving hardware with different model numbers than advertised, even on WD RED Plus product pages. This made me reconsider purchasing Western Digital again, as well as using Amazon as a shop. I ended up purchasing the Seagate Ironwolf 4TB (ST4000VN008) from another shop instead.
-
 
 [1]: https://www.youtube.com/watch?v=aztTf2gI55k
