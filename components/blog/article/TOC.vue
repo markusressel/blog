@@ -16,7 +16,7 @@
             :to="`#${link.id}`"
             class="hover:underline"
             :class="{
-              'py-2': link.depth === 2,
+              '': link.depth === 2,
               'ml-3 pb-2': link.depth === 3,
             }"
             >{{ link.text }}</nuxtLink
