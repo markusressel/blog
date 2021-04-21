@@ -66,6 +66,7 @@ a {
 /* Blockquote */
 
 .nuxt-content blockquote {
+  @apply rounded-lg;
   /* Blue 500 A20 */
   background: #2196f320;
   /* Blue 500 A50 */
