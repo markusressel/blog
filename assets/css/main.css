@@ -67,6 +67,7 @@ a {
 
 .nuxt-content blockquote {
   @apply rounded-lg;
+  @apply shadow-lg;
   /* Blue 500 A20 */
   background: #2196f320;
   /* Blue 500 A50 */
@@ -95,6 +96,7 @@ a {
 }
 
 .nuxt-content-highlight > pre {
+  @apply shadow-lg;
   border-radius: 1rem;
 }
 
@@ -172,6 +174,7 @@ p > code {
 /* Tables */
 
 table {
+  @apply shadow-lg;
   display: inline-block;
   overflow: auto;
   max-width: 100%;
@@ -184,7 +187,6 @@ table {
   margin: 25px 0;
   font-size: 0.9em;
   font-family: sans-serif;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
 }
 
 thead tr {
