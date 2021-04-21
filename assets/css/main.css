@@ -90,7 +90,7 @@ a {
   right: 0;
   line-height: 1;
   margin-right: 1rem;
-  margin-top: 0.75rem;
+  margin-top: 0.5rem;
 }
 
 .nuxt-content-highlight > pre {
@@ -104,7 +104,7 @@ a {
 
 .nuxt-content-highlight pre[class*='language-'] {
   /* @apply bg-gray-900; */
-  padding-top: 2rem;
+  padding-top: 0.9rem;
 }
 
 pre[class*='language-'].line-numbers {
