@@ -114,6 +114,8 @@ export default {
 
 .nuxt-content p img {
   @apply w-full;
+  @apply rounded;
+  @apply shadow-xl;
 }
 
 .icon.icon-link {

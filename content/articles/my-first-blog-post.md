@@ -29,7 +29,7 @@ Strikethrough uses two tildes. ~~Scratch this.~~
 
 This sentence contains an `inline` code section.
 
-```python{2,3-5}[example.py]
+```python{2,5-6}[example.py]
 def function(a: str, b: int) -> None:
   return a * b
 
