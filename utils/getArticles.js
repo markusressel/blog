@@ -30,8 +30,16 @@ export default async ($content, searchQuery, tags, limit, page) => {
     const tagsList = await $content('tags')
       .where({ name: { $containsAny: article.tags } })
       .fetch()
-    const tags = Object.assign({}, ...tagsList.map((s) => ({ [s.name]: s })))
-    article.tags = tags
+    const articleTags = Object.assign({}, ...tagsList.map((s) => ({ [s.name]: s })))
+    article.tags = articleTags
+
+    // filter articles by tag
+    if (tags instanceof Array) {
+      const tagNames = Object.keys(articleTags).map((x) => x.toLowerCase())
+      if (!tags.some(r=> tagNames.includes(r.toLowerCase()))) {
+        continue
+      }
+    }
 
     const authorsList = await $content('authors')
       .where({ name: { $containsAny: article.authors } })
