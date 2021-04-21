@@ -2,17 +2,17 @@
 dummy: true
 createdAt: 2021-04-20
 updatedAt: 2021-04-20
-title: Investigating ZFS cksum errors
+title: Investigating inconspicuous ZFS CKSUM Errors
 # TODO:
-img: https://images.unsplash.com/photo-1577605260126-fe10d76fe088?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80
-alt: Investigating ZFS cksum errors
+img: https://images.unsplash.com/photo-1484662020986-75935d2ebc66?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1350&q=80
+alt: Investigating inconspicuous ZFS CKSUM errors
 authors:
   - Markus Ressel
 tags:
   - zfs
 ---
 
-My home NAS was giving READ and CKSUM errors on two distinct HDDs in different mirrors of the same pool. Let's investigate.
+My home NAS was giving READ and CKSUM errors on two distinct HDDs in different mirrors of the same pool, which turned out to be a much bigger issue than anticipated. Let's investigate.
 
 <!--more-->
 
