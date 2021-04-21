@@ -12,13 +12,15 @@
             'font-semibold': link.depth === 2,
           }"
         >
-          <a :href="`#${link.id}`"
+          <a
+            :href="`#${link.id}`"
             class="hover:underline"
             :class="{
               '': link.depth === 2,
               'ml-3 pb-2': link.depth === 3,
             }"
-            >{{ link.text }}</a>
+            >{{ link.text }}</a
+          >
         </li>
       </ul>
     </nav>
