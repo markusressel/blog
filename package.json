@@ -24,6 +24,7 @@
     "prism-themes": "^1.6.0",
     "prismjs": "^1.23.0",
     "vue-content-loader": "^0.2",
+    "vue-cookie-accept-decline": "^5.4.0",
     "vue-material": "^1.0.0-beta-15",
     "vuescroll": "^4.17.3"
   },
