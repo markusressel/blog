@@ -28,8 +28,11 @@ export default {
   methods: {
     cycleTheme() {
       if (!this.hasUserAllowedStorage) {
-        this.$toasted.show('Please accept cookies, so I can save your theme selection.', {
+        this.$toasted.show('Please accept cookies, otherwise I can\'t save your theme selection for your next visit.', {
+          type: 'error',
           duration: 5000,
+          keepOnHover: true,
+          singleton: true
         })
         return;
       }

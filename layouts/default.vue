@@ -26,13 +26,8 @@
       @clicked-decline="cookieClickedDecline">
 
       <!-- Optional -->
-      <div slot="postponeContent">
-          &times;
-      </div>
-
-      <!-- Optional -->
       <div slot="message">
-          We use cookies to ensure you get the best experience on our website. <a href="https://cookiesandyou.com/" target="_blank">Learn More...</a>
+          To save your user settings (like the theme) I use local storage. If you don't need that, just opt out. <a href="https://cookiesandyou.com/" target="_blank">Learn More...</a>
       </div>
 
       <!-- Optional -->
@@ -42,7 +37,7 @@
 
       <!-- Optional -->
       <div slot="acceptContent">
-          GOT IT!
+        GOT IT!
       </div>
     </vue-cookie-accept-decline>
     <Footer />
