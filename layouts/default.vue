@@ -12,6 +12,32 @@
         <Nuxt />
       </main>
     </vue-scroll>
+    <vue-cookie-accept-decline
+      :ref="'cookieNoticePanel'"
+      :elementId="'cookieNoticePanel'"
+      :debug="false"
+      :position="'bottom'"
+      :type="'bar'"
+      :disableDecline="false"
+      :transitionName="'slideFromBottom'"
+      :showPostponeButton="false"
+      @status="cookieStatus"
+      @clicked-accept="cookieClickedAccept"
+      @clicked-decline="cookieClickedDecline"
+    >
+      <!-- Optional -->
+      <div slot="message">
+        To save your user settings (like the theme) I use local storage. If you
+        don't need that, just opt out.
+        <a href="https://cookiesandyou.com/" target="_blank">Learn More...</a>
+      </div>
+
+      <!-- Optional -->
+      <div slot="declineContent">OPT OUT</div>
+
+      <!-- Optional -->
+      <div slot="acceptContent">GOT IT!</div>
+    </vue-cookie-accept-decline>
     <Footer />
   </div>
 </template>
@@ -48,6 +74,20 @@ export default {
         },
       },
     }
+  },
+  methods: {
+    cookieStatus(event) {
+      console.log(event)
+    },
+    cookieClickedAccept() {
+      console.log('cookieClickedAccept')
+    },
+    cookieClickedDecline() {
+      console.log('cookieClickedDecline')
+    },
+  },
+  mounted() {
+    this.$root.$on('removeposition', (filter) => {})
   },
 }
 </script>

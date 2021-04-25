@@ -226,3 +226,14 @@ tbody tr:hover {
   /* Blue 100 A20 */
   background-color: #bbdefb20;
 }
+
+/* Cookie Notice */
+
+.cookie__bar {
+  @apply bg-gray-100;
+  @apply bg-gray-300;
+}
+.dark-mode .cookie__bar {
+  @apply bg-gray-900;
+  @apply border-gray-800;
+}

@@ -21,34 +21,39 @@ export default {
     IconDark,
   },
   mounted: function () {
-    // initialize theme from cookie
-    let settings = this.$cookies.get('settings')
-    if (settings !== undefined) {
-      this.currentTheme = settings.theme
-    } else {
-      this.currentTheme = 'system'
-    }
+    // initialize from localStorage
+    this.currentTheme = localStorage.getItem('nuxt-color-mode') || 'system'
+    this.$colorMode.preference = this.currentTheme
   },
   methods: {
     cycleTheme() {
+      if (!this.hasUserAllowedStorage) {
+        this.$toasted.show(
+          "Please accept cookies, otherwise I can't save your theme selection for your next visit.",
+          {
+            type: 'error',
+            duration: 5000,
+            keepOnHover: true,
+            singleton: true,
+          }
+        )
+        return
+      }
       let index = this.themes.indexOf(this.currentTheme)
       let nextIndex = (index + 1) % this.themes.length
       let nextTheme = this.themes[nextIndex]
       this.currentTheme = nextTheme
-      this.$cookies.set(
-        'settings',
-        {
-          theme: nextTheme,
-        },
-        {
-          maxAge: 2147483647,
-        }
-      )
-      this.$colorMode.preference = nextTheme
+      this.$colorMode.preference = this.currentTheme
     },
   },
   data() {
     return {
+      get hasUserAllowedStorage() {
+        return (
+          localStorage.getItem('vue-cookie-accept-decline-cookieNoticePanel') ==
+            'accept' || false
+        )
+      },
       selected: false,
       themes: ['system', 'light', 'dark'],
       currentTheme: 'system',
