@@ -63,6 +63,16 @@ a {
 
 /* MARKDOWN CONTENT */
 
+/* Header Link Icon */
+span.icon.icon-link {
+  mask: url("~assets/icons/icon-hashtag-md.svg");
+  mask-position: 0px 2px;
+  @apply bg-gray-800;
+}
+.dark-mode span.icon.icon-link {
+  @apply bg-gray-300;
+}
+
 /* Blockquote */
 
 .nuxt-content blockquote {
