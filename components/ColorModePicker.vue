@@ -21,13 +21,9 @@ export default {
     IconDark,
   },
   mounted: function () {
-    // initialize theme from cookie
-    let settings = this.$cookies.get('settings')
-    if (settings !== undefined) {
-      this.currentTheme = settings.theme
-    } else {
-      this.currentTheme = 'system'
-    }
+    // initialize from localStorage
+    this.currentTheme = localStorage.getItem("nuxt-color-mode") || "system"
+    this.$colorMode.preference = this.currentTheme
   },
   methods: {
     cycleTheme() {
@@ -35,15 +31,6 @@ export default {
       let nextIndex = (index + 1) % this.themes.length
       let nextTheme = this.themes[nextIndex]
       this.currentTheme = nextTheme
-      this.$cookies.set(
-        'settings',
-        {
-          theme: nextTheme,
-        },
-        {
-          maxAge: 2147483647,
-        }
-      )
       this.$colorMode.preference = nextTheme
     },
   },

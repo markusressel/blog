@@ -13,8 +13,8 @@
       </main>
     </vue-scroll>
     <vue-cookie-accept-decline
-      :ref="'myPanel1'"
-      :elementId="'myPanel1'"
+      :ref="'cookieNoticePanel'"
+      :elementId="'cookieNoticePanel'"
       :debug="false"
       :position="'bottom'"
       :type="'bar'"
@@ -83,6 +83,9 @@ export default {
     }
   },
   methods: {
+    cookieStatus(event) {
+      console.log(event)
+    },
     cookieClickedAccept() {
       console.log("cookieClickedAccept")
     },
