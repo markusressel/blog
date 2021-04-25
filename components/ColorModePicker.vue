@@ -22,19 +22,22 @@ export default {
   },
   mounted: function () {
     // initialize from localStorage
-    this.currentTheme = localStorage.getItem("nuxt-color-mode") || "system"
+    this.currentTheme = localStorage.getItem('nuxt-color-mode') || 'system'
     this.$colorMode.preference = this.currentTheme
   },
   methods: {
     cycleTheme() {
       if (!this.hasUserAllowedStorage) {
-        this.$toasted.show('Please accept cookies, otherwise I can\'t save your theme selection for your next visit.', {
-          type: 'error',
-          duration: 5000,
-          keepOnHover: true,
-          singleton: true
-        })
-        return;
+        this.$toasted.show(
+          "Please accept cookies, otherwise I can't save your theme selection for your next visit.",
+          {
+            type: 'error',
+            duration: 5000,
+            keepOnHover: true,
+            singleton: true,
+          }
+        )
+        return
       }
       let index = this.themes.indexOf(this.currentTheme)
       let nextIndex = (index + 1) % this.themes.length
@@ -46,7 +49,10 @@ export default {
   data() {
     return {
       get hasUserAllowedStorage() {
-        return localStorage.getItem("vue-cookie-accept-decline-cookieNoticePanel") == "accept" || false
+        return (
+          localStorage.getItem('vue-cookie-accept-decline-cookieNoticePanel') ==
+            'accept' || false
+        )
       },
       selected: false,
       themes: ['system', 'light', 'dark'],

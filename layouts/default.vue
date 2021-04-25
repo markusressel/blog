@@ -23,22 +23,20 @@
       :showPostponeButton="false"
       @status="cookieStatus"
       @clicked-accept="cookieClickedAccept"
-      @clicked-decline="cookieClickedDecline">
-
+      @clicked-decline="cookieClickedDecline"
+    >
       <!-- Optional -->
       <div slot="message">
-          To save your user settings (like the theme) I use local storage. If you don't need that, just opt out. <a href="https://cookiesandyou.com/" target="_blank">Learn More...</a>
+        To save your user settings (like the theme) I use local storage. If you
+        don't need that, just opt out.
+        <a href="https://cookiesandyou.com/" target="_blank">Learn More...</a>
       </div>
 
       <!-- Optional -->
-      <div slot="declineContent">
-        OPT OUT
-      </div>
+      <div slot="declineContent">OPT OUT</div>
 
       <!-- Optional -->
-      <div slot="acceptContent">
-        GOT IT!
-      </div>
+      <div slot="acceptContent">GOT IT!</div>
     </vue-cookie-accept-decline>
     <Footer />
   </div>
@@ -82,15 +80,15 @@ export default {
       console.log(event)
     },
     cookieClickedAccept() {
-      console.log("cookieClickedAccept")
+      console.log('cookieClickedAccept')
     },
     cookieClickedDecline() {
-      console.log("cookieClickedDecline")
+      console.log('cookieClickedDecline')
     },
   },
   mounted() {
-    this.$root.$on('removeposition', filter => { })
-  }
+    this.$root.$on('removeposition', (filter) => {})
+  },
 }
 </script>
 
