@@ -29,6 +29,7 @@ export default {
     '~/plugins/vuescroll', 
     '~/plugins/prism',
     '~/plugins/vue-cookie-accept-decline',
+    '~/plugins/vue-toasted',
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components

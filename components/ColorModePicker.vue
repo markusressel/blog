@@ -27,15 +27,24 @@ export default {
   },
   methods: {
     cycleTheme() {
+      if (!this.hasUserAllowedStorage) {
+        this.$toasted.show('Please accept cookies, so I can save your theme selection.', {
+          duration: 5000,
+        })
+        return;
+      }
       let index = this.themes.indexOf(this.currentTheme)
       let nextIndex = (index + 1) % this.themes.length
       let nextTheme = this.themes[nextIndex]
       this.currentTheme = nextTheme
-      this.$colorMode.preference = nextTheme
+      this.$colorMode.preference = this.currentTheme
     },
   },
   data() {
     return {
+      get hasUserAllowedStorage() {
+        return localStorage.getItem("vue-cookie-accept-decline-cookieNoticePanel") == "accept" || false
+      },
       selected: false,
       themes: ['system', 'light', 'dark'],
       currentTheme: 'system',
