@@ -174,8 +174,7 @@ Looking at the server monitoring, the disk wasn't moving any meaningful data des
 
 ![Grafana dashboard showing 24 hours disk activity](/images/blog/investigating-zfs-cksum-errors/zfs_failed_drive_grafana.png 'Grafana dashboard showing 24 hours disk activity')
 
-Although the old _WDC_WD20EARX_ disk from `mirror-2` was seemingly successfully corrected (I will have to check that later), the much newer _WDC_WD40EFRX_ was, again, running into problems.
-Issuing `smartctl -A /dev/sdg` revealed that the disk had an abnormally high `Raw_Read_Error_Rate`, strongly indicating a hardware level fault of the disk:
+Although the old _WDC_WD20EARX_ disk from `mirror-2` was seemingly successfully corrected (I will have to check that later), the much newer _WDC_WD40EFRX_ was, again, running into problems. Issuing `smartctl -A /dev/sdg` revealed that the disk had an abnormally high `Raw_Read_Error_Rate`, strongly indicating a hardware level fault of the disk:
 
 ```
 === START OF READ SMART DATA SECTION ===
@@ -201,13 +200,77 @@ ID# ATTRIBUTE_NAME          FLAG     VALUE WORST THRESH TYPE      UPDATED  WHEN_
 200 Multi_Zone_Error_Rate   0x0008   100   253   000    Old_age   Offline      -       0
 ```
 
-There was no reason to continue with the scrub, since it probably wouldn't have finished in a timely matter, and even if it did there would still be errors on the disk itself. So I aborted the scrub with `zpool scrub -s vol1`.
-As a last effort to revive the disk without replacing it, I shutdown the server completely, allowing all disks to also fully shutdown and reinitialize on the next boot. This didn't help though, in fact importing the pool took minutes instead of seconds, probably due to the failing disk having problems to read data.
+There was no reason to continue with the scrub, since it probably wouldn't have finished in a timely matter, and even if it did t/dev/disk/by-id/ata-ST4000VN008-2DR166_ZDH9KMBQhere would still be errors on the disk itself. So I aborted the scrub with `zpool scrub -s vol1`. As a last effort to revive the disk without replacing it, I shutdown the server completely, allowing all disks to also fully shutdown and reinitialize on the next boot. This didn't help though, in fact importing the pool took minutes instead of seconds, probably due to the failing disk having problems to read data.
 
 ## Acceptance
 
-So I went online to buy a new disk. Yeah I know, having a spare handy (or even a hot-spare) would have been much better, but I didn't have the money to do that.
-Since the failing disk was a Western Digital model, I wanted to replace it with a similar disk from the same manufacturer. This was easier said than done though, since WD changed their marketing due to the whole [CMR/SMR scandal][1]. Reviews on Amazon were all over the place, with users receiving hardware with different model numbers than advertised, even on WD RED Plus product pages. This made me reconsider purchasing Western Digital again, as well as using Amazon as a shop. I ended up purchasing the Seagate Ironwolf 4TB (ST4000VN008) from another shop instead.
+So I went online to buy a new disk. Yeah I know, having a spare handy (or even a hot-spare) would have been much better, but I didn't have the money to do that. Since the failing disk was a Western Digital model, I wanted to replace it with a similar disk from the same manufacturer. This was easier said than done though, since WD changed their marketing due to the whole [CMR/SMR scandal][1]. Reviews on Amazon were all over the place, with users receiving hardware with different model numbers than advertised, even on WD RED Plus product pages. This made me reconsider purchasing Western Digital again, as well as using Amazon as a shop. I ended up purchasing the Seagate Ironwolf 4TB (ST4000VN008) from another shop instead.
+
+After 5 days the disk finally arrived (of course there was a weekend in between...). I shut down the server, removed the old disk and inserted the new one in the same spot. A `zpool status vol1` made me aware of the fact that the disk was now completely unavailable:
+
+```
+  pool: vol1
+ state: DEGRADED
+status: One or more devices is currently being resilvered.  The pool will
+        continue to function, possibly in a degraded state.
+action: Determine if the device needs to be replaced, and clear the errors
+        using 'zpool clear' or replace the device with 'zpool replace'.
+   see: https://openzfs.github.io/openzfs-docs/msg/ZFS-8000-9P
+config:
+
+        NAME                                                STATE     READ WRITE CKSUM
+        vol1                                                DEGRADED     0     0     0
+          mirror-0                                          DEGRADED     0     0     0
+            74259793414679279                               UNAVAIL      0     0     0  was /dev/disk/by-id/ata-WDC_WD40EFRX-68N32N0_WD-WCC7K3RUX450-part2
+            ata-ST4000VN008-2DR166_ZM414J8T-part2           ONLINE       0     0     0
+          mirror-1                                          ONLINE       0     0     0
+            ata-ST4000VN008-2DR166_ZM414FPG-part2           ONLINE       0     0     0
+            ata-WDC_WD40EFRX-68N32N0_WD-WCC7K6TEHZD2-part2  ONLINE       0     0     0
+          mirror-2                                          ONLINE       0     0     0
+            ata-WDC_WD20EARX-00PASB0_WD-WMAZA5058866-part2  ONLINE       0     0     0
+            ata-ST2000DM001-1CH164_Z1E532WY-part2           ONLINE       0     0     0
+
+errors: No known data errors
+```
+
+With the new disk installed, I had to figure out its name. To do that I used the following command, which outputs both the short and long device name/path:
+```
+> lsblk -r|awk 'NR==1{print $0" DEVICE-ID(S)"}NR>1{dev=$1;printf $0" 
+";system("find /dev/disk/by-id -lname \"*"dev"\" -printf \" %p\"");print "";}'
+```
+
+To make sure I had the right disk, I compared the drive name to the ones already inside of the pool and made sure it wasn't already part of another mirror. Then I went ahead and let ZFS use the new disk using `zpool replace vol1 /dev/disk/by-id/ata-WDC_WD40EFRX-68N32N0_WD-WCC7K3RUX450-part2 /dev/disk/by-id/ata-ST4000VN008-2DR166_ZDH9KMBQ`. It took a couple of seconds and then finished without an error. Looking at `zpool status vol1` once again revealed that ZFS was already resilvering the new disk:
+
+```
+  pool: vol1
+ state: DEGRADED
+status: One or more devices is currently being resilvered.  The pool will
+        continue to function, possibly in a degraded state.
+action: Wait for the resilver to complete.
+  scan: resilver in progress since Mon Apr 26 18:35:04 2021
+        3.99T scanned at 10.9G/s, 2.50T issued at 6.86G/s, 7.40T total
+        706M resilvered, 33.78% done, 00:12:11 to go
+config:
+
+        NAME                                                STATE     READ WRITE CKSUM
+        vol1                                                DEGRADED     0     0     0
+          mirror-0                                          DEGRADED     0     0     0
+            replacing-0                                     DEGRADED     0     0     0
+              74259793414679279                             UNAVAIL      0     0     0  was /dev/disk/by-id/ata-WDC_WD40EFRX-68N32N0_WD-WCC7K3RUX450-part2
+              ata-ST4000VN008-2DR166_ZDH9KMBQ               ONLINE       0     0     0  (resilvering)
+            ata-ST4000VN008-2DR166_ZM414J8T-part2           ONLINE       0     0     0
+          mirror-1                                          ONLINE       0     0     0
+            ata-ST4000VN008-2DR166_ZM414FPG-part2           ONLINE       0     0     0
+            ata-WDC_WD40EFRX-68N32N0_WD-WCC7K6TEHZD2-part2  ONLINE       0     0     0
+          mirror-2                                          ONLINE       0     0     0
+            ata-WDC_WD20EARX-00PASB0_WD-WMAZA5058866-part2  ONLINE       0     0     0
+            ata-ST2000DM001-1CH164_Z1E532WY-part2           ONLINE       0     0     0
+
+errors: No known data errors
+```
+
+
+
 
 [1]: https://www.youtube.com/watch?v=aztTf2gI55k
 [2]: https://jrs-s.net/2015/02/03/will-zfs-and-non-ecc-ram-kill-your-data/
