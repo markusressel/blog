@@ -234,8 +234,9 @@ errors: No known data errors
 ```
 
 With the new disk installed, I had to figure out its name. To do that I used the following command, which outputs both the short and long device name/path:
+
 ```
-> lsblk -r|awk 'NR==1{print $0" DEVICE-ID(S)"}NR>1{dev=$1;printf $0" 
+> lsblk -r|awk 'NR==1{print $0" DEVICE-ID(S)"}NR>1{dev=$1;printf $0"
 ";system("find /dev/disk/by-id -lname \"*"dev"\" -printf \" %p\"");print "";}'
 ```
 
@@ -268,9 +269,6 @@ config:
 
 errors: No known data errors
 ```
-
-
-
 
 [1]: https://www.youtube.com/watch?v=aztTf2gI55k
 [2]: https://jrs-s.net/2015/02/03/will-zfs-and-non-ecc-ram-kill-your-data/
