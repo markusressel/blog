@@ -334,7 +334,7 @@ To be sure that the old disk was indeed defective, I attached it to my desktop a
 
 ```
 Checking blocks 0 to 3907018583
-Checking for bad blocks (read-only test): 
+Checking for bad blocks (read-only test):
 ^C
 Interrupted at block 32281728
 ```
@@ -365,11 +365,6 @@ ID# ATTRIBUTE_NAME          FLAG     VALUE WORST THRESH TYPE      UPDATED  WHEN_
 ```
 
 # Conclusion
-
-
-
-
-
 
 [1]: https://www.youtube.com/watch?v=aztTf2gI55k
 [2]: https://jrs-s.net/2015/02/03/will-zfs-and-non-ecc-ram-kill-your-data/
