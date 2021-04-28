@@ -46,7 +46,7 @@ config:
 errors: No known data errors
 ```
 
-A small amount of errors can happen due to a variety of reasons, like bad cabling, software hickups, etc. and can be unproblematic. And even though [you don't really ECC memory for ZFS][2], this particular server has 32G of ECC memory in it. While the numbers I saw were not alarming, they were enough for me to investigate further if there was more going on behind the scenes.
+A small amount of errors can happen due to a variety of reasons, like bad cabling, software hickups, etc. and can be unproblematic. And even though [you don't really need ECC memory for ZFS][2], this particular server has 32G of ECC memory in it. While the numbers I saw were not alarming, they were enough for me to investigate further if there was more going on behind the scenes.
 
 ## Investigating ZFS errors
 
