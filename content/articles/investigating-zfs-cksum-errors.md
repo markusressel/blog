@@ -46,11 +46,12 @@ config:
 errors: No known data errors
 ```
 
-A small amount of errors can happen due to a variety of reasons, like bad cabling, software hickups, etc. [CITATION_NEEDED] These are in no way problematic for ZFS (or other file systems for that matter). While the numbers I saw were not alarming, they were enough for me to investigate further if there was more going on behind the scenes. So I initiated a `zpool scrub vol1` to let ZFS check every single block and verify it.
+A small amount of errors can happen due to a variety of reasons, like bad cabling, software hickups, etc. [CITATION_NEEDED] These are in no way problematic for ZFS (or other file systems for that matter). While the numbers I saw were not alarming, they were enough for me to investigate further if there was more going on behind the scenes.
 
 ## Investigating ZFS errors
 
-Looking at `zpool status -v` after the finished scrub revealed an alarming amount of CKSUM errors:
+First of all I initiated a `zpool scrub vol1` to let ZFS check every single block of all disks and verify it.
+Looking at `zpool status -v` after the finished scrub revealed an _alarming_ amount of CKSUM errors:
 
 ```
 ZFS has finished a scrub:
@@ -84,11 +85,11 @@ config:
 errors: No known data errors
 ```
 
-While some amount of errors in each category is probably nothing to worry about, having millions of checksum blocks corrupted really isn't the outcome I was hoping for. Reconstructing the original cause of this is still not possible. Sure, both disks aren't exactly factory new, but since their age is years apart, they have different capacities, and they weren't even used in the same system for the same amount of time, I found it very unlikely that both disks failed on a hardware level.
+As mentioned before, some amount of errors in each category is probably nothing to worry about, but having millions of checksum blocks corrupted really wasn't the outcome I was hoping for. Sure, both disks aren't exactly factory new, but since their age is years apart, they have different capacities, and they weren't even used in the same system for the same amount of time, I found it very unlikely that both disks failed on a hardware level. Still, I had to do _something_ about it.
 
 ## Trying to resolve the reported ZFS errors
 
-While researching on the internet about this I found suggestions about replacing the cabling and/or possibly even the drive controller. Since I wasn't able to do either without waiting for a package delivery, I wanted to let ZFS handle issues that it found using the available parity data and investigate wether this was a one-off thing or possibly an ongoing, slow corruption mess. So I went ahead and did what `zpool status` suggested and cleared the error counts using `zpool clear vol1`. This took a couple seconds and automatically started a resilver of the pool right after it finished, which also took a considerable amount of time (about 12 hours) and greeted me with the following:
+While researching online about small amounts of errors, I found suggestions about replacing the cabling and/or possibly even the drive controller. Since I wasn't able to do either without waiting for a package delivery, I wanted to give ZFS a shot at handling the errors that it detected using the available parity data and investigate wether this was a one-off thing or possibly an ongoing, slow corruption mess lateron. So I went ahead and did what `zpool status` suggested and cleared the error counts using `zpool clear vol1`. This took a couple seconds and automatically started a resilver of the pool right after, which also took a considerable amount of time (about 12 hours) and greeted me with the following:
 
 ```
 ZFS has finished a resilver:
@@ -121,7 +122,7 @@ Alright, so everything is fine again... or is it? _vsaucemusic_
 
 ## Setback
 
-Of course running a resilver doesn't mean that there were no errors during the process. To verify that the errors were gone for real I ran another `zpool scrub vol1`... which resulted in yet another (heartrate increasing) error message from `zed`:
+To verify that the errors were gone for real I ran another `zpool scrub vol1`... which resulted in yet another (heartrate increasing) error message from `zed`:
 
 ```
 The number of checksum errors associated with a ZFS device
@@ -174,7 +175,7 @@ Looking at the server monitoring, the disk wasn't moving any meaningful data des
 
 ![Grafana dashboard showing 24 hours disk activity](/images/blog/investigating-zfs-cksum-errors/zfs_failed_drive_grafana.png 'Grafana dashboard showing 24 hours disk activity')
 
-Although the old _WDC_WD20EARX_ disk from `mirror-2` was seemingly successfully corrected (I will have to check that later), the much newer _WDC_WD40EFRX_ was, again, running into problems. Issuing `smartctl -A /dev/sdg` revealed that the disk had an abnormally high `Raw_Read_Error_Rate`, strongly indicating a hardware level fault of the disk:
+Although the old _WDC_WD20EARX_ 2TB disk from `mirror-2` was seemingly successfully corrected, the much newer _WDC_WD40EFRX_ was, again, running into problems. Issuing `smartctl -A /dev/sdg` revealed that the disk had an abnormally high `Raw_Read_Error_Rate`, strongly indicating a hardware level fault of the disk:
 
 ```
 === START OF READ SMART DATA SECTION ===
@@ -200,13 +201,13 @@ ID# ATTRIBUTE_NAME          FLAG     VALUE WORST THRESH TYPE      UPDATED  WHEN_
 200 Multi_Zone_Error_Rate   0x0008   100   253   000    Old_age   Offline      -       0
 ```
 
-There was no reason to continue with the scrub, since it probably wouldn't have finished in a timely matter, and even if it did t/dev/disk/by-id/ata-ST4000VN008-2DR166_ZDH9KMBQhere would still be errors on the disk itself. So I aborted the scrub with `zpool scrub -s vol1`. As a last effort to revive the disk without replacing it, I shutdown the server completely, allowing all disks to also fully shutdown and reinitialize on the next boot. This didn't help though, in fact importing the pool took minutes instead of seconds, probably due to the failing disk having problems to read data.
+There was no reason to continue with the scrub, since it probably wouldn't have finished in a timely matter, and even if it did there would still be errors on the disk itself. So I aborted the scrub with `zpool scrub -s vol1`. As a last effort to revive the disk without replacing it, I shutdown the server completely, allowing all disks to also fully shutdown and reinitialize on the next boot. This didn't help though, in fact importing the pool took minutes instead of seconds, probably due to the failing disk having problems to read data.
 
 ## Acceptance
 
 So I went online to buy a new disk. Yeah I know, having a spare handy (or even a hot-spare) would have been much better, but I didn't have the money to do that. Since the failing disk was a Western Digital model, I wanted to replace it with a similar disk from the same manufacturer. This was easier said than done though, since WD changed their marketing due to the whole [CMR/SMR scandal][1]. Reviews on Amazon were all over the place, with users receiving hardware with different model numbers than advertised, even on WD RED Plus product pages. This made me reconsider purchasing Western Digital again, as well as using Amazon as a shop. I ended up purchasing the Seagate Ironwolf 4TB (ST4000VN008) from another shop instead.
 
-After 5 days the disk finally arrived (of course there was a weekend in between...). I shut down the server, removed the old disk and inserted the new one in the same spot. A `zpool status vol1` made me aware of the fact that the disk was now completely unavailable:
+After 5 days of painful nervousness (actually it wasn't that bad) the new disk finally arrived since, of course, there was a weekend in between. So I opened the package, shut down the server, removed the old disk and inserted the new one in the same spot and restarted the server. A `zpool status vol1` made me aware of the fact that the disk was now completely unavailable:
 
 ```
   pool: vol1
@@ -233,14 +234,14 @@ config:
 errors: No known data errors
 ```
 
-With the new disk installed, I had to figure out its name. To do that I used the following command, which outputs both the short and long device name/path:
+With the new disk installed, I had to figure out its name to be able to tell ZFS to use it as a replacement. To do that I used the following command, which outputs both the short and long device name/path:
 
 ```
 > lsblk -r|awk 'NR==1{print $0" DEVICE-ID(S)"}NR>1{dev=$1;printf $0"
 ";system("find /dev/disk/by-id -lname \"*"dev"\" -printf \" %p\"");print "";}'
 ```
 
-To make sure I had the right disk, I compared the drive name to the ones already inside of the pool and made sure it wasn't already part of another mirror. Then I went ahead and let ZFS use the new disk using `zpool replace vol1 /dev/disk/by-id/ata-WDC_WD40EFRX-68N32N0_WD-WCC7K3RUX450-part2 /dev/disk/by-id/ata-ST4000VN008-2DR166_ZDH9KMBQ`. It took a couple of seconds and then finished without an error. Looking at `zpool status vol1` once again revealed that ZFS was already resilvering the new disk:
+To make sure I had the right disk, I compared the drive name to the ones already inside of the pool and made sure it wasn't already part of another mirror. Then I went ahead and let ZFS use the new disk using `zpool replace vol1 /dev/disk/by-id/ata-WDC_WD40EFRX-68N32N0_WD-WCC7K3RUX450-part2 /dev/disk/by-id/ata-ST4000VN008-2DR166_ZDH9KMBQ`. The command took a couple of seconds and then finished without an error. Looking at `zpool status vol1` once again revealed that ZFS was already resilvering the new disk:
 
 ```
   pool: vol1
@@ -299,7 +300,7 @@ config:
 errors: No known data errors
 ```
 
-The resilver was finished and there were no errors reported. To make sure everything was working as expected, I once again run a scrub using `zpool scrub vol1`, which took an additional 8 hours and found no issues:
+The resilver was finished and there were no errors reported. To make sure everything was working as expected, I once again ran a scrub using `zpool scrub vol1`, which took an additional 8 hours - and found no issues:
 
 ```
 ZFS has finished a scrub:
@@ -330,7 +331,7 @@ errors: No known data errors
 
 # Verifying the defective disk
 
-To be sure that the old disk was indeed defective, I attached it to my desktop and ran `sudo badblocks -v /dev/sdc > badsectors.txt` for about 24 hours on it. While `badblocks` itself didn't report anything, the fact that it wasn't done after such a long time was telling. Aborting the command also revealed that it was not even able to achieve 1% of progress in all that time:
+To be sure that the old disk was indeed defective, I attached it to my desktop and ran `sudo badblocks -v /dev/sdc > badsectors.txt` for about 24 hours on it. While `badblocks` itself didn't report anything, the fact that it wasn't done after such a long time was telling. Aborting the command also revealed that it wasn't able to achieve even 1% of progress in all that time:
 
 ```
 Checking blocks 0 to 3907018583
@@ -366,9 +367,11 @@ ID# ATTRIBUTE_NAME          FLAG     VALUE WORST THRESH TYPE      UPDATED  WHEN_
 
 # Conclusion
 
+A defective disk is mostly a non-issue when using the right file system in the right configuration. When using a file system like ZFS, hardware errors are fully transparent to the system and everything on it. With ZFS I was able to detect and replace a faulty disk with only a couple of simple commands. However, this transparency comes with the responsibility to regularly check the status of the pool. Before writing this article my self-made Telegram notification bridge for ZED was broken. I was made aware of the errors by pure luck this time. Even though ZFS already indicated corrupted blocks even before the SMART values, I probably wouldn't have noticed it for quite some time. Since I only use mirrors in my pools, a second drive failure in the same mirror would be catastrophic and although I intenionally placed disks of different manufacturers and age in a given mirror, it can still happen. Especially if the system continuous to run unsupervised for a long period of time. 
 
+The lesson I took from this experience is that my ZED (ZFS Event Daemon) notification system is cruicial to prevent bigger issues, and I need to setup a way to "monitor my monitoring". Currently I am thinking about a prometheus exporter on the host, that is then scraped by the prometheus instance that is already running on the host inside a k3s cluster, but this is a topic for another day.
 
-
+I hope this article was of interest to you. Thank you for reading.
 
 
 [1]: https://www.youtube.com/watch?v=aztTf2gI55k
