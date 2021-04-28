@@ -5,6 +5,7 @@
 <script>
 import Article from '@/components/blog/article/Article'
 import getArticle from '@/utils/getArticle'
+import productionFilter from '@/utils/productionFilter'
 
 export default {
   components: {
@@ -19,16 +20,10 @@ export default {
       .only(['title', 'slug', 'dummy'])
       .sortBy('createdAt', 'asc')
       .fetch()
-    tmp = tmp.filter((keyword, index) => {
-      if (!process.env.NODE_ENV === 'production') {
-        return true
-      } else {
-        return tmp[index].dummy === undefined || tmp[index].dummy === false
-      }
-    })
+    tmp = await productionFilter(tmp)
 
-    let prev = null,
-      next = null
+    let prev = null
+    let next = null
     for (let i = 0; i < tmp.length; i++) {
       let item = tmp[i]
       if (item.slug == params.slug) {

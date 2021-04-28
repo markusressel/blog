@@ -22,12 +22,15 @@
 </template>
 
 <script>
+import productionFilter from '@/utils/productionFilter'
+
 export default {
   async asyncData({ $content }) {
     function onlyUnique(value, index, self) {
       return self.indexOf(value) === index
     }
-    const articles = await $content('articles').only(['tags']).fetch()
+    const articles = await $content('articles').only(['tags', 'dummy']).fetch()
+    articles = await productionFilter(articles)
     const tags = articles.flatMap((article) => article.tags).filter(onlyUnique)
     return {
       tags,
