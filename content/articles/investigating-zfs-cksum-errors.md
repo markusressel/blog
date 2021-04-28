@@ -270,5 +270,106 @@ config:
 errors: No known data errors
 ```
 
+After about 9 hours I was greeted with a promising result:
+
+```
+ZFS has finished a resilver:
+
+   eid: 994
+ class: resilver_finish
+  host: Frittenbude
+  time: 2021-04-27 03:38:44+0200
+  pool: vol1
+ state: ONLINE
+  scan: resilvered 2.89T in 09:03:40 with 0 errors on Tue Apr 27 03:38:44 2021
+config:
+
+ NAME                                                STATE     READ WRITE CKSUM
+ vol1                                                ONLINE       0     0     0
+   mirror-0                                          ONLINE       0     0     0
+     ata-ST4000VN008-2DR166_ZDH9KMBQ                 ONLINE       0     0     0
+     ata-ST4000VN008-2DR166_ZM414J8T-part2           ONLINE       0     0     0
+   mirror-1                                          ONLINE       0     0     0
+     ata-ST4000VN008-2DR166_ZM414FPG-part2           ONLINE       0     0     0
+     ata-WDC_WD40EFRX-68N32N0_WD-WCC7K6TEHZD2-part2  ONLINE       0     0     0
+   mirror-2                                          ONLINE       0     0     0
+     ata-WDC_WD20EARX-00PASB0_WD-WMAZA5058866-part2  ONLINE       0     0     0
+     ata-ST2000DM001-1CH164_Z1E532WY-part2           ONLINE       0     0     0
+
+errors: No known data errors
+```
+
+The resilver was finished and there were no errors reported. To make sure everything was working as expected, I once again run a scrub using `zpool scrub vol1`, which took an additional 8 hours and found no issues:
+
+```
+ZFS has finished a scrub:
+
+   eid: 1648
+ class: scrub_finish
+  host: Frittenbude
+  time: 2021-04-28 03:35:08+0200
+  pool: vol1
+ state: ONLINE
+  scan: scrub repaired 0B in 08:09:13 with 0 errors on Wed Apr 28 03:35:08 2021
+config:
+
+ NAME                                                STATE     READ WRITE CKSUM
+ vol1                                                ONLINE       0     0     0
+   mirror-0                                          ONLINE       0     0     0
+     ata-ST4000VN008-2DR166_ZDH9KMBQ                 ONLINE       0     0     0
+     ata-ST4000VN008-2DR166_ZM414J8T-part2           ONLINE       0     0     0
+   mirror-1                                          ONLINE       0     0     0
+     ata-ST4000VN008-2DR166_ZM414FPG-part2           ONLINE       0     0     0
+     ata-WDC_WD40EFRX-68N32N0_WD-WCC7K6TEHZD2-part2  ONLINE       0     0     0
+   mirror-2                                          ONLINE       0     0     0
+     ata-WDC_WD20EARX-00PASB0_WD-WMAZA5058866-part2  ONLINE       0     0     0
+     ata-ST2000DM001-1CH164_Z1E532WY-part2           ONLINE       0     0     0
+
+errors: No known data errors
+```
+
+# Verifying the defective disk
+
+To be sure that the old disk was indeed defective, I attached it to my desktop and ran `sudo badblocks -v /dev/sdc > badsectors.txt` for about 24 hours on it. While `badblocks` itself didn't report anything, the fact that it wasn't done after such a long time was telling. Aborting the command also revealed that it was not even able to achieve 1% of progress in all that time:
+
+```
+Checking blocks 0 to 3907018583
+Checking for bad blocks (read-only test): 
+^C
+Interrupted at block 32281728
+```
+
+I also checked the SMART values again and the `Raw_Read_Error_Rate` had increased even further:
+
+```
+SMART Attributes Data Structure revision number: 16
+Vendor Specific SMART Attributes with Thresholds:
+ID# ATTRIBUTE_NAME          FLAG     VALUE WORST THRESH TYPE      UPDATED  WHEN_FAILED RAW_VALUE
+  1 Raw_Read_Error_Rate     0x002f   001   001   051    Pre-fail  Always   FAILING_NOW 24511
+  3 Spin_Up_Time            0x0027   178   162   021    Pre-fail  Always       -       6066
+  4 Start_Stop_Count        0x0032   100   100   000    Old_age   Always       -       88
+  5 Reallocated_Sector_Ct   0x0033   200   200   140    Pre-fail  Always       -       0
+  7 Seek_Error_Rate         0x002e   200   200   000    Old_age   Always       -       0
+  9 Power_On_Hours          0x0032   054   054   000    Old_age   Always       -       33915
+ 10 Spin_Retry_Count        0x0032   100   253   000    Old_age   Always       -       0
+ 11 Calibration_Retry_Count 0x0032   100   253   000    Old_age   Always       -       0
+ 12 Power_Cycle_Count       0x0032   100   100   000    Old_age   Always       -       88
+192 Power-Off_Retract_Count 0x0032   200   200   000    Old_age   Always       -       60
+193 Load_Cycle_Count        0x0032   200   200   000    Old_age   Always       -       298
+194 Temperature_Celsius     0x0022   111   098   000    Old_age   Always       -       39
+196 Reallocated_Event_Count 0x0032   200   200   000    Old_age   Always       -       0
+197 Current_Pending_Sector  0x0032   200   200   000    Old_age   Always       -       3
+198 Offline_Uncorrectable   0x0030   100   253   000    Old_age   Offline      -       0
+199 UDMA_CRC_Error_Count    0x0032   200   200   000    Old_age   Always       -       0
+200 Multi_Zone_Error_Rate   0x0008   100   253   000    Old_age   Offline      -       0
+```
+
+# Conclusion
+
+
+
+
+
+
 [1]: https://www.youtube.com/watch?v=aztTf2gI55k
 [2]: https://jrs-s.net/2015/02/03/will-zfs-and-non-ecc-ram-kill-your-data/
