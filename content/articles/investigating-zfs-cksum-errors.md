@@ -329,7 +329,7 @@ config:
 errors: No known data errors
 ```
 
-# Verifying the defective disk
+## Verifying the defective disk
 
 To be sure that the old disk was indeed defective, I attached it to my desktop and ran `sudo badblocks -v /dev/sdc > badsectors.txt` for about 24 hours on it. While `badblocks` itself didn't report anything, the fact that it wasn't done after such a long time was telling. Aborting the command also revealed that it wasn't able to achieve even 1% of progress in all that time:
 
@@ -365,7 +365,7 @@ ID# ATTRIBUTE_NAME          FLAG     VALUE WORST THRESH TYPE      UPDATED  WHEN_
 200 Multi_Zone_Error_Rate   0x0008   100   253   000    Old_age   Offline      -       0
 ```
 
-# Conclusion
+## Conclusion
 
 A defective disk is mostly a non-issue when using the right file system in the right configuration. When using a file system like ZFS, hardware errors are fully transparent to the system and everything on it. With ZFS I was able to detect and replace a faulty disk with only a couple of simple commands. However, this transparency comes with the responsibility to regularly check the status of the pool. Before writing this article my self-made Telegram notification bridge for ZED was broken. I was made aware of the errors by pure luck this time. Even though ZFS already indicated corrupted blocks even before the SMART values, I probably wouldn't have noticed it for quite some time. Since I only use mirrors in my pools, a second drive failure in the same mirror would be catastrophic and although I intenionally placed disks of different manufacturers and age in a given mirror, it can still happen. Especially if the system continuous to run unsupervised for a long period of time.
 
