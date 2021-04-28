@@ -77,13 +77,13 @@ export default {
   },
   methods: {
     cookieStatus(event) {
-      console.log(event)
+      //console.log(event)
     },
     cookieClickedAccept() {
-      console.log('cookieClickedAccept')
+      //console.log('cookieClickedAccept')
     },
     cookieClickedDecline() {
-      console.log('cookieClickedDecline')
+      //console.log('cookieClickedDecline')
     },
   },
   mounted() {
