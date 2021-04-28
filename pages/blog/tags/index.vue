@@ -29,7 +29,7 @@ export default {
     function onlyUnique(value, index, self) {
       return self.indexOf(value) === index
     }
-    const articles = await $content('articles').only(['tags', 'dummy']).fetch()
+    let articles = await $content('articles').only(['tags', 'dummy']).fetch()
     articles = await productionFilter(articles)
     const tags = articles.flatMap((article) => article.tags).filter(onlyUnique)
     return {
