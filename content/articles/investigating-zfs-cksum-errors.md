@@ -9,6 +9,7 @@ alt: Investigating inconspicuous ZFS CKSUM errors
 authors:
   - Markus Ressel
 tags:
+  - linux
   - zfs
 ---
 
