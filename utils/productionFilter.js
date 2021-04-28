@@ -3,7 +3,9 @@ export default async (articles) => {
     if (!process.env.NODE_ENV === 'production') {
       return true
     } else {
-      return articles[index].dummy === undefined || articles[index].dummy === false
+      return (
+        articles[index].dummy === undefined || articles[index].dummy === false
+      )
     }
   })
 }
