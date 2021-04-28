@@ -335,7 +335,7 @@ To be sure that the old disk was indeed defective, I attached it to my desktop a
 
 ```
 Checking blocks 0 to 3907018583
-Checking for bad blocks (read-only test): 
+Checking for bad blocks (read-only test):
 ^C
 Interrupted at block 32281728
 ```
@@ -371,8 +371,7 @@ A defective disk is mostly a non-issue when using the right file system in the r
 
 The lesson I took from this experience is that my ZED (ZFS Event Daemon) notification system is cruicial to prevent bigger issues, and I need to setup a way to "monitor my monitoring". Currently I am thinking about a prometheus exporter on the host, that is then scraped by the prometheus instance that is already running on the host inside a k3s cluster, but this is a topic for another day.
 
-I hope this article was of interest to you. Thank you for reading.
-
+Thank you for reading.
 
 [1]: https://www.youtube.com/watch?v=aztTf2gI55k
 [2]: https://jrs-s.net/2015/02/03/will-zfs-and-non-ecc-ram-kill-your-data/
