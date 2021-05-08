@@ -52,6 +52,8 @@ export default {
       title: this.article.title,
       description: this.article.description,
       meta: [
+        { hid: "og:site_name", name: "og:site_name", property: "og:site_name", content: "Markus' Blog" },
+        
         {
           hid: 'og:title',
           name: 'og:title',
