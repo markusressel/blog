@@ -71,12 +71,49 @@ export default {
           property: 'og:description',
           content: this.article.description,
         },
+
         {
           hid: 'og:type',
           name: 'og:type',
           property: 'og:type',
           content: 'article',
         },
+
+        {
+          hid: 'article:tag',
+          name: 'article:tag',
+          property: "article:tag",
+          content: Object.keys(this.article.tags),
+        },
+        {
+          hid: 'article:published',
+          name: 'article:published',
+          property: "article:published",
+          content: this.article.createdAt,
+        },
+        {
+          hid: 'article:modified_time',
+          name: 'article:modified_time',
+          property: "article:modified_time",
+          content: this.article.updatedAt,
+        },
+
+        {
+          hid: "twitter:title",
+          name: "twitter:title",
+          content: this.article.title,
+        },
+        {
+          hid: "twitter:description",
+          name: "twitter:description",
+          content: this.article.description,
+        },
+        {
+          hid: "twitter:image",
+          name: "twitter:image",
+          content: this.article.img,
+        },
+
         {
           hid: 'og:image',
           name: 'og:image',
