@@ -49,7 +49,14 @@ export default {
   },
   head() {
     return {
-      title: 'Post',
+      title: this.article.title,
+      description: this.article.description,
+      meta: [
+        { hid: "og:title", name: "og:title", property: "og:title", content: this.article.title },
+        { hid: "og:description", name: "og:description", property: "og:description", content: this.article.description },
+        { hid: "og:type", name: "og:type", property: "og:type", content: "article" },
+        { hid: "og:image", name: "og:image", property: "og:image", content: this.article.img }
+      ]
     }
   },
 }
