@@ -1,6 +1,6 @@
 export default {
   // Disable server-side rendering: https://go.nuxtjs.dev/ssr-mode
-  ssr: false,
+  ssr: true,
 
   // Target: https://go.nuxtjs.dev/config-target
   target: 'static',
@@ -29,7 +29,7 @@ export default {
     '~/plugins/vuescroll',
     '~/plugins/prism',
     '~/plugins/vue-cookie-accept-decline',
-    '~/plugins/vue-toasted',
+    {src: '~/plugins/vue-toasted', mode: 'client' },
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
