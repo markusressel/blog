@@ -39,7 +39,7 @@
     "@nuxtjs/netlify-files": "^1.2.0",
     "@nuxtjs/router-extras": "^1.1.1",
     "@nuxtjs/svg": "^0.1.12",
-    "@nuxtjs/tailwindcss": "^4.1.0",
+    "@nuxtjs/tailwindcss": "^4.1.1",
     "eslint": "^7.20.0",
     "eslint-config-prettier": "^8.1.0",
     "eslint-plugin-nuxt": "^2.0.0",
