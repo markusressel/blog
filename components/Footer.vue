@@ -1,6 +1,14 @@
 <template>
   <footer
-    class="flex justify-center h-8 bg-white dark:bg-black text-gray-700 dark:text-gray-500"
+    class="
+      flex
+      justify-center
+      h-8
+      bg-white
+      dark:bg-black
+      text-gray-700
+      dark:text-gray-500
+    "
   >
     <div class="self-center text-xs">
       &copy; {{ new Date().getFullYear() }} {{ siteOwner }}

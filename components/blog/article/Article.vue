@@ -1,7 +1,21 @@
 <template>
   <div class="flex flex-col justify-center self-center">
     <div
-      class="w-11/12 flex-grow bg-white dark:bg-gray-800 bg-opacity-100 rounded-3xl max-w-5xl z-10 shadow-lg p-4 md:p-6 md:my-2 mx-auto"
+      class="
+        w-11/12
+        flex-grow
+        bg-white
+        dark:bg-gray-800
+        bg-opacity-100
+        rounded-3xl
+        max-w-5xl
+        z-10
+        shadow-lg
+        p-4
+        md:p-6
+        md:my-2
+        mx-auto
+      "
     >
       <img
         v-if="
