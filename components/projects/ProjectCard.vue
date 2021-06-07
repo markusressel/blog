@@ -8,8 +8,7 @@
       p-4
       mx-0
       my-2
-      md:mx-4
-      md:my-4
+      md:mx-4 md:my-4
       shadow-lg
       hover:shadow-xl
     "

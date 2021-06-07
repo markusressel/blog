@@ -12,8 +12,7 @@
         z-10
         shadow-md
         p-4
-        md:p-6
-        md:my-2
+        md:p-6 md:my-2
         mx-auto
       "
     >
@@ -35,8 +34,7 @@
           p-4
           mx-0
           my-2
-          md:mx-4
-          md:my-4
+          md:mx-4 md:my-4
           shadow-lg
           hover:shadow-xl
         "
@@ -59,8 +57,7 @@
           p-4
           mx-0
           my-2
-          md:mx-4
-          md:my-4
+          md:mx-4 md:my-4
           shadow-lg
           hover:shadow-xl
         "
@@ -84,8 +81,7 @@
           p-4
           mx-0
           my-2
-          md:mx-4
-          md:my-4
+          md:mx-4 md:my-4
           shadow-lg
           hover:shadow-xl
         "

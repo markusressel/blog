@@ -12,8 +12,7 @@
         z-10
         shadow-lg
         p-4
-        md:p-6
-        md:my-2
+        md:p-6 md:my-2
         mx-auto
       "
     >
