@@ -20,7 +20,7 @@
     "clipboard": "^2.0.8",
     "cookie-universal-nuxt": "^2.1.5",
     "core-js": "^3.14.0",
-    "nuxt": "^2.15.6",
+    "nuxt": "^2.15.7",
     "prism-themes": "^1.7.0",
     "prismjs": "^1.23.0",
     "vue-content-loader": "^0.2.3",
