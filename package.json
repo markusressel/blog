@@ -21,7 +21,7 @@
     "cookie-universal-nuxt": "^2.1.5",
     "core-js": "^3.17.3",
     "nuxt": "^2.15.8",
-    "prism-themes": "^1.8.0",
+    "prism-themes": "^1.9.0",
     "prismjs": "^1.24.1",
     "vue-content-loader": "^0.2.3",
     "vue-cookie-accept-decline": "^5.4.0",
