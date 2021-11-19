@@ -40,7 +40,6 @@ I didn't do much research after the fact, but from what I can tell the issues is
 In most UEFIs you can configure the _mode_ of your drives, f.ex. **AHCI** or **RAID**. This setting is not available on my laptop. The [Intel Volume Management Device (vmd) Driver][3]
 adds some magic to the kernel, which allows it to speak to the drive.
 
-
 [1]: https://rog.asus.com/laptops/rog-zephyrus/2021-rog-zephyrus-m16-series/
 [2]: https://openzfs.github.io/openzfs-docs/Getting%20Started/Arch%20Linux/Arch%20Linux%20Root%20on%20ZFS.html
 [3]: https://cateee.net/lkddb/web-lkddb/VMD.html
