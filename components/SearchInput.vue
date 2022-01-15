@@ -5,21 +5,7 @@
       type="search"
       autocomplete="off"
       placeholder="Search Blog Posts"
-      class="
-        rounded-full
-        p-3
-        placeholder-gray-800
-        dark:placeholder-gray-200
-        text-gray-800
-        dark:text-gray-200
-        bg-white
-        dark:bg-gray-700
-        border-none
-        shadow-md
-        focus:outline-none
-        z-50
-        w-full
-      "
+      class="rounded-full p-3 placeholder-gray-800 dark:placeholder-gray-200 text-gray-800 dark:text-gray-200 bg-white dark:bg-gray-700 border-none shadow-md focus:outline-none z-50 w-full"
       @blur="onFocusLost"
     />
 
@@ -29,14 +15,7 @@
     >
       <vue-scroll :ops="ops">
         <div
-          class="
-            rounded-xl
-            bg-gray-100
-            dark:bg-gray-900
-            border-4 border-solid border-gray-400
-            dark:border-gray-700
-            z-50
-          "
+          class="rounded-xl bg-gray-100 dark:bg-gray-900 border-4 border-solid border-gray-400 dark:border-gray-700 z-50"
         >
           <div v-if="articles.length">
             <div

@@ -1,29 +1,11 @@
 <template>
   <div
     v-if="$fetchState.pending"
-    class="
-      grid grid-flow-row
-      px-0
-      md:mx-4
-      grid-cols-1
-      md:grid-cols-2
-      lg:grid-cols-3
-    "
+    class="grid grid-flow-row px-0 md:mx-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3"
   >
     <div v-for="n in 10" :key="n">
       <figure
-        class="
-          flex
-          bg-gray-100
-          dark:bg-gray-800
-          rounded-xl
-          pt-4
-          mx-0
-          my-2
-          md:mx-4 md:my-4
-          shadow-lg
-          hover:shadow-xl
-        "
+        class="flex bg-gray-100 dark:bg-gray-800 rounded-xl pt-4 mx-0 my-2 md:mx-4 md:my-4 shadow-lg hover:shadow-xl"
       >
         <content-loader
           width="300"

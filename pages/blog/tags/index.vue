@@ -2,15 +2,7 @@
   <div>
     <div class="flex justify-center">
       <h2
-        class="
-          text-center text-3xl
-          mb-4
-          uppercase
-          dark:text-white
-          inline-block
-          mx-auto
-          px-2
-        "
+        class="text-center text-3xl mb-4 uppercase dark:text-white inline-block mx-auto px-2"
       >
         All Tags
       </h2>
