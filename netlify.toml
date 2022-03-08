@@ -2,7 +2,7 @@
 
 [build.environment]
   NODE_VERSION = "17.6.0"
-  NPM_VERSION = "8.5.2"
+  YARN_VERSION = "1.22.17"
 
 # A basic redirect rule
 [[redirects]]
