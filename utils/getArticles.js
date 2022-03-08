@@ -32,7 +32,7 @@ export default async ($content, searchQuery, tags, limit, page) => {
       .fetch()
     const articleTags = Object.assign(
       {},
-      ...tagsList.map((s) => ({ [s.name]: s }))
+      ...tagsList.map((s) => ({[s.name]: s}))
     )
     article.tags = articleTags
 
@@ -49,29 +49,11 @@ export default async ($content, searchQuery, tags, limit, page) => {
       .fetch()
     const authors = Object.assign(
       {},
-      ...authorsList.map((s) => ({ [s.name]: s }))
+      ...authorsList.map((s) => ({[s.name]: s}))
     )
     article.authors = authors
 
     allArticles.push(article)
-  }
-
-  const totalArticles = allArticles.length
-
-  // use Math.ceil to round up to the nearest whole number
-  const lastPage = Math.ceil(totalArticles / perPage)
-
-  // use the % (modulus) operator to get a whole remainder
-  const lastPageCount = totalArticles % perPage
-
-  const skipNumber = () => {
-    if (currentPage === 1 || isNaN(currentPage)) {
-      return 0
-    }
-    if (currentPage === lastPage) {
-      return totalArticles - lastPageCount
-    }
-    return (currentPage - 1) * perPage
   }
 
   const sortedArticles = allArticles.sort(function (a, b) {
@@ -79,10 +61,13 @@ export default async ($content, searchQuery, tags, limit, page) => {
     const btime = new Date(b.createdAt)
     return btime - atime
   })
-  const paginatedArticles = sortedArticles.slice(
-    skipNumber(),
-    skipNumber() + perPage
-  )
+
+  let start = 0
+  if (!isNaN(currentPage)) {
+    start = (currentPage - 1) * perPage
+  }
+  const end = start + perPage
+  const paginatedArticles = sortedArticles.slice(start, end)
 
   return {
     allArticles,
