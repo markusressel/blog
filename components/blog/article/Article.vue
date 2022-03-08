@@ -50,7 +50,7 @@
   </div>
 </template>
 <script>
-//import IconHashtag from '@/assets/icons/icon-hashtag.svg?inline'
+// import IconHashtag from '@/assets/icons/icon-hashtag.svg?inline'
 import Author from '@/components/blog/article/Author'
 import Chip from '@/components/Chip'
 import PrevNext from '@/components/blog/article/PrevNext'
@@ -80,16 +80,16 @@ export default {
       default: null,
     },
   },
-  mounted() {
-    Prism.highlightAll()
-  },
   computed: {
-    authorText: function () {
-      var result = Object.keys(this.article.authors)
+    authorText() {
+      const result = Object.keys(this.article.authors)
         .map((x) => this.article.authors[x].name)
         .join(', ')
       return result
     },
+  },
+  mounted() {
+    Prism.highlightAll()
   },
   methods: {
     formatDate,

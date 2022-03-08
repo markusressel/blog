@@ -9,7 +9,7 @@
 </template>
 
 <script>
-//import IconSystem from '@/assets/icons/theme-system.svg?inline'
+// import IconSystem from '@/assets/icons/theme-system.svg?inline'
 import IconSystem from '@/assets/icons/icon-eclipse.svg?inline'
 import IconLight from '@/assets/icons/theme-light.svg?inline'
 import IconDark from '@/assets/icons/theme-dark.svg?inline'
@@ -20,7 +20,21 @@ export default {
     IconLight,
     IconDark,
   },
-  mounted: function () {
+  data() {
+    return {
+      get hasUserAllowedStorage() {
+        return (
+          localStorage.getItem(
+            'vue-cookie-accept-decline-cookieNoticePanel'
+          ) === 'accept' || false
+        )
+      },
+      selected: false,
+      themes: ['system', 'light', 'dark'],
+      currentTheme: 'system',
+    }
+  },
+  mounted() {
     // initialize from localStorage
     this.currentTheme = localStorage.getItem('nuxt-color-mode') || 'system'
     this.$colorMode.preference = this.currentTheme
@@ -39,25 +53,12 @@ export default {
         )
         return
       }
-      let index = this.themes.indexOf(this.currentTheme)
-      let nextIndex = (index + 1) % this.themes.length
-      let nextTheme = this.themes[nextIndex]
+      const index = this.themes.indexOf(this.currentTheme)
+      const nextIndex = (index + 1) % this.themes.length
+      const nextTheme = this.themes[nextIndex]
       this.currentTheme = nextTheme
       this.$colorMode.preference = this.currentTheme
     },
-  },
-  data() {
-    return {
-      get hasUserAllowedStorage() {
-        return (
-          localStorage.getItem('vue-cookie-accept-decline-cookieNoticePanel') ==
-            'accept' || false
-        )
-      },
-      selected: false,
-      themes: ['system', 'light', 'dark'],
-      currentTheme: 'system',
-    }
   },
 }
 </script>

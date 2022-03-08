@@ -54,8 +54,8 @@ export default {
     },
   },
   computed: {
-    authorText: function () {
-      var result = Object.keys(this.article.authors)
+    authorText() {
+      const result = Object.keys(this.article.authors)
         .map((x) => this.article.authors[x].name)
         .join(', ')
       return result
