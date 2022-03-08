@@ -4,18 +4,14 @@ module.exports = {
     // removeDeprecatedGapUtilities: true,
     // purgeLayersByDefault: true,
   },
-  purge: {
-    mode: 'layers',
-    preserveHtmlElements: true,
-    content: [
-      'components/**/*.{vue,js}',
-      'content/**/*.md',
-      'layouts/**/*.vue',
-      'pages/**/*.vue',
-      'plugins/**/*.{js,ts}',
-      'nuxt.config.{js,ts}',
-    ],
-  },
+  content: [
+    'components/**/*.{vue,js}',
+    'content/**/*.md',
+    'layouts/**/*.vue',
+    'pages/**/*.vue',
+    'plugins/**/*.{js,ts}',
+    'nuxt.config.{js,ts}',
+  ],
   theme: {
     darkSelector: '.dark-mode',
   },
