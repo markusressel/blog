@@ -32,7 +32,7 @@ export default async ($content, searchQuery, tags, limit, page) => {
       .fetch()
     const articleTags = Object.assign(
       {},
-      ...tagsList.map((s) => ({[s.name]: s}))
+      ...tagsList.map((s) => ({ [s.name]: s }))
     )
     article.tags = articleTags
 
@@ -49,7 +49,7 @@ export default async ($content, searchQuery, tags, limit, page) => {
       .fetch()
     const authors = Object.assign(
       {},
-      ...authorsList.map((s) => ({[s.name]: s}))
+      ...authorsList.map((s) => ({ [s.name]: s }))
     )
     article.authors = authors
 
