@@ -41,7 +41,7 @@ export default async ($content, searchQuery, tags, limit, page) => {
       .fetch()
     const authors = Object.assign(
       {},
-      ...authorsList.map((s) => ({[s.name]: s}))
+      ...authorsList.map((s) => ({ [s.name]: s }))
     )
     article.authors = authors
 
