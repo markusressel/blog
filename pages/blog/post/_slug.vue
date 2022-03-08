@@ -25,8 +25,8 @@ export default {
     let prev = null
     let next = null
     for (let i = 0; i < tmp.length; i++) {
-      let item = tmp[i]
-      if (item.slug == params.slug) {
+      const item = tmp[i]
+      if (item.slug === params.slug) {
         if (i > 0) {
           prev = await $content('articles', tmp[i - 1].slug)
             .only(['title', 'slug'])

@@ -52,25 +52,9 @@ export default {
       projects: [],
     }
   },
-  computed: {
-    contentLoaderPrimary: function () {
-      if (this.$colorMode.preference == 'dark') {
-        return '#9E9E9E' // gray-500
-      } else {
-        return '#E0E0E0' // gray-300
-      }
-    },
-    contentLoaderSecondary: function () {
-      if (this.$colorMode.preference == 'dark') {
-        return '#E0E0E0' // gray-300
-      } else {
-        return '#9E9E9E' // gray-500
-      }
-    },
-  },
   async fetch() {
     // use for debugging content-loader
-    //await new Promise((r) => setTimeout(r, 2000000))
+    // await new Promise((r) => setTimeout(r, 2000000))
 
     // a.created_at
     // fork: false
@@ -110,6 +94,22 @@ export default {
     return {
       title: 'Projects',
     }
+  },
+  computed: {
+    contentLoaderPrimary() {
+      if (this.$colorMode.preference === 'dark') {
+        return '#9E9E9E' // gray-500
+      } else {
+        return '#E0E0E0' // gray-300
+      }
+    },
+    contentLoaderSecondary() {
+      if (this.$colorMode.preference === 'dark') {
+        return '#E0E0E0' // gray-300
+      } else {
+        return '#9E9E9E' // gray-500
+      }
+    },
   },
   methods: {
     randomSpeed() {

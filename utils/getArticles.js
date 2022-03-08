@@ -7,7 +7,7 @@ export default async ($content, searchQuery, tags, limit, page) => {
   }
   const perPage = 5
 
-  var tmp = $content('articles')
+  let tmp = $content('articles')
   if (searchQuery !== null) {
     tmp = tmp.search(searchQuery)
   }
@@ -75,8 +75,8 @@ export default async ($content, searchQuery, tags, limit, page) => {
   }
 
   const sortedArticles = allArticles.sort(function (a, b) {
-    let atime = new Date(a.createdAt)
-    let btime = new Date(b.createdAt)
+    const atime = new Date(a.createdAt)
+    const btime = new Date(b.createdAt)
     return btime - atime
   })
   const paginatedArticles = sortedArticles.slice(

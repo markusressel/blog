@@ -48,15 +48,15 @@ export default {
     IconBlog,
     IconGithub,
   },
-  head() {
-    return {
-      title: 'Home',
-    }
-  },
   async asyncData({ $content, error }) {
     const page = await getContent($content, error, 'home')
     return {
       page,
+    }
+  },
+  head() {
+    return {
+      title: 'Home',
     }
   },
 }

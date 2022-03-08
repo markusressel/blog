@@ -14,13 +14,13 @@
     </vue-scroll>
     <vue-cookie-accept-decline
       :ref="'cookieNoticePanel'"
-      :elementId="'cookieNoticePanel'"
+      :element-id="'cookieNoticePanel'"
       :debug="false"
       :position="'bottom'"
       :type="'bar'"
-      :disableDecline="false"
-      :transitionName="'slideFromBottom'"
-      :showPostponeButton="false"
+      :disable-decline="false"
+      :transition-name="'slideFromBottom'"
+      :show-postpone-button="false"
       @status="cookieStatus"
       @clicked-accept="cookieClickedAccept"
       @clicked-decline="cookieClickedDecline"
@@ -75,19 +75,19 @@ export default {
       },
     }
   },
-  methods: {
-    cookieStatus(event) {
-      //console.log(event)
-    },
-    cookieClickedAccept() {
-      //console.log('cookieClickedAccept')
-    },
-    cookieClickedDecline() {
-      //console.log('cookieClickedDecline')
-    },
-  },
   mounted() {
     this.$root.$on('removeposition', (filter) => {})
+  },
+  methods: {
+    cookieStatus(event) {
+      // console.log(event)
+    },
+    cookieClickedAccept() {
+      // console.log('cookieClickedAccept')
+    },
+    cookieClickedDecline() {
+      // console.log('cookieClickedDecline')
+    },
   },
 }
 </script>

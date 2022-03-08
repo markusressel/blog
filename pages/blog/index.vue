@@ -12,7 +12,6 @@ export default {
   components: {
     ArticleList,
   },
-  watchQuery: ['page'],
   async asyncData({ $content, query, error }) {
     const content = await getArticles($content, null, null, null, query.page)
     return {
@@ -25,5 +24,6 @@ export default {
       title: 'Blog',
     }
   },
+  watchQuery: ['page'],
 }
 </script>
