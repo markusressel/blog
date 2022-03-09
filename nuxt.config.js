@@ -41,7 +41,6 @@ export default {
     '@nuxt/typescript-build',
     '@nuxtjs/router-extras',
     '@nuxtjs/svg',
-    '@nuxtjs/color-mode',
     // Doc: https://github.com/nuxt-community/nuxt-tailwindcss
     '@nuxtjs/tailwindcss',
     '@nuxtjs/netlify-files',
@@ -49,6 +48,7 @@ export default {
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
+    '@nuxtjs/color-mode',
     'cookie-universal-nuxt',
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
