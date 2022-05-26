@@ -31,7 +31,7 @@
     "vuescroll": "^4.17.3"
   },
   "devDependencies": {
-    "@babel/eslint-parser": "^7.17.0",
+    "@babel/eslint-parser": "^7.18.2",
     "@nuxt/types": "^2.15.8",
     "@nuxt/typescript-build": "^2.0.6",
     "@nuxtjs/color-mode": "^3.0.3",
