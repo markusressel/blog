@@ -22,7 +22,7 @@
     "core-js": "^3.22.8",
     "nuxt": "^2.15.8",
     "prism-themes": "^1.9.0",
-    "postcss-nesting": "10.1.7",
+    "postcss-nesting": "10.1.8",
     "prismjs": "^1.28.0",
     "vue-content-loader": "^2.0.1",
     "vue-cookie-accept-decline": "^5.4.0",
