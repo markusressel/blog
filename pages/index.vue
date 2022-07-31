@@ -9,7 +9,7 @@
     <div class="flex flex-wrap justify-center">
       <NuxtLink
         to="/projects"
-        class="flex place-items-center flex-col w-full md:w-48 bg-gray-100 dark:bg-gray-800 rounded-xl p-4 mx-0 my-2 md:mx-4 md:my-4 shadow-lg hover:shadow-xl"
+        class="image-link-card flex place-items-center flex-col w-full md:w-48 bg-gray-100 dark:bg-gray-800 rounded-xl p-4 mx-0 my-2 md:mx-4 md:my-4 shadow-lg hover:shadow-xl"
       >
         <IconRocket class="fill-current h-24 w-24" />
         <div class="pt-2 text-4xl font-bold">Projects</div>
@@ -17,7 +17,7 @@
 
       <NuxtLink
         to="/blog"
-        class="flex place-items-center flex-col w-full md:w-48 bg-gray-100 dark:bg-gray-800 rounded-xl p-4 mx-0 my-2 md:mx-4 md:my-4 shadow-lg hover:shadow-xl"
+        class="image-link-card flex place-items-center flex-col w-full md:w-48 bg-gray-100 dark:bg-gray-800 rounded-xl p-4 mx-0 my-2 md:mx-4 md:my-4 shadow-lg hover:shadow-xl"
       >
         <IconBlog class="fill-current h-24 w-24" />
         <div class="pt-2 text-4xl font-bold">Blog</div>
@@ -26,7 +26,7 @@
       <a
         href="https://github.com/markusressel"
         target="_blank"
-        class="flex place-items-center flex-col w-full md:w-48 bg-gray-100 dark:bg-gray-800 rounded-xl p-4 mx-0 my-2 md:mx-4 md:my-4 shadow-lg hover:shadow-xl"
+        class="image-link-card flex place-items-center flex-col w-full md:w-48 bg-gray-100 dark:bg-gray-800 rounded-xl p-4 mx-0 my-2 md:mx-4 md:my-4 shadow-lg hover:shadow-xl"
       >
         <IconGithub class="fill-current h-24 w-24" />
         <div class="pt-2 text-4xl font-bold">GitHub</div>
