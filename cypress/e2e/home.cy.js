@@ -23,13 +23,13 @@ context('Home', () => {
     const card = cy.get('.image-link-card').eq(0)
     card.contains('Projects')
     card.click()
-    cy.url().should('include', '/projects/')
+    cy.url().should('include', '/projects')
   })
 
   it('navigates to blog when clicking on the "Blog" card', () => {
     const card = cy.get('.image-link-card').eq(1)
     card.contains('Blog')
     card.click()
-    cy.url().should('include', '/blog/')
+    cy.url().should('include', '/blog')
   })
 })
