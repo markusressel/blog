@@ -5,7 +5,7 @@
     style="text-decoration: none; color: inherit"
   >
     <div
-      class="flex flex-col mb-6 md:mb-8 bg-white dark:bg-gray-800 px-5 py-4 rounded-xl shadow-lg"
+      class="article-list-item flex flex-col mb-6 md:mb-8 bg-white dark:bg-gray-800 px-5 py-4 rounded-xl shadow-lg"
     >
       <img
         v-if="
