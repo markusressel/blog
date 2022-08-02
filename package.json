@@ -24,7 +24,7 @@
     "@nuxtjs/sitemap": "^2.4.0",
     "clipboard": "^2.0.11",
     "cookie-universal-nuxt": "^2.1.5",
-    "core-js": "^3.21.1",
+    "core-js": "^3.24.1",
     "nuxt": "^2.15.8",
     "postcss-nesting": "10.1.10",
     "prism-themes": "^1.9.0",
