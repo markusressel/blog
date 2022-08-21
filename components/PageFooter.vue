@@ -24,7 +24,7 @@
 import global from '@/utils/global'
 
 export default {
-  name: 'Footer',
+  name: 'PageFooter',
   computed: {
     siteOwner() {
       return global.author

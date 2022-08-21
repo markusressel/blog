@@ -2,7 +2,7 @@
   <div
     class="m-0 h-screen flex flex-col transition-all duration-200 ease-linear bg-gray-300 dark:bg-gray-900"
   >
-    <Header
+    <PageHeader
       class="z-10 m-0 bg-gray-200 dark:bg-gray-800 transition-all duration-200 px-2 shadow-lg"
     />
     <vue-scroll :ops="ops" class="flex-1 overflow-y-scroll">
@@ -38,19 +38,19 @@
       <!-- Optional -->
       <div slot="acceptContent">GOT IT!</div>
     </vue-cookie-accept-decline>
-    <Footer />
+    <PageFooter/>
   </div>
 </template>
 
 <script>
-import Header from '@/components/Header'
-import Footer from '@/components/Footer'
+import PageHeader from '@/components/PageHeader'
+import PageFooter from '@/components/PageFooter'
 
 export default {
   name: 'MainLayout',
   components: {
-    Header,
-    Footer,
+    PageHeader,
+    PageFooter,
   },
   data() {
     return {

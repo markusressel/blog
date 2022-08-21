@@ -16,6 +16,7 @@
 import global from '@/utils/global'
 
 export default {
+  name: 'PageHeader',
   computed: {
     siteName() {
       return global.siteName
