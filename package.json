@@ -54,7 +54,7 @@
     "eslint-plugin-vue": "^9.9.0",
     "prettier": "^2.8.4",
     "push-dir": "^0.4.1",
-    "start-server-and-test": "^1.15.4",
+    "start-server-and-test": "^1.15.5",
     "tailwindcss-dark-mode": "^1.1.7"
   }
 }
