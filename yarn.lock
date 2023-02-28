@@ -8639,7 +8639,7 @@ open@^8.4.0:
     is-docker "^2.1.1"
     is-wsl "^2.2.0"
 
-opencollective-postinstall@^2.0.2:
+opencollective-postinstall@^2.0.3:
   version "2.0.3"
   resolved "https://registry.yarnpkg.com/opencollective-postinstall/-/opencollective-postinstall-2.0.3.tgz#7a0fff978f6dbfa4d006238fbac98ed4198c3259"
   integrity sha512-8AV/sCtuzUeTo8gQK5qDZzARrulB3egtLzFgteqB2tcT4Mw7B8Kt7JcDHmltjz6FOAHsvTevk70gZEbhM4ZS9Q==
@@ -12385,7 +12385,7 @@ vue-eslint-parser@^9.0.1, vue-eslint-parser@^9.0.3:
     lodash "^4.17.21"
     semver "^7.3.6"
 
-vue-github-button@^1.2.0:
+vue-github-button@^1.3.0:
   version "1.3.0"
   resolved "https://registry.yarnpkg.com/vue-github-button/-/vue-github-button-1.3.0.tgz#a4da317a3b93d05824768b3916a0d22fa91603be"
   integrity sha512-Cc92t+GBLwBPhwtHSvKXjbx07U3+6xdi+eR+s9c734tHbndipCLenJjLVkgErNhKZ0EvDjRyuu8Hu69gg9/TxQ==
@@ -12400,6 +12400,11 @@ vue-github-buttons@^3.1.0:
     format-thousands "^1.1.1"
     node-fetch "^2.3.0"
     tslib "^1.9.3"
+
+vue-gtag@^1.16.1:
+  version "1.16.1"
+  resolved "https://registry.yarnpkg.com/vue-gtag/-/vue-gtag-1.16.1.tgz#edb2f20ab4f6c4d4d372dfecf8c1fcc8ab890181"
+  integrity sha512-5vs0pSGxdqrfXqN1Qwt0ZFXG0iTYjRMu/saddc7QIC5yp+DKgjWQRpGYVa7Pq+KbThxwzzMfo0sGi7ISa6NowA==
 
 vue-hot-reload-api@^2.3.0:
   version "2.3.4"
@@ -12417,14 +12422,15 @@ vue-loader@^15.9.7:
     vue-hot-reload-api "^2.3.0"
     vue-style-loader "^4.1.0"
 
-vue-material@^1.0.0-beta-15:
-  version "1.0.0-beta-15"
-  resolved "https://registry.yarnpkg.com/vue-material/-/vue-material-1.0.0-beta-15.tgz#949025464f8fe2ff3b9be2ba1365d9eab770ad8a"
-  integrity sha512-nNC1mF1BQNKsyEjRXPYxweYlIOcVE9rK4LeeyppOU6h4vgQnZuNmlGIRnl6fUe8dj+x7c5x5/qydLhJRabPMng==
+vue-material@^1.0.0-beta-16:
+  version "1.0.0-beta-16"
+  resolved "https://registry.yarnpkg.com/vue-material/-/vue-material-1.0.0-beta-16.tgz#e573a6f6e742a14b232e003b4a78d0e857365dee"
+  integrity sha512-Sp7eqn9F3bQJYxOATThtS00whxX/wYugTJZYc5nG+xXxMT89fq86lmhZlcKuuUyl+rvPOs4G+H+woyK4C8suDQ==
   dependencies:
-    opencollective-postinstall "^2.0.2"
-    vue-github-button "^1.2.0"
+    opencollective-postinstall "^2.0.3"
+    vue-github-button "^1.3.0"
     vue-github-buttons "^3.1.0"
+    vue-gtag "^1.16.1"
     vue-toc "0.0.1"
 
 vue-meta@^2.4.0:
