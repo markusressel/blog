@@ -12892,10 +12892,10 @@ vue@^2.6.10, vue@^2.6.12:
   resolved "https://registry.yarnpkg.com/vue/-/vue-2.6.14.tgz#e51aa5250250d569a3fbad3a8a5a687d6036e235"
   integrity sha512-x2284lgYvjOMj3Za7kqzRcUSxBboHqtgRE2zlos1qWaOye5yUmHn42LB1250NJBLRwEcdrB0JRwyPTEPhfQjiQ==
 
-vuescroll@^4.17.5:
-  version "4.17.5"
-  resolved "https://registry.yarnpkg.com/vuescroll/-/vuescroll-4.17.5.tgz#25a3b86f14a31abac4a7e2e57d47da899f16fa06"
-  integrity sha512-TjzRp0OpF99SiulIFw2txoT5tbUyCT0IaMiMw87r1shbQ6Mi94ZcEJ294ihEaiVcHHDpTm9oEudIkWThz7HUPQ==
+vuescroll@^4.17.6:
+  version "4.17.6"
+  resolved "https://registry.yarnpkg.com/vuescroll/-/vuescroll-4.17.6.tgz#bb7ad6761efe7aef5faa8388f125c57854d9770c"
+  integrity sha512-mqixITioFiZTlyyvAW2YmUFaBjMLHbc5670wcl55P67lkODPn2bIbO/t2VI3EC5UxL28QrpzBac+0aRsZWXQsA==
 
 vuex@^3.6.2:
   version "3.6.2"
