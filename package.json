@@ -33,7 +33,7 @@
     "vue-cookie-accept-decline": "^5.4.0",
     "vue-material": "^1.0.0-beta-16",
     "vue-toasted": "^1.1.28",
-    "vuescroll": "^4.17.5"
+    "vuescroll": "^4.17.6"
   },
   "devDependencies": {
     "@babel/eslint-parser": "^7.21.3",
