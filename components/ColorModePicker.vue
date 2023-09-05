@@ -25,7 +25,7 @@ export default {
       get hasUserAllowedStorage() {
         return (
           localStorage.getItem(
-            'vue-cookie-accept-decline-cookieNoticePanel'
+            'vue-cookie-accept-decline-cookieNoticePanel',
           ) === 'accept' || false
         )
       },
@@ -49,7 +49,7 @@ export default {
             duration: 5000,
             keepOnHover: true,
             singleton: true,
-          }
+          },
         )
         return
       }

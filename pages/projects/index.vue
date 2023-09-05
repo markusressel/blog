@@ -74,7 +74,7 @@ export default {
     // watchers: 37
     // watchers_count: 37
     this.projects = await fetch(
-      `https://api.github.com/users/${global.githubUsername}/repos?per_page=1000`
+      `https://api.github.com/users/${global.githubUsername}/repos?per_page=1000`,
     ).then((res) => res.json())
 
     this.projects = this.projects
