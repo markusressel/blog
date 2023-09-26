@@ -3251,11 +3251,6 @@ axios@^0.27.2:
     follow-redirects "^1.14.9"
     form-data "^4.0.0"
 
-babel-helper-vue-jsx-merge-props@^2.0.3:
-  version "2.0.3"
-  resolved "https://registry.yarnpkg.com/babel-helper-vue-jsx-merge-props/-/babel-helper-vue-jsx-merge-props-2.0.3.tgz#22aebd3b33902328e513293a8e4992b384f9f1b6"
-  integrity sha512-gsLiKK7Qrb7zYJNgiXKpXblxbV5ffSwR0f5whkPAaBAR4fhi6bwRZxX9wBlIc5M/v8CCkXUbXZL4N/nSE97cqg==
-
 babel-loader@^8.2.2:
   version "8.2.3"
   resolved "https://registry.yarnpkg.com/babel-loader/-/babel-loader-8.2.3.tgz#8986b40f1a64cacfcb4b8429320085ef68b1342d"
@@ -12826,12 +12821,10 @@ vue-client-only@^2.0.0:
   resolved "https://registry.yarnpkg.com/vue-client-only/-/vue-client-only-2.1.0.tgz#1a67a47b8ecacfa86d75830173fffee3bf8a4ee3"
   integrity sha512-vKl1skEKn8EK9f8P2ZzhRnuaRHLHrlt1sbRmazlvsx6EiC3A8oWF8YCBrMJzoN+W3OnElwIGbVjsx6/xelY1AA==
 
-vue-content-loader@^0.2.3:
-  version "0.2.3"
-  resolved "https://registry.yarnpkg.com/vue-content-loader/-/vue-content-loader-0.2.3.tgz#8516a2536b375ce5363ae6a14f5ff5ecbd13b696"
-  integrity sha512-gJlNEdXkuHGvgnyY0lBMsrSsOMk+TTog5uNAil5MSLv08f/mE7Apag0VavpxJ6ieb4P5J1iVKEIhHI41HQNq9Q==
-  dependencies:
-    babel-helper-vue-jsx-merge-props "^2.0.3"
+vue-content-loader@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/vue-content-loader/-/vue-content-loader-2.0.1.tgz#c6a3ff0e653671e5e8cff9e0c3814e6d04d3411d"
+  integrity sha512-pkof4+q2xmzNEdhqelxtJejeP/vQUJtLle4/v2ueG+HURqM9Q/GIGC8GJ2bVVWeLfTDET51jqimwQdmxJTlu0g==
 
 vue-cookie-accept-decline@^5.4.0:
   version "5.4.0"
