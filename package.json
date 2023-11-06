@@ -46,7 +46,7 @@
     "@nuxtjs/router-extras": "^1.1.1",
     "@nuxtjs/svg": "^0.4.1",
     "@nuxtjs/tailwindcss": "^4.2.1",
-    "cypress": "^12.16.0",
+    "cypress": "^13.4.0",
     "eslint": "^8.53.0",
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-nuxt": "^4.0.0",
