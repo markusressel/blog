@@ -236,8 +236,7 @@ errors: No known data errors
 With the new disk installed, I had to figure out its name to be able to tell ZFS to use it as a replacement. To do that I used the following command, which outputs both the short and long device name/path:
 
 ```
-> lsblk -r|awk 'NR==1{print $0" DEVICE-ID(S)"}NR>1{dev=$1;printf $0"
-";system("find /dev/disk/by-id -lname \"*"dev"\" -printf \" %p\"");print "";}'
+> lsblk -r|awk 'NR==1{print $0" DEVICE-ID(S)"}NR>1{dev=$1;printf $0" ";system("find /dev/disk/by-id -lname \"*"dev"\" -printf \" %p\"");print "";}'
 ```
 
 To make sure I had the right disk, I compared the drive name to the ones already inside of the pool and made sure it wasn't already part of another mirror. Then I went ahead and let ZFS use the new disk using `zpool replace vol1 /dev/disk/by-id/ata-WDC_WD40EFRX-68N32N0_WD-WCC7K3RUX450-part2 /dev/disk/by-id/ata-ST4000VN008-2DR166_ZDH9KMBQ`. The command took a couple of seconds and then finished without an error. Looking at `zpool status vol1` once again revealed that ZFS was already resilvering the new disk:
