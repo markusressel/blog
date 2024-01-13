@@ -9,7 +9,7 @@ export default async ($content, error, slug) => {
     .fetch()
   const authors = Object.assign(
     {},
-    ...authorsList.map((s) => ({ [s.name]: s }))
+    ...authorsList.map((s) => ({ [s.name]: s })),
   )
   article.authors = authors
 
