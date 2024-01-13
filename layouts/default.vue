@@ -38,7 +38,7 @@
       <!-- Optional -->
       <div slot="acceptContent">GOT IT!</div>
     </vue-cookie-accept-decline>
-    <PageFooter/>
+    <PageFooter />
   </div>
 </template>
 
