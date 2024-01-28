@@ -18,8 +18,8 @@ Creating automations based on events in your calendar can enhance the autonomy o
 
 ## What's the Problem?
 
-[AppDaemon][3] does not (yet) use the Websocket API that [Home Assistant][2] itself uses for its frontend, but the REST Api instead. While this is fine for most things, the REST Api is not officially supported anymore.
-Since the calendar services to create automations have been introduced much later than this technological shift, using calendar services like `calendar.get_events` doesn't quite work when using the REST Api.
+[AppDaemon][3] does not (yet) use the Websocket API that [Home Assistant][2] itself uses for its frontend, but the REST API instead. While this is fine for most things, the REST API is not officially supported anymore.
+Since the calendar services to create automations have been introduced much later than this technological shift, using calendar services like `calendar.get_events` doesn't quite work when using the REST API.
 If you would like to see this change, have a look at [this issue][1] and give it a 👍 (but please don't comment "I need this too", it spams all participants of the issue)!
 
 ## The Workaround
