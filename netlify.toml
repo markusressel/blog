@@ -1,8 +1,9 @@
 #[context.production.environment]
 
 [build.environment]
-  NODE_VERSION = "16.14.0"
-  YARN_VERSION = "1.22.17"
+  NODE_VERSION = "18.19.0"
+  YARN_VERSION = "1.22.21"
+  YARN_FLAGS = "--ignore-engines"
 
 # A basic redirect rule
 [[redirects]]
