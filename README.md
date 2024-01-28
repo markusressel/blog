@@ -7,6 +7,9 @@ The site is written using [Nuxt.js](https://nuxtjs.org), which is based on [Vue.
 ## Build Setup
 
 ```bash
+# ignore node engine checks
+$ yarn config set ignore-engines true
+
 # install dependencies
 $ yarn install
 

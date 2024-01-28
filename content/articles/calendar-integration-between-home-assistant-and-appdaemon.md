@@ -83,7 +83,7 @@ fields:
 You can trigger this script directly from [Home Assistant][2], but since we want to be able to trigger the query from [AppDaemon][3],
 we need to call a script and wait for an event to get the result. To make this a little easier I use these helper functions:
 
-```python{3,11}[calendar_utils.py]
+```python[calendar_utils.py]
 from datetime import datetime, timedelta
 from typing import Optional, Dict, Callable
 
@@ -169,7 +169,7 @@ calendar_controller:
 ...
 ```
 
-```python{3,11}[calendar_controller.py]
+```python[calendar_controller.py]
 from datetime import datetime, timedelta
 from typing import Dict, Callable, List
 
@@ -263,7 +263,7 @@ living_room_controller:
 ...
 ```
 
-```python{3,11}[living_room.py]
+```python[living_room.py]
 class LivingRoomController(BaseApp):
 
     async def initialize(self):
