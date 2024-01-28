@@ -9,7 +9,7 @@
     "test:e2e": "start-server-and-test 'yarn generate:serve' http://localhost:3000 'yarn cypress:open'",
     "test:e2e:ci": "start-server-and-test 'yarn generate:serve' http://localhost:3000 'yarn cypress:run'",
     "build": "nuxt build",
-    "start": "HOST=0 nuxt start",
+    "start": "HOST=localhost nuxt start",
     "generate": "nuxt generate",
     "generate:serve": "yarn generate; yarn start",
     "lint:js": "eslint --ext \".js,.vue\" --ignore-path .gitignore .",
