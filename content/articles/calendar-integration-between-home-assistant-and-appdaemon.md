@@ -12,7 +12,7 @@ tags:
   - python
 ---
 
-Creating automations based on events in your calendar can enhance the autonomy of your [Home Assistant][2] setup quite a lot. Setting it up using [AppDaemon][3] is - sadly - not straight forward though.
+Creating automations based on events in your calendar can enhance the autonomy of your Home Assistant setup quite a lot. Setting it up using AppDaemon is - sadly - not straight forward though.
 
 <!--more-->
 
