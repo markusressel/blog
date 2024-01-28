@@ -32,7 +32,7 @@ back to [AppDaemon][3] as an "event".
 
 To get this running we first need to create our "wrapper script":
 
-```yaml
+```yaml[get_calendar_events.yaml]
 alias: get_calendar_events
 sequence:
   - service: calendar.get_events
@@ -161,11 +161,12 @@ async def register_calendar_event_callback(
 
 Since we need to keep track of event data within [AppDaemon][3], I also created an App for this exact purpose, called `CalendarController`:
 
-```yaml
+```yaml[calendar.yaml]
 ---
 calendar_controller:
   module: calendar_controller
   class: CalendarController
+...
 ```
 
 ```python{3,11}[calendar_controller.py]
@@ -252,13 +253,14 @@ class CalendarController(BaseApp):
 
 In an actual [AppDaemon][3] app, the usage would then look like this:
 
-```yaml
+```yaml[living_room.yaml]
 ---
 living_room_controller:
   module: living_room
   class: LivingRoomController
   dependencies:
     - calendar_controller
+...
 ```
 
 ```python{3,11}[living_room.py]
