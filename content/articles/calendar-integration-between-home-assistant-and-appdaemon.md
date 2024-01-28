@@ -27,7 +27,7 @@ If you would like to see this change, have a look at [this issue][1] and give it
 There is, however, a way to work around this.
 
 Instead of directly querying the calendar service from [AppDaemon][3], we call
-a script  within [Home Assistant][2], which internally calls the calendar service and sends the result
+a script within [Home Assistant][2], which internally calls the calendar service and sends the result
 back to [AppDaemon][3] as an "event".
 
 To get this running we first need to create our "wrapper script":
@@ -37,19 +37,19 @@ alias: get_calendar_events
 sequence:
   - service: calendar.get_events
     data:
-      start_date_time: "{{ start_date_time }}"
+      start_date_time: '{{ start_date_time }}'
       duration:
-        hours: "{{ duration.hours }}"
-        minutes: "{{ duration.minutes }}"
-        seconds: "{{ duration.seconds }}"
+        hours: '{{ duration.hours }}'
+        minutes: '{{ duration.minutes }}'
+        seconds: '{{ duration.seconds }}'
     response_variable: calendar_get_events_result
     target:
-      entity_id: "{{ calendar_entity_id }}"
+      entity_id: '{{ calendar_entity_id }}'
   - variables:
-      event_entries: "{{ calendar_get_events_result[calendar_entity_id].events }}"
+      event_entries: '{{ calendar_get_events_result[calendar_entity_id].events }}'
   - event: custom_appdaemon_get_calendar_events_result
     event_data_template:
-      data: "{{ calendar_get_events_result }}"
+      data: '{{ calendar_get_events_result }}'
 mode: queued
 max: 10
 fields:
@@ -163,12 +163,9 @@ Since we need to keep track of event data within [AppDaemon][3], I also created 
 
 ```yaml
 ---
-
 calendar_controller:
   module: calendar_controller
   class: CalendarController
-
-...
 ```
 
 ```python3
@@ -253,41 +250,37 @@ class CalendarController(BaseApp):
         }
 ```
 
-
 In an actual [AppDaemon][3] app, the usage would then look like this:
 
 ```yaml
 ---
-
 living_room_controller:
   module: living_room
   class: LivingRoomController
   dependencies:
     - calendar_controller
-
-...
 ```
 
 ```python3
 class LivingRoomController(BaseApp):
-  
+
     async def initialize(self):
         ...
-       
+
         calendar_controller = await self.get_app("calendar_controller")
         await calendar_controller.register_state_callback("living_room", self._calendar_data_changed_callback)
 
         # this essentially runs every minute
         await self._check_calendar_events(None, None, None, None, None)
         await self.listen_state(self._check_calendar_events, "sensor.date_time")
-       
+
     async def _calendar_data_changed_callback(self):
         await self._check_calendar_events(None, None, None, None, None)
 
     async def _check_calendar_events(self, entity, attribute, old, new, kwargs):
         calendar_controller = await self.get_app("calendar_controller")
         current_events = await calendar_controller.get_current_events()
-        
+
         # TODO: do something with the events
 
 ```
