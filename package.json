@@ -52,7 +52,7 @@
     "eslint-plugin-nuxt": "^4.0.0",
     "eslint-plugin-prettier": "^5.2.1",
     "eslint-plugin-vue": "^9.31.0",
-    "prettier": "^3.3.3",
+    "prettier": "^3.6.2",
     "push-dir": "^0.4.1",
     "start-server-and-test": "^2.0.8",
     "tailwindcss-dark-mode": "^1.1.7"
