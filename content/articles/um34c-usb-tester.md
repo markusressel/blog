@@ -90,7 +90,7 @@ To be able to measure the total usable capacity of the powerbank, two measuremen
 
 After fully discharging the powerbank to 0% and it refused to power up when pressing its power button, I plugged the UM34C into a QuickCharge 2.0 wall adapter, set up a new session within RD-USB and started charging it to 100%.
 
-![Charging from 0 to 100%]()
+![Charging from 0 to 100%](<>)
 
 ## Discharging from 100 to 0%
 
@@ -99,7 +99,7 @@ After that I reversed the process, added a constant load to the powerbank and mo
 20650mah
 104.66Wh
 
-![Discharging from 100 to 0%]()
+![Discharging from 100 to 0%](<>)
 
 ## Moving Cables while charging
 
