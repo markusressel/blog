@@ -3,7 +3,8 @@
   "title": "Blog - Page 2",
   "meta": {
     "og:site_name": "Markus' Blog",
-    "og:type": "website"
+    "og:type": "website",
+    "og:url": "https://markusressel.de/blog/page/2/"
   },
   "h1": [],
   "internalLinks": [
@@ -11,6 +12,7 @@
     "/attributions",
     "/blog",
     "/blog/post/my-first-blog-post",
+    "/feed.xml",
     "/impressum",
     "/privacy"
   ],

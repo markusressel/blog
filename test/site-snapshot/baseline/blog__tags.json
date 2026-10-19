@@ -3,7 +3,8 @@
   "title": "Tags",
   "meta": {
     "og:site_name": "Markus' Blog",
-    "og:type": "website"
+    "og:type": "website",
+    "og:url": "https://markusressel.de/blog/tags/"
   },
   "h1": [],
   "internalLinks": [
@@ -18,6 +19,7 @@
     "/blog/tags/python",
     "/blog/tags/sound",
     "/blog/tags/zfs",
+    "/feed.xml",
     "/impressum",
     "/privacy"
   ],

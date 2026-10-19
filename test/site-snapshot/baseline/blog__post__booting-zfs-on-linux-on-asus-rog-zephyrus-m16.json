@@ -8,6 +8,7 @@
     "og:site_name": "Markus' Blog",
     "og:title": "Booting ZFS on Linux on Asus ROG Zephyrus M16 (2021)",
     "og:type": "article",
+    "og:url": "https://markusressel.de/blog/post/booting-zfs-on-linux-on-asus-rog-zephyrus-m16/",
     "twitter:card": "summary_large_image",
     "twitter:description": "Booting Linux with ZFS on Root on my Asus ROG Zephyrus M16 requires a kernel module in initramfs.",
     "twitter:image": "https://markusressel.de/images/blog/booting-zfs-on-linux-on-asus-rog-zephyrus-m16/header.jpg",
@@ -23,6 +24,7 @@
     "/blog/post/nvidia-shield-tv-pro-surround-upsampling",
     "/blog/tags/linux",
     "/blog/tags/zfs",
+    "/feed.xml",
     "/impressum",
     "/privacy"
   ],

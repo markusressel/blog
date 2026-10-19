@@ -3,7 +3,8 @@
   "title": "Home",
   "meta": {
     "og:site_name": "Markus' Blog",
-    "og:type": "website"
+    "og:type": "website",
+    "og:url": "https://markusressel.de/"
   },
   "h1": [
     "Welcome! 👋"
@@ -13,6 +14,7 @@
     "/attributions",
     "/blog",
     "/blog/post/the-tech-life-of-markus-ressel",
+    "/feed.xml",
     "/impressum",
     "/privacy",
     "/projects"

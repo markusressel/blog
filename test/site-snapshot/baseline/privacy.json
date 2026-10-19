@@ -3,7 +3,8 @@
   "title": "Privacy Policy",
   "meta": {
     "og:site_name": "Markus' Blog",
-    "og:type": "website"
+    "og:type": "website",
+    "og:url": "https://markusressel.de/privacy/"
   },
   "h1": [
     "Privacy Policy of markusressel.de"
@@ -11,6 +12,7 @@
   "internalLinks": [
     "/",
     "/attributions",
+    "/feed.xml",
     "/impressum",
     "/privacy"
   ],

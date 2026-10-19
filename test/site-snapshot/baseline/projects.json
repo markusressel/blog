@@ -3,12 +3,14 @@
   "title": "Projects",
   "meta": {
     "og:site_name": "Markus' Blog",
-    "og:type": "website"
+    "og:type": "website",
+    "og:url": "https://markusressel.de/projects/"
   },
   "h1": [],
   "internalLinks": [
     "/",
     "/attributions",
+    "/feed.xml",
     "/impressum",
     "/privacy"
   ],

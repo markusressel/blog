@@ -8,6 +8,7 @@
     "og:site_name": "Markus' Blog",
     "og:title": "Calendar integration betwen Home Assistant and AppDaemon",
     "og:type": "article",
+    "og:url": "https://markusressel.de/blog/post/calendar-integration-between-home-assistant-and-appdaemon/",
     "twitter:card": "summary_large_image",
     "twitter:description": "Creating automations based on events in your calendar can enhance the autonomy of your Home Assistant setup quite a lot. Setting it up using AppDaemon is - sadly - not straight forward though.",
     "twitter:image": "https://markusressel.de/images/blog/calendar-integration-between-home-assistant-and-appdaemon/header.jpg",
@@ -23,6 +24,7 @@
     "/blog/tags/appdaemon",
     "/blog/tags/homeassistant",
     "/blog/tags/python",
+    "/feed.xml",
     "/impressum",
     "/privacy"
   ],

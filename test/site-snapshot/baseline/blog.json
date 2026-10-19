@@ -3,7 +3,8 @@
   "title": "Blog",
   "meta": {
     "og:site_name": "Markus' Blog",
-    "og:type": "website"
+    "og:type": "website",
+    "og:url": "https://markusressel.de/blog/"
   },
   "h1": [],
   "internalLinks": [
@@ -15,6 +16,7 @@
     "/blog/post/investigating-zfs-cksum-errors",
     "/blog/post/nvidia-shield-tv-pro-surround-upsampling",
     "/blog/post/the-tech-life-of-markus-ressel",
+    "/feed.xml",
     "/impressum",
     "/privacy"
   ],
