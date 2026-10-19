@@ -110,12 +110,13 @@ a {
 /* Header Link Icon */
 span.icon.icon-link {
   display: inline-block;
-  width: 24px;
-  height: 24px;
-  margin-right: 0.25rem;
-  vertical-align: middle;
-  mask: url('~/assets/icons/icon-hashtag-md.svg');
-  mask-position: 0px 2px;
+  /* scales with the heading; the glyph fills 3/4 of the icon and leaves 1/8 below,
+     so this puts it on the baseline at about the height of capital letters */
+  width: 1em;
+  height: 1em;
+  margin-right: 0.2em;
+  vertical-align: -0.125em;
+  mask: url('~/assets/icons/icon-hashtag-md.svg') center / contain no-repeat;
   @apply bg-gray-800;
   opacity: 0.35;
   transition: opacity 0.2s;
@@ -197,9 +198,26 @@ a:focus-visible > span.icon.icon-link {
   /* dark-plus theme background */
   background-color: #1e1e1e;
   color: #d4d4d4;
-  padding: 2rem 1rem 1rem 0;
+  /* horizontal space comes from the code element, see below */
+  padding: 2rem 0 1.25rem;
   overflow-x: auto;
   line-height: 1.5;
+}
+
+/* As wide as the longest line, so the padding also stays on the right
+   when scrolling horizontally. */
+.nuxt-content-highlight > pre > code {
+  --code-padding-left: 1.5rem;
+  --code-padding-right: 1.5rem;
+  display: block;
+  width: max-content;
+  min-width: 100%;
+  padding: 0 var(--code-padding-right) 0 var(--code-padding-left);
+}
+
+/* line numbers bring their own space on the left (plain text has no lines) */
+.nuxt-content-highlight > pre.line-numbers > code:has(.line) {
+  --code-padding-left: 0.25rem;
 }
 
 /* this overrides the theme background color */
@@ -235,6 +253,10 @@ a:focus-visible > span.icon.icon-link {
 }
 
 .nuxt-content-highlight .line.highlight {
+  /* reach the edges of the code block */
+  margin: 0 calc(-1 * var(--code-padding-right)) 0
+    calc(-1 * var(--code-padding-left));
+  padding: 0 var(--code-padding-right) 0 var(--code-padding-left);
   box-shadow: inset 5px 0 0 #2196f3;
   background-color: #2196f320;
 }
