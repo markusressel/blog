@@ -19,4 +19,17 @@ describe('Projects', () => {
         })
       })
   })
+  it('lists archived projects separately', () => {
+    cy.intercept('https://api.github.com/**', { statusCode: 503 })
+    cy.visitHydrated('/projects')
+    cy.get('[aria-labelledby="projects-archived"] .project-card').should(
+      'have.length.greaterThan',
+      0,
+    )
+    cy.get('[aria-labelledby="projects-archived"]').contains('AlienFXAmbilight')
+    cy.get('[aria-labelledby="projects-active"]')
+      .contains('AlienFXAmbilight')
+      .should('not.exist')
+    cy.get('[aria-labelledby="projects-active"]').contains('fan2go')
+  })
 })

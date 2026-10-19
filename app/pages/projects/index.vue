@@ -27,11 +27,41 @@
   </div>
   <p v-else-if="!projects.length">An error occurred :(</p>
   <div v-else>
-    <div class="grid grid-flow-row grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-      <div v-for="project of projects" :key="project.html_url" class="flex">
-        <ProjectCard :project="project" />
+    <section
+      v-for="group of groups"
+      :key="group.id"
+      :aria-labelledby="`projects-${group.id}`"
+      :class="['project-group', { 'mt-10': group.id === 'archived' }]"
+    >
+      <div class="flex items-baseline gap-3 mx-0 md:mx-4 mt-2">
+        <component
+          :is="group.id === 'active' ? 'h1' : 'h2'"
+          :id="`projects-${group.id}`"
+          class="text-2xl font-bold text-gray-900 dark:text-gray-100"
+        >
+          {{ group.title }}
+        </component>
+        <span
+          class="rounded-full bg-gray-200 dark:bg-gray-800 px-2.5 py-0.5 text-sm font-medium text-gray-700 dark:text-gray-300"
+          >{{ group.projects.length }}</span
+        >
       </div>
-    </div>
+      <p
+        v-if="group.description"
+        class="mx-0 md:mx-4 mt-1 text-gray-600 dark:text-gray-400"
+      >
+        {{ group.description }}
+      </p>
+      <div class="grid grid-flow-row grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+        <div
+          v-for="project of group.projects"
+          :key="project.html_url"
+          class="flex"
+        >
+          <ProjectCard :project="project" />
+        </div>
+      </div>
+    </section>
   </div>
 </template>
 
@@ -69,11 +99,27 @@ const projects = computed(() => {
     : builtProjects.value
   return [...list].sort(
     (a, b) =>
-      a.archived - b.archived ||
-      b.stargazers_count - a.stargazers_count ||
-      a.name.localeCompare(b.name),
+      b.stargazers_count - a.stargazers_count || a.name.localeCompare(b.name),
   )
 })
+
+// active projects first, archived ones in their own section
+const groups = computed(() =>
+  [
+    {
+      id: 'active',
+      title: 'Projects',
+      description: null,
+      projects: projects.value.filter((project) => !project.archived),
+    },
+    {
+      id: 'archived',
+      title: 'Archived',
+      description: 'No longer maintained, kept for reference.',
+      projects: projects.value.filter((project) => project.archived),
+    },
+  ].filter((group) => group.projects.length),
+)
 
 const colorMode = useColorMode()
 const isDark = computed(() => colorMode.value === 'dark')

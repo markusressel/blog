@@ -6,7 +6,9 @@
     "og:type": "website",
     "og:url": "https://markusressel.de/projects/"
   },
-  "h1": [],
+  "h1": [
+    "Projects"
+  ],
   "internalLinks": [
     "/",
     "/attributions",
