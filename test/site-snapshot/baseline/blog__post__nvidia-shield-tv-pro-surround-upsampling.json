@@ -4,12 +4,13 @@
   "meta": {
     "description": "After setting up a new AV receiver in my home entertainment system, I noticed a severe degradation in sound quality,\ncaused by the stereo upmix feature of the Nvidia Shield TV.",
     "og:description": "After setting up a new AV receiver in my home entertainment system, I noticed a severe degradation in sound quality,\ncaused by the stereo upmix feature of the Nvidia Shield TV.",
-    "og:image": "https://images.unsplash.com/photo-1524656856248-1ac698f88bb0?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8",
+    "og:image": "https://markusressel.de/images/blog/nvidia-shield-tv-pro-surround-upsampling/header.jpg",
     "og:site_name": "Markus' Blog",
     "og:title": "Fixing bass heavy sound on the Nvidia Shield TV Pro",
     "og:type": "article",
+    "twitter:card": "summary_large_image",
     "twitter:description": "After setting up a new AV receiver in my home entertainment system, I noticed a severe degradation in sound quality,\ncaused by the stereo upmix feature of the Nvidia Shield TV.",
-    "twitter:image": "https://images.unsplash.com/photo-1524656856248-1ac698f88bb0?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8",
+    "twitter:image": "https://markusressel.de/images/blog/nvidia-shield-tv-pro-surround-upsampling/header.jpg",
     "twitter:title": "Fixing bass heavy sound on the Nvidia Shield TV Pro"
   },
   "h1": [
@@ -43,7 +44,7 @@
     "codeBlocks": [],
     "images": [
       {
-        "src": "/images/blog/nvidia-shield-tv-pro-surround-upsampling/nvidia_shield_stereo_upmix.webp",
+        "src": "/_ipx/w_1024&f_webp&q_80/images/blog/nvidia-shield-tv-pro-surround-upsampling/nvidia_shield_stereo_upmix.webp",
         "alt": "Nvidia Shield TV Settings Audio Settings",
         "title": "Nvidia Shield TV Settings Audio Settings"
       }

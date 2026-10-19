@@ -4,12 +4,13 @@
   "meta": {
     "description": "My home NAS was giving READ and CKSUM errors on two distinct HDDs in different mirrors of the same pool, which turned out to be a much bigger issue than anticipated. Let's investigate.",
     "og:description": "My home NAS was giving READ and CKSUM errors on two distinct HDDs in different mirrors of the same pool, which turned out to be a much bigger issue than anticipated. Let's investigate.",
-    "og:image": "https://images.unsplash.com/photo-1484662020986-75935d2ebc66?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1350&q=80",
+    "og:image": "https://markusressel.de/images/blog/investigating-zfs-cksum-errors/header.jpg",
     "og:site_name": "Markus' Blog",
     "og:title": "Investigating inconspicuous ZFS CKSUM Errors",
     "og:type": "article",
+    "twitter:card": "summary_large_image",
     "twitter:description": "My home NAS was giving READ and CKSUM errors on two distinct HDDs in different mirrors of the same pool, which turned out to be a much bigger issue than anticipated. Let's investigate.",
-    "twitter:image": "https://images.unsplash.com/photo-1484662020986-75935d2ebc66?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1350&q=80",
+    "twitter:image": "https://markusressel.de/images/blog/investigating-zfs-cksum-errors/header.jpg",
     "twitter:title": "Investigating inconspicuous ZFS CKSUM Errors"
   },
   "h1": [
@@ -175,7 +176,7 @@
     ],
     "images": [
       {
-        "src": "/images/blog/investigating-zfs-cksum-errors/zfs_failed_drive_grafana.png",
+        "src": "/_ipx/w_1024&f_webp&q_80/images/blog/investigating-zfs-cksum-errors/zfs_failed_drive_grafana.png",
         "alt": "Grafana dashboard showing 24 hours disk activity",
         "title": "Grafana dashboard showing 24 hours disk activity"
       }

@@ -1,0 +1,19 @@
+{
+  "route": "/blog/page/2",
+  "title": "Blog - Page 2",
+  "meta": {
+    "og:site_name": "Markus' Blog",
+    "og:type": "website"
+  },
+  "h1": [],
+  "internalLinks": [
+    "/",
+    "/attributions",
+    "/blog",
+    "/blog/post/my-first-blog-post",
+    "/impressum",
+    "/privacy"
+  ],
+  "toc": [],
+  "content": null
+}
