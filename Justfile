@@ -27,7 +27,7 @@ lint-fix:
 
 # Format all files with Prettier
 fmt:
-    yarn prettier --write 'app/**/*.{js,ts,vue}' '*.{ts,js,mjs}' 'scripts/*.mjs' 'cypress/e2e/*.js' 'cypress/support/*.ts' 'content/**/*.md' '*.md'
+    yarn prettier --write 'app/**/*.{js,ts,vue}' 'server/**/*.ts' '*.{ts,js,mjs}' 'scripts/*.mjs' 'cypress/e2e/*.js' 'cypress/support/*.ts' 'content/**/*.md' '*.md'
 
 # Run the type check
 typecheck:
