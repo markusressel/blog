@@ -1,3 +1,6 @@
 # Blog pages used to be addressed as /blog?page=N
 /blog   page=:page  /blog/page/:page  301!
 /blog/  page=:page  /blog/page/:page  301!
+
+# /blog/post has no content of its own (Netlify adds the trailing slash first)
+/blog/post/  /blog  301!
