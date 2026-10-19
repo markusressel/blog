@@ -1,12 +1,11 @@
 <template>
-  <div>
+  <div ref="root">
     <input
       v-model="searchQuery"
       type="search"
       autocomplete="off"
       placeholder="Search Blog Posts"
       class="rounded-full p-3 placeholder-gray-800 dark:placeholder-gray-200 text-gray-800 dark:text-gray-200 bg-white dark:bg-gray-700 border-none shadow-md focus:outline-none z-50 w-full"
-      @blur="onFocusLost"
     />
 
     <div
@@ -43,6 +42,7 @@
 <script setup>
 import { searchArticles } from '~/utils/content'
 
+const root = ref(null)
 const searchQuery = ref('')
 const articles = ref([])
 const searching = ref(false)
@@ -61,11 +61,16 @@ watch(searchQuery, async (query) => {
   }
 })
 
-const onFocusLost = () => {
-  // delay clearing the query a bit, to
-  // make onClick events on the search results work
-  setTimeout(() => {
+// Close the results when clicking anywhere else. Not done on blur, because the
+// input also loses focus when the browser window does (e.g. switching tabs).
+const onPointerDown = (event) => {
+  if (root.value && !root.value.contains(event.target)) {
     searchQuery.value = ''
-  }, 200)
+  }
 }
+
+onMounted(() => document.addEventListener('pointerdown', onPointerDown))
+onBeforeUnmount(() =>
+  document.removeEventListener('pointerdown', onPointerDown),
+)
 </script>
