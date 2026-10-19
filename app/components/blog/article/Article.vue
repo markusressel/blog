@@ -13,7 +13,8 @@
         densities="x1 x2"
         format="webp"
         fetchpriority="high"
-        class="object-cover w-full h-48 overflow-hidden rounded-lg shadow-lg"
+        class="article-image object-cover w-full h-48 overflow-hidden rounded-lg shadow-lg"
+        :style="{ viewTransitionName: `article-image-${article.slug}` }"
       />
       <h1
         class="text-4xl md:text-6xl font-bold leading-none my-4 clear-right text-right"
