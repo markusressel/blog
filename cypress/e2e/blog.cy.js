@@ -43,9 +43,21 @@ context('Blog pagination', () => {
 })
 
 context('Unknown routes', () => {
-  it('redirects to the home page', () => {
+  it('show a not found page with links', () => {
     cy.visit('/does-not-exist', { failOnStatusCode: false })
-    cy.location('pathname').should('eq', '/')
-    cy.contains('Welcome!')
+    cy.contains('Page not found')
+    cy.contains('button', 'Blog').click()
+    cy.location('pathname').should('eq', '/blog')
+  })
+
+  it('return a 404 status code', () => {
+    cy.request({ url: '/does-not-exist', failOnStatusCode: false })
+      .its('status')
+      .should('eq', 404)
+  })
+
+  it('show a not found page for unknown articles', () => {
+    cy.visit('/blog/post/does-not-exist', { failOnStatusCode: false })
+    cy.contains('Page not found')
   })
 })
