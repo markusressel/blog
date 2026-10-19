@@ -24,12 +24,8 @@
       <ArticleMeta
         :article="article"
         detailed
-        class="text-sm justify-end mr-2"
+        class="text-sm justify-end mr-2 mb-8"
       />
-
-      <p class="text-xl px-4 my-6 font-bold">
-        {{ article.description }}
-      </p>
 
       <div
         class="lg:grid lg:grid-cols-[minmax(0,1fr)_16rem] lg:gap-10 lg:items-start"
