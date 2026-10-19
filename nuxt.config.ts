@@ -37,7 +37,7 @@ export default defineNuxtConfig({
     },
   },
 
-  css: ['~/assets/css/main.css', 'vue-sonner/style.css'],
+  css: ['~/assets/css/main.css'],
 
   // Auto import components without their folder as name prefix
   components: [{ path: '~/components', pathPrefix: false }],
