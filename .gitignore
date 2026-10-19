@@ -82,8 +82,6 @@ dist
 # IDE / Editor
 .idea
 
-# Service worker
-sw.*
 
 # macOS
 .DS_Store
