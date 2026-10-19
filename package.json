@@ -7,7 +7,7 @@
     "dev": "nuxt dev --host",
     "build": "nuxt build",
     "generate": "nuxt generate",
-    "preview": "serve dist --listen 3000 --no-clipboard",
+    "preview": "serve dist --listen 3000 --no-clipboard --no-port-switching",
     "postinstall": "nuxt prepare",
     "generate:serve": "yarn generate && yarn preview",
     "cypress:open": "cypress open",
@@ -34,7 +34,8 @@
   "devDependencies": {
     "@nuxt/eslint": "^1.17.0",
     "@nuxtjs/tailwindcss": "^6.14.0",
-    "cypress": "^13.15.2",
+    "@types/node": "^22",
+    "cypress": "^16.2.0",
     "eslint": "^10.13.0",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-prettier": "^5.2.1",
@@ -42,8 +43,11 @@
     "nuxt-svgo": "^5.3.0",
     "prettier": "^3.6.2",
     "serve": "^14.2.6",
-    "start-server-and-test": "^2.0.8",
+    "start-server-and-test": "^3.0.13",
     "typescript": "^5",
     "vue-tsc": "^3.3.13"
+  },
+  "resolutions": {
+    "compression": "^1.8.2"
   }
 }
