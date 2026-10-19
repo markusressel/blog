@@ -1,13 +1,7 @@
 {
   "route": "/blog/post",
-  "title": "Markus' Blog",
-  "meta": {
-    "description": "",
-    "og:description": "This repository holds all the code for my personal website [https://markusressel.de](https://markusressel.de), which curently consists of a blog and an \"about me\" page.",
-    "og:site_name": "blog",
-    "og:title": "blog",
-    "og:type": "website"
-  },
+  "title": "",
+  "meta": {},
   "h1": [],
   "internalLinks": [],
   "toc": [],

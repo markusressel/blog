@@ -2,10 +2,7 @@
   "route": "/blog/tags/nvidia",
   "title": "Articles Tagged - Nvidia",
   "meta": {
-    "description": "",
-    "og:description": "This repository holds all the code for my personal website [https://markusressel.de](https://markusressel.de), which curently consists of a blog and an \"about me\" page.",
-    "og:site_name": "blog",
-    "og:title": "blog",
+    "og:site_name": "Markus' Blog",
     "og:type": "website"
   },
   "h1": [],

@@ -2,7 +2,7 @@
   "route": "/blog/post/the-tech-life-of-markus-ressel",
   "title": "The (tech) life of Markus Ressel",
   "meta": {
-    "description": "",
+    "description": "Since this is the first real post on my personal website, I thought I should tell you a little about myself. In this post, I talk about how I originally started programming, what events brought me to Android, and how that evolved later on.",
     "og:description": "Since this is the first real post on my personal website, I thought I should tell you a little about myself. In this post, I talk about how I originally started programming, what events brought me to Android, and how that evolved later on.",
     "og:image": "https://images.unsplash.com/photo-1556075798-4825dfaaf498?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1055&q=80",
     "og:site_name": "Markus' Blog",
