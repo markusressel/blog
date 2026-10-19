@@ -1,4 +1,4 @@
-<h1 class="text-center">Welcome! 👋</h3>
+<h1 class="text-center">Welcome! 👋</h1>
 
 I am Markus Ressel, a software engineer from Germany. When I am not working on developing mobile applications for Android, I tinker with all kinds of projects, from simple shell scripts and libraries to full blown applications and services. Over the years I have gained experience in various languages like Kotlin, Python and Golang and firmly believe in the FOSS principle.
 

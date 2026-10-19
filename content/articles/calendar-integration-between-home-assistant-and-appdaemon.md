@@ -32,7 +32,7 @@ back to [AppDaemon][3] as an "event".
 
 To get this running we first need to create our "wrapper script":
 
-```yaml[get_calendar_events.yaml]
+```yaml [get_calendar_events.yaml]
 alias: get_calendar_events
 sequence:
   - service: calendar.get_events
@@ -83,7 +83,7 @@ fields:
 You can trigger this script directly from [Home Assistant][2], but since we want to be able to trigger the query from [AppDaemon][3],
 we need to call a script and wait for an event to get the result. To make this a little easier I use these helper functions:
 
-```python[calendar_utils.py]
+```python [calendar_utils.py]
 from datetime import datetime, timedelta
 from typing import Optional, Dict, Callable
 
@@ -161,7 +161,7 @@ async def register_calendar_event_callback(
 
 Since we need to keep track of event data within [AppDaemon][3], I also created an App for this exact purpose, called `CalendarController`:
 
-```yaml[calendar.yaml]
+```yaml [calendar.yaml]
 ---
 calendar_controller:
   module: calendar_controller
@@ -169,7 +169,7 @@ calendar_controller:
 ...
 ```
 
-```python[calendar_controller.py]
+```python [calendar_controller.py]
 from datetime import datetime, timedelta
 from typing import Dict, Callable, List
 
@@ -253,7 +253,7 @@ class CalendarController(BaseApp):
 
 In an actual [AppDaemon][3] app, the usage would then look like this:
 
-```yaml[living_room.yaml]
+```yaml [living_room.yaml]
 ---
 living_room_controller:
   module: living_room
@@ -263,7 +263,7 @@ living_room_controller:
 ...
 ```
 
-```python[living_room.py]
+```python [living_room.py]
 class LivingRoomController(BaseApp):
 
     async def initialize(self):

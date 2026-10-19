@@ -1,0 +1,18 @@
+{
+  "route": "/blog/tags/audio",
+  "title": "Articles Tagged - Audio",
+  "meta": {
+    "og:site_name": "Markus' Blog",
+    "og:type": "website"
+  },
+  "h1": [],
+  "internalLinks": [
+    "/",
+    "/attributions",
+    "/blog/post/nvidia-shield-tv-pro-surround-upsampling",
+    "/impressum",
+    "/privacy"
+  ],
+  "toc": [],
+  "content": null
+}

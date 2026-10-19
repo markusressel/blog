@@ -1,0 +1,17 @@
+{
+  "route": "/projects",
+  "title": "Projects",
+  "meta": {
+    "og:site_name": "Markus' Blog",
+    "og:type": "website"
+  },
+  "h1": [],
+  "internalLinks": [
+    "/",
+    "/attributions",
+    "/impressum",
+    "/privacy"
+  ],
+  "toc": [],
+  "content": null
+}

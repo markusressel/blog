@@ -67,6 +67,8 @@ typings/
 
 # nuxt.js build output
 .nuxt
+.output
+.data
 
 # Nuxt generate
 dist
@@ -80,11 +82,16 @@ dist
 # IDE / Editor
 .idea
 
-# Service worker
-sw.*
 
 # macOS
 .DS_Store
 
 # Vim swap files
 *.swp
+
+# site snapshot of the current build (baseline is committed)
+test/site-snapshot/current/
+
+# cypress run artifacts
+cypress/screenshots/
+cypress/videos/

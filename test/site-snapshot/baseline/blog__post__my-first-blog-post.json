@@ -1,0 +1,132 @@
+{
+  "route": "/blog/post/my-first-blog-post",
+  "title": "My first Blog Post",
+  "meta": {
+    "description": "This is the first post of on my blog created using Nuxt.js.\nTo test things out, this post showcases different capabilities of Markdown and @nuxt/content.",
+    "og:description": "This is the first post of on my blog created using Nuxt.js.\nTo test things out, this post showcases different capabilities of Markdown and @nuxt/content.",
+    "og:image": "https://images.unsplash.com/photo-1577605260126-fe10d76fe088?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80",
+    "og:site_name": "Markus' Blog",
+    "og:title": "My first Blog Post",
+    "og:type": "article",
+    "twitter:description": "This is the first post of on my blog created using Nuxt.js.\nTo test things out, this post showcases different capabilities of Markdown and @nuxt/content.",
+    "twitter:image": "https://images.unsplash.com/photo-1577605260126-fe10d76fe088?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80",
+    "twitter:title": "My first Blog Post"
+  },
+  "h1": [
+    "My first Blog Post"
+  ],
+  "internalLinks": [
+    "/",
+    "/attributions",
+    "/blog/post/the-tech-life-of-markus-ressel",
+    "/blog/tags/helloworld",
+    "/impressum",
+    "/privacy"
+  ],
+  "toc": [
+    {
+      "href": "#emphasis",
+      "text": "Emphasis"
+    },
+    {
+      "href": "#code",
+      "text": "Code"
+    },
+    {
+      "href": "#list",
+      "text": "List"
+    },
+    {
+      "href": "#table",
+      "text": "Table"
+    },
+    {
+      "href": "#blockquote",
+      "text": "Blockquote"
+    },
+    {
+      "href": "#html",
+      "text": "HTML"
+    }
+  ],
+  "content": {
+    "headings": [
+      {
+        "level": 2,
+        "id": "emphasis",
+        "text": "Emphasis"
+      },
+      {
+        "level": 2,
+        "id": "code",
+        "text": "Code"
+      },
+      {
+        "level": 2,
+        "id": "list",
+        "text": "List"
+      },
+      {
+        "level": 2,
+        "id": "table",
+        "text": "Table"
+      },
+      {
+        "level": 2,
+        "id": "blockquote",
+        "text": "Blockquote"
+      },
+      {
+        "level": 3,
+        "id": "html",
+        "text": "HTML"
+      }
+    ],
+    "codeBlocks": [
+      {
+        "language": "python",
+        "filename": "example.py",
+        "highlights": [
+          2,
+          5,
+          6
+        ],
+        "code": "def function(a: str, b: int) -> None:\n  return a * b\n\ndef __main__():\n  result = function(\"a\", 2)\n  print(f\"Result: {result}\")"
+      }
+    ],
+    "images": [],
+    "links": [
+      {
+        "href": "https://nuxtjs.org",
+        "text": "Nuxt.js"
+      }
+    ],
+    "blocks": [
+      "This is the first post of on my blog created using Nuxt.js. To test things out, this post showcases different capabilities of Markdown and @nuxt/content.",
+      "Emphasis, aka italics, with asterisks or underscores.",
+      "Strong emphasis, aka bold, with asterisks or underscores.",
+      "Combined emphasis with asterisks and underscores.",
+      "Strikethrough uses two tildes. Scratch this.",
+      "This sentence contains an inline code section.",
+      "example.pydef function(a: str, b: int) -> None: return a * b def __main__(): result = function(\"a\", 2) print(f\"Result: {result}\")",
+      "First",
+      "Second",
+      "sublist",
+      "Tables",
+      "Are",
+      "Cool",
+      "col 3 is",
+      "right-aligned",
+      "$1600",
+      "col 2 is",
+      "centered",
+      "$12",
+      "zebra stripes",
+      "are neat",
+      "$1",
+      "Dorothy followed her through many of the beautiful rooms in her castle.",
+      "The Witch bade her clean the pots and kettles and sweep the floor and keep the fire fed with wood.",
+      "This is HTML inside markdown using tailwindcss classes."
+    ]
+  }
+}

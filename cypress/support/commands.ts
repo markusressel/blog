@@ -1,37 +1,25 @@
 /// <reference types="cypress" />
-// ***********************************************
-// This example commands.ts shows you how to
-// create various custom commands and overwrite
-// existing commands.
-//
-// For more comprehensive examples of custom
-// commands please read more here:
-// https://on.cypress.io/custom-commands
-// ***********************************************
-//
-//
-// -- This is a parent command --
-// Cypress.Commands.add('login', (email, password) => { ... })
-//
-//
-// -- This is a child command --
-// Cypress.Commands.add('drag', { prevSubject: 'element'}, (subject, options) => { ... })
-//
-//
-// -- This is a dual command --
-// Cypress.Commands.add('dismiss', { prevSubject: 'optional'}, (subject, options) => { ... })
-//
-//
-// -- This will overwrite an existing command --
-// Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
-//
-// declare global {
-//   namespace Cypress {
-//     interface Chainable {
-//       login(email: string, password: string): Chainable<void>
-//       drag(subject: string, options?: Partial<TypeOptions>): Chainable<Element>
-//       dismiss(subject: string, options?: Partial<TypeOptions>): Chainable<Element>
-//       visit(originalFn: CommandOriginalFn, url: string, options: Partial<VisitOptions>): Chainable<Element>
-//     }
-//   }
-// }
+
+declare global {
+  // eslint-disable-next-line @typescript-eslint/no-namespace
+  namespace Cypress {
+    interface Chainable {
+      visitHydrated(url: string): Chainable<void>
+    }
+  }
+}
+
+// Visit a page and wait until Vue has hydrated it, so clicks are handled by the app.
+// Vue 3 sets `__vue_app__` on the mount element, Vue 2 (Nuxt 2) sets `__vue__`.
+Cypress.Commands.add('visitHydrated', (url: string) => {
+  cy.visit(url)
+  cy.get('#__nuxt').should((element) => {
+    const root = element[0] as HTMLElement & {
+      __vue_app__?: unknown
+      __vue__?: unknown
+    }
+    expect(Boolean(root.__vue_app__ ?? root.__vue__), 'hydrated').to.equal(true)
+  })
+})
+
+export {}

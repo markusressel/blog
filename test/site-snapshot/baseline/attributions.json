@@ -1,0 +1,53 @@
+{
+  "route": "/attributions",
+  "title": "Attributions",
+  "meta": {
+    "og:site_name": "Markus' Blog",
+    "og:type": "website"
+  },
+  "h1": [],
+  "internalLinks": [
+    "/",
+    "/attributions",
+    "/impressum",
+    "/privacy"
+  ],
+  "toc": [],
+  "content": {
+    "headings": [
+      {
+        "level": 2,
+        "id": "banner-images",
+        "text": "Banner Images"
+      },
+      {
+        "level": 2,
+        "id": "icons",
+        "text": "Icons"
+      }
+    ],
+    "codeBlocks": [],
+    "images": [],
+    "links": [
+      {
+        "href": "https://unsplash.com",
+        "text": "Unsplash"
+      },
+      {
+        "href": "https://www.freepik.com",
+        "text": "Freepik"
+      },
+      {
+        "href": "https://www.flaticon.com/",
+        "text": "Flaticon"
+      }
+    ],
+    "blocks": [
+      "Banner images are used from sources like:",
+      "Unsplash",
+      "Some Icons are taken from sources like:",
+      "Freepik",
+      "Flaticon"
+    ]
+  }
+}
