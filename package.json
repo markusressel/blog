@@ -34,7 +34,7 @@
   "devDependencies": {
     "@nuxt/eslint": "^1.17.0",
     "@nuxtjs/tailwindcss": "^6.14.0",
-    "@types/node": "^22",
+    "@types/node": "^26",
     "cypress": "^16.2.0",
     "eslint": "^10.13.0",
     "eslint-config-prettier": "^10.1.8",
