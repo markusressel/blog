@@ -42,26 +42,52 @@ const findImages = (readme: string, rawBase: string) =>
     .filter((url) => !IGNORED_IMAGE.test(url))
     .map((url) => new URL(url.replace(/^\//, ''), rawBase).href)
 
+// Every preview is a PREVIEW_WIDTH x PREVIEW_HEIGHT image. Images with about the
+// same aspect ratio fill it, others (logos, phone screenshots) are shown whole on
+// a blurred, darkened copy of themselves.
+const toPreview = async (image: Buffer) => {
+  // high density, so SVG logos are rasterized sharply; first frame of GIFs only
+  const source = () => sharp(image, { density: 300 })
+  const { width = 1, height = 1 } = await source().metadata()
+  const ratio = width / height
+  const target = PREVIEW_WIDTH / PREVIEW_HEIGHT
+  if (ratio > target * 0.8 && ratio < target * 1.25) {
+    return source()
+      .resize(PREVIEW_WIDTH, PREVIEW_HEIGHT, { fit: 'cover', position: 'top' })
+      .webp({ quality: 80 })
+      .toBuffer()
+  }
+  const background = await source()
+    .resize(PREVIEW_WIDTH, PREVIEW_HEIGHT, { fit: 'cover' })
+    .blur(24)
+    .modulate({ brightness: 0.6 })
+    .toBuffer()
+  const foreground = await source()
+    .resize(PREVIEW_WIDTH - 48, PREVIEW_HEIGHT - 48, { fit: 'inside' })
+    .toBuffer()
+  return sharp(background)
+    .composite([{ input: foreground, gravity: 'center' }])
+    .webp({ quality: 80 })
+    .toBuffer()
+}
+
+const fetchImage = async (url: string) => {
+  const response = await fetch(url)
+  return response.ok ? Buffer.from(await response.arrayBuffer()) : null
+}
+
 const fetchPreview = async (repo: Repo) => {
   const rawBase = `https://raw.githubusercontent.com/${repo.full_name}/${repo.default_branch}/`
   const readme = await fetch(`${rawBase}README.md`)
-  if (!readme.ok) {
-    return null
-  }
-  for (const url of findImages(await readme.text(), rawBase)) {
+  const images = readme.ok ? findImages(await readme.text(), rawBase) : []
+  // fall back to the social preview image GitHub generates for every repository
+  images.push(`https://opengraph.githubassets.com/1/${repo.full_name}`)
+  for (const url of images) {
     try {
-      const response = await fetch(url)
-      if (!response.ok) {
-        continue
+      const image = await fetchImage(url)
+      if (image) {
+        return await toPreview(image)
       }
-      // first frame only, animated GIFs would be several MB
-      return await sharp(Buffer.from(await response.arrayBuffer()))
-        .resize(PREVIEW_WIDTH, PREVIEW_HEIGHT, {
-          fit: 'inside',
-          withoutEnlargement: true,
-        })
-        .webp({ quality: 80 })
-        .toBuffer()
     } catch {
       // not an image sharp can read, try the next one
     }

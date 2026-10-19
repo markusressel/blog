@@ -1,49 +1,41 @@
 <template>
-  <figure
-    class="project-card flex-1 min-w-0 flex flex-col overflow-hidden bg-gray-100 dark:bg-gray-800 rounded-xl mx-0 my-2 md:mx-4 md:my-4 shadow-lg hover:shadow-xl"
+  <!-- the whole card links to the repository -->
+  <a
+    :href="project.html_url"
+    target="_blank"
+    rel="noopener"
+    class="project-card group flex-1 min-w-0 flex flex-col overflow-hidden bg-gray-100 dark:bg-gray-800 rounded-xl mx-0 my-2 md:mx-4 md:my-4 shadow-lg hover:shadow-xl transition-shadow"
+    style="color: inherit"
   >
-    <!-- first image of the README, resized at build time -->
-    <a
-      v-if="project.preview"
-      :href="project.html_url"
-      target="_blank"
-      rel="noopener"
-      tabindex="-1"
-      aria-hidden="true"
-    >
+    <!-- first image of the README, resized to 640x320 at build time -->
+    <div v-if="project.preview" class="overflow-hidden">
       <img
         :src="project.preview"
         alt=""
         width="640"
         height="320"
         loading="lazy"
-        class="w-full h-36 object-contain bg-gray-200 dark:bg-gray-900"
+        class="w-full aspect-[2/1] object-cover bg-gray-200 dark:bg-gray-900 transition-transform duration-300 group-hover:scale-105"
       />
-    </a>
+    </div>
 
     <div class="flex flex-col flex-1 p-4">
       <div class="flex justify-between items-start gap-2">
-        <a
-          :href="project.html_url"
-          target="_blank"
-          rel="noopener"
-          class="font-semibold break-all"
-          >{{ project.name }}</a
+        <span
+          class="font-semibold break-all text-blue-500 group-hover:underline"
+          >{{ project.name }}</span
         >
-        <div v-if="project.archived === true" class="text-orange-500">
+        <span v-if="project.archived === true" class="text-orange-500">
           Archived
-        </div>
-        <a
-          :href="project.html_url"
-          target="_blank"
-          rel="noopener"
-          class="flex items-center gap-1 shrink-0 text-gray-700 dark:text-gray-300 hover:text-blue-500"
+        </span>
+        <span
+          class="flex items-center gap-1 shrink-0 text-gray-700 dark:text-gray-300"
           :aria-label="`${project.stargazers_count} stars`"
           >{{ project.stargazers_count }}
           <IconStar
             class="w-5 h-5 shrink-0 fill-current text-yellow-500"
             aria-hidden="true"
-        /></a>
+        /></span>
       </div>
 
       <div class="pt-2 flex-1">{{ project.description }}</div>
@@ -67,7 +59,7 @@
         </tbody>
       </table>
     </div>
-  </figure>
+  </a>
 </template>
 
 <script setup>
