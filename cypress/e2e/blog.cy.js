@@ -13,6 +13,13 @@ context('Blog', () => {
     cy.get('.article-list-item').contains('Read more')
   })
 
+  it('shows the reading time of each article', () => {
+    cy.get('.article-list-item .article-meta')
+      .first()
+      .invoke('text')
+      .should('match', /\d+ min read/)
+  })
+
   it('navigates to post when clicking on - read more', () => {
     cy.get('.article-list-item').first().click()
     cy.url().should('include', 'blog/post/')

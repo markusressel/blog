@@ -33,7 +33,35 @@ const image = article.img?.startsWith('/')
   ? `${config.public.baseUrl}${article.img}`
   : article.img
 
-useHead({ title: article.title })
+// structured data for search engines
+const author = Object.values(article.authors).map((author) => ({
+  '@type': 'Person',
+  name: author.name,
+  url: config.public.baseUrl,
+}))
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BlogPosting',
+  headline: article.title,
+  description: article.description,
+  image,
+  datePublished: article.createdAt,
+  dateModified: article.updatedAt,
+  author,
+  keywords: article.tags,
+  mainEntityOfPage: `${config.public.baseUrl}/blog/post/${article.slug}/`,
+}
+
+useHead({
+  title: article.title,
+  script: [
+    {
+      type: 'application/ld+json',
+      // `<` is escaped, so text in the data can't end the script element
+      innerHTML: JSON.stringify(jsonLd).replaceAll('<', '\\u003c'),
+    },
+  ],
+})
 
 useSeoMeta({
   description: article.description,

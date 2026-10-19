@@ -8,6 +8,7 @@
     "og:site_name": "Markus' Blog",
     "og:title": "Fixing bass heavy sound on the Nvidia Shield TV Pro",
     "og:type": "article",
+    "og:url": "https://markusressel.de/blog/post/nvidia-shield-tv-pro-surround-upsampling/",
     "twitter:card": "summary_large_image",
     "twitter:description": "After setting up a new AV receiver in my home entertainment system, I noticed a severe degradation in sound quality,\ncaused by the stereo upmix feature of the Nvidia Shield TV.",
     "twitter:image": "https://markusressel.de/images/blog/nvidia-shield-tv-pro-surround-upsampling/header.jpg",
@@ -24,6 +25,7 @@
     "/blog/tags/audio",
     "/blog/tags/nvidia",
     "/blog/tags/sound",
+    "/feed.xml",
     "/impressum",
     "/privacy"
   ],

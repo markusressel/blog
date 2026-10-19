@@ -1,9 +1,5 @@
 <template>
-  <h3 :id="id">
-    <a v-if="id" :href="`#${id}`" aria-hidden="true" tabindex="-1"
-      ><span class="icon icon-link"></span></a
-    ><slot />
-  </h3>
+  <h3 :id="id"><HeadingLink v-if="id" :id="id" /><slot /></h3>
 </template>
 
 <script setup>

@@ -16,6 +16,7 @@ const LIST_FIELDS = [
   'updatedAt',
   'authors',
   'tags',
+  'readingTime',
 ] as const
 
 // placeholder articles (`dummy: true`) are only shown during development

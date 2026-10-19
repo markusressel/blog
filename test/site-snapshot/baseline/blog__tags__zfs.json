@@ -3,7 +3,8 @@
   "title": "Articles Tagged - Zfs",
   "meta": {
     "og:site_name": "Markus' Blog",
-    "og:type": "website"
+    "og:type": "website",
+    "og:url": "https://markusressel.de/blog/tags/zfs/"
   },
   "h1": [],
   "internalLinks": [
@@ -11,6 +12,7 @@
     "/attributions",
     "/blog/post/booting-zfs-on-linux-on-asus-rog-zephyrus-m16",
     "/blog/post/investigating-zfs-cksum-errors",
+    "/feed.xml",
     "/impressum",
     "/privacy"
   ],

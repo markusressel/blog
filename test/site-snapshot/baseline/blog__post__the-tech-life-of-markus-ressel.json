@@ -8,6 +8,7 @@
     "og:site_name": "Markus' Blog",
     "og:title": "The (tech) life of Markus Ressel",
     "og:type": "article",
+    "og:url": "https://markusressel.de/blog/post/the-tech-life-of-markus-ressel/",
     "twitter:card": "summary_large_image",
     "twitter:description": "Since this is the first real post on my personal website, I thought I should tell you a little about myself. In this post, I talk about how I originally started programming, what events brought me to Android, and how that evolved later on.",
     "twitter:image": "https://markusressel.de/images/blog/the-tech-life-of-markus-ressel/header.jpg",
@@ -22,6 +23,7 @@
     "/blog/post/investigating-zfs-cksum-errors",
     "/blog/post/my-first-blog-post",
     "/blog/tags/helloworld",
+    "/feed.xml",
     "/impressum",
     "/privacy"
   ],

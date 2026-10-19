@@ -39,11 +39,33 @@ export default defineNuxtConfig({
         { property: 'og:site_name', content: "Markus' Blog" },
         { property: 'og:type', content: 'website' },
       ],
-      link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
+      link: [
+        { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+        {
+          rel: 'alternate',
+          type: 'application/rss+xml',
+          title: "Markus' Blog",
+          href: '/feed.xml',
+        },
+      ],
     },
   },
 
   css: ['~/assets/css/main.css'],
+
+  hooks: {
+    // estimated reading time of articles, at 200 words per minute without code blocks
+    'content:file:afterParse'({ collection, file, content }) {
+      if (collection.name !== 'articles') {
+        return
+      }
+      const text = (file.body ?? '')
+        .replace(/^---[\s\S]*?---/, '')
+        .replace(/```[\s\S]*?```/g, '')
+      const words = text.match(/[\p{L}\p{N}]+/gu)?.length ?? 0
+      content.readingTime = Math.max(1, Math.round(words / 200))
+    },
+  },
 
   experimental: {
     // smooth page changes in browsers that support the View Transition API
@@ -74,6 +96,8 @@ export default defineNuxtConfig({
   site: {
     url: 'https://markusressel.de',
     name: "Markus' Blog",
+    // Netlify redirects to the URL with a trailing slash, so the sitemap uses it
+    trailingSlash: true,
   },
 
   routeRules: {
@@ -88,6 +112,8 @@ export default defineNuxtConfig({
         '/blog',
         '/blog/tags',
         '/search-index.json',
+        '/projects.json',
+        '/feed.xml',
         ...blogPageRoutes,
         ...articleRoutes,
       ],

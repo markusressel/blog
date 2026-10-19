@@ -14,6 +14,8 @@ export default defineContentConfig({
         tags: z.array(z.string()).default([]),
         // placeholder articles, only visible in development
         dummy: z.boolean().default(false),
+        // minutes, computed at build time (`content:file:afterParse` in nuxt.config.ts)
+        readingTime: z.number().optional(),
       }),
     }),
     authors: defineCollection({

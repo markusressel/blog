@@ -8,6 +8,7 @@
     "og:site_name": "Markus' Blog",
     "og:title": "My first Blog Post",
     "og:type": "article",
+    "og:url": "https://markusressel.de/blog/post/my-first-blog-post/",
     "twitter:card": "summary_large_image",
     "twitter:description": "This is the first post of on my blog created using Nuxt.js.\nTo test things out, this post showcases different capabilities of Markdown and @nuxt/content.",
     "twitter:image": "https://markusressel.de/images/blog/my-first-blog-post/header.jpg",
@@ -21,6 +22,7 @@
     "/attributions",
     "/blog/post/the-tech-life-of-markus-ressel",
     "/blog/tags/helloworld",
+    "/feed.xml",
     "/impressum",
     "/privacy"
   ],

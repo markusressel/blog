@@ -3,7 +3,8 @@
   "title": "Articles Tagged - Helloworld",
   "meta": {
     "og:site_name": "Markus' Blog",
-    "og:type": "website"
+    "og:type": "website",
+    "og:url": "https://markusressel.de/blog/tags/helloworld/"
   },
   "h1": [],
   "internalLinks": [
@@ -11,6 +12,7 @@
     "/attributions",
     "/blog/post/my-first-blog-post",
     "/blog/post/the-tech-life-of-markus-ressel",
+    "/feed.xml",
     "/impressum",
     "/privacy"
   ],

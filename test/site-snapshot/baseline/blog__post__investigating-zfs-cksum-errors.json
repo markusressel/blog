@@ -8,6 +8,7 @@
     "og:site_name": "Markus' Blog",
     "og:title": "Investigating inconspicuous ZFS CKSUM Errors",
     "og:type": "article",
+    "og:url": "https://markusressel.de/blog/post/investigating-zfs-cksum-errors/",
     "twitter:card": "summary_large_image",
     "twitter:description": "My home NAS was giving READ and CKSUM errors on two distinct HDDs in different mirrors of the same pool, which turned out to be a much bigger issue than anticipated. Let's investigate.",
     "twitter:image": "https://markusressel.de/images/blog/investigating-zfs-cksum-errors/header.jpg",
@@ -23,6 +24,7 @@
     "/blog/post/the-tech-life-of-markus-ressel",
     "/blog/tags/linux",
     "/blog/tags/zfs",
+    "/feed.xml",
     "/impressum",
     "/privacy"
   ],

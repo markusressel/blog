@@ -3,13 +3,15 @@
   "title": "Articles Tagged - Homeassistant",
   "meta": {
     "og:site_name": "Markus' Blog",
-    "og:type": "website"
+    "og:type": "website",
+    "og:url": "https://markusressel.de/blog/tags/homeassistant/"
   },
   "h1": [],
   "internalLinks": [
     "/",
     "/attributions",
     "/blog/post/calendar-integration-between-home-assistant-and-appdaemon",
+    "/feed.xml",
     "/impressum",
     "/privacy"
   ],

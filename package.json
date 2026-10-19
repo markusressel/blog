@@ -44,6 +44,7 @@
     "nuxt-svgo": "^5.3.0",
     "prettier": "^3.6.2",
     "serve": "^14.2.6",
+    "sharp": "^0.35.5",
     "start-server-and-test": "^3.0.13",
     "typescript": "^6",
     "vue-tsc": "^3.3.13"

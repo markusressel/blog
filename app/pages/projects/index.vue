@@ -1,6 +1,6 @@
 <template>
   <div
-    v-if="pending"
+    v-if="!projects.length && pending"
     class="grid grid-flow-row px-0 md:mx-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3"
   >
     <div v-for="n in 10" :key="n">
@@ -25,13 +25,43 @@
       </figure>
     </div>
   </div>
-  <p v-else-if="error">An error occurred :(</p>
+  <p v-else-if="!projects.length">An error occurred :(</p>
   <div v-else>
-    <div class="grid grid-flow-row grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-      <div v-for="project of projects" :key="project.html_url">
-        <ProjectCard :project="project" />
+    <section
+      v-for="group of groups"
+      :key="group.id"
+      :aria-labelledby="`projects-${group.id}`"
+      :class="['project-group', { 'mt-10': group.id === 'archived' }]"
+    >
+      <div class="flex items-baseline gap-3 mx-0 md:mx-4 mt-2">
+        <component
+          :is="group.id === 'active' ? 'h1' : 'h2'"
+          :id="`projects-${group.id}`"
+          class="text-2xl font-bold text-gray-900 dark:text-gray-100"
+        >
+          {{ group.title }}
+        </component>
+        <span
+          class="rounded-full bg-gray-200 dark:bg-gray-800 px-2.5 py-0.5 text-sm font-medium text-gray-700 dark:text-gray-300"
+          >{{ group.projects.length }}</span
+        >
       </div>
-    </div>
+      <p
+        v-if="group.description"
+        class="mx-0 md:mx-4 mt-1 text-gray-600 dark:text-gray-400"
+      >
+        {{ group.description }}
+      </p>
+      <div class="grid grid-flow-row grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+        <div
+          v-for="project of group.projects"
+          :key="project.html_url"
+          class="flex"
+        >
+          <ProjectCard :project="project" />
+        </div>
+      </div>
+    </section>
   </div>
 </template>
 
@@ -40,28 +70,55 @@ import { ContentLoader } from 'vue-content-loader'
 
 import global from '~/utils/global'
 
-// Fetched in the browser, so the list is always up to date.
-// Relevant fields: fork, archived, license.spdx_id, language, name,
-// html_url, description, stargazers_count, watchers_count, forks_count
-const {
-  data: projects,
-  pending,
-  error,
-} = useLazyFetch(
-  `https://api.github.com/users/${global.githubUsername}/repos?per_page=1000`,
-  {
-    server: false,
-    transform: (repos) =>
-      repos
-        .filter((project) => project.fork === false && project.license !== null)
-        .sort(
-          (a, b) =>
-            a.archived - b.archived ||
-            b.stargazers_count - a.stargazers_count ||
-            a.name.localeCompare(b.name) ||
-            (a.language ?? '').localeCompare(b.language ?? ''),
-        ),
-  },
+// The list is fetched from GitHub at build time (server/routes/projects.json.ts),
+// including the preview images from the READMEs. The browser then loads the
+// current numbers from the GitHub API and keeps the build time previews.
+const { data: builtProjects } = await useFetch('/projects.json', {
+  default: () => [],
+})
+// the preview images are not linked, so they are not found by the crawler
+prerenderRoutes(
+  builtProjects.value
+    .map((project) => project.preview)
+    .filter((preview) => preview !== null),
+)
+
+const { data: repos, pending } = useLazyFetch(
+  `https://api.github.com/users/${global.githubUsername}/repos?per_page=100`,
+  { server: false },
+)
+
+const projects = computed(() => {
+  const previews = new Map(
+    builtProjects.value.map((project) => [project.name, project.preview]),
+  )
+  const list = repos.value
+    ? repos.value
+        .filter((repo) => repo.fork === false && repo.license !== null)
+        .map((repo) => ({ ...repo, preview: previews.get(repo.name) ?? null }))
+    : builtProjects.value
+  return [...list].sort(
+    (a, b) =>
+      b.stargazers_count - a.stargazers_count || a.name.localeCompare(b.name),
+  )
+})
+
+// active projects first, archived ones in their own section
+const groups = computed(() =>
+  [
+    {
+      id: 'active',
+      title: 'Projects',
+      description: null,
+      projects: projects.value.filter((project) => !project.archived),
+    },
+    {
+      id: 'archived',
+      title: 'Archived',
+      description: 'No longer maintained, kept for reference.',
+      projects: projects.value.filter((project) => project.archived),
+    },
+  ].filter((group) => group.projects.length),
 )
 
 const colorMode = useColorMode()

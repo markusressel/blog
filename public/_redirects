@@ -4,3 +4,6 @@
 
 # /blog/post has no content of its own (Netlify adds the trailing slash first)
 /blog/post/  /blog  301!
+
+# RSS feed of the old Nuxt 2 site
+/feed/articles/rss.xml  /feed.xml  301!

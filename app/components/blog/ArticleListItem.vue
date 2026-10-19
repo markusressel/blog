@@ -24,15 +24,10 @@
         <h2 class="font-bold text-gray-900 dark:text-gray-200 text-2xl my-0">
           {{ article.title }}
         </h2>
-        <div
-          class="flex items-center uppercase text-xs text-gray-700 dark:text-gray-400"
-        >
-          <p class="my-0 mr-1">
-            {{ formatDate(article.updatedAt) }}
-          </p>
-          <span class="mr-1">•</span>
-          <p class="my-0">{{ authorText }}</p>
-        </div>
+        <ArticleMeta
+          :article="article"
+          class="text-xs text-gray-700 dark:text-gray-400"
+        />
         <p class="text-lg text-gray-800 dark:text-gray-300">
           {{ article.description }}
         </p>
@@ -48,26 +43,11 @@
   </NuxtLink>
 </template>
 
-<script>
-import formatDate from '@/utils/formatDate'
-
-export default {
-  props: {
-    article: {
-      type: Object,
-      default: null,
-    },
+<script setup>
+defineProps({
+  article: {
+    type: Object,
+    required: true,
   },
-  computed: {
-    authorText() {
-      return Object.values(this.article.authors)
-        .map((author) => author.name)
-        .join(', ')
-    },
-  },
-  methods: {
-    formatDate,
-  },
-}
+})
 </script>
-<style scoped></style>
