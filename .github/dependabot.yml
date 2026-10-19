@@ -15,6 +15,11 @@ updates:
     prefix: fix
     prefix-development: chore
     include: scope
+  ignore:
+    # must match the Node.js version used for builds (netlify.toml, CI)
+    - dependency-name: '@types/node'
+      update-types:
+        - version-update:semver-major
   # one PR for all minor and patch updates, major updates get their own PR
   groups:
     npm-minor-and-patch:
