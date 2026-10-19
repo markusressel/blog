@@ -88,6 +88,7 @@ export default defineNuxtConfig({
         '/blog',
         '/blog/tags',
         '/search-index.json',
+        '/projects.json',
         ...blogPageRoutes,
         ...articleRoutes,
       ],
