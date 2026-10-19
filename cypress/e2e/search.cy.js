@@ -40,3 +40,37 @@ context('Search results', () => {
     )
   })
 })
+
+context('Search keyboard navigation', () => {
+  it('focuses the search with "/"', () => {
+    cy.visitHydrated('/')
+    cy.get('body').type('/')
+    cy.focused().should('have.attr', 'type', 'search')
+  })
+
+  it('opens the selected result with the arrow keys and Enter', () => {
+    cy.visitHydrated('/')
+    cy.get('input[type="search"]').type('zfs')
+    cy.get('[role="option"]').should('have.length', 2)
+    cy.get('input[type="search"]').type('{downArrow}{downArrow}')
+    cy.get('[role="option"]')
+      .eq(1)
+      .should('have.attr', 'aria-selected', 'true')
+      .find('a')
+      .invoke('attr', 'href')
+      .then((href) => {
+        cy.get('input[type="search"]').type('{enter}')
+        cy.location().should((location) =>
+          expect(location.pathname + location.hash).to.equal(href),
+        )
+      })
+  })
+
+  it('does not load the SQLite database for searching', () => {
+    cy.intercept('/__nuxt_content/**').as('database')
+    cy.visitHydrated('/')
+    cy.get('input[type="search"]').type('zfs')
+    cy.get('[role="option"]').should('exist')
+    cy.get('@database.all').should('have.length', 0)
+  })
+})
