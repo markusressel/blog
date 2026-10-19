@@ -1,35 +1,31 @@
 <template>
-  <div>
-    <div
-      class="flex flex-col text-gray-700 dark:text-gray-100 max-w-5xl mx-auto"
-    >
-      <div v-for="article of articles" :key="article.slug">
-        <ArticleListItem :article="article" />
-      </div>
+  <div class="max-w-5xl mx-auto md:px-4">
+    <div class="flex flex-col gap-6 text-gray-700 dark:text-gray-100">
+      <ArticleListItem
+        v-for="article of articles"
+        :key="article.slug"
+        :article="article"
+      />
     </div>
-    <div v-if="total" class="constainer mx-auto mb-4 max-w-5xl">
-      <Pagination v-if="total > 5" :total="total" :page="page" />
+    <div v-if="total > 5" class="mt-8 mb-4">
+      <Pagination :total="total" :page="page" />
     </div>
   </div>
 </template>
 
-<script>
-export default {
-  name: 'ArticleList',
-  props: {
-    articles: {
-      type: Array,
-      default: () => [],
-    },
-    total: {
-      type: Number,
-      default: 0,
-    },
-    page: {
-      type: Number,
-      default: 1,
-    },
+<script setup>
+defineProps({
+  articles: {
+    type: Array,
+    default: () => [],
   },
-}
+  total: {
+    type: Number,
+    default: 0,
+  },
+  page: {
+    type: Number,
+    default: 1,
+  },
+})
 </script>
-<style scoped></style>
