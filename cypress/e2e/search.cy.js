@@ -28,3 +28,15 @@ context('Search', () => {
     cy.contains('Nothing found')
   })
 })
+
+context('Search results', () => {
+  it('close when clicking outside of the search', () => {
+    cy.visitHydrated('/')
+    cy.get('input[type="search"]').type('zfs')
+    cy.contains('a', 'Investigating inconspicuous ZFS CKSUM Errors')
+    cy.get('main').click('topLeft')
+    cy.contains('a', 'Investigating inconspicuous ZFS CKSUM Errors').should(
+      'not.exist',
+    )
+  })
+})
