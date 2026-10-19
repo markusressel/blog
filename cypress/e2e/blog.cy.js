@@ -10,7 +10,7 @@ context('Blog', () => {
   })
 
   it('has an item in the list', () => {
-    cy.get('.article-list-item').contains('Read more')
+    cy.get('.article-list-item').first().contains('Read more')
   })
 
   it('shows the reading time of each article', () => {
