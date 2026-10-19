@@ -39,7 +39,15 @@ export default defineNuxtConfig({
         { property: 'og:site_name', content: "Markus' Blog" },
         { property: 'og:type', content: 'website' },
       ],
-      link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
+      link: [
+        { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+        {
+          rel: 'alternate',
+          type: 'application/rss+xml',
+          title: "Markus' Blog",
+          href: '/feed.xml',
+        },
+      ],
     },
   },
 
@@ -88,6 +96,8 @@ export default defineNuxtConfig({
   site: {
     url: 'https://markusressel.de',
     name: "Markus' Blog",
+    // Netlify redirects to the URL with a trailing slash, so the sitemap uses it
+    trailingSlash: true,
   },
 
   routeRules: {
@@ -103,6 +113,7 @@ export default defineNuxtConfig({
         '/blog/tags',
         '/search-index.json',
         '/projects.json',
+        '/feed.xml',
         ...blogPageRoutes,
         ...articleRoutes,
       ],

@@ -16,6 +16,8 @@
       <NuxtLink :to="{ name: 'privacy' }" style="text-color: inherit">
         Privacy Policy
       </NuxtLink>
+      |
+      <a href="/feed.xml" style="text-color: inherit">RSS</a>
     </div>
   </footer>
 </template>
