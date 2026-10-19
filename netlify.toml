@@ -7,18 +7,3 @@
   NODE_VERSION = "22"
   YARN_VERSION = "1.22.22"
   YARN_FLAGS = "--ignore-engines"
-
-# blog pages used to be addressed as /blog?page=2
-[[redirects]]
-  from = "/blog"
-  query = { page = ":page" }
-  to = "/blog/page/:page"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/blog/"
-  query = { page = ":page" }
-  to = "/blog/page/:page"
-  status = 301
-  force = true
