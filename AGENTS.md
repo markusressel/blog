@@ -6,8 +6,8 @@ Guidance for AI coding agents working in this repository. Human-oriented docs li
 
 Personal website and blog of Markus Ressel, published at <https://markusressel.de>.
 
-- Framework: **Nuxt 4** (Vue 3). `nuxt generate` pre-renders every page into a static site
-  (`.output/public`, symlinked as `dist/`).
+- Framework: **Nuxt 4** (Vue 3). `nuxt generate` pre-renders every page into a static site in `dist/`
+  (locally a symlink to `.output/public`; on Netlify the `netlify-static` preset writes `dist/` directly).
 - Content: **@nuxt/content v3**. Markdown files in `content/`, collections defined in `content.config.ts`,
   stored in SQLite at build time. Code highlighting is done by Shiki at build time.
 - Styling: **Tailwind CSS 3** (`@nuxtjs/tailwindcss`) plus `app/assets/css/main.css`.

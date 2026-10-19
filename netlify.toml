@@ -1,6 +1,7 @@
 [build]
   command = "yarn generate"
-  publish = ".output/public"
+  # on Netlify, Nitro uses the netlify-static preset, which writes to dist/
+  publish = "dist"
 
 [build.environment]
   NODE_VERSION = "22"
