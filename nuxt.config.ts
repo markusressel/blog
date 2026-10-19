@@ -45,6 +45,20 @@ export default defineNuxtConfig({
 
   css: ['~/assets/css/main.css'],
 
+  hooks: {
+    // estimated reading time of articles, at 200 words per minute without code blocks
+    'content:file:afterParse'({ collection, file, content }) {
+      if (collection.name !== 'articles') {
+        return
+      }
+      const text = (file.body ?? '')
+        .replace(/^---[\s\S]*?---/, '')
+        .replace(/```[\s\S]*?```/g, '')
+      const words = text.match(/[\p{L}\p{N}]+/gu)?.length ?? 0
+      content.readingTime = Math.max(1, Math.round(words / 200))
+    },
+  },
+
   experimental: {
     // smooth page changes in browsers that support the View Transition API
     viewTransition: true,

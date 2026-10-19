@@ -21,13 +21,11 @@
       >
         {{ article.title }}
       </h1>
-      <div class="flex items-center uppercase text-sm justify-end mr-2">
-        <p class="my-0 mr-2">
-          {{ formatDate(article.updatedAt) }}
-        </p>
-        <span class="mt-0 mr-2">•</span>
-        <p class="my-0">{{ authorText }}</p>
-      </div>
+      <ArticleMeta
+        :article="article"
+        detailed
+        class="text-sm justify-end mr-2"
+      />
 
       <p class="text-xl px-4 my-6 font-bold">
         {{ article.description }}
@@ -73,9 +71,7 @@
 </template>
 
 <script setup>
-import formatDate from '~/utils/formatDate'
-
-const props = defineProps({
+defineProps({
   article: {
     type: Object,
     required: true,
@@ -89,10 +85,4 @@ const props = defineProps({
     default: null,
   },
 })
-
-const authorText = computed(() =>
-  Object.values(props.article.authors)
-    .map((author) => author.name)
-    .join(', '),
-)
 </script>
