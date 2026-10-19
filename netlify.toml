@@ -15,3 +15,10 @@
   to = "/blog/page/:page"
   status = 301
   force = true
+
+[[redirects]]
+  from = "/blog/"
+  query = { page = ":page" }
+  to = "/blog/page/:page"
+  status = 301
+  force = true
