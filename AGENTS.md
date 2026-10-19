@@ -52,7 +52,7 @@ For changes that affect how Markdown is rendered, also run `yarn generate && yar
 | `app/layouts/default.vue`               | Only layout. The window scrolls; the header is sticky.                                                                                                                                                                                                                                                 |
 | `app/utils/content.ts`                  | All content queries (`getArticles`, `getArticle`, `getTags`, `getPage`, ...). Reuse these instead of writing new queries in pages.                                                                                                                                                                     |
 | `app/assets/`                           | CSS and SVG icons. Import icons as components with `?component` (nuxt-svgo).                                                                                                                                                                                                                           |
-| `server/routes/search-index.json.ts`    | Search index for the header search, prerendered at build time and loaded by `SearchInput.vue` on first use (MiniSearch).                                                                                                                                                                               |
+| `server/routes/`                        | Routes prerendered at build time: `search-index.json` (header search, loaded by `SearchInput.vue` on first use with MiniSearch), `feed.xml` (RSS), `projects.json` and `project-previews/` (GitHub projects with README preview images, see `server/utils/projects.ts`).                               |
 | `content/`                              | Markdown: `articles/` (blog posts), `authors/`, and single pages (`home.md`, `impressum.md`, `privacy-policy.md`, `attributions.md`).                                                                                                                                                                  |
 | `content.config.ts`                     | Content collections and front matter schemas (`articles`, `authors`, `pages`).                                                                                                                                                                                                                         |
 | `public/`                               | Served as-is from the site root. Blog images go in `public/images/blog/<article-slug>/` (the header image as `header.jpg`). Always use local images: remote image URLs with a query string can't be prerendered into static files. `sw.js` removes the service worker of the old Nuxt 2 site; keep it. |
@@ -100,6 +100,7 @@ Rules:
 - `dummy: true` marks placeholder or unfinished posts (e.g. `dummy-post*.md`, `um34c-usb-tester.md`).
   They are shown in development and hidden in the generated site.
   Do not delete them. Never set `dummy: true` on a real article.
+- The reading time is computed at build time (`content:file:afterParse` hook in `nuxt.config.ts`).
 - New articles are prerendered automatically (`nitro.prerender.routes` in `nuxt.config.ts` lists
   every non-dummy file in `content/articles/`).
 
@@ -135,3 +136,7 @@ Rules:
 
 Netlify builds and deploys the site using `netlify.toml`. Do not change it (build command,
 publish dir, Node version) without being asked.
+
+The build fetches the projects page from the GitHub API. An optional `GITHUB_TOKEN` environment
+variable raises the rate limit; without GitHub the build still succeeds and the page loads the
+list in the browser. Redirects go in `public/_redirects`, not `netlify.toml`.
