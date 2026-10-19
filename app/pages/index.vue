@@ -6,7 +6,7 @@
       <ContentRenderer
         v-if="page"
         :value="page"
-        class="nuxt-content"
+        class="prose dark:prose-invert max-w-none"
         data-snapshot="content"
       />
     </div>

@@ -11,7 +11,8 @@ Personal website and blog of Markus Ressel, published at <https://markusressel.d
 - Content: **@nuxt/content v3**. Markdown files in `content/`, collections defined in `content.config.ts`,
   stored in SQLite at build time. Code highlighting is done by Shiki at build time.
 - Styling: **Tailwind CSS 3** (`@nuxtjs/tailwindcss`) plus `app/assets/css/main.css`.
-  Tailwind's preflight (`@tailwind base`) is deliberately disabled in `app/assets/css/tailwind.css`.
+  Rendered Markdown uses `@tailwindcss/typography` (`prose dark:prose-invert`); code blocks opt out with `not-prose`.
+  Fonts are the system font stack on purpose (no font download).
 - Dark mode: `@nuxtjs/color-mode` sets the `dark-mode` class on `<html>`; Tailwind's `dark:` variant uses it.
 - Hosting: **Netlify**, configured in `netlify.toml` (build command, publish dir, Node version).
 
@@ -43,22 +44,21 @@ For changes that affect how Markdown is rendered, also run `yarn generate && yar
 
 ## Repository layout
 
-| Path                                    | Purpose                                                                                                                                                         |
-| --------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `app/pages/`                            | File-based routes. Blog: `app/pages/blog/` (`index.vue` list with `?page=N`, `post/[slug].vue`, `tags/`). `[...slug].vue` redirects unknown routes to `/`.      |
-| `app/components/`                       | Vue components, auto-imported without path prefix. Component names must be unique across subfolders.                                                            |
-| `app/components/content/`               | Prose components that override how Markdown renders: `ProsePre.vue` (code blocks: filename, copy button, line numbers), `ProseH2-4.vue` (heading anchor links). |
-| `app/layouts/default.vue`               | Only layout. The page scrolls inside `.scroll-container`, not the window.                                                                                       |
-| `app/utils/content.ts`                  | All content queries (`getArticles`, `getArticle`, `searchArticles`, `getTags`, `getPage`, ...). Reuse these instead of writing new queries in pages.            |
-| `app/plugins/`                          | Nuxt plugins (cookie banner, client only).                                                                                                                      |
-| `app/assets/`                           | CSS and SVG icons. Import icons as components with `?component` (nuxt-svgo).                                                                                    |
-| `content/`                              | Markdown: `articles/` (blog posts), `authors/`, and single pages (`home.md`, `impressum.md`, `privacy-policy.md`, `attributions.md`).                           |
-| `content.config.ts`                     | Content collections and front matter schemas (`articles`, `authors`, `pages`).                                                                                  |
-| `public/`                               | Served as-is from the site root. Blog images go in `public/images/blog/<article-slug>/`. `sw.js` removes the service worker of the old Nuxt 2 site; keep it.    |
-| `cypress/e2e/`                          | E2E tests (`*.cy.js`).                                                                                                                                          |
-| `scripts/snapshot-site.mjs`             | Extracts a markup-independent JSON snapshot of the generated site.                                                                                              |
-| `test/site-snapshot/baseline/`          | Reference snapshot. Regenerate with `yarn snapshot:baseline` only when a rendering change is intended.                                                          |
-| `.nuxt/`, `.output/`, `.data/`, `dist/` | Generated. Never edit or commit.                                                                                                                                |
+| Path                                    | Purpose                                                                                                                                                              |
+| --------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `app/pages/`                            | File-based routes. Blog: `app/pages/blog/` (`index.vue` list with `?page=N`, `post/[slug].vue`, `tags/`). `[...slug].vue` throws a 404, rendered by `app/error.vue`. |
+| `app/components/`                       | Vue components, auto-imported without path prefix. Component names must be unique across subfolders.                                                                 |
+| `app/components/content/`               | Prose components that override how Markdown renders: `ProsePre.vue` (code blocks: filename, copy button, line numbers), `ProseH2-4.vue` (heading anchor links).      |
+| `app/layouts/default.vue`               | Only layout. The window scrolls; the header is sticky.                                                                                                               |
+| `app/utils/content.ts`                  | All content queries (`getArticles`, `getArticle`, `searchArticles`, `getTags`, `getPage`, ...). Reuse these instead of writing new queries in pages.                 |
+| `app/assets/`                           | CSS and SVG icons. Import icons as components with `?component` (nuxt-svgo).                                                                                         |
+| `content/`                              | Markdown: `articles/` (blog posts), `authors/`, and single pages (`home.md`, `impressum.md`, `privacy-policy.md`, `attributions.md`).                                |
+| `content.config.ts`                     | Content collections and front matter schemas (`articles`, `authors`, `pages`).                                                                                       |
+| `public/`                               | Served as-is from the site root. Blog images go in `public/images/blog/<article-slug>/`. `sw.js` removes the service worker of the old Nuxt 2 site; keep it.         |
+| `cypress/e2e/`                          | E2E tests (`*.cy.js`).                                                                                                                                               |
+| `scripts/snapshot-site.mjs`             | Extracts a markup-independent JSON snapshot of the generated site.                                                                                                   |
+| `test/site-snapshot/baseline/`          | Reference snapshot. Regenerate with `yarn snapshot:baseline` only when a rendering change is intended.                                                               |
+| `.nuxt/`, `.output/`, `.data/`, `dist/` | Generated. Never edit or commit.                                                                                                                                     |
 
 ## Writing blog articles
 
@@ -119,7 +119,6 @@ Rules:
   so clicks are handled by Vue and not lost before hydration.
 - Tests select elements by CSS class (e.g. `.article-list-item`, `.image-link-card`, `.filename`).
   Do not rename these classes without updating `cypress/e2e/`.
-- Elements below the fold of `.scroll-container` count as hidden for Cypress; `scrollIntoView()` first.
 - `cypress/screenshots/`, `cypress/videos/`, and the Cypress example folders are generated
   artifacts. Do not commit them.
 
