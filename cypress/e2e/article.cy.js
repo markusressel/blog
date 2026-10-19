@@ -69,3 +69,21 @@ context('Article', () => {
     cy.url().should('not.include', 'my-first-blog-post')
   })
 })
+
+context('Images', () => {
+  for (const url of [
+    '/',
+    '/blog',
+    '/blog/post/investigating-zfs-cksum-errors',
+  ]) {
+    it(`all load on ${url}`, () => {
+      cy.visitHydrated(url)
+      cy.get('img').each((image) => {
+        cy.wrap(image).scrollIntoView()
+        cy.wrap(image).should((element) =>
+          expect(element[0].naturalWidth, element[0].currentSrc).to.be.above(0),
+        )
+      })
+    })
+  }
+})

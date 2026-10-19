@@ -2,7 +2,7 @@
 createdAt: 2024-01-28
 updatedAt: 2024-01-28
 title: Calendar integration betwen Home Assistant and AppDaemon
-img: https://images.unsplash.com/photo-1616530834117-9167fb0d8ebc?q=80&w=2531&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
+img: /images/blog/calendar-integration-between-home-assistant-and-appdaemon/header.jpg
 alt: Calendar integration betwen Home Assistant and AppDaemon
 authors:
   - Markus Ressel

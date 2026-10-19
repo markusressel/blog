@@ -5,11 +5,7 @@
       <DoubleBack />
     </div>
 
-    <NuxtLink
-      v-else
-      :to="{ name: 'blog', query: { page: 1 } }"
-      :class="buttonStyles"
-    >
+    <NuxtLink v-else :to="pageLink(1)" :class="buttonStyles">
       <DoubleBack />
       <span class="hidden sm:inline">First</span>
     </NuxtLink>
@@ -19,11 +15,7 @@
       <SingleBack />
     </div>
 
-    <NuxtLink
-      v-else
-      :to="{ name: 'blog', query: { page: prevPage } }"
-      :class="buttonStyles"
-    >
+    <NuxtLink v-else :to="pageLink(prevPage)" :class="buttonStyles">
       <SingleBack />
       <span class="hidden sm:inline">Prev</span>
     </NuxtLink>
@@ -33,11 +25,7 @@
       <SingleFwd />
     </div>
 
-    <NuxtLink
-      v-else
-      :to="{ name: 'blog', query: { page: nextPage } }"
-      :class="buttonStyles"
-    >
+    <NuxtLink v-else :to="pageLink(nextPage)" :class="buttonStyles">
       <span class="hidden sm:inline">Next</span>
       <SingleFwd />
     </NuxtLink>
@@ -47,11 +35,7 @@
       <DoubleFwd />
     </div>
 
-    <NuxtLink
-      v-else
-      :to="{ name: 'blog', query: { page: totalPages } }"
-      :class="buttonStyles"
-    >
+    <NuxtLink v-else :to="pageLink(totalPages)" :class="buttonStyles">
       <span class="hidden sm:inline">Last</span>
       <DoubleFwd />
     </NuxtLink>
@@ -70,19 +54,23 @@ export default {
       type: Number,
       default: 5,
     },
+    page: {
+      type: Number,
+      default: 1,
+    },
   },
   computed: {
     buttonStyles() {
-      return 'border rounded-full px-4 py-1 text-sm text-bold bg-white dark:bg-gray-800 flex justify-center items-center sm:uppercase hover:bg-blue-500 hover:text-white transform duration-500 ease-in-out'
+      return 'border dark:border-gray-700 rounded-full px-4 py-1 text-sm text-bold bg-white dark:bg-gray-800 flex justify-center items-center sm:uppercase hover:bg-blue-500 hover:text-white transform duration-500 ease-in-out'
     },
     disabledStyle() {
-      return 'border rounded-full px-4 py-1 text-sm bg-white dark:bg-gray-800 flex justify-center items-center sm:uppercase text-gray-300 dark:text-gray-600'
+      return 'border dark:border-gray-700 rounded-full px-4 py-1 text-sm bg-white dark:bg-gray-800 flex justify-center items-center sm:uppercase text-gray-300 dark:text-gray-600'
     },
     totalPages() {
       return Math.ceil(this.total / this.perPage)
     },
     currentPage() {
-      return parseInt(this.$route.query.page) || 1
+      return this.page
     },
     prevPage() {
       return this.currentPage > 1 ? this.currentPage - 1 : 1
@@ -91,6 +79,11 @@ export default {
       return this.currentPage < this.totalPages
         ? this.currentPage + 1
         : this.totalPages
+    },
+  },
+  methods: {
+    pageLink(page) {
+      return page > 1 ? `/blog/page/${page}` : '/blog'
     },
   },
 }

@@ -3,7 +3,16 @@
     <div
       class="flex self-center h-24 w-auto bg-gray-100 dark:bg-gray-700 rounded-xl mt-8 mb-4 shadow-lg"
     >
-      <img class="w-24 h-24 rounded-l-lg" :src="author.image" />
+      <NuxtImg
+        class="w-24 h-24 rounded-l-lg"
+        :src="author.image"
+        :alt="author.name"
+        width="96"
+        height="96"
+        densities="x1 x2"
+        format="webp"
+        loading="lazy"
+      />
       <div class="p-4 text-center">
         <blockquote>
           <p class="text-lg font-semibold">

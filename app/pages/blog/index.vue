@@ -1,23 +1,22 @@
 <template>
-  <ArticleList
-    v-if="content"
-    :articles="content.paginatedArticles"
-    :total="content.allArticles.length"
-  />
+  <ArticleListPage :page="1" />
 </template>
 
 <script setup>
 // TODO: Add RSS feed links https://markusressel.de/feed/articles/rss.xml
 // TODO: Add RSS feed links https://markusressel.de/feed/articles/feed.json
-import { getArticles } from '~/utils/content'
 
+// Pages used to be addressed as /blog?page=2. Netlify redirects these with a 301
+// (netlify.toml); this covers local previews and other hosts. During hydration the
+// route is still the prerendered one without query, so watch for the real one.
 const route = useRoute()
-const page = computed(() => parseInt(route.query.page) || 1)
-
-const { data: content } = await useAsyncData(
-  () => `blog-page-${page.value}`,
-  () => getArticles({ page: page.value }),
+watch(
+  () => parseInt(route.query.page),
+  (legacyPage) => {
+    if (legacyPage > 1) {
+      navigateTo(`/blog/page/${legacyPage}`, { replace: true })
+    }
+  },
+  { immediate: true },
 )
-
-useHead({ title: 'Blog' })
 </script>

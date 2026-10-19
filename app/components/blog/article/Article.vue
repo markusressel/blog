@@ -3,11 +3,18 @@
     <article
       class="w-11/12 flex-grow bg-white dark:bg-gray-800 rounded-3xl max-w-6xl z-10 shadow-lg p-4 md:p-6 md:my-2 mx-auto"
     >
-      <img
+      <NuxtImg
         v-if="article.img"
         :src="article.img"
         :alt="article.alt ?? ''"
-        class="object-cover w-full h-48 overflow-hidden rounded-lg shadow-lg"
+        width="1152"
+        height="192"
+        fit="cover"
+        densities="x1 x2"
+        format="webp"
+        fetchpriority="high"
+        class="article-image object-cover w-full h-48 overflow-hidden rounded-lg shadow-lg"
+        :style="{ viewTransitionName: `article-image-${article.slug}` }"
       />
       <h1
         class="text-4xl md:text-6xl font-bold leading-none my-4 clear-right text-right"

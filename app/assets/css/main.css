@@ -53,6 +53,56 @@ a {
   outline-offset: 2px;
 }
 
+/* PAGE TRANSITIONS (View Transitions API, `experimental.viewTransition`) */
+
+/* the header stays in place instead of fading with the page */
+.page-header {
+  view-transition-name: page-header;
+}
+
+/* old page fades out quickly, new page slides in slightly */
+::view-transition-old(root) {
+  animation: 80ms ease-in both page-out;
+}
+::view-transition-new(root) {
+  animation: 180ms cubic-bezier(0, 0, 0.2, 1) 60ms both page-in;
+}
+@keyframes page-out {
+  to {
+    opacity: 0;
+  }
+}
+@keyframes page-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+}
+
+/* the article image moves from the blog list into the article header */
+.article-image {
+  view-transition-class: article-image;
+}
+::view-transition-group(*.article-image) {
+  animation-duration: 250ms;
+  animation-timing-function: cubic-bezier(0.2, 0, 0, 1);
+  overflow: clip;
+  border-radius: 0.5rem;
+}
+::view-transition-old(*.article-image),
+::view-transition-new(*.article-image) {
+  height: 100%;
+  object-fit: cover;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation: none !important;
+  }
+}
+
 /* MARKDOWN CONTENT */
 
 /* Header Link Icon */

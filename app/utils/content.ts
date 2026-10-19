@@ -85,33 +85,6 @@ export const getArticles = async ({
   return { allArticles, paginatedArticles }
 }
 
-// Full-text search over titles and article text, like `$content().search()` did
-export const searchArticles = async (searchQuery: string, limit: number) => {
-  const needle = searchQuery.toLowerCase()
-  const sections = await queryCollectionSearchSections('articles')
-  const paths = [
-    ...new Set(
-      sections
-        .filter((section) =>
-          [section.title, ...section.titles, section.content].some((text) =>
-            text.toLowerCase().includes(needle),
-          ),
-        )
-        .map((section) => section.id.split('#')[0] as string),
-    ),
-  ]
-  if (!paths.length) {
-    return []
-  }
-  const items = await articlesQuery()
-    .select(...LIST_FIELDS)
-    .where('path', 'IN', paths)
-    .order('createdAt', 'DESC')
-    .limit(limit)
-    .all()
-  return withAuthors(items)
-}
-
 export const getAdjacentArticles = async (slug: string) => {
   const items = await articlesQuery()
     .select('title', 'path', 'createdAt')

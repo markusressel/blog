@@ -8,7 +8,7 @@
       </div>
     </div>
     <div v-if="total" class="constainer mx-auto mb-4 max-w-5xl">
-      <Pagination v-if="total > 5" :total="total" />
+      <Pagination v-if="total > 5" :total="total" :page="page" />
     </div>
   </div>
 </template>
@@ -24,6 +24,10 @@ export default {
     total: {
       type: Number,
       default: 0,
+    },
+    page: {
+      type: Number,
+      default: 1,
     },
   },
 }
