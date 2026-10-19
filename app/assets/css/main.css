@@ -278,8 +278,7 @@ a:focus-visible > span.icon.icon-link {
 
 /* Tables */
 
-.prose table,
-table.data-table {
+.prose table {
   @apply shadow-lg;
   display: inline-block;
   overflow: auto;
@@ -293,39 +292,39 @@ table.data-table {
   font-size: 0.9em;
 }
 
-:is(.prose, .data-table) thead tr {
+.prose thead tr {
   background-color: var(--color-primary);
   color: #ffffff;
   text-align: left;
 }
 
-:is(.prose, .data-table) thead th {
+.prose thead th {
   color: inherit;
 }
 
-:is(.prose, .data-table) :is(th, td) {
+.prose :is(th, td) {
   padding: 12px 15px;
 }
 
-:is(.prose, .data-table) tbody tr {
+.prose tbody tr {
   border-bottom: 1px solid #dddddd;
 }
-.dark-mode :is(.prose, .data-table) tbody tr {
+.dark-mode .prose tbody tr {
   border-bottom: 1px solid #dddddd20;
 }
 
-:is(.prose, .data-table) tbody tr:nth-of-type(even) {
+.prose tbody tr:nth-of-type(even) {
   background-color: #f3f3f3;
 }
-.dark-mode :is(.prose, .data-table) tbody tr:nth-of-type(even) {
+.dark-mode .prose tbody tr:nth-of-type(even) {
   background-color: #f3f3f310;
 }
 
-:is(.prose, .data-table) tbody tr:hover {
+.prose tbody tr:hover {
   /* Blue 100 */
   background-color: #bbdefb;
 }
-.dark-mode :is(.prose, .data-table) tbody tr:hover {
+.dark-mode .prose tbody tr:hover {
   /* Blue 100 A20 */
   background-color: #bbdefb20;
 }
