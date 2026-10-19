@@ -6,6 +6,8 @@
 
 .dark-mode {
   --color: #ebf4f1;
+  /* dark scrollbars and form controls */
+  color-scheme: dark;
 }
 
 html {
