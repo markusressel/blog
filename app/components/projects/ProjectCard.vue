@@ -14,7 +14,7 @@
 
     <div class="pt-2">{{ project.description }}</div>
 
-    <table class="self-center mb-0 mt-4 text-center">
+    <table class="data-table self-center mb-0 mt-4 text-center">
       <thead>
         <tr>
           <th>License</th>

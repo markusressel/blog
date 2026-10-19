@@ -1,5 +1,5 @@
 <template>
-  <div class="nuxt-content-highlight">
+  <div class="nuxt-content-highlight not-prose">
     <span v-if="filename" class="filename">{{ filename }}</span>
     <button type="button" class="copy-button" @click="copy">
       {{ copied ? 'Copied!' : 'Copy' }}

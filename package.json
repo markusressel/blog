@@ -27,13 +27,12 @@
     "nuxt": "^4.6.2",
     "vue": "^3.5.44",
     "vue-content-loader": "^2.0.1",
-    "vue-cookie-accept-decline": "^6.1.0",
-    "vue-router": "^5.4.0",
-    "vue-sonner": "^2.0.9"
+    "vue-router": "^5.4.0"
   },
   "devDependencies": {
     "@nuxt/eslint": "^1.17.0",
     "@nuxtjs/tailwindcss": "^6.14.0",
+    "@tailwindcss/typography": "^0.5.20",
     "@types/node": "^22",
     "cypress": "^16.2.0",
     "eslint": "^10.13.0",

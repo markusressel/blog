@@ -1,3 +1,3 @@
 <script setup>
-await navigateTo('/', { replace: true })
+throw createError({ statusCode: 404, message: 'Page not found', fatal: true })
 </script>
