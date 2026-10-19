@@ -1,0 +1,37 @@
+{
+  "routes": [
+    "/",
+    "/attributions",
+    "/blog",
+    "/blog/post",
+    "/blog/post/booting-zfs-on-linux-on-asus-rog-zephyrus-m16",
+    "/blog/post/calendar-integration-between-home-assistant-and-appdaemon",
+    "/blog/post/investigating-zfs-cksum-errors",
+    "/blog/post/my-first-blog-post",
+    "/blog/post/nvidia-shield-tv-pro-surround-upsampling",
+    "/blog/post/the-tech-life-of-markus-ressel",
+    "/blog/tags",
+    "/blog/tags/appdaemon",
+    "/blog/tags/audio",
+    "/blog/tags/helloworld",
+    "/blog/tags/homeassistant",
+    "/blog/tags/linux",
+    "/blog/tags/nvidia",
+    "/blog/tags/python",
+    "/blog/tags/sound",
+    "/blog/tags/zfs",
+    "/impressum",
+    "/privacy",
+    "/projects"
+  ],
+  "sitemap": [
+    "https://markusressel.de",
+    "https://markusressel.de/attributions",
+    "https://markusressel.de/blog",
+    "https://markusressel.de/blog/post",
+    "https://markusressel.de/blog/tags",
+    "https://markusressel.de/impressum",
+    "https://markusressel.de/privacy",
+    "https://markusressel.de/projects"
+  ]
+}

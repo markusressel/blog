@@ -1,0 +1,149 @@
+{
+  "route": "/blog/post/calendar-integration-between-home-assistant-and-appdaemon",
+  "title": "Calendar integration betwen Home Assistant and AppDaemon",
+  "meta": {
+    "description": "",
+    "og:description": "Creating automations based on events in your calendar can enhance the autonomy of your Home Assistant setup quite a lot. Setting it up using AppDaemon is - sadly - not straight forward though.",
+    "og:image": "https://images.unsplash.com/photo-1616530834117-9167fb0d8ebc?q=80&w=2531&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "og:site_name": "Markus' Blog",
+    "og:title": "Calendar integration betwen Home Assistant and AppDaemon",
+    "og:type": "article",
+    "twitter:description": "Creating automations based on events in your calendar can enhance the autonomy of your Home Assistant setup quite a lot. Setting it up using AppDaemon is - sadly - not straight forward though.",
+    "twitter:image": "https://images.unsplash.com/photo-1616530834117-9167fb0d8ebc?q=80&w=2531&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "twitter:title": "Calendar integration betwen Home Assistant and AppDaemon"
+  },
+  "h1": [
+    "Calendar integration betwen Home Assistant and AppDaemon"
+  ],
+  "internalLinks": [
+    "/",
+    "/attributions",
+    "/blog/post/nvidia-shield-tv-pro-surround-upsampling",
+    "/blog/tags/appdaemon",
+    "/blog/tags/homeassistant",
+    "/blog/tags/python",
+    "/impressum",
+    "/privacy"
+  ],
+  "toc": [
+    {
+      "href": "#whats-the-problem",
+      "text": "What's the Problem?"
+    },
+    {
+      "href": "#the-workaround",
+      "text": "The Workaround"
+    }
+  ],
+  "content": {
+    "headings": [
+      {
+        "level": 2,
+        "id": "whats-the-problem",
+        "text": "What's the Problem?"
+      },
+      {
+        "level": 2,
+        "id": "the-workaround",
+        "text": "The Workaround"
+      }
+    ],
+    "codeBlocks": [
+      {
+        "language": "yaml",
+        "filename": "get_calendar_events.yaml",
+        "highlights": [],
+        "code": "alias: get_calendar_events\nsequence:\n  - service: calendar.get_events\n    data:\n      start_date_time: '{{ start_date_time }}'\n      duration:\n        hours: '{{ duration.hours }}'\n        minutes: '{{ duration.minutes }}'\n        seconds: '{{ duration.seconds }}'\n    response_variable: calendar_get_events_result\n    target:\n      entity_id: '{{ calendar_entity_id }}'\n  - variables:\n      event_entries: '{{ calendar_get_events_result[calendar_entity_id].events }}'\n  - event: custom_appdaemon_get_calendar_events_result\n    event_data_template:\n      data: '{{ calendar_get_events_result }}'\nmode: queued\nmax: 10\nfields:\n  calendar_entity_id:\n    selector:\n      entity: {}\n    name: Calendar Entity ID\n    description: The entity ID of the calendar to query.\n    required: true\n  start_date_time:\n    selector:\n      datetime: {}\n    name: Start Date Time\n    description: >-\n      Return active events after this time (exclusive). When not set, defaults\n      to now.\n    required: false\n  duration:\n    selector:\n      duration:\n        enable_day: false\n    name: Duration\n    required: false\n    description: Return active events from start_date_time until the specified duration.\n    default:\n      hours: 24\n      minutes: 0\n      seconds: 0"
+      },
+      {
+        "language": "python",
+        "filename": "calendar_utils.py",
+        "highlights": [],
+        "code": "from datetime import datetime, timedelta\nfrom typing import Optional, Dict, Callable\n\nimport appdaemon.plugins.hass.hassapi as hass\n\nfrom util import util_common\n\n\nasync def get_calendar_events(\n    controller: hass.Hass,\n    entity_id: str,\n    start: Optional[datetime] = None,\n    end: Optional[datetime] = None,\n    duration: Optional[timedelta] = None,\n) -> Dict:\n    \"\"\"\n    Get calendar events between two dates\n    :param controller: usually 'self'\n    :param entity_id: the calendar entity to query\n    :param start: Return active events after this time (exclusive). When not set, defaults to now.\n    :param end: Return active events before this time (exclusive). Cannot be used with duration. You must specify either end_date_time or duration.\n    :param duration: Return active events from start_date_time until the specified duration. Cannot be used with end_date_time. You must specify either duration or end_date_time\n    \"\"\"\n\n    args = {}\n    if start is not None:\n        args[\"start_date_time\"] = start.isoformat()\n    # if end is not None:\n    #    args[\"end_date_time\"] = end.isoformat()\n    if duration is not None:\n        hours = (duration.days * 24) + (duration.seconds // 3600)\n        minutes = (duration.seconds // 60) % 60\n        seconds = duration.seconds % 60\n\n        duration_args = {}\n        duration_args[\"hours\"] = hours\n        duration_args[\"minutes\"] = minutes\n        duration_args[\"seconds\"] = seconds\n\n        args[\"duration\"] = duration_args\n\n    controller.log(f\"Getting calendar events for {entity_id} with args: {args}\")\n\n    # workaround using a wrapper script, see: https://github.com/appdaemon/appdaemon/issues/1837\n    await util_common.run_script(\n        controller=controller,\n        name=\"get_calendar_events\",\n        variables={\n            \"calendar_entity_id\": entity_id,\n            **args\n        }\n    )\n\n    # FIXME: not yet supported by appdaemon, see: https://github.com/appdaemon/appdaemon/issues/1837\n    # return await controller.call_service(\n    #     \"calendar/get_events\",\n    #     entity_id=entity_id,\n    #     **args,\n    #     return_result=True,\n    # )\n\n\nasync def register_calendar_event_callback(\n    controller: hass.Hass,\n    callback: Callable,\n) -> None:\n    \"\"\"\n    Register a callback to be called when a calendar event is received\n    :param controller: usually 'self'\n    :param callback: callback to call when an event is received\n    :return: A handle that can be used to cancel the callback.\n    \"\"\"\n    return await controller.listen_event(callback, \"custom_appdaemon_get_calendar_events_result\")"
+      },
+      {
+        "language": "yaml",
+        "filename": "calendar.yaml",
+        "highlights": [],
+        "code": "---\ncalendar_controller:\n  module: calendar_controller\n  class: CalendarController\n..."
+      },
+      {
+        "language": "python",
+        "filename": "calendar_controller.py",
+        "highlights": [],
+        "code": "from datetime import datetime, timedelta\nfrom typing import Dict, Callable, List\n\nfrom base import BaseApp\nfrom const import *\nfrom util import util_calendar\n\n\n# Used to keep track of calendar events\n# and help with tracking event states.\nclass CalendarController(BaseApp):\n\n    async def initialize(self):\n        # used to keep track of calendar data\n        self._calendar_data = {}\n        # used to keep track of callbacks\n        self._state_callbacks = {}\n        await util_calendar.register_calendar_event_callback(\n            controller=self,\n            callback=self._on_calendar_events_callback\n        )\n\n        await self._update_calendar_events(None, None, None, None, None)\n        # this essentially runs every minute\n        await self.listen_state(self._update_calendar_events, \"sensor.date_time\")\n\n    async def _on_calendar_events_callback(self, event_id, payload_event, *args):\n        self.log(f\"Received calendar result event '{event_id}': {payload_event}\")\n        self._calendar_data = payload_event[\"data\"]\n\n        for key, callback_data in self._state_callbacks.items():\n            callback = callback_data[\"callback\"]\n            condition = callback_data[\"condition\"]\n            if condition is not None:\n                if condition():\n                    await callback()\n            else:\n                await callback()\n\n    async def _update_calendar_events(self, entity, attribute, old, new, kwargs):\n        # query data for all of the calendar entities you are interested in\n        await util_calendar.get_calendar_events(\n            controller=self,\n            entity_id=CALENDAR_IRIS_MARKUS_ENTITY,\n            start=datetime.now(),\n            duration=timedelta(hours=720) # events within the coming 30 days\n        )\n\n    async def get_current_events(self, calendar_id: str or None = None) -> List[Dict]:\n        \"\"\"\n        Get a list of all current events for a calendar\n        :param calendar_id: the id of the calendar, if None, all calendars are queried\n        :return: a list of events\n        \"\"\"\n        result = []\n        for cid, calendar_data in self._calendar_data.items():\n            if calendar_id is not None and cid != calendar_id:\n                continue\n            calendar_events = calendar_data.get(\"events\", [])\n            result.extend(calendar_events)\n\n        result = [event for event in result if\n                  datetime.fromisoformat(\n                      event[\"start\"]).timestamp() < datetime.now().timestamp() < datetime.fromisoformat(\n                      event[\"end\"]).timestamp()]\n        return result\n\n    async def register_state_callback(self, key: str, callback: Callable, condition: Callable or None = None):\n        \"\"\"\n        Register a callback to be called when the state of the calendar changes\n        and the value of the condition changed.\n        :param key: the key of the callback\n        :param callback: the callback to call\n        :param condition: the condition to check, returns True or False\n        \"\"\"\n        self._state_callbacks[key] = {\n            \"callback\": callback,\n            \"condition\": condition\n        }"
+      },
+      {
+        "language": "yaml",
+        "filename": "living_room.yaml",
+        "highlights": [],
+        "code": "---\nliving_room_controller:\n  module: living_room\n  class: LivingRoomController\n  dependencies:\n    - calendar_controller\n..."
+      },
+      {
+        "language": "python",
+        "filename": "living_room.py",
+        "highlights": [],
+        "code": "class LivingRoomController(BaseApp):\n\n    async def initialize(self):\n        ...\n\n        calendar_controller = await self.get_app(\"calendar_controller\")\n        await calendar_controller.register_state_callback(\"living_room\", self._calendar_data_changed_callback)\n\n        # this essentially runs every minute\n        await self._check_calendar_events(None, None, None, None, None)\n        await self.listen_state(self._check_calendar_events, \"sensor.date_time\")\n\n    async def _calendar_data_changed_callback(self):\n        await self._check_calendar_events(None, None, None, None, None)\n\n    async def _check_calendar_events(self, entity, attribute, old, new, kwargs):\n        calendar_controller = await self.get_app(\"calendar_controller\")\n        current_events = await calendar_controller.get_current_events()\n\n        # TODO: do something with the events"
+      }
+    ],
+    "images": [],
+    "links": [
+      {
+        "href": "https://github.com/appdaemon/appdaemon",
+        "text": "AppDaemon"
+      },
+      {
+        "href": "https://www.home-assistant.io/",
+        "text": "Home Assistant"
+      },
+      {
+        "href": "https://github.com/appdaemon/appdaemon/issues/1837",
+        "text": "this issue"
+      },
+      {
+        "href": "https://github.com/appdaemon/appdaemon",
+        "text": "AppDaemon"
+      },
+      {
+        "href": "https://www.home-assistant.io/",
+        "text": "Home Assistant"
+      },
+      {
+        "href": "https://github.com/appdaemon/appdaemon",
+        "text": "AppDaemon"
+      },
+      {
+        "href": "https://www.home-assistant.io/",
+        "text": "Home Assistant"
+      },
+      {
+        "href": "https://github.com/appdaemon/appdaemon",
+        "text": "AppDaemon"
+      },
+      {
+        "href": "https://github.com/appdaemon/appdaemon",
+        "text": "AppDaemon"
+      },
+      {
+        "href": "https://github.com/appdaemon/appdaemon",
+        "text": "AppDaemon"
+      }
+    ],
+    "blocks": [
+      "Creating automations based on events in your calendar can enhance the autonomy of your Home Assistant setup quite a lot. Setting it up using AppDaemon is - sadly - not straight forward though.",
+      "AppDaemon does not (yet) use the Websocket API that Home Assistant itself uses for its frontend, but the REST API instead. While this is fine for most things, the REST API is not officially supported anymore. Since the calendar services to create automations have been introduced much later than this technological shift, using calendar services like calendar.get_events doesn't quite work when using the REST API. If you would like to see this change, have a look at this issue and give it a 👍 (but please don't comment \"I need this too\", it spams all participants of the issue)!",
+      "There is, however, a way to work around this.",
+      "Instead of directly querying the calendar service from AppDaemon, we call a script within Home Assistant, which internally calls the calendar service and sends the result back to AppDaemon as an \"event\".",
+      "To get this running we first need to create our \"wrapper script\":",
+      "get_calendar_events.yamlalias: get_calendar_events sequence: - service: calendar.get_events data: start_date_time: '{{ start_date_time }}' duration: hours: '{{ duration.hours }}' minutes: '{{ duration.minutes }}' seconds: '{{ duration.seconds }}' response_variable: calendar_get_events_result target: entity_id: '{{ calendar_entity_id }}' - variables: event_entries: '{{ calendar_get_events_result[calendar_entity_id].events }}' - event: custom_appdaemon_get_calendar_events_result event_data_template: data: '{{ calendar_get_events_result }}' mode: queued max: 10 fields: calendar_entity_id: selector: entity: {} name: Calendar Entity ID description: The entity ID of the calendar to query. required: true start_date_time: selector: datetime: {} name: Start Date Time description: >- Return active events after this time (exclusive). When not set, defaults to now. required: false duration: selector: duration: enable_day: false name: Duration required: false description: Return active events from start_date_time until the specified duration. default: hours: 24 minutes: 0 seconds: 0",
+      "You can trigger this script directly from Home Assistant, but since we want to be able to trigger the query from AppDaemon, we need to call a script and wait for an event to get the result. To make this a little easier I use these helper functions:",
+      "calendar_utils.pyfrom datetime import datetime, timedelta from typing import Optional, Dict, Callable import appdaemon.plugins.hass.hassapi as hass from util import util_common async def get_calendar_events( controller: hass.Hass, entity_id: str, start: Optional[datetime] = None, end: Optional[datetime] = None, duration: Optional[timedelta] = None, ) -> Dict: \"\"\" Get calendar events between two dates :param controller: usually 'self' :param entity_id: the calendar entity to query :param start: Return active events after this time (exclusive). When not set, defaults to now. :param end: Return active events before this time (exclusive). Cannot be used with duration. You must specify either end_date_time or duration. :param duration: Return active events from start_date_time until the specified duration. Cannot be used with end_date_time. You must specify either duration or end_date_time \"\"\" args = {} if start is not None: args[\"start_date_time\"] = start.isoformat() # if end is not None: # args[\"end_date_time\"] = end.isoformat() if duration is not None: hours = (duration.days * 24) + (duration.seconds // 3600) minutes = (duration.seconds // 60) % 60 seconds = duration.seconds % 60 duration_args = {} duration_args[\"hours\"] = hours duration_args[\"minutes\"] = minutes duration_args[\"seconds\"] = seconds args[\"duration\"] = duration_args controller.log(f\"Getting calendar events for {entity_id} with args: {args}\") # workaround using a wrapper script, see: https://github.com/appdaemon/appdaemon/issues/1837 await util_common.run_script( controller=controller, name=\"get_calendar_events\", variables={ \"calendar_entity_id\": entity_id, **args } ) # FIXME: not yet supported by appdaemon, see: https://github.com/appdaemon/appdaemon/issues/1837 # return await controller.call_service( # \"calendar/get_events\", # entity_id=entity_id, # **args, # return_result=True, # ) async def register_calendar_event_callback( controller: hass.Hass, callback: Callable, ) -> None: \"\"\" Register a callback to be called when a calendar event is received :param controller: usually 'self' :param callback: callback to call when an event is received :return: A handle that can be used to cancel the callback. \"\"\" return await controller.listen_event(callback, \"custom_appdaemon_get_calendar_events_result\")",
+      "Since we need to keep track of event data within AppDaemon, I also created an App for this exact purpose, called CalendarController:",
+      "calendar.yaml--- calendar_controller: module: calendar_controller class: CalendarController ...",
+      "calendar_controller.pyfrom datetime import datetime, timedelta from typing import Dict, Callable, List from base import BaseApp from const import * from util import util_calendar # Used to keep track of calendar events # and help with tracking event states. class CalendarController(BaseApp): async def initialize(self): # used to keep track of calendar data self._calendar_data = {} # used to keep track of callbacks self._state_callbacks = {} await util_calendar.register_calendar_event_callback( controller=self, callback=self._on_calendar_events_callback ) await self._update_calendar_events(None, None, None, None, None) # this essentially runs every minute await self.listen_state(self._update_calendar_events, \"sensor.date_time\") async def _on_calendar_events_callback(self, event_id, payload_event, *args): self.log(f\"Received calendar result event '{event_id}': {payload_event}\") self._calendar_data = payload_event[\"data\"] for key, callback_data in self._state_callbacks.items(): callback = callback_data[\"callback\"] condition = callback_data[\"condition\"] if condition is not None: if condition(): await callback() else: await callback() async def _update_calendar_events(self, entity, attribute, old, new, kwargs): # query data for all of the calendar entities you are interested in await util_calendar.get_calendar_events( controller=self, entity_id=CALENDAR_IRIS_MARKUS_ENTITY, start=datetime.now(), duration=timedelta(hours=720) # events within the coming 30 days ) async def get_current_events(self, calendar_id: str or None = None) -> List[Dict]: \"\"\" Get a list of all current events for a calendar :param calendar_id: the id of the calendar, if None, all calendars are queried :return: a list of events \"\"\" result = [] for cid, calendar_data in self._calendar_data.items(): if calendar_id is not None and cid != calendar_id: continue calendar_events = calendar_data.get(\"events\", []) result.extend(calendar_events) result = [event for event in result if datetime.fromisoformat( event[\"start\"]).timestamp() < datetime.now().timestamp() < datetime.fromisoformat( event[\"end\"]).timestamp()] return result async def register_state_callback(self, key: str, callback: Callable, condition: Callable or None = None): \"\"\" Register a callback to be called when the state of the calendar changes and the value of the condition changed. :param key: the key of the callback :param callback: the callback to call :param condition: the condition to check, returns True or False \"\"\" self._state_callbacks[key] = { \"callback\": callback, \"condition\": condition }",
+      "In an actual AppDaemon app, the usage would then look like this:",
+      "living_room.yaml--- living_room_controller: module: living_room class: LivingRoomController dependencies: - calendar_controller ...",
+      "living_room.pyclass LivingRoomController(BaseApp): async def initialize(self): ... calendar_controller = await self.get_app(\"calendar_controller\") await calendar_controller.register_state_callback(\"living_room\", self._calendar_data_changed_callback) # this essentially runs every minute await self._check_calendar_events(None, None, None, None, None) await self.listen_state(self._check_calendar_events, \"sensor.date_time\") async def _calendar_data_changed_callback(self): await self._check_calendar_events(None, None, None, None, None) async def _check_calendar_events(self, entity, attribute, old, new, kwargs): calendar_controller = await self.get_app(\"calendar_controller\") current_events = await calendar_controller.get_current_events() # TODO: do something with the events"
+    ]
+  }
+}

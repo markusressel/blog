@@ -1,0 +1,259 @@
+:root {
+  --color: #243746;
+  /* Blue 500 */
+  --color-primary: #2196f3;
+  --bg-secondary: #fff;
+  --border-color: #ddd;
+}
+
+.dark-mode {
+  --color: #ebf4f1;
+  /* Blue 500 */
+  --color-primary: #2196f3;
+  --color-secondary: #fdf9f3;
+  --bg-secondary: #071521;
+  --border-color: #0d2538;
+}
+.sepia-mode {
+  --color: #433422;
+  --color-secondary: #504231;
+  --bg: #f1e7d0;
+  --bg-secondary: #eae0c9;
+  --border-color: #ded0bf;
+}
+
+.__view {
+  display: flex;
+  flex-direction: column;
+}
+
+svg {
+  display: inherit;
+}
+
+a {
+  text-decoration: none;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+    Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  background-color: var(--bg);
+  color: var(--color);
+  margin: 0px;
+}
+a {
+  color: var(--color-primary);
+}
+
+/* Global page transision settings */
+.page-enter-active,
+.page-leave-active {
+  transition: opacity 0.1s;
+}
+.page-enter,
+.page-leave-to {
+  opacity: 0;
+}
+
+.__nuxt-error-page {
+  color: var(--color);
+  background-color: var(--bg);
+}
+
+/* MARKDOWN CONTENT */
+
+/* Header Link Icon */
+span.icon.icon-link {
+  mask: url("~/assets/icons/icon-hashtag-md.svg");
+  mask-position: 0px 2px;
+  @apply bg-gray-800;
+}
+.dark-mode span.icon.icon-link {
+  @apply bg-gray-300;
+}
+
+/* Blockquote */
+
+.nuxt-content blockquote {
+  @apply rounded-lg;
+  @apply shadow-lg;
+  /* Blue 500 A20 */
+  background: #2196f320;
+  /* Blue 500 A50 */
+  border-left: 10px solid #2196f350;
+  margin: 1.5em 10px;
+  padding: 1em 10px 0.1em 10px;
+  quotes: '\201C''\201D''\2018''\2019';
+}
+
+/* Code */
+
+.nuxt-content-highlight {
+  position: relative;
+  font-size: 14px;
+  margin: 0.5em 0 1.5em;
+}
+
+.nuxt-content-highlight > .filename {
+  @apply font-mono;
+  position: absolute;
+  z-index: 10;
+  top: 0;
+  right: 0;
+  line-height: 1;
+  margin-right: 1rem;
+  margin-top: 0.5rem;
+  color: #d4d4d4;
+}
+
+.nuxt-content-highlight > .copy-button {
+  @apply font-mono;
+  position: absolute;
+  z-index: 10;
+  right: 0;
+  bottom: 0;
+  margin: 0.5rem 1rem;
+  padding: 0.1rem 0.5rem;
+  border-radius: 0.5rem;
+  font-size: 12px;
+  color: #d4d4d4;
+  background: #ffffff20;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.nuxt-content-highlight:hover > .copy-button,
+.nuxt-content-highlight > .copy-button:focus {
+  opacity: 1;
+}
+
+.nuxt-content-highlight > pre {
+  @apply shadow-lg;
+  @apply font-mono;
+  border-radius: 1rem;
+  /* dark-plus theme background */
+  background-color: #1e1e1e;
+  color: #d4d4d4;
+  padding: 2rem 1rem 1rem 0;
+  overflow-x: auto;
+  line-height: 1.5;
+}
+
+/* this overrides the theme background color */
+.dark-mode .nuxt-content-highlight > pre {
+  @apply bg-gray-900;
+}
+
+/* line numbers */
+.nuxt-content-highlight > pre.line-numbers > code {
+  counter-reset: linenumber;
+}
+
+/* Shiki puts the newline inside each line, so lines must not be inline */
+.nuxt-content-highlight > pre .line {
+  display: block;
+}
+
+.nuxt-content-highlight > pre.line-numbers .line {
+  counter-increment: linenumber;
+}
+
+.nuxt-content-highlight > pre.line-numbers .line::before {
+  content: counter(linenumber);
+  display: inline-block;
+  width: 3em;
+  margin-right: 0.8em;
+  padding-right: 0.8em;
+  text-align: right;
+  color: #999;
+  /* add transparency to divider line */
+  border-right: 2px solid #ffffff20;
+  user-select: none;
+}
+
+.nuxt-content-highlight .line.highlight {
+  box-shadow: inset 5px 0 0 #2196f3;
+  background-color: #2196f320;
+}
+
+/* inline code section */
+p > code {
+  @apply bg-gray-300;
+  @apply text-gray-800;
+  @apply font-mono;
+  @apply shadow-inner;
+  @apply p-1;
+  @apply rounded-lg;
+}
+.dark-mode p > code {
+  @apply bg-gray-900;
+  @apply text-gray-200;
+}
+
+/* Tables */
+
+table {
+  @apply shadow-lg;
+  display: inline-block;
+  overflow: auto;
+  max-width: 100%;
+  touch-action: auto;
+  width: max-content;
+
+  border-radius: 0.8rem;
+  -moz-border-radius: 0.8rem;
+  border-collapse: collapse;
+  margin: 25px 0;
+  font-size: 0.9em;
+  font-family: sans-serif;
+}
+
+thead tr {
+  background-color: var(--color-primary);
+  color: #ffffff;
+  text-align: left;
+}
+
+th,
+td {
+  padding: 12px 15px;
+}
+
+tbody tr {
+  border-bottom: 1px solid #dddddd;
+}
+.dark-mode tbody tr {
+  border-bottom: 1px solid #dddddd20;
+}
+
+tbody tr:nth-of-type(even) {
+  background-color: #f3f3f3;
+}
+.dark-mode tbody tr:nth-of-type(even) {
+  background-color: #f3f3f310;
+}
+
+tbody tr:last-of-type {
+  border-bottom: 2px;
+}
+
+tbody tr:hover {
+  /* Blue 100 */
+  background-color: #bbdefb;
+}
+.dark-mode tbody tr:hover {
+  /* Blue 100 A20 */
+  background-color: #bbdefb20;
+}
+
+/* Cookie Notice */
+
+.cookie__bar {
+  @apply bg-gray-100;
+  @apply bg-gray-300;
+}
+.dark-mode .cookie__bar {
+  @apply bg-gray-900;
+  @apply border-gray-800;
+}

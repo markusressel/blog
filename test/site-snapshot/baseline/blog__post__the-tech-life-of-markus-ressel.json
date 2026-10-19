@@ -1,0 +1,152 @@
+{
+  "route": "/blog/post/the-tech-life-of-markus-ressel",
+  "title": "The (tech) life of Markus Ressel",
+  "meta": {
+    "description": "",
+    "og:description": "Since this is the first real post on my personal website, I thought I should tell you a little about myself. In this post, I talk about how I originally started programming, what events brought me to Android, and how that evolved later on.",
+    "og:image": "https://images.unsplash.com/photo-1556075798-4825dfaaf498?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1055&q=80",
+    "og:site_name": "Markus' Blog",
+    "og:title": "The (tech) life of Markus Ressel",
+    "og:type": "article",
+    "twitter:description": "Since this is the first real post on my personal website, I thought I should tell you a little about myself. In this post, I talk about how I originally started programming, what events brought me to Android, and how that evolved later on.",
+    "twitter:image": "https://images.unsplash.com/photo-1556075798-4825dfaaf498?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1055&q=80",
+    "twitter:title": "The (tech) life of Markus Ressel"
+  },
+  "h1": [
+    "The (tech) life of Markus Ressel"
+  ],
+  "internalLinks": [
+    "/",
+    "/attributions",
+    "/blog/post/investigating-zfs-cksum-errors",
+    "/blog/post/my-first-blog-post",
+    "/blog/tags/helloworld",
+    "/impressum",
+    "/privacy"
+  ],
+  "toc": [
+    {
+      "href": "#childhood",
+      "text": "Childhood"
+    },
+    {
+      "href": "#lots-of-phones",
+      "text": "Lots of phones"
+    },
+    {
+      "href": "#learning-for-life",
+      "text": "Learning for life"
+    },
+    {
+      "href": "#what-i-have-learned",
+      "text": "What I have learned"
+    }
+  ],
+  "content": {
+    "headings": [
+      {
+        "level": 2,
+        "id": "childhood",
+        "text": "Childhood"
+      },
+      {
+        "level": 2,
+        "id": "lots-of-phones",
+        "text": "Lots of phones"
+      },
+      {
+        "level": 2,
+        "id": "learning-for-life",
+        "text": "Learning for life"
+      },
+      {
+        "level": 2,
+        "id": "what-i-have-learned",
+        "text": "What I have learned"
+      }
+    ],
+    "codeBlocks": [],
+    "images": [],
+    "links": [
+      {
+        "href": "https://en.wikipedia.org/wiki/Amiga",
+        "text": "Amiga"
+      },
+      {
+        "href": "https://en.wikipedia.org/wiki/BASIC",
+        "text": "BASIC"
+      },
+      {
+        "href": "https://en.wikipedia.org/wiki/Sony_Ericsson_K700",
+        "text": "Sony Ericsson K700i"
+      },
+      {
+        "href": "https://en.wikipedia.org/wiki/Z22_(handheld)",
+        "text": "Palm Z22"
+      },
+      {
+        "href": "https://en.wikipedia.org/wiki/Windows_Mobile_2003",
+        "text": "Windows Mobile 2003 SE"
+      },
+      {
+        "href": "https://en.wikipedia.org/wiki/Samsung_Wave_S8500",
+        "text": "Samsung S8500 Wave"
+      },
+      {
+        "href": "https://en.wikipedia.org/wiki/Bada",
+        "text": "Bada"
+      },
+      {
+        "href": "https://en.wikipedia.org/wiki/Galaxy_Nexus",
+        "text": "Galaxy Nexus"
+      },
+      {
+        "href": "https://en.wikipedia.org/wiki/LG_G2",
+        "text": "LG G2"
+      },
+      {
+        "href": "https://en.wikipedia.org/wiki/LG_G4",
+        "text": "LG G4"
+      },
+      {
+        "href": "https://en.wikipedia.org/wiki/OnePlus_6T",
+        "text": "OnePlus 6T"
+      },
+      {
+        "href": "https://fotoallerlei.com",
+        "text": "Max Rosin"
+      },
+      {
+        "href": "https://github.com/Power-Switch/PowerSwitch_Android",
+        "text": "PowerSwitch"
+      },
+      {
+        "href": "https://github.com/Power-Switch/PowerSwitch_Android",
+        "text": "PowerSwitch"
+      },
+      {
+        "href": "https://www.ivu.com/",
+        "text": "IVU Traffic Technologies AG"
+      },
+      {
+        "href": "https://github.com/Power-Switch/PowerSwitch_Android",
+        "text": "PowerSwitch"
+      },
+      {
+        "href": "https://de.wikipedia.org/wiki/Adesso_SE",
+        "text": "Adesso Mobile Solutions"
+      }
+    ],
+    "blocks": [
+      "Since this is the first real post on my personal website, I thought I should tell you a little about myself. In this post, I talk about how I originally started programming, what events brought me to Android, and how that evolved later on.",
+      "Ever since I can remember I have been interested in technologies of all kinds, although my first contact with computers was through - you guessed it - gaming. Having the opportunity to play games like The Secret of Monkey Island, Wings of Fury, Zak McKracken and Zool on the Amiga of my Grandpa was always a blast and I have lovely memories of that time.",
+      "Later in life and thanks to my father I had the privilege of owning my first Windows 95 PC, although I still mainly did game on it. My first encounters with programming were with the Robby RP5, a small tracked vehicle robot from Conrad Electronics, equipped with a variety of sensors. I studied the documentation together with my father (at that time still on real paper! 😝) and developed my first small programs in BASIC to control the movements and the behavior of the robot.",
+      "When transitioning from elementary school to high school, I got the first phone of my own, the Sony Ericsson K700i and played around with a Palm Z22 before upgrading to the Vodafone VPA compact running Windows Mobile 2003 SE. In 2010 I finally made the jump to my first kind of smartphone: the Samsung S8500 Wave, which ran the Bada OS. This was the first mobile device I developed an application for in C++ using Samsungs own IDE for a school project and... I remember that it was a real pain in the a**. Although the device hardware itself was great, Bada itself never gained any real traction and with the \"upgrade\" to Bada 2.0 the phone got basically unusable. Thats why in 2011 I decided to switch to the Android ecosystem with the Galaxy Nexus, later upgrading to the LG G2, the LG G4 and the OnePlus 6T, which I am still using as of today.",
+      "Due to my interest in everything that had to do with computers, studying computer science was an obvious choice. During this time I got to know new friends as well as a variety of scientific topics and spent countless hours in the university workspaces.",
+      "In 2015, together with Max Rosin, I started developing my first \"big\" app: PowerSwitch. An Android app that I used to remotely control the wireless sockets in my home. What was initially intended as a proof of concept turned into something that was well received by others, leading to the buildup of a small community. PowerSwitch got more and more features and served me as a platform to try out different technologies in the mobile area. At the same time I was able to gain experience in working with a community, both in terms of issue and feature management as well as personal interactions on the dedicated forum and Google+ Community (RIP 🪦).",
+      "Towards the end of my studies I gained my first work experience as a software engineer at IVU Traffic Technologies AG, both as an Android and full-stack web developer. Even though the salary (as a working student) was rather meager, I really enjoyed being able to work on projects just like my colleague full-time developers. Thats where I experienced for the first time what it's like to develop software in a larger team of about 10 developers.",
+      "Even though I don't maintain PowerSwitch anymore, it was a milestone in my life. It showed me how much I love developing for and with the community. This is one of the reasons why I am a big advocate of FOSS and dream of a future where most software is freely available. While working on web projects was fun too, I am much more interested in creating mobile solutions that everyday people on the streets can benefit from. Thats why I am very happy to be working at Adesso Mobile Solutions for the forseeable future.",
+      "If you have made it this far, I hope it was an interesting read and at least some of your questions about me were answered. Maybe some day we will meet IRL and we can have a little chat about other stuff 😊"
+    ]
+  }
+}

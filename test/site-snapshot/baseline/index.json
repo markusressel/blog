@@ -1,0 +1,53 @@
+{
+  "route": "/",
+  "title": "Home",
+  "meta": {
+    "description": "",
+    "og:description": "This repository holds all the code for my personal website [https://markusressel.de](https://markusressel.de), which curently consists of a blog and an \"about me\" page.",
+    "og:site_name": "blog",
+    "og:title": "blog",
+    "og:type": "website"
+  },
+  "h1": [
+    "Welcome! 👋"
+  ],
+  "internalLinks": [
+    "/",
+    "/attributions",
+    "/blog",
+    "/blog/post/the-tech-life-of-markus-ressel",
+    "/impressum",
+    "/privacy",
+    "/projects"
+  ],
+  "toc": [],
+  "content": {
+    "headings": [
+      {
+        "level": 1,
+        "id": null,
+        "text": "Welcome! 👋"
+      }
+    ],
+    "codeBlocks": [],
+    "images": [],
+    "links": [
+      {
+        "href": "/blog/post/the-tech-life-of-markus-ressel",
+        "text": "blog post"
+      },
+      {
+        "href": "/projects",
+        "text": "Projects"
+      },
+      {
+        "href": "https://github.com/markusressel",
+        "text": "GitHub"
+      }
+    ],
+    "blocks": [
+      "I am Markus Ressel, a software engineer from Germany. When I am not working on developing mobile applications for Android, I tinker with all kinds of projects, from simple shell scripts and libraries to full blown applications and services. Over the years I have gained experience in various languages like Kotlin, Python and Golang and firmly believe in the FOSS principle.",
+      "If you want to know more about me, you can read the blog post I have written. If you don't care about me and/or are more interested in my work, have a look at the Projects overview or go straight to my GitHub page."
+    ]
+  }
+}

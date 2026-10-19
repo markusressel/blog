@@ -1,12 +1,8 @@
-#[context.production.environment]
+[build]
+  command = "yarn generate"
+  publish = ".output/public"
 
 [build.environment]
-  NODE_VERSION = "18.19.0"
-  YARN_VERSION = "1.22.21"
+  NODE_VERSION = "22"
+  YARN_VERSION = "1.22.22"
   YARN_FLAGS = "--ignore-engines"
-
-# A basic redirect rule
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200

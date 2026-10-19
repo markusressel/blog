@@ -35,7 +35,7 @@ jobs:
     strategy:
       matrix:
         os: [ ubuntu-latest ]
-        node: [ 18 ]
+        node: [ 22 ]
 
     steps:
       - name: Checkout 🛎
@@ -51,7 +51,7 @@ jobs:
 
       - name: Get yarn cache directory path 🛠
         id: yarn-cache-dir-path
-        run: echo "::set-output name=dir::$(yarn cache dir)"
+        run: echo "dir=$(yarn cache dir)" >> "$GITHUB_OUTPUT"
 
       - name: Cache node_modules 📦
         uses: actions/cache@v6.1.0
@@ -65,12 +65,12 @@ jobs:
       - name: Install dependencies 👨🏻‍💻
         run: yarn
 
-      # linter is way to aggressive, disabled for now
-      #- name: Run linter 👀
-      #  run: yarn lint
+      - name: Run linter 👀
+        run: yarn lint
 
+      - name: Type check 🔎
+        run: yarn nuxt typecheck
+
+      # generates the site, serves it and runs the Cypress tests against it
       - name: Run Cypress Tests
         run: yarn test:e2e:ci
-
-      - name: Generate site ⚙️
-        run: yarn generate
