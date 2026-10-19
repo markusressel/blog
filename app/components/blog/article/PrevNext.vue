@@ -1,37 +1,46 @@
 <template>
-  <div class="flex justify-between">
+  <nav
+    v-if="prev || next"
+    class="grid gap-4 sm:grid-cols-2 w-11/12 max-w-6xl mx-auto"
+    aria-label="More articles"
+  >
     <NuxtLink
       v-if="prev"
       :to="{ name: 'blog-post-slug', params: { slug: prev.slug } }"
-      class="shadow-lg border rounded-full px-6 py-2 mb-0 mr-1 text-sm text-bold text-center bg-white dark:bg-gray-800 self-end flex justify-center items-center sm:uppercase hover:bg-blue-500 text-blue-500 hover:text-white transform duration-300 ease-in-out"
+      rel="prev"
+      :class="cardClass"
     >
-      &lt;&lt;<br />
-      {{ prev.title }}
+      <span :class="labelClass">← Previous article</span>
+      <span :class="titleClass">{{ prev.title }}</span>
     </NuxtLink>
-    <span v-else>&nbsp;</span>
     <NuxtLink
       v-if="next"
       :to="{ name: 'blog-post-slug', params: { slug: next.slug } }"
-      class="shadow-lg border rounded-full px-6 py-2 mb-0 ml-1 text-sm text-bold text-center bg-white dark:bg-gray-800 self-end flex justify-center items-center sm:uppercase hover:bg-blue-500 text-blue-500 hover:text-white transform duration-300 ease-in-out"
+      rel="next"
+      :class="[cardClass, 'sm:col-start-2 sm:text-right']"
     >
-      &gt;&gt;<br />
-      {{ next.title }}
+      <span :class="labelClass">Next article →</span>
+      <span :class="titleClass">{{ next.title }}</span>
     </NuxtLink>
-    <span v-else>&nbsp;</span>
-  </div>
+  </nav>
 </template>
 
-<script>
-export default {
-  props: {
-    prev: {
-      type: Object,
-      default: () => null,
-    },
-    next: {
-      type: Object,
-      default: () => null,
-    },
+<script setup>
+defineProps({
+  prev: {
+    type: Object,
+    default: null,
   },
-}
+  next: {
+    type: Object,
+    default: null,
+  },
+})
+
+const cardClass =
+  'prev-next-card group flex flex-col gap-1 rounded-xl bg-white dark:bg-gray-800 px-5 py-4 shadow-lg hover:shadow-xl transition-shadow'
+const labelClass =
+  'text-xs uppercase tracking-wider text-gray-600 dark:text-gray-400'
+const titleClass =
+  'font-semibold text-gray-900 dark:text-gray-100 group-hover:text-blue-500 transition-colors'
 </script>

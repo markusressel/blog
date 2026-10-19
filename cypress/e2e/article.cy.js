@@ -64,9 +64,35 @@ context('Article', () => {
   })
 
   it('links to the next article', () => {
-    cy.contains('a', '>>').click()
+    cy.contains('a', 'Next article').click()
     cy.url().should('include', '/blog/post/')
     cy.url().should('not.include', 'my-first-blog-post')
+  })
+})
+
+context('Article details', () => {
+  beforeEach(() => {
+    cy.visitHydrated('/blog/post/investigating-zfs-cksum-errors')
+  })
+
+  it('shows both dates and the reading time', () => {
+    cy.get('article .article-meta')
+      .should('contain', 'Published April 28, 2021')
+      .and('contain', 'Updated December 16, 2023')
+      .invoke('text')
+      .should('match', /\d+ min read/)
+  })
+
+  it('copies the link of a heading', () => {
+    cy.window().then((win) => {
+      cy.stub(win.navigator.clipboard, 'writeText').as('copy').resolves()
+    })
+    cy.get('h2[id] > a').first().click({ force: true })
+    cy.get('@copy').should('have.been.calledOnce')
+    cy.get('@copy')
+      .its('firstCall.args.0')
+      .should('match', /\/blog\/post\/investigating-zfs-cksum-errors\/?#.+/)
+    cy.contains('Link copied')
   })
 })
 
