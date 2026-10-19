@@ -2,7 +2,7 @@
 createdAt: 2021-11-19
 updatedAt: 2021-11-19
 title: Booting ZFS on Linux on Asus ROG Zephyrus M16 (2021)
-img: https://images.unsplash.com/photo-1615293889204-6db03c596147?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8
+img: /images/blog/booting-zfs-on-linux-on-asus-rog-zephyrus-m16/header.jpg
 alt: Booting ZFS on Linux on Asus ROG Zephyrus M16 (2021)
 authors:
   - Markus Ressel

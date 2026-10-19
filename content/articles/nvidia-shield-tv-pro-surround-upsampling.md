@@ -2,7 +2,7 @@
 createdAt: 2021-11-19
 updatedAt: 2021-11-19
 title: Fixing bass heavy sound on the Nvidia Shield TV Pro
-img: https://images.unsplash.com/photo-1524656856248-1ac698f88bb0?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8
+img: /images/blog/nvidia-shield-tv-pro-surround-upsampling/header.jpg
 alt: Fixing bass heavy sound on the Nvidia Shield TV Pro
 authors:
   - Markus Ressel

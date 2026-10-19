@@ -3,10 +3,16 @@
     <article
       class="w-11/12 flex-grow bg-white dark:bg-gray-800 rounded-3xl max-w-6xl z-10 shadow-lg p-4 md:p-6 md:my-2 mx-auto"
     >
-      <img
+      <NuxtImg
         v-if="article.img"
         :src="article.img"
         :alt="article.alt ?? ''"
+        width="1152"
+        height="192"
+        fit="cover"
+        densities="x1 x2"
+        format="webp"
+        fetchpriority="high"
         class="object-cover w-full h-48 overflow-hidden rounded-lg shadow-lg"
       />
       <h1

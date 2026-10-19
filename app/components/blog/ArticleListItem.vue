@@ -7,11 +7,17 @@
     <div
       class="article-list-item flex flex-col mb-6 md:mb-8 bg-white dark:bg-gray-800 px-5 py-4 rounded-xl shadow-lg"
     >
-      <img
+      <NuxtImg
         v-if="article.img"
         :src="article.img"
         alt=""
-        class="object-cover mb-2 h-32 border rounded shadow"
+        width="1024"
+        height="128"
+        fit="cover"
+        densities="x1 x2"
+        format="webp"
+        loading="lazy"
+        class="object-cover w-full mb-2 h-32 border rounded shadow"
       />
       <div>
         <h2 class="font-bold text-gray-900 dark:text-gray-200 text-2xl my-0">
