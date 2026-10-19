@@ -2,39 +2,27 @@
   <!-- the whole card links to the article -->
   <NuxtLink
     :to="{ name: 'blog-post-slug', params: { slug: article.slug } }"
-    :class="[
-      'article-list-item group flex flex-col overflow-hidden rounded-xl bg-white dark:bg-gray-800 shadow-lg hover:shadow-xl transition-shadow',
-      { 'lg:flex-row': featured },
-    ]"
+    class="article-list-item group flex flex-col md:flex-row overflow-hidden rounded-xl bg-white dark:bg-gray-800 shadow-lg hover:shadow-xl transition-shadow"
     style="text-decoration: none; color: inherit"
   >
-    <div
-      v-if="article.img"
-      :class="['overflow-hidden shrink-0', { 'lg:w-1/2': featured }]"
-    >
+    <div v-if="article.img" class="overflow-hidden shrink-0 md:w-2/5">
       <NuxtImg
         :src="article.img"
         alt=""
-        :width="featured ? 1152 : 800"
-        :height="featured ? 480 : 320"
+        width="800"
+        height="400"
         fit="cover"
         densities="x1 x2"
         format="webp"
-        :loading="featured ? 'eager' : 'lazy'"
-        :class="[
-          'article-image w-full object-cover transition-transform duration-300 group-hover:scale-105',
-          featured ? 'aspect-[12/5] lg:aspect-auto lg:h-full' : 'aspect-[5/2]',
-        ]"
+        loading="lazy"
+        class="article-image w-full aspect-[5/2] md:aspect-auto md:h-full object-cover transition-transform duration-300 group-hover:scale-105"
         :style="{ viewTransitionName: `article-image-${article.slug}` }"
       />
     </div>
 
     <div class="flex flex-col flex-1 gap-2 px-5 pt-4 pb-5 md:px-6">
       <h2
-        :class="[
-          'font-bold leading-tight text-gray-900 dark:text-gray-100 group-hover:text-blue-500 transition-colors',
-          featured ? 'text-2xl md:text-3xl' : 'text-xl md:text-2xl',
-        ]"
+        class="text-xl md:text-2xl font-bold leading-tight text-gray-900 dark:text-gray-100 group-hover:text-blue-500 transition-colors"
       >
         {{ article.title }}
       </h2>
@@ -42,12 +30,7 @@
         :article="article"
         class="text-xs text-gray-600 dark:text-gray-400"
       />
-      <p
-        :class="[
-          'text-gray-700 dark:text-gray-300 leading-relaxed',
-          featured ? 'md:text-lg' : 'line-clamp-3',
-        ]"
-      >
+      <p class="text-gray-700 dark:text-gray-300 leading-relaxed line-clamp-3">
         {{ article.description }}
       </p>
 
@@ -72,11 +55,6 @@ defineProps({
   article: {
     type: Object,
     required: true,
-  },
-  // shown larger, image beside the text on large screens
-  featured: {
-    type: Boolean,
-    default: false,
   },
 })
 </script>
