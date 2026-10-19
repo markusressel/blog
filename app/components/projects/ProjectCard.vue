@@ -7,15 +7,16 @@
     class="project-card group flex-1 min-w-0 flex flex-col overflow-hidden bg-gray-100 dark:bg-gray-800 rounded-xl mx-0 my-2 md:mx-4 md:my-4 shadow-lg hover:shadow-xl transition-shadow"
     style="color: inherit"
   >
-    <!-- first image of the README, resized to 640x320 at build time -->
+    <!-- first image of the README, resized at build time -->
     <div v-if="project.preview" class="overflow-hidden">
       <img
         :src="project.preview"
         alt=""
-        width="640"
-        height="320"
+        width="1280"
+        height="640"
         loading="lazy"
         class="w-full aspect-[2/1] object-cover bg-gray-200 dark:bg-gray-900 transition-transform duration-300 group-hover:scale-105"
+        :class="{ 'grayscale group-hover:grayscale-0': project.archived }"
       />
     </div>
 
@@ -25,9 +26,6 @@
           class="font-semibold break-all text-blue-500 group-hover:underline"
           >{{ project.name }}</span
         >
-        <span v-if="project.archived === true" class="text-orange-500">
-          Archived
-        </span>
         <span
           class="flex items-center gap-1 shrink-0 text-gray-700 dark:text-gray-300"
           :aria-label="`${project.stargazers_count} stars`"

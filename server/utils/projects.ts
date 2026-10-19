@@ -6,8 +6,10 @@ const GITHUB_USER = 'markusressel'
 const IGNORED_IMAGE =
   /badge|shields\.io|travis-ci|codeclimate|codebeat|codecov/i
 
-const PREVIEW_WIDTH = 640
-const PREVIEW_HEIGHT = 320
+// twice the displayed size (cards are up to ~600 px wide)
+const PREVIEW_WIDTH = 1280
+const PREVIEW_HEIGHT = 640
+const QUALITY = 85
 
 export type Project = {
   name: string
@@ -42,32 +44,43 @@ const findImages = (readme: string, rawBase: string) =>
     .filter((url) => !IGNORED_IMAGE.test(url))
     .map((url) => new URL(url.replace(/^\//, ''), rawBase).href)
 
-// Every preview is a PREVIEW_WIDTH x PREVIEW_HEIGHT image. Images with about the
-// same aspect ratio fill it, others (logos, phone screenshots) are shown whole on
-// a blurred, darkened copy of themselves.
+// Every preview has a 2:1 aspect ratio. Images with about that ratio fill it,
+// others (logos, phone screenshots) are shown whole on a blurred, darkened copy
+// of themselves. Raster images are never enlarged, that only makes them blurry.
 const toPreview = async (image: Buffer) => {
-  // high density, so SVG logos are rasterized sharply; first frame of GIFs only
+  // high density, so SVGs are rasterized sharply; first frame of GIFs only
   const source = () => sharp(image, { density: 300 })
-  const { width = 1, height = 1 } = await source().metadata()
+  const { width = 1, height = 1, format } = await source().metadata()
+  const isVector = format === 'svg'
   const ratio = width / height
   const target = PREVIEW_WIDTH / PREVIEW_HEIGHT
+
   if (ratio > target * 0.8 && ratio < target * 1.25) {
+    const outWidth = isVector ? PREVIEW_WIDTH : Math.min(PREVIEW_WIDTH, width)
     return source()
-      .resize(PREVIEW_WIDTH, PREVIEW_HEIGHT, { fit: 'cover', position: 'top' })
-      .webp({ quality: 80 })
+      .resize(outWidth, Math.round(outWidth / target), {
+        fit: 'cover',
+        position: 'top',
+      })
+      .webp({ quality: QUALITY, smartSubsample: true })
       .toBuffer()
   }
+
+  const padding = PREVIEW_HEIGHT / 10
   const background = await source()
     .resize(PREVIEW_WIDTH, PREVIEW_HEIGHT, { fit: 'cover' })
-    .blur(24)
+    .blur(40)
     .modulate({ brightness: 0.6 })
     .toBuffer()
   const foreground = await source()
-    .resize(PREVIEW_WIDTH - 48, PREVIEW_HEIGHT - 48, { fit: 'inside' })
+    .resize(PREVIEW_WIDTH - 2 * padding, PREVIEW_HEIGHT - 2 * padding, {
+      fit: 'inside',
+      withoutEnlargement: !isVector,
+    })
     .toBuffer()
   return sharp(background)
     .composite([{ input: foreground, gravity: 'center' }])
-    .webp({ quality: 80 })
+    .webp({ quality: QUALITY, smartSubsample: true })
     .toBuffer()
 }
 
