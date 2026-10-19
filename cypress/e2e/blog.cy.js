@@ -28,7 +28,7 @@ context('Blog pagination', () => {
   it('navigates to the next page', () => {
     cy.visitHydrated('/blog')
     cy.contains('a', 'Next').click()
-    cy.url().should('include', 'page=2')
+    cy.location('pathname').should('eq', '/blog/page/2')
     cy.get('.article-list-item').should('have.length.gte', 1)
     cy.get('.article-list-item').should('have.length.lte', 5)
   })
@@ -39,6 +39,19 @@ context('Blog pagination', () => {
     cy.get('.article-list-item').should('not.contain', 'UM34C')
     cy.visitHydrated('/blog')
     cy.get('.article-list-item').should('not.contain', 'UM34C')
+  })
+})
+
+context('Blog pages', () => {
+  it('are prerendered', () => {
+    cy.request('/blog/page/2')
+      .its('body')
+      .should('include', 'article-list-item')
+  })
+
+  it('redirect the old ?page= URLs', () => {
+    cy.visit('/blog?page=2')
+    cy.location('pathname').should('eq', '/blog/page/2')
   })
 })
 
