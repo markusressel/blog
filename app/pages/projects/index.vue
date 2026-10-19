@@ -26,14 +26,14 @@
     </div>
   </div>
   <p v-else-if="!projects.length">An error occurred :(</p>
-  <div v-else>
+  <div v-else class="max-w-7xl mx-auto md:px-4">
     <section
       v-for="group of groups"
       :key="group.id"
       :aria-labelledby="`projects-${group.id}`"
       :class="['project-group', { 'mt-10': group.id === 'archived' }]"
     >
-      <div class="flex items-baseline gap-3 mx-0 md:mx-4 mt-2">
+      <div class="flex items-baseline gap-3 mt-2">
         <component
           :is="group.id === 'active' ? 'h1' : 'h2'"
           :id="`projects-${group.id}`"
@@ -46,20 +46,15 @@
           >{{ group.projects.length }}</span
         >
       </div>
-      <p
-        v-if="group.description"
-        class="mx-0 md:mx-4 mt-1 text-gray-600 dark:text-gray-400"
-      >
+      <p v-if="group.description" class="mt-1 text-gray-600 dark:text-gray-400">
         {{ group.description }}
       </p>
-      <div class="grid grid-flow-row grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-        <div
+      <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 mt-4">
+        <ProjectCard
           v-for="project of group.projects"
           :key="project.html_url"
-          class="flex"
-        >
-          <ProjectCard :project="project" />
-        </div>
+          :project="project"
+        />
       </div>
     </section>
   </div>
