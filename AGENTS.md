@@ -144,5 +144,8 @@ list in the browser. Redirects go in `public/_redirects`, not `netlify.toml`.
 `public/.well-known/assetlinks.json` is not part of the blog: it lets the MkDocsEditor Android
 app use passkeys of Markus' wiki, whose passkey RP ID is `markusressel.de`. Google fetches it
 from the public site, so keep it at that path, with no redirect and as `application/json`.
+Keep both relations: Bitwarden only accepts `handle_all_urls`, Google Password Manager
+`get_login_creds`. The app declares no links for this domain, so `handle_all_urls` opens nothing
+in it.
 Deleting or moving it breaks passkey sign-in in the app. A new app package or signing key needs
 a new entry here.
