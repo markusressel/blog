@@ -140,3 +140,9 @@ publish dir, Node version) without being asked.
 The build fetches the projects page from the GitHub API. An optional `GITHUB_TOKEN` environment
 variable raises the rate limit; without GitHub the build still succeeds and the page loads the
 list in the browser. Redirects go in `public/_redirects`, not `netlify.toml`.
+
+`public/.well-known/assetlinks.json` is not part of the blog: it lets the MkDocsEditor Android
+app use passkeys of Markus' wiki, whose passkey RP ID is `markusressel.de`. Google fetches it
+from the public site, so keep it at that path, with no redirect and as `application/json`.
+Deleting or moving it breaks passkey sign-in in the app. A new app package or signing key needs
+a new entry here.
