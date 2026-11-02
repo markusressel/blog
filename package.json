@@ -23,10 +23,10 @@
   "dependencies": {
     "@nuxt/content": "^3.16.2",
     "@nuxt/image": "^2.2.0",
-    "@nuxtjs/color-mode": "^4.0.1",
+    "@nuxtjs/color-mode": "^4.1.0",
     "@nuxtjs/sitemap": "^9.1.0",
     "minisearch": "^7.2.0",
-    "nuxt": "^4.6.2",
+    "nuxt": "^4.6.3",
     "vue": "^3.5.44",
     "vue-content-loader": "^2.0.1",
     "vue-router": "^5.4.0"
@@ -36,7 +36,7 @@
     "@nuxtjs/tailwindcss": "^6.14.0",
     "@tailwindcss/typography": "^0.5.20",
     "@types/node": "^22",
-    "cypress": "^16.2.0",
+    "cypress": "^16.2.1",
     "eslint": "^10.13.0",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-prettier": "^5.2.1",
@@ -47,7 +47,7 @@
     "sharp": "^0.35.5",
     "start-server-and-test": "^3.0.13",
     "typescript": "^6",
-    "vue-tsc": "^3.3.13"
+    "vue-tsc": "^3.3.14"
   },
   "resolutions": {
     "compression": "^1.8.2"
