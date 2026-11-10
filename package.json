@@ -46,7 +46,7 @@
     "serve": "^14.2.7",
     "sharp": "^0.35.5",
     "start-server-and-test": "^3.0.13",
-    "typescript": "^6",
+    "typescript": "^7.0.0",
     "vue-tsc": "^3.3.14"
   },
   "resolutions": {
