@@ -7535,9 +7535,9 @@ nuxt-site-config@^5.0.0:
     ufo "^1.6.4"
 
 nuxt-svgo@^5.3.0:
-  version "5.3.0"
-  resolved "https://registry.yarnpkg.com/nuxt-svgo/-/nuxt-svgo-5.3.0.tgz#60e055d71188cc6ade482965451d4578e0451c72"
-  integrity sha512-tZXAEwwYIy315K/9lxQfEXIQIWJO3hCiK5xBAKUDAmgss90Gr1RvCOZ4vGt/nmaiHSu2GhcAZ0gu9MxnUrmm6g==
+  version "5.3.2"
+  resolved "https://registry.yarnpkg.com/nuxt-svgo/-/nuxt-svgo-5.3.2.tgz#ecc48b717541a129842fcdc901f309c0a9899219"
+  integrity sha512-SOmAn0pRkxKdu/+Mkx6WOCGfonzYK6oDNDhTgq5yGid/hl4q2VEF9sBgf3xihtcso1htwBAJKCgRuwLSwXm8jQ==
   dependencies:
     "@nuxt/kit" "^4.4.4"
     mini-svg-data-uri "^1.4.4"
