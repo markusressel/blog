@@ -1,3 +1,9 @@
+# wiki.markusressel.de is a domain alias of this site only so that Google's Digital Asset
+# Links service can fetch assetlinks.json for MkDocsEditor App Links. The wiki itself is
+# internal (the LAN DNS points wiki at home); every other path goes to the blog.
+https://wiki.markusressel.de/.well-known/assetlinks.json  /.well-known/assetlinks.json  200!
+https://wiki.markusressel.de/*  https://markusressel.de/:splat  301!
+
 # Blog pages used to be addressed as /blog?page=N
 /blog   page=:page  /blog/page/:page  301!
 /blog/  page=:page  /blog/page/:page  301!
